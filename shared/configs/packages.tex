@@ -1,0 +1,52 @@
+% --- FONT & TIẾNG VIỆT ---
+\usepackage{fontspec}
+\setmainfont{Arial} % Chọn font chữ chính (Arial, Times New Roman, Calibri, ...)
+
+% --- TOÁN HỌC & HÌNH ẢNH & BẢNG ---
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+
+% --- VẼ HÌNH & KHUNG BÌA ---
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{indentfirst} % Ép đoạn văn đầu tiên cũng thụt đầu dòng
+\setlength{\parindent}{1cm} % Độ thụt đầu dòng (tùy chỉnh 1cm hoặc 1.27cm chuẩn Word)
+\usepackage{setspace}
+\onehalfspacing % Dãn dòng 1.5 cho chuẩn báo cáo
+\setlength{\parskip}{6pt} % Thêm khoảng cách giữa các đoạn văn (tùy chỉnh từ 6pt - 8pt)
+
+\usepackage{enumitem}
+% Cấp 1 (Level 1) - Dấu gạch ngang -
+\setlist[itemize,1]{
+    label=-,
+    itemsep=2pt,
+    topsep=4pt,
+    leftmargin=*
+}
+
+% Cấp 2 (Level 2) - Dấu cộng +
+\setlist[itemize,2]{
+    label=+,
+    itemsep=2pt,
+    topsep=2pt,
+    leftmargin=1.5em
+}
+
+% Package caption để tùy chỉnh tiêu đề hình ảnh và bảng
+\usepackage{caption}
+
+% Packges cho bảng nâng cao
+\usepackage{array}     % Hỗ trợ định dạng cột nâng cao
+\usepackage{booktabs}  % Kẻ đường kẻ bảng chuẩn học thuật (toprule, midrule, bottomrule)
+\usepackage{multirow}  % Gộp nhiều dòng trong bảng
+\usepackage{makecell}  % Hỗ trợ xuống dòng bên trong 1 ô
+
+% Phải khai báo cuối cùng để tránh xung đột với các package khác
+% Dùng để tạo liên kết trong PDF (mục lục, danh sách hình, danh sách bảng)
+\usepackage{hyperref} 
+
+\usepackage[table]{xcolor} % Khai báo gói xcolor hỗ trợ tô màu bảng
+

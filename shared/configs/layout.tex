@@ -1,0 +1,41 @@
+% --- CẤU HÌNH LỀ TRANG ---
+\usepackage[a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.0cm,
+    headheight=20pt
+]{geometry}
+
+\usepackage{array}
+\usepackage{tabularx}
+
+% --- CẤU HÌNH HEADER & FOOTER (TIMES NEW ROMAN) ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Xóa cấu hình mặc định
+
+% Tạo định nghĩa kiểu chữ Times New Roman cho Header/Footer
+\newcommand{\headerfont}{\small\rmfamily\itshape}
+
+% Áp dụng cho trang thường
+\fancyhead[L]{\small\fontspec{Times New Roman}\itshape\bfseries Tài liệu thiết kế phần mềm}
+\fancyhead[R]{\small\fontspec{Times New Roman}\itshape\bfseries Trang \thepage}
+
+\fancyfoot[L]{\small\fontspec{Times New Roman}\itshape\bfseries Bộ môn CNPM, Khoa CNTT \& TT, Đại học Cần Thơ}
+\fancyfoot[R]{}
+
+% Xóa đường kẻ ngang header & footer
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Đồng bộ cấu hình cho trang 'plain' (trang đầu chương, trang mục lục)
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\small\fontspec{Times New Roman}\itshape\bfseries Tài liệu thiết kế phần mềm}
+    \fancyhead[R]{\small\fontspec{Times New Roman}\itshape\bfseries Trang \thepage}
+    \fancyfoot[L]{\small\fontspec{Times New Roman}\itshape\bfseries Bộ môn CNPM, Khoa CNTT \& TT, Đại học Cần Thơ}
+    \fancyfoot[R]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
