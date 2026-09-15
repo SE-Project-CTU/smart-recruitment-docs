@@ -1,0 +1,66 @@
+%! TEX root = ../main.tex
+
+\clearpage
+
+\section{Thiết kế theo chức năng}
+
+\subsection{Chức năng XX (XX: tên cụ thể) }
+<Giải thích cách thức miền thông tin của hệ thống được chuyển sang các cấu trúc dữ liệu. Mô tả 
+cách thức dữ liệu chính hay các thực thể của hệ thống được lưu trữ, được xử lý và được tổ chức. 
+Liệt kê các cơ sở dữ liệu hay các mục lưu trữ dữ liệu.> 
+
+\begin{itemize}
+  \item \textbf{Mục đích:}
+  \item \textbf{Giao diện:} hiển thị các ảnh giao diện từ góc nhìn của người sử dụng. Chúng có thể 
+được vẽ bằng tay hay dùng công cụ vẽ tự động. Ta nên tạo ra chúng chính xác như có 
+thể. Ta cũng có thể đánh số cho từng thành phần trong giao diện.  
+  \item \textbf{Các thành phần trong giao diện:} ghi vào bảng sau các mô tả về từng thành phần (đã 
+được đánh số) của giao diện. 
+
+  \begin{tabularx}{\textwidth}{|R{1cm}|L{3.5cm}|L{4cm}|X|}
+      \hline
+      \rowcolor{gray!25} 
+      \multicolumn{1}{|c|}{\textbf{STT}} & 
+      \textbf{Loại điều kiện} & 
+      \textbf{Giá trị mặc định} & 
+      \textbf{Lưu ý} \\ \hline
+      
+      1 & 
+      Mỗi thành phần trong giao diện có thể là button hay textbox hay combobox, v.v. & 
+      a & 
+      Viết lưu ý cho những thành phần trong giao diện có cách xử lý đặc biệt hoặc các quy định mà lập trình viên phải thực hiện. \\ \hline
+  \end{tabularx}
+
+  \item \textbf{Dữ liệu được sử dụng:}  liệt kê các bảng trong cơ sở dữ liệu hoặc các cấu trúc dữ liệu 
+được cần đến bởi chức năng này. 
+
+  \begin{tabularx}{\textwidth}{|R{1cm}|X|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{2.2cm}|}
+      \hline
+      \rowcolor{gray!25} 
+      % Dòng 1: Để trống 2 ô đầu, chỉ tạo header cho "Phương thức"
+      & & \multicolumn{4}{c|}{\textbf{Phương thức}} \\ \cline{3-6}
+      
+      \rowcolor{gray!25}
+      % Dòng 2: Khai báo multirow{-2} để đẩy chữ lên giữa 2 dòng và đè lên màu xám
+      \multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{STT}}} & 
+      \multicolumn{1}{c|}{\multirow{-2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Tên bảng / \\ Cấu trúc dữ liệu\end{tabular}}}} & 
+      \textbf{Thêm} & 
+      \textbf{Sửa} & 
+      \textbf{Xóa} & 
+      \textbf{Truy vấn} \\ \hline
+      
+      % Dòng dữ liệu
+      1 & Danh mục sách & x & x & x & x \\ \hline
+      2 & Tài khoản người dùng & x & x & & x \\ \hline
+  \end{tabularx}
+
+  \item \textbf{Cách xử lý:} giải thích bằng lời hoặc vẽ sơ đồ mô tả dòng xử lý trên giao diện. 
+  \item \textbf{Hàm/ sự kiện} (nếu có): mô tả giải thuật cho từng biến cố bằng sơ đồ hoặc bằng ngôn 
+ngữ giả. 
+  \item \textbf{Các ràng buộc (nếu có)}: ví dụ như tham khảo đặc tả nào của tài liệu đặc tả nào. 
+\end{itemize}
+
+
+\subsection{Chức năng YY (YY: tên cụ thể) }
+<Có các mục tương tự như chức năng XX> 
+
