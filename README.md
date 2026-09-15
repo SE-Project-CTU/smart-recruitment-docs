@@ -1,9 +1,14 @@
-# Xây dựng nền tảng kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI
+# Xây dựng nền tảng kết nối tuyển dụng và hỗ trợ tạo CV thông minh tích hợp AI (SmartHire)
 
 > **AI-Powered Recruitment and Smart Resume Builder System**
 
-**Nhóm thực hiện:** `[Tên nhóm]`<br>
+**Nhóm thực hiện:** `Nhóm 1`<br>
 **Môn học:** Niên luận ngành Kỹ thuật phần mềm
+
+Thành viên nhóm:
+- `Phan Quốc Bình - B2303798` 
+- `Trần Trọng Phúc - B2303844` 
+- `Nguyễn Phước Lộc - B2303828`
 
 Repository này lưu trữ mã nguồn LaTeX, hình ảnh/sơ đồ và các tài liệu liên quan đến báo cáo niên luận. Repository phục vụ việc soạn thảo, biên dịch, review và theo dõi tiến độ tài liệu của nhóm.
 
