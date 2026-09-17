@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Trang-1" id="ySJ42BjNOgsptVfTnaBv">
-    <mxGraphModel dx="1212" dy="660" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1030" dy="562" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -461,6 +461,12 @@
             <mxGeometry height="64" width="10" x="1025.21025" y="1006.8" as="geometry" />
           </mxCell>
         </UserObject>
+        <mxCell id="F7Zd6DqyMfRigqYjiRGV-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Actor" vertex="1">
+          <mxGeometry height="60" width="30" x="1239" y="617" as="geometry" />
+        </mxCell>
+        <mxCell id="F7Zd6DqyMfRigqYjiRGV-2" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Actor" vertex="1">
+          <mxGeometry height="60" width="30" x="1298" y="621" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
