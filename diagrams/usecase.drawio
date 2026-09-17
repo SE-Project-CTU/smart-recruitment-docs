@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Trang-1" id="ySJ42BjNOgsptVfTnaBv">
-    <mxGraphModel dx="2575" dy="1403" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1212" dy="660" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -110,7 +110,7 @@
         </UserObject>
         <UserObject label="" plantUmlId="actor_10" plantUmlBaseStyle="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" plantUmlBaseValue="" id="HCB2PgWAqnKDadzJ3f-A-12">
           <mxCell parent="HCB2PgWAqnKDadzJ3f-A-1" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1">
-            <mxGeometry height="60" width="40" x="800.5" y="229" as="geometry" />
+            <mxGeometry height="60" width="40" x="645" y="413" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="Premium Customer" plantUmlId="actorlbl_11" plantUmlBaseStyle="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" plantUmlBaseValue="Premium Customer" id="HCB2PgWAqnKDadzJ3f-A-13">
