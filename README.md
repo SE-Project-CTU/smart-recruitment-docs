@@ -5,10 +5,29 @@
 **Nhóm thực hiện:** `Nhóm 1`<br>
 **Môn học:** Niên luận ngành Kỹ thuật phần mềm
 
-Thành viên nhóm:
-- `Phan Quốc Bình - B2303798` 
-- `Trần Trọng Phúc - B2303844` 
-- `Nguyễn Phước Lộc - B2303828`
+# 👥 Quy Định Vai Trò & Phân Công Nhân Sự (Scrum Roles & Assignment)
+
+Văn bản này quy định chi tiết trách nhiệm của từng vai trò trong mô hình Scrum được điều chỉnh cho dự án, cùng bảng gán nhân sự thực tế của nhóm.
+
+---
+
+## I. Trách Nhiệm Chi Tiết Theo Vai Trò (Roles & Responsibilities)
+
+| Vai trò | Trách nhiệm chính trong Agile/Scrum | Nhiệm vụ thực thi kỹ thuật (Development) |
+| :--- | :--- | :--- |
+| **Product Owner (PO)** | • Quản lý và ưu tiên danh mục yêu cầu (Product Backlog).<br>• Chốt các tính năng nghiệp vụ và tiêu chí nghiệm thu (Acceptance Criteria).<br>• Nghiệm thu các Issue/Feature khi Dev Team hoàn thành. | • Thiết kế Kiến trúc CSDL & Backend API.<br>• Viết các tài liệu Phân tích Yêu cầu & Specification. |
+| **Scrum Master (SM)** | • Đảm bảo nhóm tuân thủ đúng quy trình SOP (Git Workflow, Naming Rules).<br>• Theo dõi tiến độ Sprint, phát hiện và gỡ bỏ rào cản (Blockers).<br>• Kiểm duyệt Pull Requests (PR) và duy trì chất lượng Code/CI/CD. | • Khởi tạo & duy trì Infrastructure/DevOps.<br>• Phủ các tính năng Backend / Frontend chính. |
+| **Development Team** | • Ước lượng Effort và cam kết hoàn thành Task trong từng Sprint.<br>• Tự chủ thực hiện Task được giao theo đúng chuẩn Code & Branching.<br>• Chủ động báo cáo tiến độ và vướng mắc trong các buổi Standup. | • Lập trình các phân hệ Frontend / Backend / AI Services.<br>• Soạn thảo tài liệu báo cáo $\LaTeX$ theo đúng chương mục. |
+
+---
+
+## II. Bảng Gán Vai Trò Thành Viên Dự Án (Team Assignment)
+
+| Thành viên | Vai trò Scrum đảm nhận |
+| :--- | :--- |
+| **Phan Quốc Bình** | **PO, Dev Team** |
+| **Trần Trọng Phúc** | **SM, Dev Team** |
+| **Nguyễn Phước Lộc** | **Dev Team** |
 
 Repository này lưu trữ mã nguồn LaTeX, hình ảnh/sơ đồ và các tài liệu liên quan đến báo cáo niên luận. Repository phục vụ việc soạn thảo, biên dịch, review và theo dõi tiến độ tài liệu của nhóm.
 
