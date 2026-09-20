@@ -1,0 +1,67 @@
+%! TEX root = ../main.tex
+\begin{titlepage}
+    \centering
+
+    % ================= KHUNG VIỀN LỆCH THEO LỀ 3CM-2CM =================
+    \begin{tikzpicture}[remember picture, overlay]
+        % Tọa độ 4 góc tính chuẩn từ mép giấy
+        \coordinate (NW) at ($(current page.north west) + (3.5cm, -1.5cm)$);
+        \coordinate (SE) at ($(current page.south east) + (-2.0cm, 1.5cm)$);
+        \coordinate (NE) at (NW -| SE);
+        \coordinate (SW) at (NW |- SE);
+
+        % 1. Viền ngoài mỏng
+        \draw[line width=0.8pt] (NW) rectangle (SE);
+            
+        % 2. Viền dày màu xanh ở giữa
+        \draw[line width=3pt, blue!80!black] 
+            ($(NW) + (0.15cm, -0.15cm)$) rectangle ($(SE) + (-0.15cm, 0.15cm)$);
+
+        % 3. Viền trong mỏng
+        \draw[line width=0.8pt] 
+            ($(NW) + (0.3cm, -0.3cm)$) rectangle ($(SE) + (-0.3cm, 0.3cm)$);
+            
+        % Trang trí 4 góc vuông
+        \foreach \pt in {NW, NE, SW, SE} {
+            \draw[fill=white, line width=0.8pt] 
+                ($(\pt) + (-0.15cm,-0.15cm)$) rectangle ($(\pt) + (0.15cm,0.15cm)$);
+        }
+    \end{tikzpicture}
+    % ===================================================================
+
+    \vspace*{0.2cm}
+
+    {\bfseries\large ĐẠI HỌC CẦN THƠ}\\[4pt]
+    {\bfseries\large TRƯỜNG CÔNG NGHỆ THÔNG TIN \& TRUYỀN THÔNG} \\[4pt]
+    {\bfseries\large KHOA CÔNG NGHỆ PHẦN MỀM}\\[1.2cm]
+
+    \includegraphics[width=4.2cm]{figures/CTU_logo.png}\\[0.5cm]
+
+    {\bfseries\large NIÊN LUẬN}\\
+    {\bfseries\large NGÀNH KỸ THUẬT PHẦN MỀM}\\[1.0cm]
+
+    {\large Đề tài}\\[10pt]
+    {\large\bfseries XÂY DỰNG NỀN TẢNG KẾT NỐI TUYỂN DỤNG}\\
+    {\large\bfseries VÀ HỖ TRỢ TẠO CV THÔNG MINH }\\
+    {\large\bfseries TÍCH HỢP AI}\\ [1.2cm]
+
+    \begin{center}
+        Giảng viên hướng dẫn: ThS. Võ Huỳnh Trâm\\[14pt]
+        
+        \setlength{\extrarowheight}{4pt}
+        \begin{tabular}{|p{5.5cm}|p{3.5cm}|}
+            \hline
+            \hfil\normalsize\textbf{Sinh viên thực hiện}\hfil & \hfil\normalsize\textbf{MSSV}\hfil \\[2pt] \hline
+            Phan Quốc Bình & B2303798 \\[2pt] \hline
+            Trần Trọng Phúc & B2303844 \\[2pt] \hline
+            Nguyễn Phước Lộc & B2303828 \\[2pt] \hline
+        \end{tabular}
+    \end{center}
+
+    \vfill 
+
+    Cần Thơ, 11/2026
+
+    \vspace{0.8cm}
+
+\end{titlepage}

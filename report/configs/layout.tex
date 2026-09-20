@@ -1,10 +1,14 @@
 % --- CẤU HÌNH LỀ TRANG ---
 \usepackage[a4paper,
-    top=2.5cm,
-    bottom=2.5cm,
-    left=2.5cm,
+    top=1.5cm,
+    bottom=1.5cm,
+    left=3.5cm,
     right=2.0cm,
-    headheight=20pt
+    headheight=16pt,  % Độ cao khung chứa header
+    headsep=0.4cm,    % Khoảng cách giữa đường kẻ Header và dòng LỜI CẢM ƠN
+    footskip=1cm,   % Khoảng cách giữa dòng cuối văn bản và Footer
+    includehead,      % ĐẢM BẢO: Header nằm trọn bên trong khoảng lề 2.5cm phía trên
+    includefoot       % ĐẢM BẢO: Footer nằm trọn bên trong khoảng lề 2.5cm phía dưới
 ]{geometry}
 
 \usepackage{tabularx}
@@ -32,32 +36,30 @@
 \setlength{\intextsep}{0.5cm plus 2pt minus 2pt} % Khoảng cách cho bảng nằm giữa văn bản
 
 
-% --- CẤU HÌNH HEADER & FOOTER (TIMES NEW ROMAN) ---
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} % Xóa cấu hình mặc định
 
-% Tạo định nghĩa kiểu chữ Times New Roman cho Header/Footer
-\newcommand{\headerfont}{\small\rmfamily\itshape}
+% --- CẤU HÌNH HEADER (ĐẦU TRANG) ---
+\fancyhead[L]{\small\fontspec{Times New Roman}\itshape Khoa Công nghệ Phần mềm}
+\fancyhead[R]{} % Hoặc để tên tài liệu/mục nếu muốn
 
-% Áp dụng cho trang thường
-\fancyhead[L]{\small\fontspec{Times New Roman}\itshape\bfseries Tài liệu thiết kế phần mềm}
-\fancyhead[R]{\small\fontspec{Times New Roman}\itshape\bfseries Trang \thepage}
+% --- CẤU HÌNH FOOTER (CHÂN TRANG) ---
+\fancyfoot[L]{\small\fontspec{Times New Roman}\itshape Trường Công nghệ Thông tin \& Truyền thông}
+\fancyfoot[R]{\small\fontspec{Times New Roman}\itshape Trang \thepage}
 
-\fancyfoot[L]{\small\fontspec{Times New Roman}\itshape\bfseries Bộ môn CNPM, Khoa CNTT \& TT, Đại học Cần Thơ}
-\fancyfoot[R]{}
+% --- ĐƯỜNG KẺ NGANG PHÂN CÁCH (RULE) ---
+\renewcommand{\headrulewidth}{0.4pt} % Đường kẻ ngang đường đệm Header
+\renewcommand{\footrulewidth}{0.4pt} % Đường kẻ ngang đường đệm Footer
 
-% Xóa đường kẻ ngang header & footer
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Đồng bộ cấu hình cho trang 'plain' (trang đầu chương, trang mục lục)
+% --- ĐỒNG BỘ CHO TRANG 'PLAIN' (Trang đầu chương, Mục lục,...) ---
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyhead[L]{\small\fontspec{Times New Roman}\itshape\bfseries Tài liệu thiết kế phần mềm}
-    \fancyhead[R]{\small\fontspec{Times New Roman}\itshape\bfseries Trang \thepage}
-    \fancyfoot[L]{\small\fontspec{Times New Roman}\itshape\bfseries Bộ môn CNPM, Khoa CNTT \& TT, Đại học Cần Thơ}
-    \fancyfoot[R]{}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
+    \fancyhead[L]{\small\fontspec{Times New Roman}\itshape Khoa Công nghệ Phần mềm}
+    \fancyhead[R]{}
+    \fancyfoot[L]{\small\fontspec{Times New Roman}\itshape Trường Công nghệ Thông tin \& Truyền thông}
+    \fancyfoot[R]{\small\fontspec{Times New Roman}\itshape Trang \thepage}
+    
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
 }

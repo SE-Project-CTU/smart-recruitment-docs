@@ -1,0 +1,105 @@
+%! TEX root = ../main.tex
+
+\newpage
+
+\section*{PHẦN GIỚI THIỆU}
+
+% Reset bộ đếm và đổi định dạng hiển thị tạm thời cho file này
+\setcounter{subsection}{0}
+\renewcommand{\thesubsection}{\arabic{subsection}.} % Hiển thị dạng 1., 2., 3.
+
+\subsection{Đặt vấn đề}
+Trong kỷ nguyên số hóa hiện nay, quy trình tuyển dụng và tìm kiếm việc làm đóng vai trò then chốt trong việc kết nối nguồn nhân lực với doanh nghiệp. Tuy nhiên, thực tế vận hành thị trường lao động tại Việt Nam vẫn đang gặp phải nhiều nút thắt lớn:
+\begin{itemize}
+    \item \textbf{Về phía ứng viên:} Phần lớn ứng viên (đặc biệt là sinh viên mới tốt nghiệp) gặp khó khăn trong việc trình bày hồ sơ xin việc (CV) chuẩn hóa. Việc mô tả kinh nghiệm, dự án thường thiếu chuyên nghiệp, chưa tối ưu từ khóa ngành nghề, và chưa nhận diện được những "khoảng trống kỹ năng" so với yêu cầu tuyển dụng.
+    \item \textbf{Về phía nhà tuyển dụng:} Việc bóc tách và đánh giá thủ công hàng trăm hồ sơ ứng tuyển tốn rất nhiều thời gian nhưng hiệu quả không cao. Các hệ thống tuyển dụng truyền thống chưa hỗ trợ công cụ chấm điểm độ tương thích tự động dựa trên ngữ nghĩa của bản mô tả công việc.
+    \item \textbf{Về phía quản lý thị trường:} Tình trạng tin đăng tuyển dụng lừa đảo, doanh nghiệp "ma" xuất hiện phổ biến trên các nền tảng tự do, gây ảnh hưởng tiêu cực đến lòng tin của người lao động.
+\end{itemize}
+
+Xuất phát từ các vấn đề thực tiễn trên, đề tài \textit{“Xây dựng nền tảng kết nối tuyển dụng và hỗ trợ tạo CV thông minh tích hợp AI (SmartHire)”} được nghiên cứu và thực hiện nhằm ứng dụng Công nghệ Thông tin và Trí tuệ Nhân tạo (AI) vào việc tối ưu hóa toàn bộ quy trình tuyển dụng, tạo ra môi trường tương tác hiệu quả, minh bạch và thông minh cho cả Ứng viên, Nhà tuyển dụng và Quản trị viên.
+
+\subsection{Lịch sử giải quyết vấn đề}
+\begin{itemize}
+    \item \textbf{Trên thế giới và trong nước:} Các hệ thống lớn như LinkedIn, TopCV, VietnamWorks,... đã xây dựng thành công nền tảng kết nối tuyển dụng quy mô lớn. Tuy nhiên, các tính năng tích hợp AI chuyên sâu như phân tích khoảng trống kỹ năng trực tiếp trên bản dựng CV, chấm điểm độ phù hợp CV-JD theo thời gian thực hoặc gợi ý câu chữ ngữ cảnh thường bị giới hạn ở các gói trả phí đắt đỏ hoặc chưa được cá nhân hóa sâu sắc cho từng ngành nghề cụ thể.
+    \item \textbf{Tại Khoa và Trường:} Các đề tài niên luận/đồ án trước đây chủ yếu tập trung vào việc xây dựng các website quản lý tuyển dụng truyền thống (CRUD cơ bản) hoặc các trang tạo CV tĩnh theo form sẵn có. Các hệ thống này chưa có sự tương tác thời gian thực mượt mà và chưa khai thác công nghệ AI để xử lý ngữ nghĩa hồ sơ.
+    \item \textbf{Vấn đề chưa được giải quyết triệt để:} Xây dựng một trình biên soạn CV WYSIWYG linh hoạt (thay đổi trực tiếp trên trang giấy) có khả năng tương tác song song với Trợ lý AI, đồng thời xử lý bài toán so sánh ngữ nghĩa giữa CV và JD với tốc độ phản hồi cao và chi phí tối ưu.
+\end{itemize}
+
+\subsection{Mục tiêu đề tài}
+Mục tiêu trọng tâm của đề tài bao gồm:
+\begin{itemize}
+    \item Xây dựng hoàn thiện hệ thống Web SmartHire vận hành theo mô hình ba tác nhân (Ứng viên, Nhà tuyển dụng, Quản trị viên) với quy trình xác thực và phân quyền an toàn.
+    \item Phát triển công cụ biên soạn CV thông minh theo thời gian thực, hỗ trợ tùy biến bố cục, lưu trữ cấu trúc động dưới dạng dữ liệu JSONB.
+    \item Tích hợp dịch vụ Trí tuệ Nhân tạo giúp gợi ý từ khóa, tối ưu văn bản mô tả kinh nghiệm, tự động chấm điểm độ tương thích và phân tích khoảng trống kỹ năng. Gợi ý các công việc phù hợp dựa trên hồ sơ ứng viên và bản mô tả công việc.
+    \item Xây dựng quy trình quản lý tin đăng tuyển dụng, ứng tuyển trực tuyến (dùng CV hệ thống hoặc file PDF) và quy trình kiểm duyệt doanh nghiệp chống lừa đảo/spam.
+\end{itemize}
+
+\subsection{Đối tượng và phạm vi nghiên cứu}
+\begin{itemize}
+    \item \textbf{Đối tượng nghiên cứu:}
+    \begin{itemize}
+        \item Quy trình nghiệp vụ tuyển dụng và theo dõi hồ sơ ứng viên (Applicant Tracking System - ATS).
+        \item Phương pháp xử lý ngôn ngữ tự nhiên (NLP) và các mô hình ngôn ngữ lớn (LLM) ứng dụng trong việc trích xuất, phân tích ngữ nghĩa CV/JD.
+        \item Kiến trúc phần mềm hiện đại: Clean Architecture (ASP.NET Core 10 Web API), Single Page Application (ReactJS, TypeScript), và hệ quản trị CSDL PostgreSQL 16.
+    \end{itemize}
+    \item \textbf{Phạm vi nghiên cứu:}
+    \begin{itemize}
+        \item \textit{Phạm vi người dùng:} Phục vụ 3 nhóm đối tượng chính gồm Ứng viên (tìm việc, tạo CV, nhận gợi ý AI), Nhà tuyển dụng (đăng JD, lọc hồ sơ, chấm điểm AI), và Quản trị viên (duyệt doanh nghiệp/tin đăng, quản lý danh mục hệ thống).
+        \item \textit{Phạm vi công nghệ:} Đóng gói và vận hành trên môi trường Docker, sử dụng dịch vụ Cloudinary quản lý lưu trữ tệp, tích hợp API AI Agent từ nhà cung cấp bên thứ ba (OpenAI/Google Gemini).
+    \end{itemize}
+\end{itemize}
+
+\subsection{Nội dung nghiên cứu (Hoàn thiện sau)}
+Để đạt được các mục tiêu đề ra, nhóm thực hiện phân chia công việc chi tiết giữa các thành viên theo Kế hoạch phát triển phần mềm như sau:
+
+\begin{enumerate}
+    \item \textbf{Khảo sát yêu cầu và lập Tài liệu Đặc tả Yêu cầu Phần mềm (SRS):}
+    \begin{itemize}
+        \item \textit{Thành viên thực hiện:} Phan Quốc Bình (Trưởng nhóm), Trần Trọng Phúc, Nguyễn Phước Lộc.
+    \end{itemize}
+    \item \textbf{Thiết kế Kiến trúc hệ thống và Cơ sở dữ liệu (PostgreSQL):}
+    \begin{itemize}
+        \item Cấu trúc bảng CSDL chuẩn 3NF và mô hình lưu trữ cấu trúc CV linh hoạt bằng JSONB; thiết kế RESTful API endpoints.
+        \item \textit{Thành viên thực hiện:} Phan Quốc Bình, Trần Trọng Phúc.
+    \end{itemize}
+    \item \textbf{Xây dựng Phân hệ Backend API (ASP.NET Core 10) \& Bảo mật (JWT/RBAC):}
+    \begin{itemize}
+        \item Phát triển các API xác thực, quản lý tài khoản, nghiệp vụ đăng tin tuyển dụng, ứng tuyển, kiểm duyệt và phân quyền truy cập.
+        \item \textit{Thành viên thực hiện:} Trần Trọng Phúc, Phan Quốc Bình.
+    \end{itemize}
+    \item \textbf{Phát triển Phân hệ Frontend \& Trình biên soạn CV thời gian thực (ReactJS, TypeScript, TailwindCSS):}
+    \begin{itemize}
+        \item Xây dựng giao diện tương tác người dùng, công cụ tạo CV Live Preview WYSIWYG, bộ lọc việc làm và bảng điều khiển Dashboard.
+        \item \textit{Thành viên thực hiện:} Nguyễn Phước Lộc, Phan Quốc Bình.
+    \end{itemize}
+    \item \textbf{Tích hợp Phân hệ Trợ lý AI Thông minh (Match Score \& Skill Gap):}
+    \begin{itemize}
+        \item Xây dựng Service kết nối LLM API, xử lý bóc tách ngữ nghĩa CV/JD, tính điểm tương thích % và sinh gợi ý tối ưu câu chữ.
+        \item \textit{Thành viên thực hiện:} Phan Quốc Bình, Nguyễn Phước Lộc.
+    \end{itemize}
+    \item \textbf{Kiểm thử hệ thống, Đóng gói Docker \& Hoàn thiện quyển Báo cáo:}
+    \begin{itemize}
+        \item Xây dựng kịch bản kiểm thử (Test Cases), kiểm tra hiệu năng, đóng gói hệ thống qua Docker và viết tài liệu Niên luận.
+        \item \textit{Thành viên thực hiện:} Phan Quốc Bình, Trần Trọng Phúc, Nguyễn Phước Lộc.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Những đóng góp chính của đề tài}
+\begin{itemize}
+    \item Xây dựng thành công sản phẩm phần mềm SmartHire hoàn chỉnh, có khả năng ứng dụng thực tế cao trong việc kết nối tuyển dụng.
+    \item Đưa ra giải pháp kết hợp hiệu quả giữa trình biên soạn CV WYSIWYG và Trợ lý AI, giúp ứng viên chủ động nâng cao chất lượng hồ sơ và nhận diện thiếu sót kỹ năng.
+    \item Cung cấp cho Nhà tuyển dụng công cụ tự động đánh giá hồ sơ dựa trên điểm Match Score và phân tích Skill Gap, giúp rút ngắn thời gian sàng lọc ứng viên.
+    \item Bộ tài liệu kỹ thuật hoàn chỉnh gồm Tài liệu Đặc tả Yêu cầu Phần mềm (SRS), Tài liệu Thiết kế Hệ thống và Kế hoạch Kiểm thử theo đúng chuẩn học thuật.
+\end{itemize}
+
+\subsection{Bố cục của quyển niên luận}
+Quyển báo cáo Niên luận được tổ chức thành các phần và chương chính như sau:
+\begin{itemize}
+    \item \textbf{PHẦN GIỚI THIỆU:} Trình bày đặt vấn đề, mục tiêu, đối tượng, phạm vi, phân công công việc nhóm và những đóng góp chính của đề tài.
+    \item \textbf{CHƯƠNG 1 - MÔ TẢ BÀI TOÁN:} Mô tả chi tiết các chức năng/tính năng đặc điểm của hệ thống SmartHire, phân tích đánh giá các giải pháp hiện hữu và tiếp cận chọn lựa giải pháp.
+    \item \textbf{CHƯƠNG 2 - THIẾT KẾ VÀ CÀI ĐẶT GIẢI PHÁP:} Trình bày thiết kế kiến trúc tổng thể hệ thống, mô hình cơ sở dữ liệu (ERD/Relational Model), giải thuật xử lý, và chi tiết công nghệ cài đặt phía Backend, Frontend và AI Service.
+    \item \textbf{CHƯƠNG 3 - KIỂM THỬ VÀ ĐÁNH GIÁ:} Mô tả mục tiêu kiểm thử, các kịch bản kiểm thử chức năng/phi chức năng và kết quả đánh giá thực tế trên hệ thống.
+    \item \textbf{PHẦN KẾT LUẬN:} Đánh giá tổng quan các kết quả đã đạt được, chỉ ra những hạn chế còn tồn tại và đề xuất hướng phát triển tiếp theo của đề tài.
+    \item \textbf{TÀI LIỆU THAM KHẢO:} Liệt kê các nguồn tài liệu trích dẫn và hướng dẫn chi tiết cài đặt, vận hành chương trình.
+    \item \textbf{PHỤ LỤC:} Bao gồm hướng dẫn cài đặt và hướng dẫn sử dụng chương trình.
+\end{itemize}

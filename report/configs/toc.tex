@@ -2,7 +2,6 @@
 
 \usepackage{tocloft}
 
-% 0. CHO PHÉP MỤC LỤC HIỂN THỊ ĐẾN HEADING 4 (\paragraph)
 \setcounter{tocdepth}{4}
 
 % 1. TIÊU ĐỀ MỤC LỤC
@@ -10,25 +9,24 @@
 \renewcommand{\contentsname}{MỤC LỤC}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
-% --- GIẢM KHOẢNG TRỐNG PHÍA TRÊN HEADING 1 (SECTION) ---
-% Mặc định là khoảng 1.0em + 0.6pt. Bạn có thể hạ xuống 0.2em hoặc 0pt tùy ý:
 \setlength{\cftbeforesecskip}{0.2em}
 
-% 2. DẤU NỐI & KHOẢNG CÁCH DẤU CHẤM
+% 2. DẤU NỐI & TIỀN TỐ MỤC LỤC
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftdotsep}{2} 
 
-% Hiển thị dấu chấm nối sang số trang cho cả Section (Chương)
 \renewcommand{\cftsecpagefont}{\normalfont}
-\renewcommand{\cftsecpresnum}{}
+
+% Thêm chữ "CHƯƠNG " và dấu ":" trước số chương trong Mục lục
+\renewcommand{\cftsecpresnum}{CHƯƠNG }
+\renewcommand{\cftsecaftersnum}{: }
 
 % 3. THỤT LỀ TRONG MỤC LỤC
-% Syntax: \cftsetindents{entry}{indent}{numwidth}
-\cftsetindents{section}{0em}{1.5em}        % Dành không gian cho chữ "CHƯƠNG I:"
-\cftsetindents{subsection}{1.5em}{2em}    % Thụt lề cấp 2
-\cftsetindents{subsubsection}{3.5em}{2.5em}% Thụt lề cấp 3
-\cftsetindents{paragraph}{5.5em}{1.5em}   % Thụt lề cấp 4 (dành cho nhãn a), b)...)
-
+% Cú pháp: \cftsetindents{entry}{indent}{numwidth}
+\cftsetindents{section}{0em}{5.8em}        % Độ rộng đủ chứa "CHƯƠNG 1: "
+\cftsetindents{subsection}{1.0em}{1.8em}    % Độ rộng cho "1.1"
+\cftsetindents{subsubsection}{1.5em}{2.5em}% Độ rộng cho "1.1.1"
+\cftsetindents{paragraph}{2.5em}{1.5em}    % Độ rộng cho "a)"
 
 
 % --- 1. ĐỔI TÊN TIÊU ĐỀ TIẾNG VIỆT ---

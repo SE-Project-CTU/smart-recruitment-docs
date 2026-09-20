@@ -1,25 +1,95 @@
+%! TEX root = ../main.tex
+
 \usepackage{titlesec}
 
-% --- ĐẢM BẢO ĐÁNH SỐ ĐẾN CẤP 3 ---
-\setcounter{secnumdepth}{3}
+% 0. CẤU HÌNH ĐỘ SÂU ĐÁNH SỐ (Đến Heading 4 / \paragraph)
+\setcounter{secnumdepth}{4}
 
-% --- 1. HEADING 1 (\section) -> Font size: 18pt ---
+% 1. ĐỊNH NGHĨA SỐ THỨ TỰ HEADING
+\renewcommand{\thesection}{\arabic{section}}                       % 1, 2, 3...
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}     % 1.1, 1.2...
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}} % 1.1.1, 1.1.2...
+\renewcommand{\theparagraph}{\alph{paragraph})}                     % a), b), c)...
+
+% Đặt lại bộ đếm khi sang chương/mục mới
+\makeatletter
+\@addtoreset{subsection}{section}
+\@addtoreset{paragraph}{subsubsection}
+\makeatother
+
+% 2. TÙY CHỈNH KIỂU CHỮ NGOÀI TRANG
+% Heading 1 (\section) -> CHƯƠNG 1: TIÊU ĐỀ
 \titleformat{\section}
-  {\normalfont\fontsize{18pt}{22pt}\selectfont\bfseries\raggedright}
-  {\thesection.}{0.8em}{}
-\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+  {\centering\LARGE\bfseries}
+  {CHƯƠNG \thesection:}
+  {0.5em}
+  {\uppercase}
 
-% --- 2. HEADING 2 (\subsection) -> Font size: 14pt ---
+% Heading 2 (\subsection) -> 1.1 Tiêu đề
 \titleformat{\subsection}
-  {\normalfont\fontsize{14pt}{18pt}\selectfont\bfseries\raggedright}
-  {\thesubsection}{0.8em}{}
-\titlespacing*{\subsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+  {\Large\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {}
 
-% --- 3. HEADING 3 (\subsubsection) -> Font size: 13pt, KHÔNG in đậm, THỤT LỀ 1.2cm ---
+% Heading 3 (\subsubsection) -> 1.1.1 Tiêu đề
 \titleformat{\subsubsection}
-  {\normalfont\fontsize{13pt}{16pt}\selectfont\raggedright}
-  {\hspace*{1.2cm}\thesubsubsection}{0.8em}{}
+  {\large\bfseries}
+  {\thesubsubsection}
+  {0.5em}
+  {}
 
-% Đặt lề trái của \titlespacing* về 0pt để không bị ghi đè hoặc cộng dồn
+% Heading 4 (\paragraph) -> a) Tiêu đề
+\titleformat{\paragraph}
+  {\normalfont\bfseries}
+  {\theparagraph}
+  {0.5em}
+  {}
+
+% --- CẤU HÌNH DÀNH CHO HÌNH VÀ BẢNG (Chuyển sang dạng 1.1, 1.2) ---
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
+
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+\usepackage{caption}
+\captionsetup[figure]{
+    labelfont={bf},
+    textfont={normalfont},
+    labelsep=colon,
+    skip=6pt
+}
+
+\captionsetup[table]{
+    position=top,
+    labelfont={bf},
+    textfont={normalfont},
+    labelsep=colon,
+    skip=6pt,
+    justification=centering
+}
+
 \titlespacing*{\subsubsection}
   {0pt}{1.8ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+
+% --- CẤU HÌNH MẶC ĐỊNH CHO SECTION* TỰ ĐỘNG VÀO MỤC LỤC ---
+\let\oldsection\section
+\RenewDocumentCommand{\section}{s o m}{%
+  \IfBooleanTF{#1}
+    {% Khi dùng \section*{...}
+      \phantomsection
+      \oldsection*{#3}%
+      \addcontentsline{toc}{section}{#3}%
+    }
+    {% Khi dùng \section{...} thông thường
+      \IfValueTF{#2}
+        {\oldsection[#2]{#3}}
+        {\oldsection{#3}}%
+    }%
+}
