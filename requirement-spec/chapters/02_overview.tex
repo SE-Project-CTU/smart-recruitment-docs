@@ -6,42 +6,92 @@
 
 \subsection{Bối cảnh của sản phẩm}
 
-\textit{<Mô tả ngữ cảnh và nguồn gốc của sản phẩm sẽ được xác định trong đặc tả. Ví dụ: trình bày sản 
-phẩm này là một thành viên của một họ sản phẩm hay một thay thế cho một hệ thống hiện có hay 
-một sản phẩm mới độc lập. Nếu đây là tài liệu đặc tả một thành viên của một hệ thống lớn hơn, 
-cần liên hệ các yêu cầu của hệ thống lớn hơn với chức năng của phần mềm này và xác định sự }
+SmartHire là một nền tảng tuyển dụng trực tuyến độc lập, được nghiên cứu và phát triển trong khuôn khổ đề tài Niên luận ngành Kỹ thuật Phần mềm. Trong bối cảnh thị trường tuyển dụng hiện đại đòi hỏi tốc độ xử lý nhanh, tính chính xác cao và trải nghiệm hồ sơ tốt hơn, SmartHire hướng tới giải quyết tình trạng thiếu chuẩn hóa khi tạo CV của ứng viên và khối lượng công việc bóc tách, đánh giá hồ sơ thủ công của nhà tuyển dụng.
+
+Hệ thống vận hành theo mô hình ứng dụng web, là điểm kết nối trung tâm giữa ba đối tượng chính: Ứng viên, Nhà tuyển dụng và Quản trị viên. Bên cạnh các chức năng tuyển dụng truyền thống, SmartHire tích hợp dịch vụ AI để hỗ trợ viết CV, chấm điểm độ phù hợp và phân tích khoảng trống kỹ năng.
 
 \subsection{Các chức năng của sản phẩm}
 
-\textit{<Tóm tắt các chức năng chính mà sản phẩm phải thực hiện hoặc cho phép người dùng thực hiện. 
-Chi tiết của những chức năng này sẽ được cung cấp trong mục 3, vì thế trong phần này ta chỉ viết 
-ở dạng tóm tắt mức cao (bằng cách viết dưới dạng gạch đầu dòng). Lưu ý: nên tổ chức các chức 
-năng sao cho bất cứ người đọc cũng có thể hiểu. Phần trình bày này sẽ hiệu quả nếu ta sử dụng 
-hình vẽ các nhóm chính của các yêu cầu có liên quan với nhau và cách thức chúng có quan hệ với 
-nhau, chẳng hạn như lưu đồ dòng dữ liệu mức cao hay lưu đồ lớp đối tượng.> }
+\noindent Các nhóm chức năng chính mà SmartHire cung cấp gồm:
+
+\begin{itemize}
+    \item \textbf{Phân hệ Quản lý Tài khoản và Phân quyền:} hỗ trợ đăng ký, đăng nhập xác thực qua JWT, quản lý phiên làm việc và phân quyền RBAC cho Ứng viên, Nhà tuyển dụng và Quản trị viên.
+    \item \textbf{Phân hệ Công cụ Tạo CV theo Mẫu:} cho phép ứng viên chọn mẫu CV, biên soạn thông tin, tùy chỉnh bố cục và màu sắc, xem trước theo thời gian thực và xuất PDF.
+    \item \textbf{Phân hệ Nghiệp vụ Tuyển dụng và Ứng tuyển:} hỗ trợ Nhà tuyển dụng đăng và quản lý tin tuyển dụng, theo dõi quy trình ứng tuyển; đồng thời cho phép Ứng viên tìm kiếm, lọc công việc, nộp hồ sơ và theo dõi tiến trình xử lý.
+    \item \textbf{Phân hệ Quản trị Hệ thống:} cho phép Quản trị viên kiểm duyệt doanh nghiệp và tin tuyển dụng, quản lý tài khoản vi phạm, danh mục kỹ năng/địa điểm/ngành nghề và báo cáo vận hành.
+    \item \textbf{Phân hệ Tích hợp Trợ lý AI Thông minh:} hỗ trợ tối ưu câu chữ CV, trích xuất dữ liệu, chấm điểm độ tương thích CV--JD, phân tích khoảng trống kỹ năng và đề xuất việc làm phù hợp.
+\end{itemize}
 
 \subsection{Đặc điểm người sử dụng}
-\textit{<Nhận dạng các nhóm người sử dụng sản phẩm này. Các nhóm người sử dụng có thể khác nhau 
-dựa vào tần suất sử dụng, các chức năng được sử dụng, các mức bảo mật hay quyền, kinh 
-nghiệm. Mô tả các điểm đặc trưng của từng nhóm người sử dụng. Các yêu cầu xác định có thể chỉ 
-gắn liền với một nhóm người sử dụng cụ thể.  Phân biệt nhóm người sử dụng quan trọng nhất với 
-những nhóm ít quan trọng hơn để đáp ứng các yêu cầu của họ.>  }
+
+SmartHire phục vụ ba nhóm người dùng chính có mức độ ưu tiên, tần suất sử dụng và nhu cầu khác nhau.
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{2.5cm}|L{1.6cm}|L{2.5cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Nhóm người dùng} & \textbf{Ưu tiên} & \textbf{Tần suất sử dụng} & \textbf{Đặc điểm và quyền hạn} \\ \hline
+    \textbf{Ứng viên} & Cao & Thường xuyên khi tìm việc hoặc tạo CV & Có trình độ tin học phổ thông đến nâng cao; cần giao diện trực quan. Có thể quản lý CV, tìm việc, ứng tuyển, dùng trợ lý AI và nhận đề xuất việc làm. \\ \hline
+    \textbf{Nhà tuyển dụng} & Cao & Hàng ngày hoặc hàng tuần & Có trình độ tin học văn phòng; cần quản lý tin đăng, lọc ứng viên và quy trình ATS rõ ràng. Có thể quản lý công ty, JD và trạng thái hồ sơ ứng viên. \\ \hline
+    \textbf{Quản trị viên} & Trung bình & Định kỳ hoặc hàng ngày & Có trình độ CNTT chuyên sâu; cần công cụ chính xác để kiểm duyệt và giám sát. Có quyền quản lý doanh nghiệp, tin đăng, danh mục, tài khoản và báo cáo. \\ \hline
+\end{tabularx}
 
 \subsection{Môi trường vận hành}
-\textit{<Mô tả môi trường mà trong đó phần mềm sẽ vận hành, bao gồm các nền phần cứng, hệ điều 
-hành và phiên bản của nó và bất cứ thành phần phần mềm hay ứng dụng nào mà sản phẩm phần 
-mềm này phải cùng tồn tại.> }
+
+\noindent SmartHire được thiết kế để vận hành trên môi trường Internet với các thành phần sau:
+
+\begin{itemize}
+    \item \textbf{Phía trình duyệt:}
+    \begin{itemize}
+        \item Trình duyệt hiện đại hỗ trợ HTML5, CSS3 và JavaScript ES6+, gồm Google Chrome, Microsoft Edge, Mozilla Firefox và Safari.
+        \item Tương thích máy tính để bàn, laptop, máy tính bảng và điện thoại thông minh nhờ giao diện đáp ứng.
+    \end{itemize}
+    \item \textbf{Máy chủ ứng dụng:}
+    \begin{itemize}
+        \item Nền tảng thực thi .NET 10 Runtime với C\# ASP.NET Core Web API.
+        \item Đóng gói bằng Docker trên Linux (Ubuntu Server) hoặc Windows Server.
+    \end{itemize}
+    \item \textbf{Cơ sở dữ liệu và lưu trữ:}
+    \begin{itemize}
+        \item PostgreSQL phiên bản 16 trở lên là hệ quản trị cơ sở dữ liệu chính.
+        \item Cloudinary API lưu trữ ảnh logo, avatar và tệp PDF CV đã xuất bản.
+    \end{itemize}
+    \item \textbf{Dịch vụ AI:} các AI Agent bên ngoài như OpenAI hoặc Google Gemini được tích hợp qua RESTful API để xử lý ngôn ngữ tự nhiên, phân tích CV và tính Match Score.
+\end{itemize}
 
 \subsection{Các ràng buộc về thực thi và thiết kế}
-\textit{<Mô tả các vấn đề mà nhà phát triển phải lưu ý. Chúng bao gồm: các chính sách hợp tác hay điều 
-tiết; các giới hạn phần cứng (các yêu cầu về thời gian và bộ nhớ); các giao diện với những ứng 
-dụng khác; các cơ sở dữ liệu, công cụ, kỹ thuật cụ thể sẽ được sử dụng; các yêu cầu ngôn ngữ; 
-các giao thức giao tiếp; v.v>}
+
+\noindent Quá trình thiết kế và phát triển SmartHire phải tuân thủ các ràng buộc sau:
+
+\begin{itemize}
+    \item \textbf{Công nghệ bắt buộc:}
+    \begin{itemize}
+        \item Frontend sử dụng ReactJS, TypeScript, TailwindCSS và các thư viện hỗ trợ.
+        \item Backend sử dụng C\# ASP.NET Core 10 Web API.
+        \item Cơ sở dữ liệu sử dụng PostgreSQL.
+    \end{itemize}
+    \item \textbf{Hiệu năng:}
+    \begin{itemize}
+        \item Các thao tác truy vấn thông thường phải phản hồi dưới 500 ms.
+        \item Live Preview của CV phải cập nhật ở phía client trong dưới 100 ms.
+        \item Các tác vụ AI như phân tích CV, tính Match Score và đề xuất Skill Gap phải hoàn tất trong tối đa 3--5 giây.
+    \end{itemize}
+    \item \textbf{Bảo mật và an toàn:}
+    \begin{itemize}
+        \item Mật khẩu phải được băm bằng BCrypt hoặc Argon2 trước khi lưu vào cơ sở dữ liệu.
+        \item Mọi giao tiếp giữa client và server phải sử dụng HTTPS.
+        \item Tệp PDF CV tải lên để ứng tuyển có dung lượng tối đa 5 MB và chỉ chấp nhận định dạng \texttt{.pdf}.
+    \end{itemize}
+    \item \textbf{Giao diện:} CV xuất PDF phải giữ nguyên cấu trúc thiết kế và hiển thị đúng phông chữ tiếng Việt trên các trình đọc PDF khác nhau.
+\end{itemize}
 
 \subsection{Các giả định và phụ thuộc}
-\textit{<Liệt kê các yếu tố giả định mà chúng có thể ảnh hưởng tới các yêu cầu được trình bày trong đặc 
-tả. Những giả định này bao gồm các thành phần (phần mềm) thương mại  hay thuộc bên thứ ba 
-mà ta có kế hoạch sử dụng, các vấn đề liên quan tới môi trường vận hành và phát triển, hay các 
-ràng buộc. Dự án có thể bị ảnh hưởng nếu các giả định này là không chính xác, không được chia 
-sẻ hoặc thay đổi.  Ngoài ra ta cũng phải xác định những phụ thuộc của dự án vào các yếu tố bên 
-ngoài, chẳng hạn dự án này muốn tái sử dụng các thành phần phần mềm từ một dự án khác. > }
+
+\noindent Các yêu cầu trong tài liệu dựa trên các giả định và phụ thuộc sau:
+
+\begin{itemize}
+    \item \textbf{Dịch vụ AI bên thứ ba:} hệ thống phụ thuộc vào tính sẵn sàng, độ ổn định và hạn ngạch API của các nhà cung cấp mô hình ngôn ngữ lớn như OpenAI hoặc Google Gemini. Khi dịch vụ AI gặp sự cố, các chức năng AI tạm ngưng nhưng các chức năng tuyển dụng cơ bản vẫn hoạt động.
+    \item \textbf{Kết nối Internet:} người dùng cần có kết nối Internet ổn định để thao tác thời gian thực, tải dữ liệu CV và nhận thông báo qua SSE hoặc WebSocket.
+    \item \textbf{Tính chính xác của dữ liệu đầu vào:} thông tin trong JD và CV được giả định là trung thực để AI có thể phân tích Match Score hiệu quả.
+    \item \textbf{Dịch vụ Cloudinary:} hệ thống phụ thuộc vào API của Cloudinary để tải lên và truy xuất tệp media/PDF.
+\end{itemize}

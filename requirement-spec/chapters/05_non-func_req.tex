@@ -6,35 +6,122 @@
 
 \subsection{Yêu cầu thực thi}
 
-\textit{<Nếu có các yêu cầu thực thi đối với sản phẩm cho các tình huống khác nhau, ta sẽ trình bày 
-chúng trong phần này và giải thích lý do cơ bản để giúp nhà phát triển hiểu mục đích và tạo ra các 
-lựa chọn thiết kế phù hợp. Với các hệ thống thời gian thực, ta phải xác định mối quan hệ theo thời 
-gian. Các yêu cầu thực thi cần phải viết cụ thể như có thể. Ta có thể trình bày các yêu cầu thực thi 
-theo từng tính năng hay từng yêu cầu chức năng riêng lẻ.> }
+Các yêu cầu về hiệu năng và khả năng xử lý của hệ thống SmartHire bao gồm:
+
+\begin{itemize}
+    \item \textbf{Thời gian phản hồi API:}
+    \begin{itemize}
+        \item Các thao tác truy vấn dữ liệu chuẩn (đọc danh sách công việc, lọc ứng viên, lấy thông tin cá nhân) phải phản hồi dưới 200ms trong điều kiện tải bình thường.
+        \item Thao tác cập nhật và xem trước dữ liệu CV trên giao diện trực quan phải phản hồi dưới 100ms phía Client để đảm bảo trải nghiệm tức thì.
+        \item Thao tác xuất file PDF CV phải hoàn tất và sẵn sàng đường dẫn tải về trong tối đa 10 giây.
+    \end{itemize}
+
+    \item \textbf{Thời gian xử lý Dịch vụ AI:}
+    \begin{itemize}
+        \item Thời gian phản hồi từ AI Agent Service cho các tác vụ gợi ý viết CV, phân tích điểm tương thích và phân tích khoảng trống kỹ năng không vượt quá 3 -- 5 giây.
+    \end{itemize}
+
+    \item \textbf{Khả năng chịu tải:}
+    \begin{itemize}
+        \item Hệ thống phải đáp ứng tốt tối thiểu 100 người dùng hoạt động đồng thời trên giao diện web mà không làm tăng thời gian phản hồi API quá 50\%.
+        \item Cơ sở dữ liệu PostgreSQL phải tối ưu hóa đánh chỉ mục để xử lý tối thiểu 1.000 truy vấn tìm kiếm/lọc việc làm mỗi phút.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Yêu cầu an toàn}
 
-\textit{<Xác định các yêu cầu có liên quan tới các khả năng mất, hư hại hay hỏng do sử dụng sản phẩm. 
-Định nghĩa các hoạt động hay bộ phận an toàn cần phải được thực hiện cũng như các hoạt động 
-cần phải bị ngăn chặn. Tham khảo tới các quy tắc, các chính sách bên ngoài mà chúng trình bày 
-các vấn đề về an toàn có ảnh hưởng đến việc thiết kế hay sử dụng sản phẩm. Nêu các giấy chứng 
-nhận an toàn cần phải được đáp ứng.> }
+Đảm bảo an toàn dữ liệu và tính liên tục trong vận hành hệ thống:
+
+\begin{itemize}
+    \item \textbf{Sao lưu và Phục hồi Dữ liệu:}
+    \begin{itemize}
+        \item Cơ sở dữ liệu PostgreSQL phải được thiết lập cơ chế tự động sao lưu định kỳ.
+        \item Trong trường hợp xảy ra sự cố máy chủ, thời gian phục hồi hệ thống không vượt quá 2 giờ và lượng dữ liệu tối đa bị ảnh hưởng không quá 24 giờ.
+    \end{itemize}
+
+    \item \textbf{Tính Toàn vẹn Dữ liệu:}
+    \begin{itemize}
+        \item Sử dụng giao dịch cơ sở dữ liệu cho tất cả các thao tác ứng tuyển và cập nhật trạng thái hồ sơ nhằm đảm bảo nguyên tắc nguyên tố (Atomicity), không để xảy ra tình trạng hồ sơ lưu nửa chừng.
+    \end{itemize}
+
+    \item \textbf{Cơ chế Giảm cấp Tối thiểu:}
+    \begin{itemize}
+        \item Khi dịch vụ AI bên ngoài gặp sự cố hoặc quá tải, hệ thống phải giữ nguyên toàn bộ dữ liệu CV đang soạn thảo của ứng viên, hiển thị thông báo lỗi thân thiện và cho phép người dùng tiếp tục các thao tác tuyển dụng thông thường mà không gây đơ hoặc treo ứng dụng.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Yêu cầu bảo mật}
-\textit{<Xác định các yêu cầu liên quan đến các vấn đề bảo mật và đời tư xung quanh việc sử dụng sản 
-phẩm hay sự bảo vệ dữ liệu được sử dụng hay được tạo ra bởi sản phẩm. Định nghĩa các yêu cầu xác thực danh tính người sử dụng. Tham khảo tới các quy tắc, các chính sách bên ngoài có các 
-vấn đề về bảo mật mà chúng ảnh hưởng tới sản phẩm.  Nêu các giấy chứng nhận bảo mật và 
-riêng tư cần phải được đáp ứng.> }
+
+Hệ thống SmartHire tuân thủ các tiêu chuẩn bảo mật phần mềm hiện đại nhằm bảo vệ thông tin cá nhân và dữ liệu tuyển dụng:
+
+\begin{itemize}
+    \item \textbf{Xác thực và Phân quyền:}
+    \begin{itemize}
+        \item Mật khẩu người dùng bắt buộc phải mã hóa bằng thuật toán băm an toàn (BCrypt hoặc Argon2) kèm chuỗi Salt trước khi lưu trữ vào CSDL; tuyệt đối không lưu mật khẩu dạng văn bản thuần (Plaintext).
+        \item Xác thực qua chuỗi JWT Token có thời hạn sống ngắn (Access Token hết hạn sau 15--30 phút, Refresh Token lưu bảo mật) và bắt buộc kiểm tra quyền tại mọi Endpoint bảo mật phía Backend.
+    \end{itemize}
+
+    \item \textbf{Bảo mật Truyền tải:}
+    \begin{itemize}
+        \item Bắt buộc mã hóa toàn bộ lưu lượng mạng giữa Client, Backend Server và AI Services qua giao thức HTTPS (TLS 1.3).
+    \end{itemize}
+
+    \item \textbf{Chống các lỗ hổng bảo mật web phổ biến:}
+    \begin{itemize}
+        \item SQL Injection: Sử dụng Entity Framework Core 10 với tham số hóa truy vấn cho mọi thao tác CSDL PostgreSQL.
+        \item XSS (Cross-Site Scripting): Tự động lọc và làm sạch toàn bộ dữ liệu đầu vào chứa HTML/Script từ người dùng trước khi render lên giao diện ReactJS.
+        \item CORS (Cross-Origin Resource Sharing): Cấu hình chính xác chính sách CORS phía ASP.NET Core, chỉ cho phép các Domain được ủy quyền gửi yêu cầu API.
+    \end{itemize}
+
+    \item \textbf{Quyền Tự do Cá nhân và Quyền Riêng tư:}
+    \begin{itemize}
+        \item Dữ liệu CV của ứng viên chỉ hiển thị công khai cho Nhà tuyển dụng đối với đúng công việc mà ứng viên đó đã bấm chọn \textit{Ứng tuyển}. Nhà tuyển dụng không thể tự ý truy cập CV cá nhân của ứng viên khác chưa nộp hồ sơ.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Các đặc điểm chất lượng phần mềm}
-\textit{<Xác định các đặc điểm chất lượng của sản phẩm mà chúng là quan trọng hoặc với nhà phát triển 
-hoặc với khách hàng. Một số đặc điểm chất lượng được quan tâm là: tính thích ứng, tính sẵn có, 
-tính chính xác, tính linh hoạt,  tính thao tác giữa các phần, tính có thể bảo trì, tính khả chuyển, tính 
-tin cậy, tính có thể tái sử dụng, tính có thể kiểm thử, tính dễ sử dụng.  Viết các đặc điểm này cụ 
-thể, lượng hóa và có thể kiểm tra khi cần thiết.> }
+
+Các chỉ số chất lượng tiêu chuẩn đảm bảo độ tin cậy của ứng dụng SmartHire:
+
+\begin{itemize}
+    \item \textbf{Tính dễ sử dụng:}
+    \begin{itemize}
+        \item Giao diện người dùng thiết kế hiện đại, nhất quán theo chuẩn TailwindCSS, thời gian để người dùng mới làm quen và khởi tạo hoàn chỉnh một CV bằng trình biên soạn không quá 20 phút.
+        \item Tất cả các thao tác quan trọng (xóa CV, hủy tin đăng, khóa tài khoản) đều phải hiển thị hộp thoại xác nhận trước khi thực thi.
+    \end{itemize}
+
+    \item \textbf{Tính sẵn sàng:}
+    \begin{itemize}
+        \item Hệ thống đạt chỉ số sẵn sàng vận hành tối thiể 99.5\% thời gian trong tháng (24/7), ngoại trừ các khoảng thời gian bảo trì hệ thống được thông báo trước.
+    \end{itemize}
+
+    \item \textbf{Tính dễ bảo trì và Mở rộng:}
+    \begin{itemize}
+        \item Mã nguồn Backend (C\# ASP.NET Core 10) được cấu trúc theo mô hình Clean Architecture / Layered Architecture giúp dễ dàng nâng cấp và bảo trì.
+        \item Hệ thống đóng gói dạng Docker Containers cho phép mở rộng quy mô các instance Backend hoặc AI Agents một cách linh hoạt khi lưu lượng truy cập tăng cao.
+    \end{itemize}
+
+    \item \textbf{Tính khả chuyển:}
+    \begin{itemize}
+        \item Phân hệ Web Client ReactJS có khả năng chạy tương thích 100\% trên tất cả các trình duyệt phổ biến hiện nay (Chrome, Edge, Firefox, Safari) mà không bị lỗi vỡ giao diện hay sai lệch bố cục CV.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Các quy tắc nghiệp vụ}
-\textit{<Liệt kê các nguyên tắc vận hành sản phẩm, chẳng hạn như cá nhân nào hay vai trò nào có thể 
-thực hiện các chức năng nào trong các tình huống cụ thể. Bản thân chúng không phải là các yêu 
-cầu chức năng nhưng chúng có thể đưa đến các yêu cầu chức năng cụ thể phải tuân theo các 
-luật.> }
+
+Tập hợp các quy tắc cốt lõi điều hướng các luồng xử lý trên nền tảng SmartHire:
+
+\begin{itemize}
+    \item \textbf{BR-01 (Quy tắc Xác minh Doanh nghiệp và Duyệt JD):} Nhà tuyển dụng mới đăng ký phải được Quản trị viên duyệt hồ sơ doanh nghiệp hoặc duyệt nội dung tin đăng trước khi tin tuyển dụng đó được hiển thị công khai trên nền tảng.
+    \item \textbf{BR-02 (Quy tắc Ứng tuyển Đơn):} Mỗi tài khoản Ứng viên chỉ được phép nộp 01 hồ sơ ứng tuyển (dùng CV SmartHire hoặc File PDF tải lên) cho cùng 01 tin tuyển dụng đang mở trong một thời điểm.
+    \item \textbf{BR-03 (Quy tắc Tự động Đóng Tin tuyển dụng):} Tin tuyển dụng sẽ tự động chuyển sang trạng thái \textit{Đã hết hạn} và khóa nút nộp hồ sơ khi thời gian hiện tại vượt quá Hạn nộp hồ sơ do Nhà tuyển dụng cấu hình.
+    \item \textbf{BR-04 (Quy tắc Chấm điểm Match Score AI):} Điểm tương thích (\%) và nhận xét Skill Gap Analysis chỉ được tính toán khi cả CV ứng viên và JD tuyển dụng có đầy đủ thông tin kỹ năng và mô tả công việc.
+    \item \textbf{BR-05 (Quy tắc Xóa mềm Danh mục):} Không cho phép xóa vĩnh viễn các danh mục Kỹ năng hoặc Ngành nghề đã có liên kết với CV hoặc Tin tuyển dụng đang tồn tại trong hệ thống; bắt buộc chuyển về trạng thái ngưng hoạt động.
+    \item \textbf{BR-06 (Quy tắc Quyền riêng tư CV):}
+    \begin{itemize}
+        \item \textbf{Phía Ứng viên:} Mọi CV (dù Public hay Private) đều được hệ thống tạo Vector Embedding nội bộ nhằm mục đích duy nhất là cá nhân hóa và đề xuất công việc cho chính ứng viên đó.
+        \item \textbf{Phía Nhà tuyển dụng:} Chỉ có thể truy cập CV của ứng viên khi ứng viên đó đã bấm \textit{Ứng tuyển} vào tin tuyển dụng của doanh nghiệp đó, hoặc những CV có trạng thái Public.
+    \end{itemize}
+\end{itemize}
+
+\clearpage

@@ -4,6 +4,37 @@
 
 \section{Các yêu cầu khác}
 
-\textit{<Định nghĩa các yêu cầu khác mà chúng chưa được trình bày. Có thể bao gồm các yêu cầu về cơ 
-sở dữ liệu, các yêu cầu về phong tục – văn hóa, các yêu cầu luật pháp, các mục tiêu tái sử dụng 
-của dự án, v.v. > }
+\subsection{Yêu cầu về Cơ sở dữ liệu}
+
+Hệ thống SmartHire đặt ra các yêu cầu kỹ thuật cụ thể đối với Hệ quản trị Cơ sở dữ liệu PostgreSQL 16 nhằm đảm bảo tính linh hoạt và hiệu năng xử lý:
+
+\begin{itemize}
+    \item \textbf{Cấu trúc Lưu trữ dữ liệu động (JSONB):}
+    \begin{itemize}
+        \item Do cấu trúc thông tin CV (kinh nghiệm, dự án, kỹ năng, học vấn) và bố cục Template CV có tính biến động cao, CSDL phải hỗ trợ kiểu dữ liệu JSONB của PostgreSQL để lưu trữ bán cấu trúc (Semi-structured Data).
+        \item Việc lưu dữ liệu CV dưới dạng JSONB giúp ứng viên có thể tùy biến các mục thông tin linh hoạt trên trình chỉnh sửa trực tiếp mà không cần phải thay đổi cấu trúc bảng liên tục.
+    \end{itemize}
+
+    \item \textbf{Chuẩn hóa và Tối ưu hóa Truy vấn:}
+    \begin{itemize}
+        \item Các bảng nghiệp vụ quan trọng (Tài khoản, Doanh nghiệp, Tin tuyển dụng JD, Đơn ứng tuyển) bắt buộc được chuẩn hóa tối thiểu ở mức Dạng chuẩn 3 (3NF) để tránh dư thừa dữ liệu và đảm bảo tính toàn vẹn.
+        \item Đánh chỉ mục nâng cao: sử dụng GIN Index (Generalized Inverted Index) trên các trường dữ liệu JSONB và các trường từ khóa kỹ năng để phục vụ thuật toán tìm kiếm/lọc công việc và xử lý AI tốc độ cao.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Yêu cầu về phong tục, văn hóa và luật pháp}
+
+Hệ thống cần tuân thủ các yêu cầu đạo đức, văn hóa và pháp lý trong môi trường tuyển dụng trực tuyến:
+
+\begin{itemize}
+    \item Không cho phép công khai hoặc quảng bá các tin tuyển dụng có tính chất lừa đảo, mạo danh, phân biệt đối xử hoặc vi phạm pháp luật lao động.
+    \item Mọi thông tin cá nhân, CV và dữ liệu ứng tuyển phải được bảo vệ đúng quy định về quyền riêng tư dữ liệu người dùng.
+    \item Giao diện và thông báo phải rõ ràng, không gây nhầm lẫn, đặc biệt khi xử lý trạng thái ứng tuyển và lý do từ chối.
+\end{itemize}
+
+\subsection{Yêu cầu tái sử dụng và khả năng mở rộng}
+
+\begin{itemize}
+    \item Hệ thống cần được thiết kế theo hướng mô-đun hóa rõ ràng để dễ dàng mở rộng thêm các tính năng mới như: xác thực OAuth, quản lý nhân sự, hợp đồng hợp tác doanh nghiệp hoặc tích hợp hệ thống ATS bên ngoài.
+    \item Các module như Template CV, danh mục Kỹ năng, tin tuyển dụng và AI Recommendation nên có khả năng tái sử dụng cho giao diện quản trị và API.
+\end{itemize}

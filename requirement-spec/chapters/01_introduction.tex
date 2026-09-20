@@ -6,36 +6,90 @@
 
 \subsection{Mục tiêu}
 
-\textit{<Trình bày mục tiêu của tài liệu đặc tả phần mềm và những nhóm người sử dụng tài liệu này (VD: thiết kế viên, kiểm thử viên, người quản lý, v.v.).>}
+Tài liệu Đặc tả Yêu cầu Phần mềm (\textit{Software Requirements Specification} -- SRS) này mô tả chi tiết các yêu cầu chức năng, yêu cầu phi chức năng, giao tiếp hệ thống và các ràng buộc thiết kế của dự án \textbf{``Nền tảng kết nối tuyển dụng và hỗ trợ tạo CV thông minh tích hợp AI (SmartHire)''}.
+
+Tài liệu được biên soạn nhằm tạo ra một cơ sở thống nhất để các bên liên quan hiểu, thiết kế, xây dựng và kiểm thử hệ thống. Các nhóm đối tượng sử dụng chính gồm:
+
+\begin{itemize}
+    \item \textbf{Thành viên nhóm phát triển:} sử dụng tài liệu để nắm các yêu cầu, luồng xử lý và chi tiết kỹ thuật; từ đó thiết kế kiến trúc, cơ sở dữ liệu và xây dựng hệ thống.
+    \item \textbf{Kiểm thử viên:} sử dụng tài liệu làm căn cứ xây dựng các kịch bản kiểm thử, kiểm tra tính đúng đắn và xác minh chất lượng sản phẩm so với yêu cầu ban đầu.
+    \item \textbf{Quản lý dự án và giảng viên hướng dẫn:} sử dụng tài liệu để đánh giá phạm vi công việc, tiến độ thực hiện và chất lượng sản phẩm của đồ án Niên luận ngành Kỹ thuật Phần mềm.
+\end{itemize}
 
 \subsection{Phạm vi sản phẩm}
 
-\textit{<Cung cấp một mô tả ngắn về phần mềm sẽ được đặc tả và mục đích của nó, bao gồm các lợi 
-ích, mục tiêu liên quan (ví dụ: tên sản phẩm phần mềm là gì, phần mềm này làm cái gì). Liên hệ 
-phần mềm với các mục tiêu hợp tác ha các chiến lược kinh doanh. >}
+Sản phẩm được đặc tả là SmartHire, một nền tảng tuyển dụng trực tuyến độc lập đóng vai trò cầu nối giữa Ứng viên, Nhà tuyển dụng và Quản trị viên. Hệ thống cung cấp một quy trình tuyển dụng tương đối toàn diện, từ tạo CV chuyên nghiệp, đăng tin tuyển dụng, tìm kiếm việc làm, ứng tuyển trực tuyến đến quản lý hồ sơ ứng viên.
+
+Điểm đổi mới cốt lõi của SmartHire là tích hợp các dịch vụ AI thông minh để nâng cao chất lượng CV và tối ưu độ chính xác khi kết nối ứng viên với công việc phù hợp. Các lợi ích chính của hệ thống gồm:
+
+\begin{itemize}
+    \item \textbf{Đối với Ứng viên:}
+    \begin{itemize}
+        \item Tạo CV chuẩn hóa với công cụ biên soạn và xem trước theo thời gian thực.
+        \item Nhận gợi ý tối ưu câu chữ từ AI, phân tích khoảng trống kỹ năng và đề xuất việc làm phù hợp.
+    \end{itemize}
+    \item \textbf{Đối với Nhà tuyển dụng:}
+    \begin{itemize}
+        \item Quản lý tập trung tin tuyển dụng và danh sách ứng viên theo một quy trình rõ ràng.
+        \item Nâng cao chất lượng hồ sơ tiếp nhận nhờ tính năng phân tích mức độ phù hợp bằng AI.
+    \end{itemize}
+    \item \textbf{Đối với Quản trị viên:}
+    \begin{itemize}
+        \item Kiểm duyệt doanh nghiệp và tin tuyển dụng nhằm hạn chế nội dung lừa đảo hoặc spam.
+        \item Quản lý danh mục hệ thống và theo dõi báo cáo vận hành tổng quan.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Bảng chú giải thuật ngữ}
-\textit{<Định nghĩa các từ viết tắt, các thuật ngữ được sử dụng trong tài liệu mà chúng gần như không 
-được biết đến bởi người đọc. > }
 
 \noindent
-\begin{tabularx}{\textwidth}{|>{\raggedleft\arraybackslash}p{1cm}|p{5cm}|X|}
+\begin{tabularx}{\textwidth}{|>{\raggedleft\arraybackslash}p{0.8cm}|p{4.5cm}|X|}
     \hline
-    \rowcolor{gray!25} 
-    % \multicolumn{1}{|c|}{...} ép riêng ô STT nằm căn giữa
-    \multicolumn{1}{|c|}{\textbf{STT}} & \textbf{Thuật ngữ/Từ viết tắt} & \textbf{Định nghĩa / Giải thích} \\ \hline
-    1 & PM & Project Manager \\ \hline
-    2 & QA & Quality Assurance \\ \hline
-    3 & UX & User Experience \\ \hline
+    \rowcolor{gray!25}
+    \multicolumn{1}{|c|}{\textbf{STT}} & \textbf{Thuật ngữ / Từ viết tắt} & \textbf{Định nghĩa / Giải thích} \\ \hline
+    1 & \textbf{SRS} & \textit{Software Requirements Specification} -- Tài liệu đặc tả yêu cầu phần mềm. \\ \hline
+    2 & \textbf{SmartHire} & Tên nền tảng kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI. \\ \hline
+    3 & \textbf{JWT} & \textit{JSON Web Token} -- Chuẩn mở dùng để truyền thông tin xác thực an toàn giữa các bên dưới dạng đối tượng JSON. \\ \hline
+    4 & \textbf{RBAC} & \textit{Role-Based Access Control} -- Cơ chế quản lý và phân quyền truy cập dựa trên vai trò người dùng. \\ \hline
+    5 & \textbf{ATS} & \textit{Applicant Tracking System} -- Hệ thống theo dõi và quản lý tiến trình ứng tuyển của các hồ sơ ứng viên. \\ \hline
+    6 & \textbf{JD} & \textit{Job Description} -- Bản mô tả chi tiết vị trí, yêu cầu và quyền lợi của công việc tuyển dụng. \\ \hline
+    7 & \textbf{Match Score} & Điểm đánh giá độ tương thích, tính theo tỷ lệ \%, giữa CV của ứng viên và mô tả công việc do AI tính toán. \\ \hline
+    8 & \textbf{Skill Gap Analysis} & Phân tích khoảng trống kỹ năng; so sánh kỹ năng hiện có của ứng viên với các kỹ năng được yêu cầu trong JD. \\ \hline
+    9 & \textbf{Live Preview} & Tính năng cho phép xem trước giao diện CV theo thời gian thực ngay khi người dùng nhập dữ liệu. \\ \hline
+    10 & \textbf{SSE} & \textit{Server-Sent Events} -- Công nghệ cho phép máy chủ đẩy dữ liệu hoặc thông báo thời gian thực về trình duyệt phía client. \\ \hline
+    11 & \textbf{CRUD} & \textit{Create, Read, Update, Delete} -- Bốn thao tác cơ bản trên dữ liệu: tạo mới, đọc, cập nhật và xóa. \\ \hline
+    12 & \textbf{TBD} & \textit{To Be Determined} -- Hạng mục chưa xác định rõ và sẽ được bổ sung trong các phiên bản sau. \\ \hline
 \end{tabularx}
 
 \subsection{Tài liệu tham khảo}
-\textit{<Liệt kê bất cứ tài liệu hay địa chỉ website nào mà bản đặc tả yêu cầu phần mềm này tham khảo 
-tới. Những tài liệu tham khảo có thể là: các hướng dẫn mẫu giao diện người sử dụng, hợp đồng, 
-các chuẩn, đặc tả yêu cầu hệ thống, tài liệu use-case hay tài liệu về phạm vi. Cung cấp đủ thông 
-tin để người đọc có thể tìm bản sao của từng tài liệu tham khảo, bao gồm: tiêu đề, tác giả, số phát 
-hành, ngày, nguồn hay nơi cung cấp. > }
+
+\begin{enumerate}[label=\arabic*.]
+    \item Bộ môn Công nghệ Phần mềm, Khoa CNTT \& TT, Đại học Cần Thơ, \textit{Mẫu Tài liệu Đặc tả Yêu cầu Phần mềm (SRS)}.
+    % \item Nhóm 1, \textit{Đề tài Niên luận ngành KTPM: Xây dựng nền tảng kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI (SmartHire)}, 2026.
+    \item Microsoft, \textit{ASP.NET Core Web API Documentation \& JWT Authentication Guidelines}, 2026. Truy cập tại: \url{https://learn.microsoft.com/aspnet/core/}.
+    \item PostgreSQL Global Development Group, \textit{PostgreSQL 16 Documentation: Data Types and JSONB}, 2026. Truy cập tại: \url{https://www.postgresql.org/docs/16/}.
+    \item React Team, \textit{React Documentation}; TanStack, \textit{TanStack Query Documentation}, 2026. Truy cập tại: \url{https://react.dev/} và \url{https://tanstack.com/query/latest}.
+\end{enumerate}
 
 \subsection{Bố cục tài liệu}
-\textit{<Mô tả vắn tắt nội dung và cách tổ chức các phần còn lại của tài liệu đặc tả. Đề xuất các mục nên 
-đọc với từng nhóm người đọc.>}
+
+\noindent Tài liệu SRS được tổ chức thành các phần chính sau:
+
+\begin{itemize}
+    \item \textbf{Phần 1 -- Giới thiệu:} trình bày mục tiêu, phạm vi sản phẩm, thuật ngữ, tài liệu tham khảo và bố cục tài liệu.
+    \item \textbf{Phần 2 -- Mô tả tổng quan:} cung cấp góc nhìn tổng thể về bối cảnh sản phẩm, chức năng, đặc điểm người dùng, môi trường vận hành, ràng buộc và giả định của hệ thống.
+    \item \textbf{Phần 3 -- Các yêu cầu giao tiếp bên ngoài:} mô tả giao diện người dùng, giao tiếp phần cứng, phần mềm và các giao thức truyền thông.
+    \item \textbf{Phần 4 -- Các tính năng của hệ thống:} đặc tả năm nhóm tính năng cốt lõi: Xác thực và Phân quyền, Công cụ tạo CV, Tuyển dụng và Ứng tuyển, Quản trị hệ thống, và Trợ lý AI.
+    \item \textbf{Phần 5 -- Các yêu cầu phi chức năng:} định nghĩa các tiêu chuẩn về hiệu năng, an toàn, bảo mật, chất lượng phần mềm và quy tắc nghiệp vụ.
+    \item \textbf{Phần 6 và Phụ lục:} trình bày các yêu cầu khác, mô hình phân tích và danh sách hạng mục TBD.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\noindent Các nhóm đọc nên ưu tiên những phần sau theo vai trò:
+
+\begin{itemize}
+    \item \textbf{Lập trình viên:} tập trung vào Phần 3, Phần 4 và Phần 5.
+    \item \textbf{Kiểm thử viên:} tập trung vào Phần 4 và Phần 5 để xây dựng kịch bản kiểm thử.
+    \item \textbf{Quản lý dự án hoặc đánh giá viên:} đọc Phần 1, Phần 2 và phần tổng quan của Phần 4.
+\end{itemize}

@@ -97,11 +97,11 @@ Hệ thống hoạt động theo mô hình Web Application hiện đại, đóng
 
 Tóm tắt các nhóm chức năng chính mà hệ thống SmartHire cung cấp cho người dùng bao gồm:
 
-- **Phân hệ Quản lý Tài khoản & Phân quyền (Authentication & Authorization):** Cung cấp các chức năng đăng ký, đăng nhập xác thực qua JWT Token, quản lý phiên làm việc và phân quyền truy cập theo cơ chế RBAC cho 3 nhóm vai trò (Ứng viên, Nhà tuyển dụng, Quản trị viên).
-- **Phân hệ Công cụ Tạo CV theo Mẫu (CV Builder Module):** Cung cấp công cụ cho phép ứng viên chọn mẫu CV, biên soạn chi tiết các phần thông tin CV, tùy chỉnh bố cục/màu sắc, xem trước theo thời gian thực và kết xuất file PDF chuẩn.
-- **Phân hệ Nghiệp vụ Tuyển dụng & Ứng tuyển (Core Recruitment Module):** Cung cấp công cụ cho Nhà tuyển dụng đăng tin, quản lý tin tuyển dụng và theo dõi quy trình ứng tuyển; cho phép Ứng viên tìm kiếm/lọc công việc đa tiêu chí, thực hiện ứng tuyển trực tuyến và theo dõi tiến trình xử lý hồ sơ.
-- **Phân hệ Quản trị Hệ thống (Admin Management Module):** Cho phép Quản trị viên kiểm duyệt tin tuyển dụng chống lừa đảo/spam, duyệt doanh nghiệp mới, khóa/mở tài khoản vi phạm, quản lý hệ thống danh mục (kỹ năng, địa điểm, ngành nghề) và xem báo cáo thống kê vận hành.
-- **Phân hệ Tích hợp Trợ lý AI Thông minh (AI Integration Services Module):** Cung cấp Trợ lý AI hỗ trợ viết/tối ưu câu chữ trong CV, tự động trích xuất dữ liệu để chấm điểm độ tương thích CV và mô tả công việc, chỉ ra các kỹ năng còn thiếu và tự động đề xuất công việc phù hợp tới ứng viên.
+- **Phân hệ Quản lý Tài khoản & Phân quyền:** Cung cấp các chức năng đăng ký, đăng nhập xác thực qua JWT Token, quản lý phiên làm việc và phân quyền truy cập theo cơ chế RBAC cho 3 nhóm vai trò (Ứng viên, Nhà tuyển dụng, Quản trị viên).
+- **Phân hệ Công cụ Tạo CV theo Mẫu:** Cung cấp công cụ cho phép ứng viên chọn mẫu CV, biên soạn chi tiết các phần thông tin CV, tùy chỉnh bố cục/màu sắc, xem trước theo thời gian thực và kết xuất file PDF chuẩn.
+- **Phân hệ Nghiệp vụ Tuyển dụng & Ứng tuyển:** Cung cấp công cụ cho Nhà tuyển dụng đăng tin, quản lý tin tuyển dụng và theo dõi quy trình ứng tuyển; cho phép Ứng viên tìm kiếm/lọc công việc đa tiêu chí, thực hiện ứng tuyển trực tuyến và theo dõi tiến trình xử lý hồ sơ.
+- **Phân hệ Quản trị Hệ thống:** Cho phép Quản trị viên kiểm duyệt tin tuyển dụng chống lừa đảo/spam, duyệt doanh nghiệp mới, khóa/mở tài khoản vi phạm, quản lý hệ thống danh mục (kỹ năng, địa điểm, ngành nghề) và xem báo cáo thống kê vận hành.
+- **Phân hệ Tích hợp Trợ lý AI Thông minh:** Cung cấp Trợ lý AI hỗ trợ viết/tối ưu câu chữ trong CV, tự động trích xuất dữ liệu để chấm điểm độ tương thích CV và mô tả công việc, chỉ ra các kỹ năng còn thiếu và tự động đề xuất công việc phù hợp tới ứng viên.
 
 > **[Ghi chú sơ đồ - Functional Decomposition Diagram]:** _Chèn Sơ đồ Use Case Tổng quan thể hiện mối liên hệ giữa các phân hệ chức năng trên._
 
@@ -249,7 +249,7 @@ Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa
 
 ## 4. Các tính năng của hệ thống
 
-### 4.1 Phân hệ Quản lý Tài khoản & Phân quyền (Authentication & Authorization)
+### 4.1 Phân hệ Quản lý Tài khoản & Phân quyền
 
 #### 4.1.1 Mô tả và mức độ ưu tiên
 
@@ -287,7 +287,7 @@ Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa
 
 ---
 
-### 4.2 Phân hệ Công cụ Tạo CV theo Mẫu (CV Builder Module)
+### 4.2 Phân hệ Công cụ Tạo CV theo Mẫu
 
 #### 4.2.1 Mô tả và mức độ ưu tiên
 
@@ -326,7 +326,7 @@ Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa
 
 ---
 
-### 4.3 Phân hệ Nghiệp vụ Tuyển dụng & Ứng tuyển (Core Recruitment Module)
+### 4.3 Phân hệ Nghiệp vụ Tuyển dụng & Ứng tuyển
 
 #### 4.3.1 Mô tả và mức độ ưu tiên
 
@@ -363,7 +363,7 @@ Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa
 
 ---
 
-### 4.4 Phân hệ Quản trị Hệ thống (Admin Management Module)
+### 4.4 Phân hệ Quản trị Hệ thống
 
 #### 4.4.1 Mô tả và mức độ ưu tiên
 
@@ -401,7 +401,7 @@ Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa
 
 ---
 
-### 4.5 Phân hệ Tích hợp Trợ lý AI Thông minh (AI Integration Services Module)
+### 4.5 Phân hệ Tích hợp Trợ lý AI Thông minh
 
 #### 4.5.1 Mô tả và mức độ ưu tiên
 
@@ -507,7 +507,7 @@ Tập hợp các quy tắc cốt lõi điều hướng các luồng xử lý tr�
 
 ## 6. Các yêu cầu khác
 
-### 6.1 Yêu cầu về Cơ sở dữ liệu (Database Requirements)
+### 6.1 Yêu cầu về Cơ sở dữ liệu
 
 Hệ thống **SmartHire** đặt ra các yêu cầu kỹ thuật cụ thể đối với Hệ quản trị Cơ sở dữ liệu PostgreSQL 16 nhằm đảm bảo tính linh hoạt và hiệu năng xử lý:
 
@@ -535,7 +535,7 @@ Hệ thống **SmartHire** đặt ra các yêu cầu kỹ thuật cụ thể đ�
 - **Quyền Kiểm soát Dữ liệu của Ứng viên:**
   - Ứng viên có toàn quyền chỉnh sửa, ẩn/hiện, hoặc xóa bỏ các bản ghi CV cá nhân khỏi hệ thống bất kỳ lúc nào.
 
-### 6.4 Yêu cầu về Sản phẩm Bàn giao (Project Deliverables)
+### 6.4 Yêu cầu về Sản phẩm Bàn giao
 
 Theo yêu cầu đồ án Niên luận ngành Kỹ thuật Phần mềm, sản phẩm bàn giao cuối kỳ của dự án SmartHire bao gồm đầy đủ các thành phần:
 

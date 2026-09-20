@@ -6,36 +6,154 @@
 
 \subsection{Giao diện người sử dụng}
 
-\textit{<Mô tả các đặc điểm luận lý (logic) của giao diện giữa sản phẩm phần mềm và người sử dụng. 
-Phần này có thể bao gồm các ảnh màn hình mẫu, các chuẩn giao diện người sử dụng đồ họa 
-(GUI) hay các hướng dẫn mẫu mà chúng phải được tuân theo, các ràng buộc về cách bố trí màn 
-hình, các chức năng (ví dụ: trợ giúp) và các nút chuẩn mà chúng xuất hiện trong mọi màn hình, 
-các phím tắt, các chuẩn hiển thị thông báo lỗi, v.v. Xác định các thành phần của phần mềm mà 
-chúng cần các giao diện người sử dụng.>}
+Giao diện người dùng của hệ thống SmartHire được thiết kế theo phong cách hiện đại, tối giản và thân thiện với trải nghiệm người dùng, đảm bảo tính tương thích đa thiết bị trên các màn hình Máy tính để bàn, Máy tính bảng và Điện thoại di động.
+
+\begin{itemize}
+    \item \textbf{Quy chuẩn thiết kế chung và chủ đề:}
+    \begin{itemize}
+        \item Sử dụng thư viện TailwindCSS để đồng bộ thiết kế về font chữ, bảng màu, khoảng cách và thành phần giao diện.
+        \item Tất cả các thao tác dữ liệu (thêm, sửa, xóa, gửi đơn) đều phải kèm theo phản hồi trực quan ngay lập tức cho người dùng qua hệ thống thông báo trạng thái ngay trên màn hình.
+        \item Mọi trường dữ liệu bắt buộc đều phải có đánh dấu rõ ràng bằng dấu sao đỏ (\texttt{*}) và kiểm tra tính hợp lệ ngay tại trình duyệt trước khi gửi lên máy chủ.
+    \end{itemize}
+
+    \item \textbf{Giao diện dành cho Ứng viên:}
+    \begin{itemize}
+        \item \textbf{Trình biên soạn CV:} thiết kế theo mô hình chỉnh sửa trực tiếp trên giao diện tờ CV (WYSIWYG / Direct In-Place Editing). Ứng viên thao tác nhấp và nhập liệu văn bản trực tiếp ngay trên bản thiết kế CV trực quan thay vì nhập qua các biểu mẫu rời rạc. Thanh công cụ định dạng và nút kích hoạt Trợ lý AI (gợi ý viết lại, tối ưu câu chữ, chuẩn hóa từ khóa ngành) hiển thị dưới dạng ngữ cảnh (Contextual Floating Toolbar / Popover) ngay tại vị trí đoạn văn bản đang được chọn hoặc nằm ở thanh bên.
+        \item \textbf{Tìm kiếm và lọc việc làm:} giao diện thanh tìm kiếm trung tâm kết hợp với bộ lọc nâng cao bên trái (ngành nghề, mức lương, kinh nghiệm, địa điểm). Kết quả hiển thị dưới dạng danh sách thẻ công việc kèm thông tin tổng quan.
+        \item \textbf{Gợi ý việc làm phù hợp:} hệ thống đề xuất công việc phù hợp với hồ sơ ứng viên dựa trên kỹ năng, kinh nghiệm và sở thích.
+        \item \textbf{Theo dõi hồ sơ:} giao diện bảng hoặc danh sách hiển thị lịch sử công việc đã ứng tuyển kèm nhãn trạng thái có mã màu phân biệt như \textit{Đã tiếp nhận}, \textit{Mời phỏng vấn}, \textit{Từ chối}.
+    \end{itemize}
+
+    \item \textbf{Giao diện dành cho Nhà tuyển dụng:}
+    \begin{itemize}
+        \item \textbf{Bảng điều khiển và quản lý tin đăng:} cho phép xem danh sách tin tuyển dụng đang mở, đã đóng hoặc chờ duyệt. Biểu mẫu tạo JD hỗ trợ trình soạn thảo văn bản giàu tính năng (Rich Text Editor) để mô tả công việc chuyên nghiệp.
+        \item \textbf{Quản lý hồ sơ ứng viên:} giao diện phân loại danh sách hồ sơ theo dạng cột tiến độ hoặc danh sách tổng hợp. Cho phép nhà tuyển dụng xem chi tiết CV trực tiếp trên trình duyệt mà không cần tải file về máy.
+        \item \textbf{Phân tích Match Score và Skill Gap:} giao diện hiển thị điểm số tương thích CV với JD, thể hiện các kỹ năng còn thiếu và cho phép lọc hồ sơ theo mức độ phù hợp.
+    \end{itemize}
+
+    \item \textbf{Giao diện dành cho Quản trị viên:}
+    \begin{itemize}
+        \item Giao diện dạng Dashboard tối ưu cho việc duyệt dữ liệu tốc độ cao.
+        \item Các bảng quản lý tài khoản, doanh nghiệp và tin tuyển dụng tích hợp bộ lọc nâng cao, phân trang và tính năng tác vụ hàng loạt.
+        \item Hỗ trợ cửa sổ bật lên bắt buộc nhập lý do khi thực hiện từ chối duyệt doanh nghiệp hoặc tin tuyển dụng.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Giao tiếp phần cứng}
 
-\textit{<Mô tả các đặc điểm luận lý và vật lý của từng giao tiếp giữa sản phẩm phần mềm và các thành 
-phần phần cứng của hệ thống. Phần này có thể bao gồm các loại thiết bị được hỗ trợ, trạng thái 
-của sự tương tác điều khiển và dữ liệu giữa phần mềm và phần cứng và các giao thức giao tiếp 
-được sử dụng.>}
+Hệ thống SmartHire là ứng dụng Web chạy trên nền tảng điện toán đám mây (Cloud-based Web Application), do đó không yêu cầu thiết bị phần cứng đặc thù từ phía người dùng cuối. Các yêu cầu giao tiếp phần cứng bao gồm:
+
+\begin{itemize}
+    \item \textbf{Thiết bị đầu cuối người dùng:}
+    \begin{itemize}
+        \item \textbf{Thiết bị:} Máy tính cá nhân (PC/Laptop), Máy tính bảng hoặc Điện thoại thông minh có khả năng truy cập Internet.
+        \item \textbf{Độ phân giải màn hình hỗ trợ:} tối thiểu 360px x 640px đối với Mobile; tối ưu nhất ở độ phân giải Full HD (1920px x 1080px) đối với Desktop.
+        \item \textbf{Bộ nhớ RAM:} tối thiểu 2GB RAM cho thiết bị di động và 4GB RAM cho máy tính để đảm bảo render giao diện Live Preview mượt mà.
+        \item \textbf{Bộ xử lý (CPU):} tối thiểu 2 nhân CPU cho thiết bị di động và 4 nhân CPU cho máy tính để đảm bảo hiệu suất xử lý tốt.
+    \end{itemize}
+
+    \item \textbf{Máy chủ vận hành hệ thống (Server Hardware):}
+    \begin{itemize}
+        \item \textbf{Bộ xử lý (CPU):} kiến trúc x86\_64, tối thiểu 2 nhân CPU (khuyến nghị 4 nhân CPU cho môi trường Production).
+        \item \textbf{Bộ nhớ RAM:} tối thiểu 4GB RAM cho máy chủ Backend và Database (khuyến nghị 8GB--16GB RAM để xử lý tải khi có nhiều lượt đồng thời).
+        \item \textbf{Lưu trữ (Storage):} ổ cứng SSD tối thiểu 30GB dung lượng trống để cài đặt hệ điều hành, môi trường Docker, chứa CSDL PostgreSQL và lưu trữ tệp nhật ký hệ thống.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Giao tiếp phần mềm}
-\textit{<Mô tả các nối kết giữa sản phẩm phần mềm này và các thành phần phần mềm cụ thể khác (tên 
-và phiên bản), bao gồm cơ sở dữ liệu, hệ điều hành, công cụ, thư viện, các thành phần thương 
-mại được tích hợp. Định danh các thành phần (item) dữ liệu hay các thông điệp đi vào và đi ra 
-khỏi hệ thống và mô tả mục đích của từng item. Mô tả các dịch vụ được cần đến và trạng thái của 
-các giao tiếp. Xác định dữ liệu sẽ được chia sẻ giữa các thành phần phần mềm, v.v.>}
+
+Hệ thống SmartHire kết nối và giao tiếp với các thành phần phần mềm, thư viện và dịch vụ API bên ngoài theo cấu trúc sau:
+
+\begin{itemize}
+    \item \textbf{Giao tiếp giữa Client (Frontend) và Server (Backend):}
+    \begin{itemize}
+        \item \textbf{Thành phần:} Ứng dụng ReactJS giao tiếp với RESTful Web API xây dựng trên C\# ASP.NET Core 10.
+        \item \textbf{Cơ chế:} gửi/nhận dữ liệu thông qua các yêu cầu HTTP/HTTPS bất đồng bộ sử dụng thư viện TanStack Query và Axios.
+    \end{itemize}
+
+    \item \textbf{Giao tiếp giữa Backend và Cơ sở dữ liệu:}
+    \begin{itemize}
+        \item \textbf{Thành phần:} ASP.NET Core Web API kết nối với cơ sở dữ liệu PostgreSQL 16.
+        \item \textbf{Phương thức:} sử dụng Entity Framework Core 10 thông qua kết nối chuỗi \texttt{NpgsqlConnection} bảo mật để thực thi truy vấn CSDL và thao tác dữ liệu kiểu JSONB.
+    \end{itemize}
+
+    \item \textbf{Giao tiếp giữa Backend và Dịch vụ AI:}
+    \begin{itemize}
+        \item \textbf{Thành phần:} ASP.NET Core Backend kết nối với AI Service thông qua REST API.
+        \item \textbf{Phương thức:} giao tiếp qua giao thức HTTP REST API nội bộ. Backend đóng gói nội dung CV/JD thành cấu trúc JSON gửi tới AI Service; AI Service xử lý ngữ nghĩa, tính toán Match Score và phản hồi kết quả định dạng JSON về Backend.
+    \end{itemize}
+
+    \item \textbf{Giao tiếp với các dịch vụ đám mây bên ngoài:}
+    \begin{itemize}
+        \item \textbf{Dịch vụ lưu trữ Cloudinary:} Backend giao tiếp với Cloudinary API thông qua SDK chính thức để quản lý việc tải lên, lưu trữ và lấy URL công khai của logo công ty, ảnh đại diện và các tệp PDF CV xuất bản.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Giao tiếp truyền thông tin}
-\textit{<Mô tả các yêu cầu có liên quan tới bất cứ chức năng truyền thông tin nào được cần bởi sản 
-phẩm này, bao gồm thư điện tử, trình duyệt web, các giao thức truyền thông tin của máy chủ của 
-mạng, các dạng điện tử, v.v. Định nghĩa định dạng thông điệp. Định danh bất cứ chuẩn truyền 
-thông tin nào mà chúng sẽ được sử dụng, chẳng hạn như FTP, HTTP. Xác định các vấn đề về mã 
-hóa và bảo mật truyền thông, tỷ lệ truyền dữ liệu và các kỹ thuật đồng bộ.> }
+
+Các chuẩn giao thức và quy định truyền thông tin trên mạng giữa các thành phần của nền tảng SmartHire bao gồm:
+
+\begin{itemize}
+    \item \textbf{Giao thức mạng (Network Protocol):}
+    \begin{itemize}
+        \item Tất cả các kết nối giữa trình duyệt web của người dùng và hệ thống bắt buộc sử dụng giao thức \textbf{HTTPS} mã hóa qua TLS 1.3 nhằm bảo mật tuyệt đối dữ liệu người dùng và thông tin cá nhân trong CV trên đường truyền.
+    \end{itemize}
+
+    \item \textbf{Chuẩn cấu trúc dữ liệu API (REST API Standard):}
+    \begin{itemize}
+        \item Dữ liệu trao đổi giữa Frontend và Backend sử dụng định dạng JSON với bảng mã UTF-8 chuẩn tiếng Việt.
+        \item Sử dụng đúng các mã trạng thái chuẩn của giao thức HTTP để phản hồi từ Server:
+        \begin{itemize}
+            \item 200 OK: truy vấn hoặc cập nhật dữ liệu thành công.
+            \item 201 Created: khởi tạo tài khoản, tin tuyển dụng hoặc CV thành công.
+            \item 400 Bad Request: dữ liệu đầu vào không hợp lệ hoặc thiếu trường bắt buộc.
+            \item 401 Unauthorized: người dùng chưa xác thực hoặc Access Token (JWT) hết hạn.
+            \item 403 Forbidden: người dùng không có quyền truy cập vào tài nguyên.
+            \item 500 Internal Server Error: lỗi phát sinh hệ thống phía Server.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Xác thực và truyền Authorization Header:}
+    \begin{itemize}
+        \item Khi người dùng đăng nhập thành công, chuỗi Access Token (JWT) phải được đính kèm vào tất cả các yêu cầu HTTP bảo mật thông qua Header chuẩn: "Authorization: Bearer <JWT\_ACCESS\_TOKEN>".
+    \end{itemize}
+
+    \item \textbf{Giao tiếp thời gian thực:}
+    \begin{itemize}
+        \item Sử dụng giao thức SSE (Server-Sent Events) hoặc WebSocket để đẩy các thông báo tức thì từ máy chủ về giao diện trình duyệt của người dùng, ví dụ: thông báo trạng thái hồ sơ thay đổi, tin đăng được duyệt hoặc phản hồi dạng dòng văn bản streaming từ AI Assistant.
+    \end{itemize}
+\end{itemize}
 
 \subsection{Các ràng buộc về thực thi và thiết kế}
-\textit{<Mô tả các vấn đề mà nhà phát triển phải lưu ý. Chúng bao gồm: các chính sách hợp tác hay điều 
-tiết; các giới hạn phần cứng (các yêu cầu về thời gian và bộ nhớ); các giao diện với những ứng 
-dụng khác; các cơ sở dữ liệu, công cụ, kỹ thuật cụ thể sẽ được sử dụng; các yêu cầu ngôn ngữ; 
-các giao thức giao tiếp; v.v>}
+
+Các vấn đề mà nhà phát triển phải lưu ý trong quá trình thiết kế và vận hành hệ thống SmartHire bao gồm:
+
+\begin{itemize}
+    \item \textbf{Ràng buộc về công nghệ:}
+    \begin{itemize}
+        \item Frontend phải được xây dựng bằng ReactJS, TypeScript, TailwindCSS và các thư viện hỗ trợ.
+        \item Backend phải sử dụng C\# ASP.NET Core 10 Web API.
+        \item Cơ sở dữ liệu chính phải là PostgreSQL.
+        \item Hệ thống phải hỗ trợ giao tiếp qua HTTPS và tích hợp với REST API của dịch vụ AI và Cloudinary.
+    \end{itemize}
+
+    \item \textbf{Ràng buộc về hiệu năng:}
+    \begin{itemize}
+        \item Các thao tác truy vấn thông thường phải phản hồi dưới 500 ms.
+        \item Tạo CV và Live Preview phải cập nhật nhanh, mượt mà trên các thiết bị hỗ trợ.
+        \item Tác vụ AI như phân tích CV, tính Match Score, kiểm tra Skill Gap phải hoàn tất trong vòng 3--5 giây.
+    \end{itemize}
+
+    \item \textbf{Ràng buộc về bảo mật:}
+    \begin{itemize}
+        \item Mật khẩu người dùng phải được băm bằng BCrypt hoặc Argon2 trước khi lưu vào CSDL.
+        \item Dữ liệu nhạy cảm phải được truyền và lưu trữ theo chuẩn bảo mật, ưu tiên HTTPS/TLS và JWT trong header Authorization.
+        \item File CV được tải lên phải tuân thủ định dạng và dung lượng cho phép, cụ thể là \.pdf và tối đa 5MB.
+    \end{itemize}
+
+    \item \textbf{Ràng buộc về giao diện và tương thích:}
+    \begin{itemize}
+        \item CV xuất PDF phải giữ nguyên cấu trúc thiết kế và hiển thị đúng phông chữ tiếng Việt trên các trình đọc PDF khác nhau.
+        \item Giao diện phải tương thích với màn hình di động, máy tính bảng và máy tính để bàn.
+    \end{itemize}
+\end{itemize}

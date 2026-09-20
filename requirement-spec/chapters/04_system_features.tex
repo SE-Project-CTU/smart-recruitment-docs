@@ -3,37 +3,203 @@
 \clearpage
 
 \section{Các tính năng của hệ thống}
-\textit{<Tài liệu này minh họa việc tổ chức các yêu cầu chức năng cho sản phẩm theo các tính năng của 
-hệ thống, các dịch vụ chính được cung cấp bởi sản phẩm. Ta có thể tổ chức mục này theo use 
-case, chế độ vận hành, lớp người sử dụng, lớp đối tượng, sự phân cấp theo chức năng, hoặc kết 
-hợp chúng lại.>}
 
-\subsection{Tính năng 1 của hệ thống}
+\subsection{Phân hệ Quản lý Tài khoản và Phân quyền}
 
-\textit{<Không nói là “Tính năng 1 của hệ thống” mà viết cụ thể tên chức năng.>}
- 
-\subsubsection{Mô tả và mức ưu tiên}
-\textit{<Cung cấp một mô tả ngắn gọn về tính năng và chỉ ra mức độ ưu tiên của nó (cao, 
-trung bình, hay thấp). Ta cũng có thể đưa vào cách xếp mức ưu tiên dựa vào các 
-tiêu chí như lợi ích, chi phí, rủi ro (mỗi cái được xếp loại từ thấp – 1 đến cao - 9).>}
+\subsubsection{Mô tả và mức độ ưu tiên}
 
-\subsubsection{Tác nhân / Chuỗi đáp ứng}
-\textit{<Liệt kế các chuỗi hoạt động của người sử dụng và các đáp ứng của hệ thống mà 
-chúng kích thích hành vi được định nghĩa bởi tính năng này. Chúng tương ứng với 
-các thành phần của dialog được liên kết với các use case.>}
+\begin{itemize}
+  \item \textbf{Mô tả:} Phân hệ cung cấp cơ chế đăng ký, đăng nhập và xác thực người dùng dựa trên chuẩn JWT kết hợp băm mật khẩu an toàn. Hệ thống thực hiện phân quyền theo vai trò đối với 3 nhóm người dùng: Ứng viên, Nhà tuyển dụng và Quản trị viên.
+  \item \textbf{Mức độ ưu tiên:} Cao
+  \item \textbf{Đánh giá tiêu chí:} Lợi ích: 9/9 | Chi phí: 3/9 | Rủi ro: 7/9
+\end{itemize}
+
+\subsubsection{Tác nhân và Chuỗi đáp ứng}
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{4.5cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
+    Người dùng chọn đăng ký tài khoản và gửi thông tin đăng ký (Email, số điện thoại, mật khẩu, họ tên, vai trò). & Hệ thống kiểm tra trùng lặp email, số điện thoại, mã hóa mật khẩu, khởi tạo tài khoản mới với vai trò tương ứng và trả về thông báo thành công. \\ \hline
+    Người dùng nhập Email và Mật khẩu để đăng nhập. & Hệ thống kiểm tra thông tin, cấp cặp token bao gồm Access Token và Refresh Token, sau đó điều hướng người dùng đến giao diện tương ứng với vai trò. \\ \hline
+    Người dùng gửi yêu cầu truy cập tới tài nguyên hoặc API bảo mật. & Hệ thống kiểm tra tính hợp lệ và thời hạn của JWT Token kèm theo vai trò truy cập; nếu hợp lệ thì cho phép thực thi, ngược lại thì từ chối truy cập. \\ \hline
+    Người dùng chọn Đăng xuất. & Hệ thống hủy phiên làm việc, thu hồi Refresh Token và xóa Token được lưu ở phía Client. \\ \hline
+\end{tabularx}
 
 \subsubsection{Các yêu cầu chức năng}
-\textit{<Ghi thành từng nhóm các yêu cầu chức năng chi tiết có liên quan tới tính năng này. 
-Chúng là các khả năng của phần mềm và phải có để người sử dụng thực hiện các 
-dịch vụ được cung cấp bởi tính năng này, hay thực thi use case. Ta cũng nên trình 
-bày cách thức sản phẩm đáp lại các điều kiện lỗi được dự đoán trước hay các input 
-không hợp lệ. Các yêu cầu nên ngắn gọn, hoàn chỉnh, không mơ hồ, có thể kiểm tra 
-và cần thiết. Sử dụng “TBD” khi thông tin cần thiết vẫn chưa có sẵn.> }
 
-\textit{<Mỗi yêu cầu nên được đặt tên duy nhất bằng một số tuần tự hay một thẻ có 
-nghĩa.>}
+\begin{enumerate}[label=\bfseries REQ-AUTH-\arabic*:, leftmargin=2.5cm]
+    \item \textbf{Đăng ký tài khoản Ứng viên:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Ứng viên bằng Email, số điện thoại, Mật khẩu và Họ tên.
+    \item \textbf{Đăng ký tài khoản Nhà tuyển dụng:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Nhà tuyển dụng bằng Email, Mật khẩu, Họ tên và thông tin Tên công ty ban đầu.
+    \item \textbf{Xác thực đăng nhập JWT:} Hệ thống phải xác thực người dùng dựa trên Email/Mật khẩu và phát hành JWT Token chứa thông tin định danh và vai trò (Role Claims) sau khi xác thực thành công.
+    \item \textbf{Mã hóa mật khẩu:} Hệ thống phải mã hóa tất cả mật khẩu người dùng bằng giải thuật băm an toàn (BCrypt hoặc Argon2) trước khi lưu trữ vào CSDL.
+    \item \textbf{Phân quyền người dùng - RBAC:} Hệ thống phải kiểm tra và giới hạn quyền truy cập API/chức năng dựa trên 3 nhóm vai trò: Ứng viên, Nhà tuyển dụng, Quản trị viên.
+    \item \textbf{Cấp lại Token / Refresh Token:} Hệ thống phải cung cấp cơ chế Refresh Token cho phép duy trì phiên đăng nhập của người dùng mà không bắt người dùng đăng nhập lại liên tục khi Access Token hết hạn.
+    \item \textbf{Đăng xuất và quản lý phiên:} Hệ thống phải cho phép người dùng đăng xuất và vô hiệu hóa Token ở phía Server/Client.
+    \item \textbf{Xử lý lỗi xác thực và phân quyền:}
+    \begin{itemize}
+        \item Nếu Email đã tồn tại khi đăng ký, hệ thống phải trả về thông báo lỗi \textit{\textquotedblleft Email này đã được sử dụng\textquotedblright}.
+        \item Nếu thông tin đăng nhập sai, hệ thống phải trả về phản hồi chung \textit{\textquotedblleft Tài khoản hoặc mật khẩu không chính xác\textquotedblright} để đảm bảo tính bảo mật.
+        \item Nếu Token hết hạn hoặc không hợp lệ, hệ thống phải trả về mã lỗi 401 Unauthorized.
+        \item Nếu người dùng truy cập vào chức năng không thuộc thẩm quyền của vai trò, hệ thống phải trả về mã lỗi 403 Forbidden.
+    \end{itemize}
+\end{enumerate}
 
-REQ-1: \\
-\indent REQ-2:
+\subsection{Phân hệ Công cụ Tạo CV theo Mẫu}
 
-\subsection{Tính năng thứ 2 của hệ thống (và cứ như thế)}
+\subsubsection{Mô tả và mức độ ưu tiên}
+
+\begin{itemize}
+  \item \textbf{Mô tả:} Phân hệ cung cấp công cụ tương tác theo mô hình chỉnh sửa trực tiếp trên tờ CV. Cho phép ứng viên lựa chọn các mẫu CV chuyên nghiệp, biên soạn nội dung hồ sơ (thông tin cá nhân, mục tiêu, kinh nghiệm, học vấn, kỹ năng, dự án), xem trước sự thay đổi theo thời gian thực và kết xuất CV dưới dạng file PDF chuẩn.
+  \item \textbf{Mức độ ưu tiên:} Cao
+  \item \textbf{Đánh giá tiêu chí:} Lợi ích: 8/9 | Chi phí: 4/9 | Rủi ro: 4/9
+\end{itemize}
+
+\subsubsection{Tác nhân và Chuỗi đáp ứng}
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{6cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
+    Ứng viên truy cập danh mục mẫu CV và chọn một Template mong muốn. & Hệ thống tải cấu trúc mẫu thiết kế và hiển thị giao diện tương ứng. \\ \hline
+    Ứng viên nhấp trực tiếp vào các vùng văn bản trên CV để nhập, chỉnh sửa, thêm hoặc xóa nội dung (Thông tin cá nhân, Kinh nghiệm, Học vấn, Kỹ năng, Dự án). & Hệ thống cập nhật và phản hồi trực quan trên màn hình ngay lập tức theo thời gian thực. \\ \hline
+    Ứng viên chọn lưu hồ sơ. & Hệ thống kiểm tra dữ liệu đầu vào và lưu trữ thông tin CV dưới dạng cấu trúc dữ liệu JSON vào CSDL. \\ \hline
+    Ứng viên chọn \textit{Xuất bản / Tải PDF}. & Hệ thống chuyển đổi nội dung CV hiện tại thành định dạng file PDF, lưu lên lưu trữ đám mây và yêu cầu trình duyệt tải xuống file PDF. \\ \hline
+\end{tabularx}
+
+\subsubsection{Các yêu cầu chức năng}
+
+\begin{enumerate}[label=\bfseries REQ-CV-\arabic*:, leftmargin=2.5cm]
+    \item \textbf{Quản lý và Chọn Template CV:} Hệ thống phải hiển thị danh sách các mẫu CV có sẵn kèm theo hình ảnh xem trước (thumbnail) để ứng viên lựa chọn.
+    \item \textbf{Biên soạn Thông tin cá nhân và Mục tiêu:} Hệ thống phải cho phép ứng viên nhập và cập nhật trực tiếp: Họ tên, Chức danh công việc, Email, Số điện thoại, Địa chỉ, Liên kết cá nhân (LinkedIn, GitHub, Portfolio) và Mục tiêu nghề nghiệp.
+    \item \textbf{Biên soạn Kinh nghiệm làm việc và Học vấn:} Hệ thống phải cho phép ứng viên thêm, sửa, xóa, sắp xếp thứ tự danh sách Kinh nghiệm làm việc (Tên công ty, Vị trí, Thời gian, Mô tả chi tiết) và Trình độ học vấn (Tên trường, Chuyên ngành, Thời gian, Bằng cấp, GPA).
+    \item \textbf{Biên soạn Kỹ năng và Dự án:} Hệ thống phải cho phép ứng viên thêm, sửa, xóa danh sách Kỹ năng (phân loại kỹ năng chuyên môn, kỹ năng mềm, mức độ thông thạo) và các Dự án cá nhân/thực tế đã tham gia (Tên dự án, Vị trí, Mô tả, Công nghệ sử dụng, Link demo).
+    \item \textbf{Xem trước theo thời gian thực - Real-time Live Preview:} Hệ thống phải cập nhật nội dung xem trước trên giao diện mẫu CV ngay khi người dùng thao tác nhập liệu trực tiếp mà không cần tải lại trang.
+    \item \textbf{Lưu và Quản lý danh sách CV:} Hệ thống phải cho phép ứng viên lưu bản nháp, tạo nhiều phiên bản CV khác nhau và quản lý danh sách CV đã tạo trong tài khoản cá nhân.
+    \item \textbf{Xuất CV dạng PDF:} Hệ thống phải cho phép biên dịch dữ liệu CV thành file PDF có định dạng chuẩn, giữ nguyên kiểu dáng, phông chữ và định dạng giao diện đã chọn để người dùng tải xuống hoặc nộp trực tiếp.
+    \item \textbf{Xử lý lỗi và dữ liệu nhập không hợp lệ:}
+    \begin{itemize}
+        \item Nếu ứng viên bỏ trống các trường bắt buộc (ví dụ: Họ tên, Email liên hệ), hệ thống phải hiển thị cảnh báo ngay tại trường dữ liệu tương ứng.
+        \item Nếu quá trình xuất file PDF gặp lỗi, hệ thống phải trả về thông báo \textit{\textquotedblleft Không thể tạo file PDF, vui lòng thử lại\textquotedblright} và giữ nguyên dữ liệu đang soạn thảo.
+    \end{itemize}
+    \item \textbf{Tùy chỉnh bố cục:} Hệ thống phải cho phép ứng viên thay đổi thứ tự hiển thị các mục thông tin trong CV (ví dụ: Kinh nghiệm, Học vấn, Kỹ năng) bằng cách thao tác di chuyển trực tiếp và cập nhật trực quan trên canvas.
+    \item \textbf{Tùy chỉnh Thiết kế và Font:} Hệ thống phải cho phép ứng viên tùy chỉnh màu sắc, font chữ và bố cục của mẫu CV đã chọn để phù hợp với phong cách cá nhân mà vẫn đảm bảo tính chuyên nghiệp.
+    \item \textbf{Cấu hình Trạng thái Hiển thị CV - Public/Private:} Hệ thống phải cho phép ứng viên chủ động bật/tắt trạng thái hiển thị cho từng bản CV đã tạo giữa hai chế độ: Public (Công khai tìm việc) và Private (Riêng tư - mặc định).
+\end{enumerate}
+
+\subsection{Phân hệ Nghiệp vụ Tuyển dụng và Ứng tuyển}
+
+\subsubsection{Mô tả và mức độ ưu tiên}
+
+\begin{itemize}
+  \item \textbf{Mô tả:} Phân hệ nghiệp vụ cốt lõi quản lý toàn bộ quy trình tuyển dụng và ứng tuyển giữa Nhà tuyển dụng và Ứng viên. Cho phép Nhà tuyển dụng khởi tạo, quản lý tin tuyển dụng và theo dõi tiến trình xử lý hồ sơ ứng viên. Cho phép Ứng viên tìm kiếm, lọc việc làm đa tiêu chí, thực hiện ứng tuyển trực tuyến và theo dõi trạng thái hồ sơ của mình.
+  \item \textbf{Mức độ ưu tiên:} Cao
+  \item \textbf{Đánh giá tiêu chí:} Lợi ích: 9/9 | Chi phí: 5/9 | Rủi ro: 5/9
+\end{itemize}
+
+\subsubsection{Tác nhân và Chuỗi đáp ứng}
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{6cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
+    Nhà tuyển dụng nhập thông tin và xuất bản tin tuyển dụng mới (với mức lương, địa điểm, kỹ năng yêu cầu, hạn nộp). & Hệ thống ghi nhận tin tuyển dụng, chuyển sang trạng thái chờ duyệt và lưu vào cơ sở dữ liệu. \\ \hline
+    Ứng viên thiết lập các tiêu chí lọc (từ khóa, ngành nghề, vị trí, địa điểm, khoảng lương) và bấm tìm kiếm. & Hệ thống truy vấn CSDL và hiển thị danh sách các tin tuyển dụng thỏa mãn điều kiện lọc. \\ \hline
+    Ứng viên chọn một công việc, lựa chọn CV đã tạo trên hệ thống hoặc tải lên file PDF và bấm \textit{Ứng tuyển}. & Hệ thống lưu hồ sơ ứng tuyển, gửi thông báo tới Nhà tuyển dụng và ghi nhận vào lịch sử ứng tuyển của Ứng viên. \\ \hline
+    Nhà tuyển dụng xem danh sách hồ sơ ứng tuyển của một JD và thực hiện chuyển trạng thái \textit{Đã tiếp nhận} sang \textit{Mời phỏng vấn} hoặc \textit{Từ chối}. & Hệ thống cập nhật trạng thái ứng tuyển trong CSDL và phát thông báo thời gian thực tới Ứng viên. \\ \hline
+\end{tabularx}
+
+\subsubsection{Các yêu cầu chức năng}
+
+\begin{enumerate}[label=\bfseries REQ-REC-\arabic*:, leftmargin=2.5cm]
+    \item \textbf{Tạo và Quản lý Tin tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng tạo mới, cập nhật thông tin, ẩn/hiện hoặc đóng các tin tuyển dụng (JD).
+    \item \textbf{Cấu hình Chi tiết Tin tuyển dụng:} Hệ thống phải bắt buộc Nhà tuyển dụng thiết lập các tiêu chí chi tiết khi tạo JD bao gồm: Tên vị trí, ngành nghề, cấp bậc (Intern, Junior, Senior,...), địa điểm làm việc, hình thức làm việc, khoảng lương (hoặc Thỏa thuận), danh sách kỹ năng yêu cầu, mô tả công việc và hạn nộp hồ sơ.
+    \item \textbf{Tìm kiếm và Lọc Việc làm đa tiêu chí:} Hệ thống phải cung cấp bộ lọc cho Ứng viên tìm kiếm việc làm theo từ khóa, ngành nghề, địa điểm, mức lương, cấp bậc và hình thức làm việc.
+    \item \textbf{Ứng tuyển Trực tuyến với CV SmartHire hoặc File PDF:} Hệ thống phải cho phép Ứng viên lựa chọn ứng tuyển bằng CV đã khởi tạo trực tiếp trên hệ thống hoặc tải file CV dạng PDF từ thiết bị cá nhân.
+    \item \textbf{Giới hạn Đăng ký / Ứng tuyển trùng lặp:} Hệ thống phải ngăn chặn và thông báo lỗi nếu Ứng viên thực hiện nộp hồ sơ nhiều lần cho cùng một tin tuyển dụng đang mở.
+    \item \textbf{Theo dõi Trạng thái Hồ sơ - Phía Ứng viên:} Hệ thống phải cung cấp cho Ứng viên giao diện xem lịch sử các công việc đã ứng tuyển kèm theo trạng thái xử lý hiện tại từ phía Nhà tuyển dụng.
+    \item \textbf{Quản lý Hồ sơ Ứng tuyển - Phía Nhà tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng xem danh sách ứng viên đã nộp hồ sơ theo từng tin tuyển dụng, mở xem nội dung CV trực tuyến và tải về.
+    \item \textbf{Cập nhật Quy trình Tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng cập nhật tiến trình hồ sơ của ứng viên theo các bước: Đã tiếp nhận $\rightarrow$ Đã duyệt / Mời phỏng vấn $\rightarrow$ Từ chối.
+    \item \textbf{Xử lý lỗi và Điều kiện biên:}
+    \begin{itemize}
+        \item Nếu tin tuyển dụng đã quá hạn nộp hồ sơ hoặc bị đóng, hệ thống phải tự động khóa nút \textit{Ứng tuyển} và thông báo cho Ứng viên.
+        \item Nếu file CV PDF ứng viên tải lên vượt quá dung lượng quy định (ví dụ: > 5MB) hoặc sai định dạng, hệ thống phải hiển thị thông báo lỗi và ngắt quá trình ứng tuyển.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Phân hệ Quản trị Hệ thống}
+
+\subsubsection{Mô tả và mức độ ưu tiên}
+
+\begin{itemize}
+  \item \textbf{Mô tả:} Phân hệ cung cấp các công cụ quản trị tập trung dành cho Quản trị viên nhằm kiểm duyệt nội dung tin đăng, quản lý thông tin doanh nghiệp, khóa/mở tài khoản người dùng, quản lý hệ thống danh mục chung (kỹ năng, ngành nghề, mẫu CV) và theo dõi các chỉ số thống kê, báo cáo hiệu suất vận hành của nền tảng SmartHire.
+  \item \textbf{Mức độ ưu tiên:} Cao
+  \item \textbf{Đánh giá tiêu chí:} Lợi ích: 8/9 | Chi phí: 4/9 | Rủi ro: 6/9
+\end{itemize}
+
+\subsubsection{Tác nhân và Chuỗi đáp ứng}
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{6cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
+    Quản trị viên xem danh sách Doanh nghiệp mới đăng ký và thực hiện duyệt hoặc từ chối thông tin xác thực. & Hệ thống cập nhật trạng thái xác thực của doanh nghiệp và gửi email hoặc thông báo kết quả tới Nhà tuyển dụng. \\ \hline
+    Quản trị viên kiểm tra danh sách Tin tuyển dụng mới tạo và chọn \textit{Duyệt} hoặc \textit{Từ chối}. & Hệ thống chuyển trạng thái tin tuyển dụng sang công khai hoặc bị từ chối (kèm lý do) và phản hồi cho Nhà tuyển dụng. \\ \hline
+    Quản trị viên thực hiện thao tác Thêm / Sửa / Xóa trong các danh mục hệ thống (Ngành nghề, Địa điểm, Kỹ năng, Template CV). & Hệ thống lưu cập nhật vào CSDL và đồng bộ dữ liệu danh mục hiển thị trên toàn ứng dụng. \\ \hline
+    Quản trị viên phát hiện người dùng vi phạm và chọn \textit{Khóa tài khoản}. & Hệ thống thu hồi toàn bộ Token truy cập hiện tại của người dùng đó, đổi trạng thái tài khoản thành bị khóa và từ chối mọi yêu cầu đăng nhập tiếp theo. \\ \hline
+    Quản trị viên mở trang Dashboard Báo cáo và Thống kê. & Hệ thống tính toán, tổng hợp dữ liệu từ CSDL và hiển thị biểu đồ thông số tổng quan về người dùng, công việc và lượt ứng tuyển. \\ \hline
+\end{tabularx}
+
+\subsubsection{Các yêu cầu chức năng}
+
+\begin{enumerate}[label=\bfseries REQ-ADM-\arabic*:, leftmargin=2.5cm]
+    \item \textbf{Quản lý và Kiểm duyệt Doanh nghiệp:} Hệ thống phải cho phép Quản trị viên xem thông tin chi tiết, kiểm tra tính xác thực và phê duyệt/từ chối tài khoản Nhà tuyển dụng mới đăng ký.
+    \item \textbf{Quản lý và Khóa Tài khoản Vi phạm:} Hệ thống phải cho phép Quản trị viên tìm kiếm, theo dõi danh sách tất cả người dùng (Ứng viên, Nhà tuyển dụng) và thực hiện khóa hoặc khôi phục quyền hoạt động của tài khoản.
+    \item \textbf{Duyệt Tin tuyển dụng chống Spam/Lừa đảo:} Hệ thống phải cung cấp giao diện cho Quản trị viên kiểm duyệt nội dung các tin tuyển dụng trước khi hiển thị công khai trên nền tảng nhằm tránh thông tin sai sự thật hoặc gian lận.
+    \item \textbf{Quản lý Danh mục Ngành nghề và Địa điểm:} Hệ thống phải cho phép Quản trị viên khởi tạo, chỉnh sửa và quản lý cấu trúc danh mục Ngành nghề chuyên môn và Tỉnh/Thành phố/Địa điểm làm việc.
+    \item \textbf{Quản lý Danh mục Kỹ năng chuẩn hóa:} Hệ thống phải cho phép Quản trị viên bổ sung, chỉnh sửa danh sách Kỹ năng (Skill set) dùng chung cho toàn bộ hệ thống để phục vụ tìm kiếm và xử lý AI.
+    \item \textbf{Quản lý CV Templates:} Hệ thống phải cho phép Quản trị viên quản lý danh sách các mẫu thiết kế CV (CV Templates), bật/tắt hoặc tải lên cấu trúc Template CV mới.
+    \item \textbf{Thống kê và Báo cáo Vận hành:} Hệ thống phải cung cấp giao diện Dashboard báo cáo chi tiết về số lượng người dùng mới, tin tuyển dụng mở và lượt ứng tuyển thành công.
+    \item \textbf{Xử lý lỗi và Ràng buộc Dữ liệu Quản trị:}
+    \begin{itemize}
+        \item Trường hợp Quản trị viên từ chối duyệt doanh nghiệp hoặc tin tuyển dụng, hệ thống bắt buộc phải nhập lý do từ chối để thông báo cho người dùng liên quan.
+        \item Không cho phép xóa cứng các mục danh mục (Kỹ năng, Ngành nghề) đã có liên kết dữ liệu với CV hoặc Tin tuyển dụng đang hoạt động; hệ thống phải chuyển sang cơ chế ẩn/tắt hoạt động.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Phân hệ Tích hợp Trợ lý AI Thông minh}
+
+\subsubsection{Mô tả và mức độ ưu tiên}
+
+\begin{itemize}
+  \item \textbf{Mô tả:} Phân hệ tích hợp các dịch vụ trí tuệ nhân tạo tiên tiến nhằm hỗ trợ tối ưu hóa quy trình viết CV, phân tích mức độ phù hợp giữa ứng viên và công việc, đồng thời tự động đề xuất công việc phù hợp. Phân hệ bao gồm các tính năng chính: Trợ lý viết CV, Phân tích và Chấm điểm hồ sơ, và Gợi ý việc làm thông minh.
+  \item \textbf{Mức độ ưu tiên:} Cao
+  \item \textbf{Đánh giá tiêu chí:} Lợi ích: 9/9 | Chi phí: 9/9 | Rủi ro: 9/9
+\end{itemize}
+
+\subsubsection{Tác nhân và Chuỗi đáp ứng}
+
+\noindent
+\begin{tabularx}{\textwidth}{|L{4.5cm}|X|}
+    \hline
+    \rowcolor{gray!25}
+    \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
+    Ứng viên đang soạn thảo CV trên trình chỉnh sửa và chọn tính năng \textit{Gợi ý từ AI} tại thanh công cụ. & Hệ thống gửi đoạn văn bản hiện tại tới AI Service; dịch vụ AI xử lý ngữ nghĩa và trả về câu gợi ý đã được chuẩn hóa theo từ khóa chuyên ngành giúp mô tả công việc chuyên nghiệp hơn. \\ \hline
+    Ứng viên hoặc Nhà tuyển dụng chọn \textit{Phân tích độ phù hợp AI} giữa một CV và một tin tuyển dụng cụ thể. & AI Service tự động trích xuất ngữ nghĩa từ CV và JD, tính toán điểm \% phù hợp, thực hiện phân tích khoảng trống kỹ năng và hiển thị danh sách kỹ năng thiếu kèm nhận xét chi tiết. \\ \hline
+    Ứng viên truy cập Dashboard cá nhân hoặc hệ thống chạy tác vụ quét định kỳ. & Hệ thống phân tích toàn bộ hồ sơ CV của ứng viên, so sánh với danh sách các tin tuyển dụng đang mở và tự động hiển thị hoặc gửi thông báo các việc làm có độ tương thích cao nhất. \\ \hline
+\end{tabularx}
+
+\subsubsection{Các yêu cầu chức năng}
+
+\begin{enumerate}[label=\bfseries REQ-AI-\arabic*:, leftmargin=2.5cm]
+    \item \textbf{Trợ lý Viết CV - Gợi ý từ AI:} Hệ thống phải cung cấp tính năng gợi ý từ AI để giúp ứng viên viết CV chuyên nghiệp hơn ngay trong quá trình biên soạn.
+    \item \textbf{Trợ lý Viết CV - Tối ưu hóa văn bản và Từ khóa ngành:} Hệ thống phải cho phép ứng viên gửi đoạn văn mô tả kinh nghiệm hoặc dự án để AI gợi ý viết lại chuyên nghiệp hơn và tự động bổ sung từ khóa chuẩn hóa theo ngành nghề.
+    \item \textbf{Trích xuất Ngữ nghĩa Dữ liệu CV và JD:} Hệ thống phải tự động bóc tách và phân tích ngữ nghĩa (Semantic Parsing) từ nội dung CV của ứng viên và Mô tả công việc (JD) của nhà tuyển dụng.
+    \item \textbf{Tính toán và Chấm điểm, phân tích Khoảng trống Kỹ năng:} Hệ thống phải tự động tính toán và trả về điểm số độ phù hợp dưới dạng tỷ lệ phần trăm (\%) giữa CV ứng viên và JD yêu cầu; đồng thời phân tích và đưa ra danh sách các kỹ năng hoặc yêu cầu mà ứng viên còn thiếu so với JD, kèm theo nhận xét chi tiết và lời khuyên cải thiện.
+    \item \textbf{Gợi ý Việc làm Thông minh:} Hệ thống phải phân tích toàn bộ các bản CV của ứng viên (không phân biệt trạng thái Public hay Private) để tính toán độ tương thích và tự động gợi ý danh sách việc làm phù hợp nhất trên Dashboard cá nhân của ứng viên đó.
+    \item \textbf{Xử lý Ngoại lệ và Lỗi dịch vụ AI:} Khi dịch vụ AI bị quá tải, phản hồi chậm hoặc lỗi kết nối API, hệ thống phải giữ nguyên nội dung dữ liệu hiện tại của người dùng và hiển thị thông báo \textit{\textquotedblleft Dịch vụ AI đang bận, vui lòng thử lại sau\textquotedblright}.
+\end{enumerate}
