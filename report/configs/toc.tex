@@ -1,0 +1,66 @@
+%! TEX root = ../main.tex
+
+\usepackage{tocloft}
+
+% 0. CHO PHÉP MỤC LỤC HIỂN THỊ ĐẾN HEADING 4 (\paragraph)
+\setcounter{tocdepth}{4}
+
+% 1. TIÊU ĐỀ MỤC LỤC
+\renewcommand{\cfttoctitlefont}{\hfill\LARGE\bfseries}
+\renewcommand{\contentsname}{MỤC LỤC}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+% --- GIẢM KHOẢNG TRỐNG PHÍA TRÊN HEADING 1 (SECTION) ---
+% Mặc định là khoảng 1.0em + 0.6pt. Bạn có thể hạ xuống 0.2em hoặc 0pt tùy ý:
+\setlength{\cftbeforesecskip}{0.2em}
+
+% 2. DẤU NỐI & KHOẢNG CÁCH DẤU CHẤM
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{2} 
+
+% Hiển thị dấu chấm nối sang số trang cho cả Section (Chương)
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecpresnum}{}
+
+% 3. THỤT LỀ TRONG MỤC LỤC
+% Syntax: \cftsetindents{entry}{indent}{numwidth}
+\cftsetindents{section}{0em}{1.5em}        % Dành không gian cho chữ "CHƯƠNG I:"
+\cftsetindents{subsection}{1.5em}{2em}    % Thụt lề cấp 2
+\cftsetindents{subsubsection}{3.5em}{2.5em}% Thụt lề cấp 3
+\cftsetindents{paragraph}{5.5em}{1.5em}   % Thụt lề cấp 4 (dành cho nhãn a), b)...)
+
+
+
+% --- 1. ĐỔI TÊN TIÊU ĐỀ TIẾNG VIỆT ---
+\renewcommand{\listfigurename}{DANH MỤC HÌNH}
+\renewcommand{\listtablename}{DANH MỤC BẢNG}
+
+% --- 2. ĐỊNH DẠNG TIÊU ĐỀ (Căn giữa, cỡ chữ LARGE, in đậm) ---
+\renewcommand{\cftloftitlefont}{\hfill\LARGE\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+
+\renewcommand{\cftlottitlefont}{\hfill\LARGE\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% --- 3. DẤU NỐI VÀ KHOẢNG CÁCH DẤU CHẤM (Đồng bộ với TOC) ---
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+
+% --- 4. THỤT LỀ TRONG DANH MỤC HÌNH VÀ BẢNG ---
+% Cú pháp: \cftsetindents{loại}{lùi_lề_trái}{độ_rộng_dành_cho_nhãn}
+% Độ rộng nhãn 4.0em là đủ rộng cho các số dạng "Hình I.1:" hoặc "Bảng II.1:"
+
+% Dành cho danh sách Hình (figure)
+\cftsetindents{figure}{0em}{4.0em}
+
+% Dành cho danh sách Bảng (table)
+\cftsetindents{table}{0em}{4.0em}
+
+% --- 5. CẤU HÌNH CHO PDF (Hyperref) ---
+\hypersetup{
+    colorlinks=true,      % Bật màu sắc cho link thay vì đóng khung chữ nhật
+    linkcolor=black,      % Màu của các liên kết trong mục lục (để black nếu muốn in ấn chuyên nghiệp, hoặc blue/navy)
+    citecolor=black,      % Màu của liên kết trích dẫn tài liệu tham khảo
+    urlcolor=blue,        % Màu của liên kết website (URL)
+    bookmarksnumbered=true% Hiển thị số thứ tự chương/mục trong thanh Bookmark của phần mềm đọc PDF
+}

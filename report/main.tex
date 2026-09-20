@@ -1,0 +1,38 @@
+%! TEX program = xelatex
+\documentclass[a4paper]{article}
+\usepackage[fontsize=12pt]{scrextend}
+
+% --- TẢI CÁC FILE CẤU HÌNH ---
+\input{../configs/packages.tex}
+\input{../configs/layout.tex}
+\input{../configs/titles.tex}
+\input{../configs/toc.tex}
+
+\begin{document}
+
+% \input{chapters/cover.tex}
+\clearpage
+
+% --- PHẦN ĐẦU (Đánh số La Mã: i, ii, iii...) ---
+\pagenumbering{roman}
+
+% Hiển thị mục lục
+\tableofcontents
+\clearpage
+
+\input{chapters/version.tex}
+\clearpage
+
+% --- PHẦN NỘI DUNG CHÍNH (Đánh số Ả Rập: 1, 2, 3... bắt đầu từ 1) ---
+\pagenumbering{arabic}
+
+% \input{chapters/01_introduction.tex}
+% \input{chapters/02_overview.tex}
+% \input{chapters/03_external_req.tex}
+% \input{chapters/04_system_features.tex}
+% \input{chapters/05_non-func_req.tex}
+% \input{chapters/06_other_reqs.tex}
+
+% \input{chapters/appendix.tex}
+
+\end{document}

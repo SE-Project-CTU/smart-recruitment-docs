@@ -1,0 +1,25 @@
+\usepackage{titlesec}
+
+% --- ĐẢM BẢO ĐÁNH SỐ ĐẾN CẤP 3 ---
+\setcounter{secnumdepth}{3}
+
+% --- 1. HEADING 1 (\section) -> Font size: 18pt ---
+\titleformat{\section}
+  {\normalfont\fontsize{18pt}{22pt}\selectfont\bfseries\raggedright}
+  {\thesection.}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% --- 2. HEADING 2 (\subsection) -> Font size: 14pt ---
+\titleformat{\subsection}
+  {\normalfont\fontsize{14pt}{18pt}\selectfont\bfseries\raggedright}
+  {\thesubsection}{0.8em}{}
+\titlespacing*{\subsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+
+% --- 3. HEADING 3 (\subsubsection) -> Font size: 13pt, KHÔNG in đậm, THỤT LỀ 1.2cm ---
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{13pt}{16pt}\selectfont\raggedright}
+  {\hspace*{1.2cm}\thesubsubsection}{0.8em}{}
+
+% Đặt lề trái của \titlespacing* về 0pt để không bị ghi đè hoặc cộng dồn
+\titlespacing*{\subsubsection}
+  {0pt}{1.8ex plus 1ex minus .2ex}{1.0ex plus .2ex}
