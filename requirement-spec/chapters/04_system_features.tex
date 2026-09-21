@@ -9,7 +9,7 @@
 \subsubsection{Mô tả và mức độ ưu tiên}
 
 \begin{itemize}
-  \item \textbf{Mô tả:} Phân hệ cung cấp cơ chế đăng ký, đăng nhập và xác thực người dùng dựa trên chuẩn JWT kết hợp băm mật khẩu an toàn. Hệ thống thực hiện phân quyền theo vai trò đối với 3 nhóm người dùng: Ứng viên, Nhà tuyển dụng và Quản trị viên.
+  \item \textbf{Mô tả:} Phân hệ cung cấp các chức năng quản lý vòng đời tài khoản người dùng, bao gồm đăng ký tài khoản, đăng nhập, đăng xuất, quản lý thông tin cá nhân, đổi mật khẩu và duy trì phiên đăng nhập. Hệ thống thực hiện xác thực người dùng dựa trên chuẩn JWT và phân quyền theo vai trò đối với 3 nhóm người dùng: Ứng viên, Nhà tuyển dụng và Quản trị viên.
   \item \textbf{Mức độ ưu tiên:} Cao
   \item \textbf{Đánh giá tiêu chí:} Lợi ích: 9/9 | Chi phí: 3/9 | Rủi ro: 7/9
 \end{itemize}
@@ -17,7 +17,7 @@
 \subsubsection{Tác nhân và Chuỗi đáp ứng}
 
 \noindent
-\begin{tabularx}{\textwidth}{|L{4.5cm}|X|}
+\begin{tabularx}{\textwidth}{|L{6.0cm}|X|}
     \hline
     \rowcolor{gray!25}
     \textbf{Kích thích} & \textbf{Đáp ứng} \\ \hline
@@ -25,11 +25,13 @@
     Người dùng nhập Email và Mật khẩu để đăng nhập. & Hệ thống kiểm tra thông tin, cấp cặp token bao gồm Access Token và Refresh Token, sau đó điều hướng người dùng đến giao diện tương ứng với vai trò. \\ \hline
     Người dùng gửi yêu cầu truy cập tới tài nguyên hoặc API bảo mật. & Hệ thống kiểm tra tính hợp lệ và thời hạn của JWT Token kèm theo vai trò truy cập; nếu hợp lệ thì cho phép thực thi, ngược lại thì từ chối truy cập. \\ \hline
     Người dùng chọn Đăng xuất. & Hệ thống hủy phiên làm việc, thu hồi Refresh Token và xóa Token được lưu ở phía Client. \\ \hline
+    Người dùng đã đăng nhập chọn chức năng Đổi mật khẩu và nhập mật khẩu hiện tại cùng mật khẩu mới & Hệ thống kiểm tra mật khẩu hiện tại, kiểm tra dữ liệu mật khẩu mới, mã hóa và lưu mật khẩu mới vào CSDL, sau đó thông báo kết quả cho người dùng. \\ \hline
+    Người dùng đã đăng nhập chọn chức năng Cập nhật thông tin cá nhân. & Hệ thống kiểm tra dữ liệu đầu vào, cập nhật thông tin cá nhân vào CSDL và thông báo kết quả cho người dùng. \\ \hline
 \end{tabularx}
 
 \subsubsection{Các yêu cầu chức năng}
 
-\begin{enumerate}[label=\bfseries REQ-AUTH-\arabic*:, leftmargin=2.5cm]
+\begin{enumerate}[label=\bfseries REQ-AUTH-\arabic*:, labelwidth=!, labelsep=0.5em, leftmargin=*]
     \item \textbf{Đăng ký tài khoản Ứng viên:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Ứng viên bằng Email, số điện thoại, Mật khẩu và Họ tên.
     \item \textbf{Đăng ký tài khoản Nhà tuyển dụng:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Nhà tuyển dụng bằng Email, Mật khẩu, Họ tên và thông tin Tên công ty ban đầu.
     \item \textbf{Xác thực đăng nhập JWT:} Hệ thống phải xác thực người dùng dựa trên Email/Mật khẩu và phát hành JWT Token chứa thông tin định danh và vai trò (Role Claims) sau khi xác thực thành công.
@@ -44,6 +46,8 @@
         \item Nếu Token hết hạn hoặc không hợp lệ, hệ thống phải trả về mã lỗi 401 Unauthorized.
         \item Nếu người dùng truy cập vào chức năng không thuộc thẩm quyền của vai trò, hệ thống phải trả về mã lỗi 403 Forbidden.
     \end{itemize}
+    \item \textbf{Đổi mật khẩu:} Hệ thống phải cho phép người dùng đã đăng nhập thay đổi mật khẩu tài khoản bằng cách cung cấp mật khẩu hiện tại và mật khẩu mới. Hệ thống phải kiểm tra tính hợp lệ của mật khẩu hiện tại, mã hóa mật khẩu mới bằng thuật toán băm an toàn trước khi lưu vào cơ sở dữ liệu và thông báo kết quả cho người dùng.
+    \item \textbf{Quản lý thông tin cá nhân:} Hệ thống phải cho phép người dùng đã đăng nhập xem và cập nhật thông tin cá nhân thuộc tài khoản của mình.
 \end{enumerate}
 
 \subsection{Phân hệ Công cụ Tạo CV theo Mẫu}
@@ -115,7 +119,7 @@
 \subsubsection{Các yêu cầu chức năng}
 
 \begin{enumerate}[label=\bfseries REQ-REC-\arabic*:, leftmargin=2.5cm]
-    \item \textbf{Tạo và Quản lý Tin tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng tạo mới, cập nhật thông tin, ẩn/hiện hoặc đóng các tin tuyển dụng (JD).
+    \item \textbf{Tạo và Quản lý Tin tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng tạo mới, cập nhật thông tin, ẩn/hiện và quản lý trạng thái hoạt động của các tin tuyển dụng, bao gồm trạng thái đang nhận hồ sơ, ngừng nhận hồ sơ và đã đóng.
     \item \textbf{Cấu hình Chi tiết Tin tuyển dụng:} Hệ thống phải bắt buộc Nhà tuyển dụng thiết lập các tiêu chí chi tiết khi tạo JD bao gồm: Tên vị trí, ngành nghề, cấp bậc (Intern, Junior, Senior,...), địa điểm làm việc, hình thức làm việc, khoảng lương (hoặc Thỏa thuận), danh sách kỹ năng yêu cầu, mô tả công việc và hạn nộp hồ sơ.
     \item \textbf{Tìm kiếm và Lọc Việc làm đa tiêu chí:} Hệ thống phải cung cấp bộ lọc cho Ứng viên tìm kiếm việc làm theo từ khóa, ngành nghề, địa điểm, mức lương, cấp bậc và hình thức làm việc.
     \item \textbf{Ứng tuyển Trực tuyến với CV SmartHire hoặc File PDF:} Hệ thống phải cho phép Ứng viên lựa chọn ứng tuyển bằng CV đã khởi tạo trực tiếp trên hệ thống hoặc tải file CV dạng PDF từ thiết bị cá nhân.
@@ -125,9 +129,10 @@
     \item \textbf{Cập nhật Quy trình Tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng cập nhật tiến trình hồ sơ của ứng viên theo các bước: Đã tiếp nhận $\rightarrow$ Đã duyệt / Mời phỏng vấn $\rightarrow$ Từ chối.
     \item \textbf{Xử lý lỗi và Điều kiện biên:}
     \begin{itemize}
-        \item Nếu tin tuyển dụng đã quá hạn nộp hồ sơ hoặc bị đóng, hệ thống phải tự động khóa nút \textit{Ứng tuyển} và thông báo cho Ứng viên.
+        \item Nếu thời điểm hiện tại vượt quá hạn nộp hồ sơ do Nhà tuyển dụng cấu hình, hệ thống phải tự động chuyển tin tuyển dụng sang trạng thái hết hạn và khóa chức năng Ứng tuyển.
         \item Nếu file CV PDF ứng viên tải lên vượt quá dung lượng quy định (ví dụ: > 5MB) hoặc sai định dạng, hệ thống phải hiển thị thông báo lỗi và ngắt quá trình ứng tuyển.
     \end{itemize}
+    \item \textbf{Dừng nhận hồ sơ ứng tuyển:} Hệ thống phải cho phép Nhà tuyển dụng chủ động dừng nhận hồ sơ ứng tuyển đối với một tin tuyển dụng đang mở trước thời hạn nộp hồ sơ. Khi tin tuyển dụng được chuyển sang trạng thái ngừng nhận hồ sơ, hệ thống phải ngăn Ứng viên tiếp tục nộp hồ sơ cho tin tuyển dụng đó và hiển thị thông báo phù hợp.
 \end{enumerate}
 
 \subsection{Phân hệ Quản trị Hệ thống}
