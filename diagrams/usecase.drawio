@@ -1,303 +1,214 @@
-<mxfile host="app.diagrams.net" agent="Copilot">
-  <diagram id="smarthire-usecase" name="Use Case tổng quát">
-    <mxGraphModel dx="8667" dy="3373" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="system" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1;fontSize=16;verticalAlign=top;spacingTop=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="SMART HIRE - NỀN TẢNG KẾT NỐI TUYỂN DỤNG VÀ HỖ TRỢ VIẾT CV" vertex="1">
-          <mxGeometry height="920" width="1120" x="-179" y="258" as="geometry" />
-        </mxCell>
-        <mxCell id="auth" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Đăng ký / Đăng nhập&#xa;và quản lý phiên" vertex="1">
-          <mxGeometry height="55" width="170" x="35" y="95" as="geometry" />
-        </mxCell>
-        <mxCell id="account" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Phân quyền RBAC&#xa;và quản lý tài khoản" vertex="1">
-          <mxGeometry height="55" width="170" x="35" y="170" as="geometry" />
-        </mxCell>
-        <mxCell id="cv" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Tạo và quản lý CV&#xa;theo mẫu" vertex="1">
-          <mxGeometry height="55" width="175" x="250" y="110" as="geometry" />
-        </mxCell>
-        <mxCell id="cvEdit" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Biên soạn nội dung,&#xa;live preview, tùy chỉnh" vertex="1">
-          <mxGeometry height="55" width="175" x="250" y="185" as="geometry" />
-        </mxCell>
-        <mxCell id="cvExport" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Xuất / tải CV PDF&#xa;và đặt Public / Private" vertex="1">
-          <mxGeometry height="55" width="175" x="250" y="260" as="geometry" />
-        </mxCell>
-        <mxCell id="jobs" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Tìm kiếm và lọc&#xa;việc làm" vertex="1">
-          <mxGeometry height="55" width="175" x="485" y="110" as="geometry" />
-        </mxCell>
-        <mxCell id="apply" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Ứng tuyển trực tuyến&#xa;bằng CV hoặc PDF" vertex="1">
-          <mxGeometry height="55" width="175" x="485" y="185" as="geometry" />
-        </mxCell>
-        <mxCell id="tracking" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Theo dõi lịch sử và&#xa;trạng thái hồ sơ" vertex="1">
-          <mxGeometry height="55" width="175" x="485" y="260" as="geometry" />
-        </mxCell>
-        <mxCell id="recommend" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Nhận gợi ý việc làm&#xa;phù hợp" vertex="1">
-          <mxGeometry height="55" width="175" x="720" y="110" as="geometry" />
-        </mxCell>
-        <mxCell id="aiWrite" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Trợ lý AI tối ưu&#xa;nội dung CV" vertex="1">
-          <mxGeometry height="55" width="175" x="720" y="185" as="geometry" />
-        </mxCell>
-        <mxCell id="match" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Phân tích Match Score&#xa;và Skill Gap" vertex="1">
-          <mxGeometry height="55" width="175" x="720" y="260" as="geometry" />
-        </mxCell>
-        <mxCell id="company" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Quản lý thông tin&#xa;doanh nghiệp" vertex="1">
-          <mxGeometry height="55" width="175" x="950" y="110" as="geometry" />
-        </mxCell>
-        <mxCell id="jd" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Tạo và quản lý&#xa;tin tuyển dụng (JD)" vertex="1">
-          <mxGeometry height="55" width="175" x="950" y="185" as="geometry" />
-        </mxCell>
-        <mxCell id="applications" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Quản lý hồ sơ ứng tuyển&#xa;và cập nhật tiến trình" vertex="1">
-          <mxGeometry height="55" width="175" x="950" y="260" as="geometry" />
-        </mxCell>
-        <mxCell id="verify" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Kiểm duyệt doanh nghiệp&#xa;và tin tuyển dụng" vertex="1">
-          <mxGeometry height="55" width="190" x="250" y="535" as="geometry" />
-        </mxCell>
-        <mxCell id="users" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Quản lý / khóa&#xa;tài khoản người dùng" vertex="1">
-          <mxGeometry height="55" width="190" x="485" y="535" as="geometry" />
-        </mxCell>
-        <mxCell id="catalog" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Quản lý danh mục&#xa;ngành nghề, địa điểm, kỹ năng, mẫu CV" vertex="1">
-          <mxGeometry height="55" width="190" x="720" y="535" as="geometry" />
-        </mxCell>
-        <mxCell id="reports" parent="system" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Xem dashboard&#xa;thống kê và báo cáo" vertex="1">
-          <mxGeometry height="55" width="190" x="950" y="535" as="geometry" />
-        </mxCell>
-        <mxCell id="i1" edge="1" parent="system" source="cv" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="cvEdit" value="&lt;span style=&quot;background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="i2" edge="1" parent="system" source="cv" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="cvExport" value="&lt;span style=&quot;background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="441" y="138" />
-              <mxPoint x="441" y="288" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="i3" edge="1" parent="system" source="apply" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="match" value="&lt;span style=&quot;background-color: light-dark(rgb(238, 238, 238), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="690" y="213" />
-              <mxPoint x="690" y="288" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="i4" edge="1" parent="system" source="applications" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="match" value="&lt;span style=&quot;background-color: light-dark(rgb(238, 238, 238), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="guest" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Khách /&#xa;Người dùng chưa đăng nhập" vertex="1">
-          <mxGeometry height="90" width="70" x="-544" y="375" as="geometry" />
-        </mxCell>
-        <mxCell id="candidate" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Ứng viên" vertex="1">
-          <mxGeometry height="90" width="70" x="-502" y="129" as="geometry" />
-        </mxCell>
-        <mxCell id="employer" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Nhà tuyển dụng" vertex="1">
-          <mxGeometry height="90" width="70" x="1497" y="620" as="geometry" />
-        </mxCell>
-        <mxCell id="admin" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Quản trị viên" vertex="1">
-          <mxGeometry height="90" width="70" x="-597" y="925" as="geometry" />
-        </mxCell>
-        <mxCell id="QqGpXR0JgtlGWF7_-UkS-2" edge="1" parent="1" source="ai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0.1;exitDx=0;exitDy=0;exitPerimeter=0;elbow=vertical;libavoidRouting=1;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1423" y="965" />
-            </Array>
-            <mxPoint x="1266.14306640625" y="964.8571951729914" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ai" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Dịch vụ AI&#xa;(OpenAI / Gemini)" vertex="1">
-          <mxGeometry height="90" width="90" x="1400" y="142" as="geometry" />
-        </mxCell>
-        <mxCell id="storage" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Cloudinary&#xa;(lưu trữ tệp)" vertex="1">
-          <mxGeometry height="90" width="90" x="-573" y="693" as="geometry" />
-        </mxCell>
-        <mxCell id="notify" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="Dịch vụ&#xa;thông báo" vertex="1">
-          <mxGeometry height="90" width="90" x="1349" y="1056" as="geometry" />
-        </mxCell>
-        <mxCell id="a1" edge="1" parent="1" source="guest" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="auth">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-309" y="420" />
-              <mxPoint x="-309" y="381" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a2" edge="1" parent="1" source="guest" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="account">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-309" y="420" />
-              <mxPoint x="-309" y="456" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a3" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="auth">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-59" y="174" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a4" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="cv">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="159" y="174" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a5" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="jobs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="394" y="174" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a6" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="apply">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="290" y="174" />
-              <mxPoint x="290" y="471" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a7" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="tracking">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="276" y="174" />
-              <mxPoint x="276" y="546" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a8" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="recommend">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="629" y="174" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a9" edge="1" parent="1" source="candidate" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="aiWrite">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="511" y="174" />
-              <mxPoint x="511" y="471" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a10" edge="1" parent="1" source="employer" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="auth">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="49" y="665" />
-              <mxPoint x="49" y="381" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a11" edge="1" parent="1" source="employer" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="company">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1532" y="396" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a12" edge="1" parent="1" source="employer" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="jd">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1532" y="471" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a13" edge="1" parent="1" source="employer" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="applications">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1532" y="546" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a14" edge="1" parent="1" source="employer" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="match">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="629" y="665" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a15" edge="1" parent="1" source="admin" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="verify">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="166" y="970" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a16" edge="1" parent="1" source="admin" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="users">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="401" y="970" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a17" edge="1" parent="1" source="admin" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="catalog">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="636" y="970" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a18" edge="1" parent="1" source="admin" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="reports">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="866" y="970" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a19" edge="1" parent="1" source="ai" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="recommend">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="629" y="187" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a20" edge="1" parent="1" source="ai" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="aiWrite">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="737" y="187" />
-              <mxPoint x="737" y="471" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a21" edge="1" parent="1" source="ai" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="match">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="751" y="187" />
-              <mxPoint x="751" y="546" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a22" edge="1" parent="1" source="storage" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="cvExport">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="159" y="738" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a23" edge="1" parent="1" source="storage" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="apply">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="290" y="738" />
-              <mxPoint x="290" y="471" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a24" edge="1" parent="1" source="notify" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="tracking">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="519" y="1101" />
-              <mxPoint x="519" y="546" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="a25" edge="1" parent="1" source="notify" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" target="applications">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1394" y="546" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="smarthire-usecase" name="Use Case tổng quát">
+        <mxGraphModel dx="2640" dy="653" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="system" value="SMART HIRE - NỀN TẢNG KẾT NỐI TUYỂN DỤNG VÀ HỖ TRỢ VIẾT CV" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontStyle=1;fontSize=16;verticalAlign=top;spacingTop=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="1" vertex="1">
+                    <mxGeometry x="-40" y="280" width="1190" height="920" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth" value="Đăng ký / Đăng nhập&#xa;và quản lý phiên" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="37.1875" y="95" width="180.625" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="cv" value="Tạo và quản lý CV&#xa;theo mẫu" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="265.625" y="110" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="cvEdit" value="Biên soạn nội dung,&#xa;live preview, tùy chỉnh" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="265.625" y="185" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="cvExport" value="Xuất / tải CV PDF&#xa;và đặt Public / Private" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="265.625" y="260" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="jobs" value="Tìm kiếm và lọc&#xa;việc làm" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="515.3125" y="110" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="apply" value="Ứng tuyển trực tuyến&#xa;bằng CV hoặc PDF" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="515.3125" y="185" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="tracking" value="Theo dõi lịch sử và&#xa;trạng thái hồ sơ" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="515.3125" y="260" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="recommend" value="Nhận gợi ý việc làm&#xa;phù hợp" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="765" y="110" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="aiWrite" value="Trợ lý AI tối ưu&#xa;nội dung CV" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="765" y="185" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="company" value="Quản lý thông tin&#xa;doanh nghiệp" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="1009.375" y="110" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="jd" value="Tạo và quản lý&#xa;tin tuyển dụng (JD)" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="1009.375" y="185" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="applications" value="Quản lý hồ sơ ứng tuyển&#xa;và cập nhật tiến trình" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="1009.375" y="260" width="185.9375" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="verify" value="Kiểm duyệt doanh nghiệp&#xa;và tin tuyển dụng" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="265.625" y="535" width="201.875" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="users" value="Quản lý / khóa&#xa;tài khoản người dùng" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="515.3125" y="535" width="201.875" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="catalog" value="Quản lý danh mục&#xa;ngành nghề, địa điểm, kỹ năng, mẫu CV" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="765" y="535" width="201.875" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="reports" value="Xem dashboard&#xa;thống kê và báo cáo" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fillColor=light-dark(#EEEEEE,#FFFFFF);strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="system" vertex="1">
+                    <mxGeometry x="1009.375" y="535" width="201.875" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="i1" value="&lt;span style=&quot;background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="system" source="cv" target="cvEdit" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="i2" value="&lt;span style=&quot;background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="system" source="cv" target="cvExport" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="468.5625" y="138"/>
+                            <mxPoint x="468.5625" y="288"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i4" value="&lt;span style=&quot;background-color: light-dark(rgb(238, 238, 238), rgb(255, 255, 255));&quot;&gt;«include»&lt;/span&gt;" style="dashed=1;endArrow=open;html=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="system" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1285.625" y="290" as="sourcePoint"/>
+                        <mxPoint x="1232.5" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="candidate" value="Ứng viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="1" vertex="1">
+                    <mxGeometry x="-502" y="129" width="70" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="employer" value="Nhà tuyển dụng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="1" vertex="1">
+                    <mxGeometry x="1497" y="620" width="70" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="admin" value="Quản trị viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="1" vertex="1">
+                    <mxGeometry x="410" y="1230" width="70" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="ai" value="Dịch vụ AI&#xa;(OpenAI / Gemini)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontSize=13;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" parent="1" vertex="1">
+                    <mxGeometry x="1400" y="142" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="a3" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="auth" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-59" y="174"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a4" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="159" y="174"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a5" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="jobs" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="394" y="174"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a6" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="apply" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="290" y="174"/>
+                            <mxPoint x="290" y="471"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a7" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="tracking" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="276" y="174"/>
+                            <mxPoint x="276" y="546"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a8" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="recommend" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="629" y="174"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a9" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="candidate" target="aiWrite" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="511" y="174"/>
+                            <mxPoint x="511" y="471"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a10" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="employer" target="auth" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="49" y="665"/>
+                            <mxPoint x="49" y="381"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a11" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="employer" target="company" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1532" y="396"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a12" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="employer" target="jd" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1532" y="471"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a13" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="employer" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1532" y="568"/>
+                        </Array>
+                        <mxPoint x="1150" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a15" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="admin" target="verify" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="166" y="970"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a16" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="admin" target="users" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="401" y="970"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a17" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="admin" target="catalog" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="636" y="970"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a18" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="admin" target="reports" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="866" y="970"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a19" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="ai" target="recommend" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="629" y="187"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a20" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#eeeeee;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);elbow=vertical;libavoidRouting=1;" parent="1" source="ai" target="aiWrite" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="737" y="210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
