@@ -2,7 +2,183 @@
 
 \newpage
 
-\section{Mô tả bài toán}
-\subsection{Heading 2}
-\subsubsection{Heading 3}
-\paragraph{Heading 4}
+\section{MÔ TẢ BÀI TOÁN}
+
+\subsection{Mô tả chi tiết bài toán và các chức năng trông đợi}
+
+\subsubsection{Thực trạng và bài toán nghiệp vụ}
+Trong quy trình tuyển dụng và tìm kiếm việc làm hiện đại, sự kết nối giữa người lao động và doanh nghiệp vẫn gặp nhiều bất cập, xuất phát từ khó khăn của cả ba nhóm tác nhân chính:
+
+\begin{itemize}
+    \item \textbf{Đối với Ứng viên:}
+    \begin{itemize}
+        \item Thiếu công cụ tạo CV linh hoạt: Các công cụ hiện tại thường bắt buộc ứng viên nhập liệu qua các biểu mẫu rời rạc, thiếu khả năng xem trước giao diện và phản hồi tức thì theo thời gian thực.
+        \item Không nhận diện được khoảng trống kỹ năng: Ứng viên gặp khó khăn trong việc xác định những kỹ năng, kinh nghiệm hoặc từ khóa chuyên ngành còn thiếu so với bản mô tả công việc cụ thể.
+        \item Viết CV chưa chuẩn hóa: Khó diễn đạt các mô tả công việc, dự án bằng các từ khóa hành động chuyên nghiệp, dẫn đến hồ sơ dễ bị bỏ qua.
+    \end{itemize}
+
+    \item \textbf{Đối với Nhà tuyển dụng:}
+    \begin{itemize}
+        \item Quá tải khâu bóc tách hồ sơ: Nhà tuyển dụng tốn nhiều thời gian sàng lọc thủ công hàng trăm file CV gửi về cho mỗi đợt tuyển dụng.
+        \item Quản lý ứng tuyển rời rạc: Thiếu hệ thống theo dõi và phân loại tiến trình ứng tuyển tập trung.
+    \end{itemize}
+
+    \item \textbf{Đối với Quản trị viên:}
+    \begin{itemize}
+        \item Rủi ro thông tin rác và lừa đảo: Tình trạng doanh nghiệp giả mạo hoặc tin tuyển dụng không đúng sự thật yêu cầu hệ thống phải có quy trình kiểm duyệt minh chứng pháp lý và bài đăng nghiêm ngặt.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Các chức năng trông đợi của hệ thống}
+Nhằm giải quyết toàn diện các vấn đề trên, hệ thống SmartHire được thiết kế với 5 phân hệ chức năng cốt lõi kèm theo các yêu cầu chi tiết và yêu cầu phi chức năng tóm tắt:
+
+\begin{enumerate}
+    \item \textbf{Phân hệ Quản lý Tài khoản và Phân quyền (Auth \& RBAC):}
+    \begin{itemize}
+        \item \textit{Yêu cầu chức năng chi tiết:} Hỗ trợ đăng ký tài khoản cho Ứng viên và Nhà tuyển dụng, xác thực đăng nhập cấp phát chuỗi JWT Token (Access Token và Refresh Token), mã hóa mật khẩu an toàn bằng thuật toán BCrypt hoặc Argon2, phân quyền truy cập API dựa trên vai trò, hỗ trợ đăng xuất và vô hiệu hóa phiên, xử lý phản hồi lỗi xác thực chuẩn định dạng (401 Unauthorized, 403 Forbidden).
+        \item \textit{Yêu cầu kỹ năng người dùng:} Người dùng chỉ cần các kỹ năng tin học cơ bản (thao tác biểu mẫu, đăng nhập, quản lý tài khoản cá nhân).
+    \end{itemize}
+
+    \item \textbf{Phân hệ Công cụ Tạo CV theo Mẫu (Smart CV Builder):}
+    \begin{itemize}
+        \item \textit{Yêu cầu chức năng chi tiết:} Cho phép ứng viên chọn mẫu CV (Template), biên soạn trực tiếp thông tin cá nhân, mục tiêu, kinh nghiệm, học vấn, kỹ năng và dự án, xem trước thời gian thực với độ trễ dưới $100\text{ ms}$, tùy chỉnh thứ tự hiển thị các mục, thay đổi màu sắc, phông chữ, cấu hình trạng thái công khai (Public) hoặc riêng tư (Private), lưu bản nháp và xuất bản tệp PDF chuẩn định dạng.
+        \item \textit{Yêu cầu kỹ năng người dùng:} Ứng viên cần kỹ năng tin học phổ thông (soạn thảo văn bản cơ bản, tùy chỉnh giao diện đơn giản).
+    \end{itemize}
+
+    \item \textbf{Phân hệ Nghiệp vụ Tuyển dụng và Ứng tuyển (Recruitment \& Application):}
+    \begin{itemize}
+        \item \textit{Yêu cầu chức năng chi tiết:} Nhà tuyển dụng khởi tạo và cấu hình tin tuyển dụng chi tiết (mức lương, địa điểm, cấp bậc, kỹ năng yêu cầu, hạn nộp), Ứng viên tìm kiếm và lọc việc làm đa tiêu chí, nộp hồ sơ ứng tuyển bằng CV SmartHire hoặc tệp PDF cá nhân (dung lượng tối đa $5\text{ MB}$), hệ thống tự động ngăn chặn nộp trùng lặp, Ứng viên theo dõi tiến trình hồ sơ, Nhà tuyển dụng quản lý và cập nhật quy trình ứng tuyển (Đã tiếp nhận $\rightarrow$ Mời phỏng vấn $\rightarrow$ Từ chối).
+        \item \textit{Yêu cầu kỹ năng người dùng:} Nhà tuyển dụng cần kỹ năng tin học văn phòng, Ứng viên cần kỹ năng duyệt web và tìm kiếm thông tin.
+    \end{itemize}
+
+    \item \textbf{Phân hệ Quản trị Hệ thống (Admin Portal):}
+    \begin{itemize}
+        \item \textit{Yêu cầu chức năng chi tiết:} Kiểm duyệt thông tin doanh nghiệp và phê duyệt tin tuyển dụng chống spam/lừa đảo (bắt buộc nhập lý do khi từ chối), khóa hoặc khôi phục tài khoản vi phạm, quản lý hệ thống danh mục dùng chung (kỹ năng, ngành nghề, địa điểm, template CV) theo cơ chế xóa mềm, cung cấp Dashboard báo cáo và biểu đồ thống kê vận hành.
+        \item \textit{Yêu cầu kỹ năng người dùng:} Quản trị viên cần trình độ CNTT chuyên sâu, có kỹ năng quản trị hệ thống và kiểm duyệt dữ liệu.
+    \end{itemize}
+
+    \item \textbf{Phân hệ Tích hợp Trợ lý AI Thông minh (AI Assistant):}
+    \begin{itemize}
+        \item \textit{Yêu cầu chức năng chi tiết:} Trợ lý viết CV gợi ý từ ngữ, tối ưu hóa câu chữ mô tả kinh nghiệm và chuẩn hóa từ khóa chuyên ngành, trích xuất ngữ nghĩa dữ liệu CV và JD (Semantic Parsing), tự động tính toán điểm tương thích (Match Score \%), phân tích khoảng trống kỹ năng (Skill Gap Analysis) đưa ra lời khuyên cải thiện, tự động gợi ý việc làm phù hợp trên Dashboard ứng viên, xử lý ngoại lệ khi dịch vụ AI gián đoạn.
+        \item \textit{Yêu cầu kỹ năng người dùng:} Người dùng chỉ cần tương tác qua nút bấm kích hoạt gợi ý trên giao diện mà không cần kỹ năng kỹ thuật phức tạp.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Tóm tắt Yêu cầu Phi chức năng của hệ thống:}
+\begin{itemize}
+    \item \textbf{Hiệu năng (Performance):} Thời gian phản hồi API cho các thao tác chuẩn dưới $200-500\text{ ms}$, phản hồi Live Preview phía Client dưới $100\text{ ms}$, các tác vụ AI (chấm điểm, phân tích Skill Gap) hoàn tất trong $3-5\text{ giây}$, xuất file PDF dưới $10\text{ giây}$, hệ thống chịu tải tối thiểu $100$ người dùng đồng thời.
+    \item \textbf{Bảo mật \& An toàn (Security \& Safety):} Mã hóa mật khẩu bằng BCrypt hoặc Argon2, bắt buộc truyền tải dữ liệu qua giao thức HTTPS (TLS 1.3), xác thực JWT cho mọi API bảo mật, chống các lỗ hổng SQL Injection, XSS, CORS, bảo mật quyền riêng tư CV cá nhân.
+    \item \textbf{Tính sẵn sàng \& Độ tin cậy (Availability \& Reliability):} Thời gian hoạt động đạt tối thiểu $99.5\%$, cơ chế tự động sao lưu CSDL PostgreSQL định kỳ, thời gian phục hồi hệ thống (RTO) dưới $2\text{ giờ}$ và lượng dữ liệu ảnh hưởng tối đa (RPO) không quá $24\text{ giờ}$.
+\end{itemize}
+
+\subsubsection{Đặc điểm và quyền hạn người dùng}
+Hệ thống SmartHire phục vụ 3 nhóm tác nhân chính với các đặc điểm trình độ và phạm vi quyền hạn được phân định rõ ràng:
+
+\begin{itemize}
+    \item \textbf{Ứng viên:}
+    \begin{itemize}
+        \item \textit{Đặc điểm \& Trình độ:} Có trình độ tin học từ phổ thông đến nâng cao, cần giao diện trực quan, dễ thao tác. Tần suất sử dụng thường xuyên khi có nhu cầu tìm việc hoặc tạo CV.
+        \item \textit{Quyền hạn:} Tạo, chỉnh sửa, quản lý danh sách CV cá nhân, tìm kiếm và lọc bài đăng tuyển dụng, ứng tuyển trực tuyến, sử dụng Trợ lý AI để tối ưu CV và phân tích Skill Gap, nhận đề xuất việc làm phù hợp và theo dõi tiến trình xử lý hồ sơ.
+    \end{itemize}
+
+    \item \textbf{Nhà tuyển dụng:}
+    \begin{itemize}
+        \item \textit{Đặc điểm \& Trình độ:} Có trình độ tin học văn phòng, cần công cụ quản lý tin đăng và quy trình theo dõi ứng viên tập trung. Tần suất sử dụng hàng ngày hoặc hàng tuần.
+        \item \textit{Quyền hạn:} Cập nhật thông tin doanh nghiệp, tạo, chỉnh sửa, đóng hoặc ẩn tin tuyển dụng, quản lý danh sách hồ sơ ứng tuyển, xem CV trực tuyến, cập nhật trạng thái hồ sơ (Đã tiếp nhận, Mời phỏng vấn, Từ chối), xem điểm tương thích Match Score do AI đánh giá.
+    \end{itemize}
+
+    \item \textbf{Quản trị viên:}
+    \begin{itemize}
+        \item \textit{Đặc điểm \& Trình độ:} Có trình độ CNTT chuyên sâu, cần các công cụ kiểm duyệt chính xác và hệ thống báo cáo vận hành tổng quan. Tần suất sử dụng định kỳ hoặc hàng ngày.
+        \item \textit{Quyền hạn:} Phê duyệt thông tin doanh nghiệp và kiểm duyệt bài đăng tuyển dụng, khóa hoặc mở lại tài khoản vi phạm, quản lý các danh mục dùng chung (kỹ năng, ngành nghề, địa điểm, mẫu CV), xem biểu đồ và báo cáo thống kê vận hành hệ thống.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Giả định, phụ thuộc và ràng buộc}
+Việc thiết kế và triển khai hệ thống SmartHire dựa trên các giả định, phụ thuộc kỹ thuật và ràng buộc thực thi sau:
+
+\begin{itemize}
+    \item \textbf{Các giả định và phụ thuộc:}
+    \begin{itemize}
+        \item \textit{Dịch vụ AI bên thứ ba:} Hệ thống phụ thuộc vào tính sẵn sàng, độ ổn định và hạn ngạch API của các nhà cung cấp mô hình ngôn ngữ lớn (OpenAI / Google Gemini). Khi dịch vụ AI gặp sự cố, các tính năng AI tạm ngưng nhưng quy trình tuyển dụng cơ bản vẫn hoạt động bình thường.
+        \item \textit{Kết nối Internet:} Người dùng cần kết nối Internet ổn định để đảm bảo tương tác thời gian thực (Live Preview, thông báo thời gian thực qua SSE/WebSocket).
+        \item \textit{Tính trung thực của dữ liệu:} Dữ liệu nhập vào trong CV và bài đăng tuyển dụng được giả định là trung thực để AI tính toán điểm Match Score chính xác.
+        \item \textit{Dịch vụ lưu trữ Cloudinary:} Phụ thuộc vào Cloudinary API để lưu trữ và tải về tệp ảnh logo, avatar và tệp PDF CV.
+    \end{itemize}
+
+    \item \textbf{Các ràng buộc về thực thi và thiết kế:}
+    \begin{itemize}
+        \item \textit{Ràng buộc công nghệ:} Frontend bắt buộc sử dụng ReactJS, TypeScript, TailwindCSS, Backend sử dụng C\# ASP.NET Core 10 Web API, Cơ sở dữ liệu chính là PostgreSQL 16.
+        \item \textit{Ràng buộc hiệu năng:} Truy vấn dữ liệu thông thường phản hồi dưới $500\text{ ms}$, Live Preview phía client cập nhật dưới $100\text{ ms}$, tác vụ AI xử lý hoàn tất trong $3-5\text{ giây}$.
+        \item \textit{Ràng buộc bảo mật:} Mật khẩu phải mã hóa bằng BCrypt hoặc Argon2, mọi giao tiếp qua HTTPS, tệp PDF CV tải lên có dung lượng tối đa $5\text{ MB}$ và đúng định dạng `.pdf`.
+        \item \textit{Ràng buộc giao diện:} File PDF CV xuất ra phải giữ nguyên cấu trúc thiết kế và hiển thị chuẩn phông chữ tiếng Việt trên mọi thiết bị và trình đọc PDF.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Phân tích và đánh giá các giải pháp có liên quan}
+
+Trên thị trường hiện nay, các giải pháp hỗ trợ viết CV và kết nối tuyển dụng có thể được chia thành ba nhóm chính:
+
+\begin{itemize}
+    \item \textbf{Các trang tuyển dụng trực tuyến truyền thống:}
+    \begin{itemize}
+        \item \textit{Đặc điểm và ưu điểm:} Cung cấp nguồn tin tuyển dụng phong phú và tập trung lượng lớn ứng viên cũng như nhà tuyển dụng, hỗ trợ tạo CV theo các mẫu có sẵn.
+        \item \textit{Hạn chế:} Trình tạo CV chủ yếu hoạt động theo dạng biểu mẫu nhập liệu tĩnh, chưa hỗ trợ cơ chế chỉnh sửa và xem trước trực tiếp trên giao diện in A4 theo thời gian thực. Bên cạnh đó, việc phân tích sự tương thích giữa CV và JD bằng AI hầu như chưa được tích hợp sâu hoặc bị giới hạn ở các gói dịch vụ doanh nghiệp trả phí.
+    \end{itemize}
+
+    \item \textbf{Các mạng xã hội nghề nghiệp:}
+    \begin{itemize}
+        \item \textit{Đặc điểm và ưu điểm:} Tạo dựng môi trường kết nối chuyên nghiệp toàn cầu, cho phép xây dựng hồ sơ năng lực cá nhân và tìm kiếm việc làm.
+        \item \textit{Hạn chế:} Thiếu tính linh hoạt trong việc tự do tùy biến thiết kế và định dạng xuất file PDF cho từng mẫu CV riêng biệt. Tính năng phân tích độ tương thích hồ sơ chủ yếu dựa trên các tiêu chí tìm kiếm từ khóa tổng quan, chưa bóc tách sâu khoảng trống kỹ năng trực tiếp cho từng bản CV và bài đăng tuyển dụng cụ thể.
+    \end{itemize}
+
+    \item \textbf{Các công cụ tạo CV chuyên biệt và thiết kế đồ họa:}
+    \begin{itemize}
+        \item \textit{Đặc điểm và ưu điểm:} Cho phép người dùng tùy biến giao diện, bố cục và màu sắc CV rất linh hoạt với tính thẩm mỹ cao.
+        \item \textit{Hạn chế:} Hoạt động độc lập với quy trình tuyển dụng thực tế. Người dùng sau khi tạo CV phải tải về và nộp thủ công ở các nền tảng khác. Đồng thời, các công cụ này hoàn toàn không tích hợp Trợ lý AI để đối sánh ngữ nghĩa CV với mô tả công việc nhằm giúp ứng viên cải thiện nội dung.
+    \end{itemize}
+\end{itemize}
+
+Sự phân mảnh giữa công cụ tạo CV, hệ thống quản lý ứng tuyển và các công cụ phân tích AI cho thấy tính cấp thiết của việc xây dựng một nền tảng hợp nhất như SmartHire. Nền tảng hướng tới việc khép kín quy trình từ khởi tạo CV trực quan, phân tích đánh giá bằng AI đến ứng tuyển và quản lý hồ sơ tập trung.
+
+\subsection{Tiếp cận giải quyết vấn đề và chọn lựa giải pháp}
+
+\subsubsection{Phương pháp tiếp cận bài toán}
+Đề tài tiếp cận giải quyết bài toán thông qua các giải pháp kiến trúc và xử lý phần mềm hiện đại:
+
+\begin{itemize}
+    \item \textbf{Kiến trúc Backend phân tầng (Clean Architecture):} Tách biệt rõ ràng giữa các tầng Domain, Application, Infrastructure và Presentation. Phương pháp này giúp mã nguồn dễ bảo trì, dễ kiểm thử (Unit Test) và độc lập với các thư viện bên ngoài.
+    \item \textbf{Mô hình dữ liệu lai (Hybrid Relational-Document Model):} Tận dụng khả năng lưu trữ bán cấu trúc \texttt{JSONB} trong cơ sở dữ liệu quan hệ PostgreSQL. Giải pháp này giải quyết bài toán biến đổi linh hoạt của cấu trúc CV và mẫu thiết kế mà không cần thay đổi cấu trúc bảng.
+    \item \textbf{Tích hợp Trí tuệ nhân tạo (AI Agent Integration):} Kết nối với các mô hình ngôn ngữ lớn (LLM) thông qua giao tiếp REST API, áp dụng kỹ thuật Prompt Engineering và phản hồi định dạng dữ liệu cấu trúc (Structured Output - JSON Schema) để trích xuất ngữ nghĩa, chấm điểm tương thích (Match Score \%) và phân tích khoảng trống kỹ năng chính xác.
+    \item \textbf{Cơ chế truyền thông thời gian thực (Real-time Streaming):} Sử dụng giao thức Server-Sent Events (SSE) hoặc WebSocket để đẩy phản hồi dòng văn bản từ Trợ lý AI và cập nhật trạng thái hồ sơ ứng tuyển tức thì.
+\end{itemize}
+
+\subsubsection{Lựa chọn giải pháp công nghệ}
+Dựa trên các đặc tả kỹ thuật và ràng buộc thực thi, hệ thống SmartHire lựa chọn tập công nghệ (Tech Stack) bao gồm:
+
+\begin{itemize}
+    \item \textbf{Phân hệ Frontend (Web Client):}
+    \begin{itemize}
+        \item \textit{Công nghệ:} ReactJS kết hợp TypeScript, TailwindCSS, TanStack Query và Axios.
+        \item \textit{Lý do lựa chọn:} Đảm bảo xây dựng giao diện Đơn trang (SPA) mượt mà, quản lý trạng thái chặt chẽ cho trình biên soạn CV Live Preview phản hồi dưới $100\text{ ms}$, đồng thời tương thích đa thiết bị.
+    \end{itemize}
+
+    \item \textbf{Phân hệ Backend (RESTful API):}
+    \begin{itemize}
+        \item \textit{Công nghệ:} C\# ASP.NET Core 10 Web API.
+        \item \textit{Lý do lựa chọn:} Cung cấp hiệu năng xử lý bất đồng bộ (Async/Await) cao, tích hợp sẵn các cơ chế bảo mật, xác thực chuỗi JWT và phân quyền vai trò (RBAC) chặt chẽ.
+    \end{itemize}
+
+    \item \textbf{Phân hệ Cơ sở dữ liệu:}
+    \begin{itemize}
+        \item \textit{Công nghệ:} PostgreSQL 16 kết hợp Entity Framework Core 10.
+        \item \textit{Lý do lựa chọn:} Hỗ trợ mạnh mẽ kiểu dữ liệu \texttt{JSONB} kết hợp chỉ mục GIN Index giúp tối ưu tốc độ truy vấn dữ liệu CV và tìm kiếm việc làm.
+    \end{itemize}
+
+    \item \textbf{Dịch vụ AI và Lưu trữ đám mây:}
+    \begin{itemize}
+        \item \textit{AI Agent Service:} Tích hợp các mô hình LLM API bên ngoài (OpenAI / Google Gemini) để xử lý các tác vụ phân tích ngôn ngữ tự nhiên.
+        \item \textit{Cloudinary API:} Dùng làm dịch vụ lưu trữ đám mây cho ảnh đại diện, logo doanh nghiệp và tệp PDF CV xuất bản.
+        \item \textit{Đóng gói \& Triển khai:} Đóng gói toàn bộ ứng dụng bằng Docker Containers trên môi trường máy chủ Linux/Ubuntu.
+    \end{itemize}
+\end{itemize}
