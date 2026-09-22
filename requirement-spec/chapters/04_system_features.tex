@@ -31,9 +31,9 @@
 
 \subsubsection{Các yêu cầu chức năng}
 
-\begin{enumerate}[label=\bfseries REQ-AUTH-\arabic*:, labelwidth=!, labelsep=0.5em, leftmargin=*]
+\begin{enumerate}[label=\bfseries REQ-AUTH-\arabic*:, labelwidth=!, labelsep=0.5em, leftmargin=3.5cm]
     \item \textbf{Đăng ký tài khoản Ứng viên:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Ứng viên bằng Email, số điện thoại, Mật khẩu và Họ tên.
-    \item \textbf{Đăng ký tài khoản Nhà tuyển dụng:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Nhà tuyển dụng bằng Email, Mật khẩu, Họ tên và thông tin Tên công ty ban đầu.
+    \item \textbf{Đăng ký tài khoản Nhà tuyển dụng:} Hệ thống phải cho phép người dùng khách đăng ký tài khoản Nhà tuyển dụng bằng Email, Mật khẩu, Họ tên.
     \item \textbf{Xác thực đăng nhập JWT:} Hệ thống phải xác thực người dùng dựa trên Email/Mật khẩu và phát hành JWT Token chứa thông tin định danh và vai trò (Role Claims) sau khi xác thực thành công.
     \item \textbf{Mã hóa mật khẩu:} Hệ thống phải mã hóa tất cả mật khẩu người dùng bằng giải thuật băm an toàn (BCrypt hoặc Argon2) trước khi lưu trữ vào CSDL.
     \item \textbf{Phân quyền người dùng - RBAC:} Hệ thống phải kiểm tra và giới hạn quyền truy cập API/chức năng dựa trên 3 nhóm vai trò: Ứng viên, Nhà tuyển dụng, Quản trị viên.
@@ -48,6 +48,11 @@
     \end{itemize}
     \item \textbf{Đổi mật khẩu:} Hệ thống phải cho phép người dùng đã đăng nhập thay đổi mật khẩu tài khoản bằng cách cung cấp mật khẩu hiện tại và mật khẩu mới. Hệ thống phải kiểm tra tính hợp lệ của mật khẩu hiện tại, mã hóa mật khẩu mới bằng thuật toán băm an toàn trước khi lưu vào cơ sở dữ liệu và thông báo kết quả cho người dùng.
     \item \textbf{Quản lý thông tin cá nhân:} Hệ thống phải cho phép người dùng đã đăng nhập xem và cập nhật thông tin cá nhân thuộc tài khoản của mình.
+    \item \textbf{Tạo doanh nghiệp khi đăng ký:} Hệ thống phải cho phép người dùng lựa chọn tạo doanh nghiệp mới. Khi lựa chọn chức năng này, người dùng phải cung cấp các thông tin doanh nghiệp theo yêu cầu của hệ thống. Doanh nghiệp mới tạo phải được Quản trị viên xác minh trước khi được sử dụng các chức năng yêu cầu doanh nghiệp đã được xác minh.
+    \item \textbf{Gán quyền chủ doanh nghiệp:} Người dùng tạo doanh nghiệp đầu tiên và được Quản trị viên phê duyệt phải được gán vai trò Chủ doanh nghiệp đối với doanh nghiệp đó.
+    \item \textbf{Yêu cầu tham gia doanh nghiệp:} Người dùng tạo doanh nghiệp đầu tiên và được Quản trị viên phê duyệt phải được gán vai trò Chủ doanh nghiệp đối với doanh nghiệp đó.
+    \item \textbf{Mời Nhà tuyển dụng:} Hệ thống phải cho phép Chủ doanh nghiệp mời tài khoản Nhà tuyển dụng tham gia doanh nghiệp. Nhà tuyển dụng phải chấp nhận lời mời trước khi được thêm vào danh sách thành viên của doanh nghiệp.
+    \item \textbf{Ủy quyền quyền Chủ doanh nghiệp:} Hệ thống phải cho phép Chủ doanh nghiệp chuyển giao quyền Chủ doanh nghiệp cho một thành viên khác của doanh nghiệp. Sau khi chuyển giao thành công, người được ủy quyền trở thành Chủ doanh nghiệp mới và người chuyển giao quyền không còn giữ vai trò Chủ doanh nghiệp.
 \end{enumerate}
 
 \subsection{Phân hệ Công cụ Tạo CV theo Mẫu}
@@ -118,7 +123,7 @@
 
 \subsubsection{Các yêu cầu chức năng}
 
-\begin{enumerate}[label=\bfseries REQ-REC-\arabic*:, leftmargin=2.5cm]
+\begin{enumerate}[label=\bfseries REQ-REC-\arabic*:, labelwidth=!, labelsep=0.5em, leftmargin=3.0cm]
     \item \textbf{Tạo và Quản lý Tin tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng tạo mới, cập nhật thông tin, ẩn/hiện và quản lý trạng thái hoạt động của các tin tuyển dụng, bao gồm trạng thái đang nhận hồ sơ, ngừng nhận hồ sơ và đã đóng.
     \item \textbf{Cấu hình Chi tiết Tin tuyển dụng:} Hệ thống phải bắt buộc Nhà tuyển dụng thiết lập các tiêu chí chi tiết khi tạo JD bao gồm: Tên vị trí, ngành nghề, cấp bậc (Intern, Junior, Senior,...), địa điểm làm việc, hình thức làm việc, khoảng lương (hoặc Thỏa thuận), danh sách kỹ năng yêu cầu, mô tả công việc và hạn nộp hồ sơ.
     \item \textbf{Tìm kiếm và Lọc Việc làm đa tiêu chí:} Hệ thống phải cung cấp bộ lọc cho Ứng viên tìm kiếm việc làm theo từ khóa, ngành nghề, địa điểm, mức lương, cấp bậc và hình thức làm việc.
@@ -133,6 +138,7 @@
         \item Nếu file CV PDF ứng viên tải lên vượt quá dung lượng quy định (ví dụ: > 5MB) hoặc sai định dạng, hệ thống phải hiển thị thông báo lỗi và ngắt quá trình ứng tuyển.
     \end{itemize}
     \item \textbf{Dừng nhận hồ sơ ứng tuyển:} Hệ thống phải cho phép Nhà tuyển dụng chủ động dừng nhận hồ sơ ứng tuyển đối với một tin tuyển dụng đang mở trước thời hạn nộp hồ sơ. Khi tin tuyển dụng được chuyển sang trạng thái ngừng nhận hồ sơ, hệ thống phải ngăn Ứng viên tiếp tục nộp hồ sơ cho tin tuyển dụng đó và hiển thị thông báo phù hợp.
+    \item \textbf{Lựa chọn doanh nghiệp khi đăng tin:} Khi tạo tin tuyển dụng, hệ thống phải cho phép Nhà tuyển dụng lựa chọn một doanh nghiệp mà tài khoản đang có quan hệ thành viên hợp lệ. Tin tuyển dụng phải được liên kết với doanh nghiệp được lựa chọn.
 \end{enumerate}
 
 \subsection{Phân hệ Quản trị Hệ thống}
