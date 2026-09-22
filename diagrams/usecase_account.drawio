@@ -1,171 +1,202 @@
 <mxfile host="65bd71144e">
     <diagram id="AZZdkwUaTF_a3OgmQsQn" name="Page-1">
-        <mxGraphModel dx="1216" dy="906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1323" dy="483" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="8">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="1450" y="1410"/>
-                            <mxPoint x="1450" y="1140"/>
-                            <mxPoint x="1044" y="1140"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
                 <UserObject label="Quản lý tài khoản và phân quyền" plantUmlId="rect_6" plantUmlBaseStyle="swimlane;collapsible=0;startSize=26;fillColor=none;strokeColor=#181818;fontColor=#000000;fontSize=13;fontStyle=1;whiteSpace=wrap;shadow=0;" plantUmlBaseValue="SmartHire Authentication Subsystem" id="3">
-                    <mxCell style="swimlane;collapsible=0;startSize=26;fillColor=none;strokeColor=#181818;fontColor=#000000;fontSize=13;fontStyle=1;whiteSpace=wrap;shadow=0;" vertex="1" parent="1">
-                        <mxGeometry x="690" y="1030" width="720" height="471" as="geometry"/>
+                    <mxCell style="swimlane;collapsible=0;startSize=26;fontSize=13;fontStyle=1;whiteSpace=wrap;shadow=1;rounded=1;glass=0;swimlaneLine=1;fillColor=default;gradientColor=none;fillStyle=solid;" parent="1" vertex="1">
+                        <mxGeometry x="690" y="900" width="720" height="1050" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Đăng ký Ứng viên" plantUmlId="uc_7" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC01: Đăng ký Ứng viên" id="4">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="50" y="111.5" width="186" height="42" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="60" y="340" width="186" height="42" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <mxCell id="5" style="html=1;dashed=1;" edge="1" parent="3" source="7" target="13">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5">
-                    <mxGeometry x="-0.1161" y="-1" relative="1" as="geometry">
-                        <mxPoint x="34" y="7" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
                 <UserObject label="Đăng ký Nhà tuyển dụng" plantUmlId="uc_8" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC02: Đăng ký Nhà tuyển dụng" id="7">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="463" y="220" width="230" height="51" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="236.5" y="440" width="230" height="51" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Đăng nhập" plantUmlId="uc_9" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC03: Đăng nhập JWT" id="8">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="264.5" y="40" width="179" height="50" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="262" y="740" width="179" height="50" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Đăng xuất" plantUmlId="uc_10" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC05: Đăng xuất" id="9">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="282" y="410" width="144" height="34" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="270.5" y="650" width="144" height="34" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Quản lý Profile cá nhân&lt;br&gt;(Ứng viên)" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="10">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="29.5" y="250" width="227" height="50" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="39.5" y="250" width="227" height="50" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Đổi mật khẩu" plantUmlId="uc_12" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC07: Đổi mật khẩu" id="11">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="273" y="167" width="162" height="37" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="262" y="570" width="162" height="37" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Quản lý Profile cá nhân&lt;br&gt;(Nhà tuyển dụng)" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="12">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="443.5" y="355" width="227" height="50" as="geometry"/>
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="424" y="180" width="227" height="50" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <UserObject label="&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(236, 236, 236);&quot;&gt;Nhập thông tin&lt;/span&gt;&lt;br style=&quot;color: rgb(0, 0, 0); background-color: rgb(236, 236, 236);&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); background-color: rgb(236, 236, 236);&quot;&gt;xác minh Doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="13">
-                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
-                        <mxGeometry x="256.5" y="290" width="227" height="50" as="geometry"/>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Tạo doanh nghiệp mới&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="13">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" parent="3" vertex="1">
+                        <mxGeometry x="520" y="470" width="190" height="50" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.987;entryY=0.494;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="16" target="8">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="1500" y="1095"/>
-                            <mxPoint x="1134" y="1095"/>
-                        </Array>
+                <mxCell id="55" style="edgeStyle=none;html=1;dashed=1;" edge="1" parent="3" source="31" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="55">
+                    <mxGeometry x="0.0022" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="11">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="1044" y="1170"/>
-                        </Array>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Yêu cầu tham gia doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="31">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
+                        <mxGeometry x="472" y="332" width="227" height="50" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Mời tham gia doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="35">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
+                        <mxGeometry x="406" y="953" width="227" height="50" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="57" style="edgeStyle=none;html=1;entryX=0.965;entryY=0.717;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="3" source="13" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="57">
+                    <mxGeometry x="-0.194" relative="1" as="geometry">
+                        <mxPoint y="-11" as="offset"/>
                     </mxGeometry>
+                </mxCell>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Chấp nhận lời mời&lt;br&gt;tham gia doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="64">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
+                        <mxGeometry x="424" y="250" width="227" height="50" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Ủy quyền chủ doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="73">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
+                        <mxGeometry x="414.5" y="860" width="227" height="50" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="&lt;span style=&quot;background-color: rgb(236, 236, 236);&quot;&gt;Chấp nhận yêu cầu&lt;br&gt;tham gia doanh nghiệp&lt;/span&gt;" plantUmlId="uc_11" plantUmlBaseStyle="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="UC06: Quản lý Profile cá nhân" id="75">
+                    <mxCell style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="3">
+                        <mxGeometry x="450" y="773" width="227" height="50" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="44" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" style="edgeStyle=none;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <UserObject label="" plantUmlId="actor_15" plantUmlBaseStyle="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="" id="16">
-                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="1">
-                        <mxGeometry x="1480" y="1130" width="40" height="60" as="geometry"/>
+                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" parent="1" vertex="1">
+                        <mxGeometry x="585" y="1590" width="40" height="60" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Quản trị viên" plantUmlId="actorlbl_16" plantUmlBaseStyle="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" plantUmlBaseValue="Admin&#xa;(Quản trị viên)" id="17">
-                    <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
-                        <mxGeometry x="1520" y="1145" width="106.5" height="30" as="geometry"/>
+                    <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" parent="1" vertex="1">
+                        <mxGeometry x="478.5" y="1605" width="106.5" height="30" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="23" target="4">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="605" y="1163"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="45" style="edgeStyle=none;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="23" target="10">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="605" y="1305"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="48" style="edgeStyle=none;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="23" target="11">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="650" y="1216"/>
-                            <mxPoint x="650" y="1216"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="50" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="9">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="605" y="1457"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="8">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="605" y="1095"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="53" style="edgeStyle=none;html=1;" edge="1" parent="1" source="23" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <UserObject label="" plantUmlId="actor_2" plantUmlBaseStyle="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="" id="23">
-                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="1">
+                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" parent="1" vertex="1">
                         <mxGeometry x="585" y="1230" width="40" height="60" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <UserObject label="Ứng viên" plantUmlId="actorlbl_3" plantUmlBaseStyle="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" plantUmlBaseValue="Candidate&#xa;(Ứng viên)" id="24">
-                    <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
-                        <mxGeometry x="510" y="1252.8700000000001" width="75" height="25.25" as="geometry"/>
+                    <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" parent="1" vertex="1">
+                        <mxGeometry x="520" y="1247.3700000000001" width="75" height="25.25" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="7">
+                <mxCell id="46" style="edgeStyle=none;html=1;" edge="1" parent="1" source="29" target="8">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="12">
+                <mxCell id="51" style="edgeStyle=none;html=1;" edge="1" parent="1" source="29" target="11">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="9">
+                <mxCell id="54" style="edgeStyle=none;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" style="html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="35">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1500" y="1730" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="62" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="12">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="1490" y="1457"/>
+                            <mxPoint x="1500" y="1105"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="11">
+                <mxCell id="65" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="64">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="1490" y="1216"/>
+                            <mxPoint x="1480" y="1175"/>
                         </Array>
-                        <mxPoint x="1130" y="1215" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <UserObject label="" plantUmlId="actor_4" plantUmlBaseStyle="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="" id="29">
-                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="1">
-                        <mxGeometry x="1470" y="1380" width="40" height="60" as="geometry"/>
+                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" parent="1" vertex="1">
+                        <mxGeometry x="1470" y="1520" width="40" height="60" as="geometry"/>
                     </mxCell>
                 </UserObject>
+                <mxCell id="49" style="edgeStyle=none;html=1;" edge="1" parent="1" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1470" y="1554" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
                 <UserObject label="Nhà tuyển dụng" plantUmlId="actorlbl_5" plantUmlBaseStyle="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" plantUmlBaseValue="Recruiter&#xa;(Nhà tuyển dụng)" id="30">
+                    <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" parent="1" vertex="1">
+                        <mxGeometry x="1520" y="1540" width="109" height="27.5" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="52" style="edgeStyle=none;html=1;entryX=0.783;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="29" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" style="edgeStyle=none;html=1;entryX=0.77;entryY=0.943;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="29" target="13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" style="edgeStyle=none;html=1;entryX=0.3;entryY=1.056;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="23" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" style="edgeStyle=none;html=1;endArrow=block;endFill=0;strokeColor=default;rounded=1;curved=0;jumpStyle=none;" edge="1" parent="1" source="67" target="29">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" style="edgeStyle=none;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="67" target="73">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="67" target="75">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <UserObject label="" plantUmlId="actor_4" plantUmlBaseStyle="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" plantUmlBaseValue="" id="67">
+                    <mxCell style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;shadow=0;" vertex="1" parent="1">
+                        <mxGeometry x="1480" y="1670" width="40" height="60" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="Chủ doanh nghiệp" plantUmlId="actorlbl_5" plantUmlBaseStyle="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" plantUmlBaseValue="Recruiter&#xa;(Nhà tuyển dụng)" id="68">
                     <mxCell style="text;html=1;align=center;verticalAlign=top;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
-                        <mxGeometry x="1520" y="1400" width="109" height="27.5" as="geometry"/>
+                        <mxGeometry x="1540" y="1666.25" width="109" height="27.5" as="geometry"/>
                     </mxCell>
                 </UserObject>
             </root>
