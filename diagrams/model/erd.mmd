@@ -116,29 +116,64 @@ erDiagram
         DATETIME created_at
     }
 
+    COMPANY_FOLLOW {
+        UUID user_id PK, FK
+        UUID company_id PK, FK
+        DATETIME created_at
+    }
+
     JOB_POSTING {
         UUID id PK
         UUID company_id FK
         UUID created_by FK
-        UUID industry_id FK
-        UUID location_id FK
         VARCHAR title
+        UUID location_id FK
+        VARCHAR detailed_location
+
+        %% Overall requirements
+        INTEGER experience_years
+        ENUM job_level 
+        VARCHAR education_level
+        INTEGER vacancies
+        ENUM work_mode 
+        %% Full-time, Part-time, Contract, Internship, Freelance
+        ENUM job_type 
+        %% Remote, On-site, Hybrid
+
+        %% Detailed information 
         TEXT description
-        ENUM job_level
-        ENUM employment_type
+        TEXT requirements
+        TEXT benefits
+
         DECIMAL salary_min
         DECIMAL salary_max
+
         BOOLEAN salary_negotiable
+
         DATETIME deadline
         ENUM status
+
         DATETIME created_at
         DATETIME updated_at
     }
 
+    INDUSTRY_GROUP {
+        UUID id PK
+        VARCHAR name
+        BOOLEAN is_active
+    }
+
     INDUSTRY {
         UUID id PK
+        UUID group_id FK
         VARCHAR name UK
         ENUM status
+        BOOLEAN is_active
+    }
+
+    JOB_INDUSTRY {
+        UUID job_id PK, FK
+        UUID industry_id PK, FK
     }
 
     LOCATION {
@@ -154,17 +189,12 @@ erDiagram
         ENUM status
     }
 
-    JOB_SKILL {
-        UUID job_id PK, FK
-        UUID skill_id PK, FK
-    }
-
     CV_TEMPLATE {
         UUID id PK
         VARCHAR name
         VARCHAR thumbnail_url
         VARCHAR template_url
-        ENUM status
+        BOOLEAN is_active
         DATETIME created_at
     }
 
@@ -173,64 +203,28 @@ erDiagram
         UUID candidate_id FK
         UUID template_id FK
         VARCHAR title
-        TEXT career_objective
-        JSON content_json
-        VARCHAR pdf_url
-        BOOLEAN is_default
+        JSONB content
+        JSONB presentation
+        BOOLEAN is_public
         DATETIME created_at
         DATETIME updated_at
     }
 
-    WORK_EXPERIENCE {
+    CV_VERSION {
         UUID id PK
         UUID cv_id FK
-        VARCHAR company_name
-        VARCHAR position
-        DATE start_date
-        DATE end_date
-        TEXT description
-        INT display_order
-    }
-
-    EDUCATION {
-        UUID id PK
-        UUID cv_id FK
-        VARCHAR school_name
-        VARCHAR major
-        VARCHAR degree
-        DECIMAL gpa
-        DATE start_date
-        DATE end_date
-        INT display_order
-    }
-
-    CV_SKILL {
-        UUID cv_id PK, FK
-        UUID skill_id PK, FK
-        ENUM proficiency
-    }
-
-    PROJECT {
-        UUID id PK
-        UUID cv_id FK
-        VARCHAR name
-        VARCHAR position
-        TEXT description
-        VARCHAR demo_url
-        INT display_order
-    }
-
-    PROJECT_TECHNOLOGY {
-        UUID id PK
-        UUID project_id FK
-        VARCHAR technology_name
+        UUID template_id FK
+        JSONB content
+        JSONB presentation
+        INTEGER version_number
+        DATETIME created_at
     }
 
     APPLICATION {
         UUID id PK
         UUID job_id FK
         UUID candidate_id FK
-        UUID cv_id FK
+        UUID cv_version_id FK
         VARCHAR uploaded_cv_url
         TEXT cover_letter
         ENUM status
@@ -314,6 +308,9 @@ erDiagram
     USER ||--o{ COMPANY_JOIN_REQUEST : submits
     USER ||--o{ COMPANY_JOIN_REQUEST : reviews
 
+    USER ||--o{ COMPANY_FOLLOW : follows
+    COMPANY ||--o{ COMPANY_FOLLOW : followed_by
+
     %% =========================
     %% RECRUITMENT
     %% =========================
@@ -321,27 +318,16 @@ erDiagram
     COMPANY ||--o{ JOB_POSTING : publishes
     USER ||--o{ JOB_POSTING : creates
 
-    INDUSTRY ||--o{ JOB_POSTING : categorizes
+    JOB_POSTING ||--o{ JOB_INDUSTRY : has
+    INDUSTRY_GROUP ||--o{ INDUSTRY : contains
+    INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
     LOCATION ||--o{ JOB_POSTING : located_at
-
-    JOB_POSTING ||--o{ JOB_SKILL : requires
-    SKILL ||--o{ JOB_SKILL : belongs_to
 
     %% =========================
     %% CV
     %% =========================
 
-    %% CANDIDATE_PROFILE ||--o{ CV : owns
     CV_TEMPLATE ||--o{ CV : uses
-
-    CV ||--o{ WORK_EXPERIENCE : contains
-    CV ||--o{ EDUCATION : contains
-
-    CV ||--o{ CV_SKILL : has
-    SKILL ||--o{ CV_SKILL : used_in
-
-    CV ||--o{ PROJECT : contains
-    PROJECT ||--o{ PROJECT_TECHNOLOGY : uses
 
     %% =========================
     %% APPLICATION
@@ -350,8 +336,10 @@ erDiagram
     JOB_POSTING ||--o{ APPLICATION : receives
     USER ||--o{ APPLICATION : submits
     CV ||--o{ APPLICATION : uses
+    CV ||--o{ CV_VERSION : has
 
     APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
+    APPLICATION }o--|| CV_VERSION : submitted_with
     USER ||--o{ APPLICATION_STATUS_HISTORY : changes
 
     %% =========================
