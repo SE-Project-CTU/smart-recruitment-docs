@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="cv-template-usecase" name="Phân hệ 4.2 - Công cụ Tạo CV theo Mẫu">
-        <mxGraphModel dx="1785" dy="1388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="1120" dy="485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="system" value="PHÂN HỆ CÔNG CỤ TẠO CV THEO MẪU" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontStyle=1;fontSize=14;verticalAlign=top;spacingTop=14;glass=0;" parent="1" vertex="1">
+                <mxCell id="system" value="Sơ đồ Usecase công cụ tạo CV theo mẫu" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontStyle=1;fontSize=14;verticalAlign=top;spacingTop=14;glass=0;" parent="1" vertex="1">
                     <mxGeometry x="150" y="30" width="1290" height="960" as="geometry"/>
                 </mxCell>
                 <mxCell id="candidate" value="Ứng viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
@@ -60,34 +60,39 @@
                 </mxCell>
                 <mxCell id="i_manage_template" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_choose_template" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="480" y="430"/>
-                            <mxPoint x="480" y="140"/>
-                        </Array>
+                        <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="i_manage_edit" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_edit_cv" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="i_manage_save" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_save_cv" edge="1">
+                <mxCell id="i_manage_edit" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«&lt;/span&gt;includes&lt;span style=&quot;color: rgb(63, 63, 63); background-color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));&quot;&gt;»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_edit_cv" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="480" y="490"/>
-                            <mxPoint x="480" y="750"/>
-                        </Array>
+                        <mxPoint x="500" y="440" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="i_edit_personal" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_edit_cv" target="uc_edit_personal" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="i_manage_save" value="«extends»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_save_cv" target="uc_manage_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="i_edit_exp" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_edit_cv" target="uc_edit_exp" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="i_edit_personal" value="«extends»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.807;entryY=0.118;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="uc_edit_personal" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="760" y="360" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="i_edit_skill" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_edit_cv" target="uc_edit_skill" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="i_edit_exp" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="uc_edit_exp" edge="1">
+                    <mxGeometry x="0.0094" relative="1" as="geometry">
+                        <mxPoint x="720" y="433" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="i_edit_preview" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_edit_cv" target="uc_preview" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="i_edit_skill" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;entryX=0.971;entryY=0.714;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="uc_edit_skill" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="780" y="490" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_edit_preview" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0.01;exitY=0.347;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_preview" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="480" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="e_layout_edit" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="uc_layout" target="uc_edit_cv" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -108,10 +113,7 @@
                 </mxCell>
                 <mxCell id="e_visibility_save" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_visibility" target="uc_save_cv" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="790" y="850"/>
-                            <mxPoint x="790" y="780"/>
-                        </Array>
+                        <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
             </root>
