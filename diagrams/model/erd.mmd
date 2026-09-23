@@ -1,0 +1,372 @@
+---
+config:
+  layout: elk
+---
+
+erDiagram
+
+    USER {
+        UUID id PK
+        VARCHAR email UK
+        VARCHAR phone UK
+        VARCHAR password_hash
+        VARCHAR full_name
+        VARCHAR avatar_url
+        ENUM status
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    ROLE {
+        UUID id PK
+        VARCHAR name UK
+    }
+
+    PERMISSION {
+        UUID id PK
+        VARCHAR name UK
+        VARCHAR description
+        DATETIME created_at
+    }
+
+    USER_ROLE {
+        UUID user_id PK, FK
+        UUID role_id PK, FK
+    }
+
+    ROLE_PERMISSION {
+        UUID role_id PK, FK
+        UUID permission_id PK, FK
+    }
+
+    REFRESH_TOKEN {
+        UUID id PK
+        UUID user_id FK
+        VARCHAR token_hash
+        DATETIME expires_at
+        DATETIME revoked_at
+        DATETIME created_at
+    }
+
+    %% CANDIDATE_PROFILE {
+    %%     UUID id PK
+    %%     UUID user_id FK, UK
+    %%     VARCHAR job_title
+    %%     VARCHAR address
+    %%     VARCHAR linkedin_url
+    %%     VARCHAR github_url
+    %%     VARCHAR portfolio_url
+    %%     TEXT career_objective
+    %%     DATETIME created_at
+    %%     DATETIME updated_at
+    %% }
+
+    %% RECRUITER_PROFILE {
+    %%     UUID id PK
+    %%     UUID user_id FK, UK
+    %%     VARCHAR job_title
+    %%     VARCHAR phone
+    %%     DATETIME created_at
+    %%     DATETIME updated_at
+    %% }
+
+    COMPANY {
+        UUID id PK
+        VARCHAR name
+        VARCHAR tax_code UK
+        VARCHAR email
+        VARCHAR phone
+        VARCHAR address
+        VARCHAR website
+        TEXT description
+        VARCHAR logo_url
+        ENUM verification_status
+        DATETIME verified_at
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    COMPANY_MEMBERSHIP {
+        UUID id PK
+        UUID company_id FK
+        UUID user_id FK
+        ENUM role
+        ENUM status
+        DATETIME joined_at
+        DATETIME created_at
+    }
+
+    COMPANY_INVITATION {
+        UUID id PK
+        UUID company_id FK
+        UUID inviter_id FK
+        UUID invitee_id FK
+        ENUM status
+        DATETIME expires_at
+        DATETIME created_at
+    }
+
+    COMPANY_JOIN_REQUEST {
+        UUID id PK
+        UUID company_id FK
+        UUID user_id FK
+        ENUM status
+        UUID reviewed_by FK
+        DATETIME reviewed_at
+        DATETIME created_at
+    }
+
+    JOB_POSTING {
+        UUID id PK
+        UUID company_id FK
+        UUID created_by FK
+        UUID industry_id FK
+        UUID location_id FK
+        VARCHAR title
+        TEXT description
+        ENUM job_level
+        ENUM employment_type
+        DECIMAL salary_min
+        DECIMAL salary_max
+        BOOLEAN salary_negotiable
+        DATETIME deadline
+        ENUM status
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    INDUSTRY {
+        UUID id PK
+        VARCHAR name UK
+        ENUM status
+    }
+
+    LOCATION {
+        UUID id PK
+        VARCHAR name UK
+        ENUM status
+    }
+
+    SKILL {
+        UUID id PK
+        VARCHAR name UK
+        ENUM type
+        ENUM status
+    }
+
+    JOB_SKILL {
+        UUID job_id PK, FK
+        UUID skill_id PK, FK
+    }
+
+    CV_TEMPLATE {
+        UUID id PK
+        VARCHAR name
+        VARCHAR thumbnail_url
+        VARCHAR template_url
+        ENUM status
+        DATETIME created_at
+    }
+
+    CV {
+        UUID id PK
+        UUID candidate_id FK
+        UUID template_id FK
+        VARCHAR title
+        TEXT career_objective
+        JSON content_json
+        VARCHAR pdf_url
+        BOOLEAN is_default
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    WORK_EXPERIENCE {
+        UUID id PK
+        UUID cv_id FK
+        VARCHAR company_name
+        VARCHAR position
+        DATE start_date
+        DATE end_date
+        TEXT description
+        INT display_order
+    }
+
+    EDUCATION {
+        UUID id PK
+        UUID cv_id FK
+        VARCHAR school_name
+        VARCHAR major
+        VARCHAR degree
+        DECIMAL gpa
+        DATE start_date
+        DATE end_date
+        INT display_order
+    }
+
+    CV_SKILL {
+        UUID cv_id PK, FK
+        UUID skill_id PK, FK
+        ENUM proficiency
+    }
+
+    PROJECT {
+        UUID id PK
+        UUID cv_id FK
+        VARCHAR name
+        VARCHAR position
+        TEXT description
+        VARCHAR demo_url
+        INT display_order
+    }
+
+    PROJECT_TECHNOLOGY {
+        UUID id PK
+        UUID project_id FK
+        VARCHAR technology_name
+    }
+
+    APPLICATION {
+        UUID id PK
+        UUID job_id FK
+        UUID candidate_id FK
+        UUID cv_id FK
+        VARCHAR uploaded_cv_url
+        TEXT cover_letter
+        ENUM status
+        DATETIME applied_at
+        DATETIME updated_at
+    }
+
+    APPLICATION_STATUS_HISTORY {
+        UUID id PK
+        UUID application_id FK
+        ENUM status
+        UUID changed_by FK
+        TEXT note
+        DATETIME created_at
+    }
+
+    AI_MATCH_RESULT {
+        UUID id PK
+        UUID application_id FK
+        DECIMAL score
+        TEXT analysis
+        DATETIME created_at
+    }
+
+    AI_SKILL_GAP {
+        UUID id PK
+        UUID match_result_id FK
+        UUID skill_id FK
+        TEXT reason
+    }
+
+    JOB_RECOMMENDATION {
+        UUID id PK
+        UUID candidate_id FK
+        UUID job_id FK
+        DECIMAL score
+        DATETIME generated_at
+    }
+
+    MEDIA_FILE {
+        UUID id PK
+        UUID owner_id FK
+        VARCHAR file_name
+        VARCHAR file_url
+        VARCHAR file_type
+        BIGINT file_size
+        DATETIME created_at
+    }
+
+
+    %% =========================
+    %% ACCOUNT
+    %% =========================
+
+    USER ||--o{ USER_ROLE : has
+    ROLE ||--o{ USER_ROLE : assigned_to
+    ROLE ||--o{ ROLE_PERMISSION : grants
+    PERMISSION ||--o{ ROLE_PERMISSION : included_in
+
+    USER ||--o{ REFRESH_TOKEN : owns
+
+    %% =========================
+    %% PROFILE
+    %% =========================
+
+    %% USER ||--o| CANDIDATE_PROFILE : has
+    %% USER ||--o| RECRUITER_PROFILE : has
+
+    %% =========================
+    %% COMPANY
+    %% =========================
+
+    USER ||--o{ COMPANY_MEMBERSHIP : joins
+    COMPANY ||--o{ COMPANY_MEMBERSHIP : has
+
+    COMPANY ||--o{ COMPANY_INVITATION : sends
+    USER ||--o{ COMPANY_INVITATION : inviter
+    USER ||--o{ COMPANY_INVITATION : invitee
+
+    COMPANY ||--o{ COMPANY_JOIN_REQUEST : receives
+    USER ||--o{ COMPANY_JOIN_REQUEST : submits
+    USER ||--o{ COMPANY_JOIN_REQUEST : reviews
+
+    %% =========================
+    %% RECRUITMENT
+    %% =========================
+
+    COMPANY ||--o{ JOB_POSTING : publishes
+    USER ||--o{ JOB_POSTING : creates
+
+    INDUSTRY ||--o{ JOB_POSTING : categorizes
+    LOCATION ||--o{ JOB_POSTING : located_at
+
+    JOB_POSTING ||--o{ JOB_SKILL : requires
+    SKILL ||--o{ JOB_SKILL : belongs_to
+
+    %% =========================
+    %% CV
+    %% =========================
+
+    %% CANDIDATE_PROFILE ||--o{ CV : owns
+    CV_TEMPLATE ||--o{ CV : uses
+
+    CV ||--o{ WORK_EXPERIENCE : contains
+    CV ||--o{ EDUCATION : contains
+
+    CV ||--o{ CV_SKILL : has
+    SKILL ||--o{ CV_SKILL : used_in
+
+    CV ||--o{ PROJECT : contains
+    PROJECT ||--o{ PROJECT_TECHNOLOGY : uses
+
+    %% =========================
+    %% APPLICATION
+    %% =========================
+
+    JOB_POSTING ||--o{ APPLICATION : receives
+    USER ||--o{ APPLICATION : submits
+    CV ||--o{ APPLICATION : uses
+
+    APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
+    USER ||--o{ APPLICATION_STATUS_HISTORY : changes
+
+    %% =========================
+    %% AI
+    %% =========================
+
+    APPLICATION ||--o{ AI_MATCH_RESULT : analyzed_by
+    AI_MATCH_RESULT ||--o{ AI_SKILL_GAP : identifies
+    SKILL ||--o{ AI_SKILL_GAP : missing_skill
+
+    %% CANDIDATE_PROFILE ||--o{ JOB_RECOMMENDATION : receives
+    JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
+
+    %% =========================
+    %% MEDIA
+    %% =========================
+
+    USER ||--o{ MEDIA_FILE : owns
