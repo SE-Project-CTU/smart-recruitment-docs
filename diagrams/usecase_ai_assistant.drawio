@@ -1,0 +1,126 @@
+<mxfile host="65bd71144e">
+    <diagram id="ai-assistant-usecase" name="Phân hệ 4.5 - Tích hợp Trợ lý AI Thông minh">
+        <mxGraphModel dx="2688" dy="1164" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="system" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Sơ đồ Usecase cho tích hợp trợ lý AI thông minh&lt;/span&gt;&lt;/div&gt;" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontStyle=1;fontSize=14;verticalAlign=top;spacingTop=14;glass=0;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="40" width="1300" height="960" as="geometry"/>
+                </mxCell>
+                <mxCell id="candidate" value="Ứng viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="320" width="50" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="employer" value="Nhà tuyển dụng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="600" width="50" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="ai_service" value="Dịch vụ AI&#xa;(OpenAI / Gemini)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="1495" y="460" width="55" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_ai_write_cv" value="Trợ lý AI hỗ trợ&lt;br&gt;viết và gợi ý nội dung CV" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="205" y="145" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_ai_match_analysis" value="Phân tích độ phù hợp&#xa;giữa CV và JD" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="780" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_ai_recommend_jobs" value="Nhận gợi ý việc làm&#xa;thông minh trên Dashboard" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="370" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_ai_rewrite" value="Gợi ý từ AI" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="100" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_ai_keywords" value="Tối ưu hóa văn bản và Từ khóa ngành" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="230" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_semantic_parsing" value="Trích xuất ngữ nghĩa&#xa;dữ liệu CV và JD" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="720" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_calculate_score" value="Tính toán và chấm điểm&lt;br&gt;phần trăm phù hợp" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="850" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_profile_matching" value="Phân tích hồ sơ CV để tìm&#xa;việc làm tương thích" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="685" y="360" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_cand_write" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;" parent="1" source="candidate" target="uc_ai_write_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_cand_match" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=0.563;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="candidate" target="uc_ai_match_analysis" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_cand_rec" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;" parent="1" source="candidate" target="uc_ai_recommend_jobs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_emp_match" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;" parent="1" source="employer" target="uc_ai_match_analysis" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_ai_rewrite" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ai_service" target="uc_ai_rewrite" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a_ai_parsing" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="uc_semantic_parsing" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1410" y="550"/>
+                        </Array>
+                        <mxPoint x="1500" y="510" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a_ai_score" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="uc_calculate_score" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="1510" y="520" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="a_ai_profile" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ai_service" target="uc_profile_matching" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_write_rewrite" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.935;entryY=0.3;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="uc_ai_rewrite" target="uc_ai_write_cv" edge="1">
+                    <mxGeometry x="0.0066" relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="430" y="160" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_keywords_write" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" parent="1" source="uc_ai_keywords" target="uc_ai_write_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_match_parsing" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_ai_match_analysis" target="uc_semantic_parsing" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_match_score" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_ai_match_analysis" target="uc_calculate_score" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="i_rec_profile" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_ai_recommend_jobs" target="uc_profile_matching" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="446.7065139927615" y="398.26071206464104" as="sourcePoint"/>
+                        <mxPoint x="684.9958379057542" y="401.74067144934367" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="Phân tích khoảng trống kỹ năng" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="580" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="380" y="780" as="sourcePoint"/>
+                        <mxPoint x="611" y="731" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="1490" y="510" as="sourcePoint"/>
+                        <mxPoint x="890" y="750" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
