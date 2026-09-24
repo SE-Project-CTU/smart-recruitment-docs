@@ -175,6 +175,7 @@ erDiagram
         VARCHAR title
         JSONB content
         JSONB presentation
+        ENUM language
         BOOLEAN is_public
         DATETIME created_at
         DATETIME updated_at
@@ -186,6 +187,7 @@ erDiagram
         UUID template_id FK
         JSONB content
         JSONB presentation
+        ENUM language
         INTEGER version_number
         DATETIME created_at
     }

@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "templateId": "tpl_modern_tech_01",
+    "updatedAt": "2026-09-24T10:51:00Z"
+  },
+  "styles": {
+    "global": {
+      "fontFamily": "Inter",
+      "baseFontSize": 14,
+      "primaryColor": "#2563EB",
+      "lineHeight": 1.5
+    },
+    "fields": {
+      "profile.fullName": {
+        "color": "#1E293B",
+        "fontSize": 24,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "profile.title": {
+        "color": "#2563EB",
+        "fontSize": 16,
+        "fontFamily": "Inter",
+        "fontWeight": "medium",
+        "fontStyle": "italic",
+        "textDecoration": "none"
+      },
+      "profile.email": {
+        "color": "#475569",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "profile.phone": {
+        "color": "#475569",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "profile.address": {
+        "color": "#475569",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "profile.website": {
+        "color": "#2563EB",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "underline"
+      },
+
+      "objective": {
+        "color": "#334155",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "justify",
+        "listStyle": "none"
+      },
+
+      "sections.experience.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "exp_01.company": {
+        "color": "#1E293B",
+        "fontSize": 15,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "exp_01.position": {
+        "color": "#2563EB",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "medium",
+        "fontStyle": "italic",
+        "textDecoration": "none"
+      },
+      "exp_01.description": {
+        "color": "#334155",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "listStyle": "disc"
+      },
+
+      "sections.education.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "edu_01.school": {
+        "color": "#1E293B",
+        "fontSize": 15,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "edu_01.title": {
+        "color": "#475569",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "medium",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "edu_01.details": {
+        "color": "#334155",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "listStyle": "none"
+      },
+
+      "sections.skills.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "sk_01.name": {
+        "color": "#0F172A",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "sk_01.description": {
+        "color": "#475569",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "listStyle": "none"
+      },
+
+      "sections.projects.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "prj_01.project_name": {
+        "color": "#1E293B",
+        "fontSize": 15,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "prj_01.role": {
+        "color": "#2563EB",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "medium",
+        "fontStyle": "italic",
+        "textDecoration": "none"
+      },
+      "prj_01.description": {
+        "color": "#334155",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "justify",
+        "listStyle": "disc"
+      },
+
+      "sections.certifications.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "cert_01.name": {
+        "color": "#1E293B",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "medium",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+
+      "sections.awards.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "award_01.award_name": {
+        "color": "#1E293B",
+        "fontSize": 14,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+
+      "sections.interests.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "sections.interests.content": {
+        "color": "#334155",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "listStyle": "none"
+      },
+
+      "csec_01.title": {
+        "color": "#0F172A",
+        "fontSize": 18,
+        "fontFamily": "Inter",
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none"
+      },
+      "csec_01.content": {
+        "color": "#334155",
+        "fontSize": 13,
+        "fontFamily": "Inter",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "textAlign": "left",
+        "listStyle": "none"
+      }
+    }
+  }
+}

@@ -1,26 +1,116 @@
 {
-  "version": "1.0",
-
-  "personal": {
-    "fullName": "",
-    "email": "",
-    "phone": "",
-    "address": ""
+  "metadata": {
+    "version": "1.0",
+    "templateId": "tpl_modern_tech_01",
+    "language": "vi",
+    "updatedAt": "2026-09-24T10:00:00Z"
   },
-
-  "summary": "",
-
-  "experience": [],
-
-  "education": [],
-
-  "skills": [],
-
-  "projects": [],
-
-  "certifications": [],
-
-  "languages": [],
-
-  "customSections": []
+  "profile": {
+    "fullName": "Nguyễn Văn A",
+    "title": "Senior ASP.NET Core & Fullstack Developer",
+    "avatarUrl": "https://res.cloudinary.com/smarthire/image/upload/v12345/avatar.jpg",
+    "email": "nguyenvana@gmail.com",
+    "phone": "0901234567",
+    "dob": "1998-05-20",
+    "address": "Quận Ninh Kiều, Cần Thơ",
+    "website": "https://nguyenvana.dev",
+    "socialLinks": [
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/nguyenvana"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/nguyenvana"
+      }
+    ]
+  },
+  "objective": "Lập trình viên Fullstack với hơn 3 năm kinh nghiệm phát triển các hệ thống Web API bằng ASP.NET Core và ReactJS. Có thế mạnh về tối ưu hóa CSDL PostgreSQL, kiến trúc Microservices và tích hợp các giải pháp AI vào sản phẩm.",
+  "sections": {
+    "experience": {
+      "title": "Kinh nghiệm làm việc",
+      "visible": true,
+      "items": [
+        {
+          "id": "exp_01",
+          "company": "Công ty Công nghệ SmartHire",
+          "position": "Backend Developer (C# / .NET)",
+          "startDate": "2024-03",
+          "endDate": null,
+          "description": "Chịu trách nhiệm thiết kế kiến trúc Modular Monolith và phát triển hệ thống gợi ý CV tích hợp AI."
+        }
+      ]
+    },
+    "education": {
+      "title": "Học vấn",
+      "visible": true,
+      "items": [
+        {
+          "id": "edu_01",
+          "school": "Trường CNTT&TT - Đại học Cần Thơ",
+          "title": "Kỹ sư Kỹ thuật Phần mềm",
+          "start": "2020-09",
+          "end": "2024-06",
+          "details": "Tốt nghiệp loại Giỏi."
+        }
+      ]
+    },
+    "skills": {
+      "title": "Kỹ năng chuyên môn",
+      "visible": true,
+      "items": [
+        {
+          "id": "sk_01",
+          "name": "ASP.NET Core / C#",
+          "description": "Kỹ năng lập trình backend với ASP.NET Core và C#."
+        }
+      ]
+    },
+    "projects": {
+      "title": "Dự án nổi bật",
+      "visible": true,
+      "items": [
+        {
+          "id": "prj_01",
+          "project_name": "Nền tảng tuyển dụng SmartHire",
+          "role": "Leader / Main Backend Architect",
+          "start": "2026-01",
+          "end": "2026-05",
+          "description": "Hệ thống kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI."
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Chứng chỉ",
+      "visible": true,
+      "items": [
+        {
+          "id": "cert_01",
+          "name": "AWS Certified Solutions Architect",
+          "issueDate": "2025-08"
+        }
+      ]
+    },
+    "awards": {
+      "title": "Giải thưởng",
+      "visible": true,
+      "items": [
+        {
+          "id": "award_01",
+          "award_name": "Giải Nhất Hackathon CNTT 2025",
+          "date": "2025-12"
+        }
+      ]
+    },
+    "interests": {
+      "title": "Sở thích",
+      "visible": true,
+      "content": "Thích nghiên cứu các công nghệ mới, đặc biệt là AI và Cloud Computing."
+    },
+    "additionalInfo": {
+      "title": "Thông tin bổ sung",
+      "visible": true,
+      "content": "Sẵn sàng làm việc từ xa và di chuyển khi cần thiết."
+    }
+  }
 }
