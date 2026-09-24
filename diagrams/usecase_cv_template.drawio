@@ -1,0 +1,122 @@
+<mxfile host="65bd71144e">
+    <diagram id="cv-template-usecase" name="Phân hệ 4.2 - Công cụ Tạo CV theo Mẫu">
+        <mxGraphModel dx="1120" dy="485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="system" value="Sơ đồ Usecase công cụ tạo CV theo mẫu" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontStyle=1;fontSize=14;verticalAlign=top;spacingTop=14;glass=0;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="30" width="1290" height="960" as="geometry"/>
+                </mxCell>
+                <mxCell id="candidate" value="Ứng viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="430" width="50" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="admin" value="Quản trị viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="1500" y="770" width="50" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_manage_cv" value="Tạo và Quản lý CV" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="430" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_choose_template" value="Chọn Template CV" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="110" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_edit_cv" value="Biên soạn nội dung CV" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="410" width="195" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_save_cv" value="Lưu và Quản lý danh sách CV" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="720" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_edit_personal" value="Biên soạn Thông tin cá nhân&#xa;và Mục tiêu nghề nghiệp" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="290" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_edit_exp" value="Biên soạn Kinh nghiệm&#xa;làm việc và Học vấn" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="380" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_edit_skill" value="Biên soạn Kỹ năng&#xa;và Dự án" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="470" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_preview" value="Xem trước theo thời gian&#xa;thực (Live Preview)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="560" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_layout" value="Tùy chỉnh bố cục&#xa;hiển thị các mục" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="525" y="240" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_design" value="Tùy chỉnh Thiết kế&#xa;và Font chữ" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="620" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_export_pdf" value="Xuất CV dạng PDF" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="720" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_visibility" value="Cấu hình trạng thái hiển thị&#xa;CV (Public / Private)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="820" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="uc_admin_template" value="Quản lý CV Templates&#xa;(Bật/Tắt, Tải lên mẫu mới)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1130" y="780" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_cand_manage" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;" parent="1" source="candidate" target="uc_manage_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="a_adm_template" style="endArrow=none;html=1;strokeWidth=1.2;strokeColor=#000000;" parent="1" source="admin" target="uc_admin_template" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="i_manage_template" value="«include»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_choose_template" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_manage_edit" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«&lt;/span&gt;includes&lt;span style=&quot;color: rgb(63, 63, 63); background-color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));&quot;&gt;»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_manage_cv" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_manage_save" value="«extends»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_save_cv" target="uc_manage_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_edit_personal" value="«extends»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.807;entryY=0.118;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="uc_edit_personal" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="760" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_edit_exp" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="uc_edit_exp" edge="1">
+                    <mxGeometry x="0.0094" relative="1" as="geometry">
+                        <mxPoint x="720" y="433" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_edit_skill" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;entryX=0.971;entryY=0.714;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="uc_edit_skill" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="780" y="490" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="i_edit_preview" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;«extends»&lt;/span&gt;" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0.01;exitY=0.347;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_preview" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_layout_edit" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="uc_layout" target="uc_edit_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="630" y="330"/>
+                            <mxPoint x="630" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_design_edit" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;" parent="1" source="uc_design" target="uc_edit_cv" edge="1">
+                    <mxGeometry x="0.0059" relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_pdf_save" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="uc_export_pdf" target="uc_save_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_visibility_save" value="«extend»" style="dashed=1;endArrow=open;endFill=0;endSize=7;html=1;strokeWidth=1.2;strokeColor=#000000;fontColor=#000000;fontSize=11;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" source="uc_visibility" target="uc_save_cv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
