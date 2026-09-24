@@ -4,7 +4,6 @@ config:
 ---
 
 erDiagram
-
     USER {
         UUID id PK
         VARCHAR email UK
@@ -47,28 +46,6 @@ erDiagram
         DATETIME revoked_at
         DATETIME created_at
     }
-
-    %% CANDIDATE_PROFILE {
-    %%     UUID id PK
-    %%     UUID user_id FK, UK
-    %%     VARCHAR job_title
-    %%     VARCHAR address
-    %%     VARCHAR linkedin_url
-    %%     VARCHAR github_url
-    %%     VARCHAR portfolio_url
-    %%     TEXT career_objective
-    %%     DATETIME created_at
-    %%     DATETIME updated_at
-    %% }
-
-    %% RECRUITER_PROFILE {
-    %%     UUID id PK
-    %%     UUID user_id FK, UK
-    %%     VARCHAR job_title
-    %%     VARCHAR phone
-    %%     DATETIME created_at
-    %%     DATETIME updated_at
-    %% }
 
     COMPANY {
         UUID id PK
@@ -182,13 +159,6 @@ erDiagram
         ENUM status
     }
 
-    SKILL {
-        UUID id PK
-        VARCHAR name UK
-        ENUM type
-        ENUM status
-    }
-
     CV_TEMPLATE {
         UUID id PK
         VARCHAR name
@@ -243,17 +213,11 @@ erDiagram
 
     AI_MATCH_RESULT {
         UUID id PK
+        UUID cv_version_id FK
         UUID application_id FK
         DECIMAL score
         TEXT analysis
         DATETIME created_at
-    }
-
-    AI_SKILL_GAP {
-        UUID id PK
-        UUID match_result_id FK
-        UUID skill_id FK
-        TEXT reason
     }
 
     JOB_RECOMMENDATION {
@@ -285,13 +249,6 @@ erDiagram
     PERMISSION ||--o{ ROLE_PERMISSION : included_in
 
     USER ||--o{ REFRESH_TOKEN : owns
-
-    %% =========================
-    %% PROFILE
-    %% =========================
-
-    %% USER ||--o| CANDIDATE_PROFILE : has
-    %% USER ||--o| RECRUITER_PROFILE : has
 
     %% =========================
     %% COMPANY
@@ -347,10 +304,8 @@ erDiagram
     %% =========================
 
     APPLICATION ||--o{ AI_MATCH_RESULT : analyzed_by
-    AI_MATCH_RESULT ||--o{ AI_SKILL_GAP : identifies
-    SKILL ||--o{ AI_SKILL_GAP : missing_skill
+    CV_VERSION ||--o{ AI_MATCH_RESULT : analyzed_by
 
-    %% CANDIDATE_PROFILE ||--o{ JOB_RECOMMENDATION : receives
     JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
 
     %% =========================
