@@ -14,16 +14,7 @@
     "dob": "1998-05-20",
     "address": "Quận Ninh Kiều, Cần Thơ",
     "website": "https://nguyenvana.dev",
-    "socialLinks": [
-      {
-        "network": "LinkedIn",
-        "url": "https://linkedin.com/in/nguyenvana"
-      },
-      {
-        "network": "GitHub",
-        "url": "https://github.com/nguyenvana"
-      }
-    ]
+    "socialLink": "https://linkedin.com/in/nguyenvana"
   },
   "objective": "Lập trình viên Fullstack với hơn 3 năm kinh nghiệm phát triển các hệ thống Web API bằng ASP.NET Core và ReactJS. Có thế mạnh về tối ưu hóa CSDL PostgreSQL, kiến trúc Microservices và tích hợp các giải pháp AI vào sản phẩm.",
   "sections": {
