@@ -63,6 +63,7 @@ erDiagram
         DATETIME updated_at
     }
 
+    %% UNIQUE(company_id, user_id)
     COMPANY_MEMBERSHIP {
         UUID id PK
         UUID company_id FK
@@ -215,13 +216,13 @@ erDiagram
 
     AI_MATCH_RESULT {
         UUID id PK
-        UUID cv_version_id FK
         UUID application_id FK
         DECIMAL score
         TEXT analysis
         DATETIME created_at
     }
 
+    %% UNIQUE(candidate_id, job_id)
     JOB_RECOMMENDATION {
         UUID id PK
         UUID candidate_id FK
@@ -286,7 +287,9 @@ erDiagram
     %% CV
     %% =========================
 
+    USER ||--o{ CV : owns
     CV_TEMPLATE ||--o{ CV : uses
+    CV_TEMPLATE ||--o{ CV_VERSION : uses
 
     %% =========================
     %% APPLICATION
@@ -294,7 +297,6 @@ erDiagram
 
     JOB_POSTING ||--o{ APPLICATION : receives
     USER ||--o{ APPLICATION : submits
-    CV ||--o{ APPLICATION : uses
     CV ||--o{ CV_VERSION : has
 
     APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
@@ -305,10 +307,11 @@ erDiagram
     %% AI
     %% =========================
 
-    APPLICATION ||--o{ AI_MATCH_RESULT : analyzed_by
+    APPLICATION ||--o| AI_MATCH_RESULT : analyzed_by
     CV_VERSION ||--o{ AI_MATCH_RESULT : analyzed_by
 
     JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
+    USER ||--o{ JOB_RECOMMENDATION : receives
 
     %% =========================
     %% MEDIA
