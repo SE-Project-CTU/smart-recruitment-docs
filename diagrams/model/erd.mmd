@@ -100,6 +100,8 @@ erDiagram
         DATETIME created_at
     }
 
+    %% FOREIGN KEY (company_id, created_by)
+    %% REFERENCES company_membership(company_id, user_id)
     JOB_POSTING {
         UUID id PK
         UUID company_id FK
