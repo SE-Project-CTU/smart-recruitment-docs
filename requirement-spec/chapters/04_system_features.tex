@@ -50,10 +50,11 @@
     \item \textbf{Quản lý thông tin cá nhân:} Hệ thống phải cho phép người dùng đã đăng nhập xem và cập nhật thông tin cá nhân thuộc tài khoản của mình.
     \item \textbf{Tạo doanh nghiệp khi đăng ký:} Hệ thống phải cho phép người dùng lựa chọn tạo doanh nghiệp mới. Khi lựa chọn chức năng này, người dùng phải cung cấp các thông tin doanh nghiệp theo yêu cầu của hệ thống. Doanh nghiệp mới tạo phải được Quản trị viên xác minh trước khi được sử dụng các chức năng yêu cầu doanh nghiệp đã được xác minh.
     \item \textbf{Gán quyền chủ doanh nghiệp:} Người dùng tạo doanh nghiệp đầu tiên và được Quản trị viên phê duyệt phải được gán vai trò Chủ doanh nghiệp đối với doanh nghiệp đó.
-    \item \textbf{Yêu cầu tham gia doanh nghiệp:} Người dùng tạo doanh nghiệp đầu tiên và được Quản trị viên phê duyệt phải được gán vai trò Chủ doanh nghiệp đối với doanh nghiệp đó.
+    \item \textbf{Yêu cầu tham gia doanh nghiệp:} Hệ thống phải cho phép Nhà tuyển dụng gửi yêu cầu tham gia một doanh nghiệp. Chủ doanh nghiệp phải có thể xem, chấp thuận hoặc từ chối yêu cầu; chỉ yêu cầu được chấp thuận mới tạo quan hệ thành viên hợp lệ.
     \item \textbf{Mời Nhà tuyển dụng:} Hệ thống phải cho phép Chủ doanh nghiệp mời tài khoản Nhà tuyển dụng tham gia doanh nghiệp. Nhà tuyển dụng phải chấp nhận lời mời trước khi được thêm vào danh sách thành viên của doanh nghiệp.
     \item \textbf{Chấp nhận lời mời tham gia doanh nghiệp:} Hệ thống phải cho phép Nhà tuyển dụng nhận lời mời tham gia doanh nghiệp. Sau khi chấp nhận, Nhà tuyển dụng sẽ được thêm vào danh sách thành viên của doanh nghiệp.
     \item \textbf{Ủy quyền quyền Chủ doanh nghiệp:} Hệ thống phải cho phép Chủ doanh nghiệp chuyển giao quyền Chủ doanh nghiệp cho một thành viên khác của doanh nghiệp. Sau khi chuyển giao thành công, người được ủy quyền trở thành Chủ doanh nghiệp mới và người chuyển giao quyền không còn giữ vai trò Chủ doanh nghiệp.
+    \item \textbf{Theo dõi doanh nghiệp:} Hệ thống phải cho phép Ứng viên theo dõi hoặc bỏ theo dõi doanh nghiệp và xem danh sách các doanh nghiệp đang theo dõi trong tài khoản cá nhân.
 \end{enumerate}
 
 \subsection{Phân hệ Công cụ Tạo CV theo Mẫu}
@@ -88,6 +89,7 @@
     \item \textbf{Biên soạn Kỹ năng và Dự án:} Hệ thống phải cho phép ứng viên thêm, sửa, xóa danh sách Kỹ năng (phân loại kỹ năng chuyên môn, kỹ năng mềm, mức độ thông thạo) và các Dự án cá nhân/thực tế đã tham gia (Tên dự án, Vị trí, Mô tả, Công nghệ sử dụng, Link demo).
     \item \textbf{Xem trước theo thời gian thực - Real-time Live Preview:} Hệ thống phải cập nhật nội dung xem trước trên giao diện mẫu CV ngay khi người dùng thao tác nhập liệu trực tiếp mà không cần tải lại trang.
     \item \textbf{Lưu và Quản lý danh sách CV:} Hệ thống phải cho phép ứng viên lưu bản nháp, tạo nhiều phiên bản CV khác nhau và quản lý danh sách CV đã tạo trong tài khoản cá nhân.
+    \item \textbf{Quản lý phiên bản CV:} Hệ thống phải lưu lịch sử các phiên bản của từng CV, hiển thị số thứ tự và thời điểm tạo, đồng thời cho phép ứng viên xem hoặc khôi phục một phiên bản trước đó.
     \item \textbf{Xuất CV dạng PDF:} Hệ thống phải cho phép biên dịch dữ liệu CV thành file PDF có định dạng chuẩn, giữ nguyên kiểu dáng, phông chữ và định dạng giao diện đã chọn để người dùng tải xuống hoặc nộp trực tiếp.
     \item \textbf{Xử lý lỗi và dữ liệu nhập không hợp lệ:}
     \begin{itemize}
@@ -126,9 +128,10 @@
 
 \begin{enumerate}[label=\bfseries REQ-REC-\arabic*:, labelwidth=!, labelsep=0.5em, leftmargin=3.0cm]
     \item \textbf{Tạo và Quản lý Tin tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng tạo mới, cập nhật thông tin, ẩn/hiện và quản lý trạng thái hoạt động của các tin tuyển dụng, bao gồm trạng thái đang nhận hồ sơ, ngừng nhận hồ sơ và đã đóng.
-    \item \textbf{Cấu hình Chi tiết Tin tuyển dụng:} Hệ thống phải bắt buộc Nhà tuyển dụng thiết lập các tiêu chí chi tiết khi tạo JD bao gồm: Tên vị trí, ngành nghề, cấp bậc (Intern, Junior, Senior,...), địa điểm làm việc, hình thức làm việc, khoảng lương (hoặc Thỏa thuận), danh sách kỹ năng yêu cầu, mô tả công việc và hạn nộp hồ sơ.
+    \item \textbf{Cấu hình Chi tiết Tin tuyển dụng:} Hệ thống phải bắt buộc Nhà tuyển dụng thiết lập các tiêu chí chi tiết khi tạo JD bao gồm: Tên vị trí, ngành nghề, cấp bậc (Intern, Junior, Senior,...), số lượng tuyển, trình độ học vấn, địa điểm làm việc chi tiết, hình thức làm việc (Toàn thời gian, Bán thời gian, Hợp đồng, Thực tập hoặc Tự do), phương thức làm việc (Tại văn phòng, Từ xa hoặc Kết hợp), khoảng lương (hoặc Thỏa thuận), danh sách kỹ năng yêu cầu, mô tả công việc, yêu cầu, quyền lợi và hạn nộp hồ sơ.
     \item \textbf{Tìm kiếm và Lọc Việc làm đa tiêu chí:} Hệ thống phải cung cấp bộ lọc cho Ứng viên tìm kiếm việc làm theo từ khóa, ngành nghề, địa điểm, mức lương, cấp bậc và hình thức làm việc.
     \item \textbf{Ứng tuyển Trực tuyến với CV SmartHire hoặc File PDF:} Hệ thống phải cho phép Ứng viên lựa chọn ứng tuyển bằng CV đã khởi tạo trực tiếp trên hệ thống hoặc tải file CV dạng PDF từ thiết bị cá nhân.
+    \item \textbf{Thư giới thiệu khi ứng tuyển:} Hệ thống phải cho phép Ứng viên nhập, chỉnh sửa và gửi thư giới thiệu kèm hồ sơ ứng tuyển; Nhà tuyển dụng phải có thể xem thư giới thiệu cùng với CV của ứng viên.
     \item \textbf{Giới hạn Đăng ký / Ứng tuyển trùng lặp:} Hệ thống phải ngăn chặn và thông báo lỗi nếu Ứng viên thực hiện nộp hồ sơ nhiều lần cho cùng một tin tuyển dụng đang mở.
     \item \textbf{Theo dõi Trạng thái Hồ sơ - Phía Ứng viên:} Hệ thống phải cung cấp cho Ứng viên giao diện xem lịch sử các công việc đã ứng tuyển kèm theo trạng thái xử lý hiện tại từ phía Nhà tuyển dụng.
     \item \textbf{Quản lý Hồ sơ Ứng tuyển - Phía Nhà tuyển dụng:} Hệ thống phải cho phép Nhà tuyển dụng xem danh sách ứng viên đã nộp hồ sơ theo từng tin tuyển dụng, mở xem nội dung CV trực tuyến và tải về.
@@ -140,6 +143,7 @@
     \end{itemize}
     \item \textbf{Dừng nhận hồ sơ ứng tuyển:} Hệ thống phải cho phép Nhà tuyển dụng chủ động dừng nhận hồ sơ ứng tuyển đối với một tin tuyển dụng đang mở trước thời hạn nộp hồ sơ. Khi tin tuyển dụng được chuyển sang trạng thái ngừng nhận hồ sơ, hệ thống phải ngăn Ứng viên tiếp tục nộp hồ sơ cho tin tuyển dụng đó và hiển thị thông báo phù hợp.
     \item \textbf{Lựa chọn doanh nghiệp khi đăng tin:} Khi tạo tin tuyển dụng, hệ thống phải cho phép Nhà tuyển dụng lựa chọn một doanh nghiệp mà tài khoản đang có quan hệ thành viên hợp lệ. Tin tuyển dụng phải được liên kết với doanh nghiệp được lựa chọn.
+    \item \textbf{Quản lý tệp hồ sơ ứng tuyển:} Hệ thống phải lưu thông tin tệp CV tải lên (tên tệp, định dạng, dung lượng và đường dẫn lưu trữ), chỉ cho phép người nộp và Nhà tuyển dụng có quyền truy cập xem hoặc tải tệp tương ứng.
 \end{enumerate}
 
 \subsection{Phân hệ Quản trị Hệ thống}
@@ -171,8 +175,9 @@
 \begin{enumerate}[label=\bfseries REQ-ADM-\arabic*:, leftmargin=2.5cm]
     \item \textbf{Quản lý và Kiểm duyệt Doanh nghiệp:} Hệ thống phải cho phép Quản trị viên xem thông tin chi tiết, kiểm tra tính xác thực và phê duyệt/từ chối tài khoản Nhà tuyển dụng mới đăng ký.
     \item \textbf{Quản lý và Khóa Tài khoản Vi phạm:} Hệ thống phải cho phép Quản trị viên tìm kiếm, theo dõi danh sách tất cả người dùng (Ứng viên, Nhà tuyển dụng) và thực hiện khóa hoặc khôi phục quyền hoạt động của tài khoản.
+    \item \textbf{Quản lý Vai trò và Quyền hạn:} Hệ thống phải cho phép Quản trị viên quản lý danh sách vai trò, quyền hạn và quan hệ phân quyền giữa chúng; việc thay đổi quyền phải được áp dụng khi kiểm tra truy cập các API/chức năng.
     \item \textbf{Duyệt Tin tuyển dụng chống Spam/Lừa đảo:} Hệ thống phải cung cấp giao diện cho Quản trị viên kiểm duyệt nội dung các tin tuyển dụng trước khi hiển thị công khai trên nền tảng nhằm tránh thông tin sai sự thật hoặc gian lận.
-    \item \textbf{Quản lý Danh mục Ngành nghề và Địa điểm:} Hệ thống phải cho phép Quản trị viên khởi tạo, chỉnh sửa và quản lý cấu trúc danh mục Ngành nghề chuyên môn và Tỉnh/Thành phố/Địa điểm làm việc.
+    \item \textbf{Quản lý Danh mục Ngành nghề và Địa điểm:} Hệ thống phải cho phép Quản trị viên khởi tạo, chỉnh sửa và quản lý cấu trúc nhóm ngành nghề, ngành nghề chuyên môn và Tỉnh/Thành phố/Địa điểm làm việc; đồng thời cho phép bật hoặc tắt từng mục mà không làm mất dữ liệu đã liên kết.
     \item \textbf{Quản lý Danh mục Kỹ năng chuẩn hóa:} Hệ thống phải cho phép Quản trị viên bổ sung, chỉnh sửa danh sách Kỹ năng (Skill set) dùng chung cho toàn bộ hệ thống để phục vụ tìm kiếm và xử lý AI.
     \item \textbf{Quản lý CV Templates:} Hệ thống phải cho phép Quản trị viên quản lý danh sách các mẫu thiết kế CV (CV Templates), bật/tắt hoặc tải lên cấu trúc Template CV mới.
     \item \textbf{Thống kê và Báo cáo Vận hành:} Hệ thống phải cung cấp giao diện Dashboard báo cáo chi tiết về số lượng người dùng mới, tin tuyển dụng mở và lượt ứng tuyển thành công.
