@@ -195,6 +195,14 @@ erDiagram
         DATETIME created_at
     }
 
+    CV_EMBEDDING {
+        UUID id PK
+        UUID cv_version_id FK
+        VECTOR embedding
+        VARCHAR model
+        DATETIME created_at
+    }
+
     APPLICATION {
         UUID id PK
         UUID job_id FK
@@ -311,6 +319,7 @@ erDiagram
 
     APPLICATION ||--o| AI_MATCH_RESULT : analyzed_by
     CV_VERSION ||--o{ AI_MATCH_RESULT : analyzed_by
+    CV_VERSION ||--o| CV_EMBEDDING : represented_by
 
     JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
     USER ||--o{ JOB_RECOMMENDATION : receives
