@@ -107,7 +107,8 @@ erDiagram
         UUID company_id FK
         UUID created_by FK
         VARCHAR title
-        UUID location_id FK
+        UUID province_id FK
+        UUID ward_id FK
         VARCHAR detailed_location
 
         %% Overall requirements
@@ -164,9 +165,16 @@ erDiagram
         UUID industry_id PK, FK
     }
 
-    LOCATION {
+    PROVINCE {
         UUID id PK
         VARCHAR name UK
+        ENUM status
+    }
+
+    WARD {
+        UUID id PK
+        UUID province_id FK
+        VARCHAR name
         ENUM status
     }
 
@@ -318,7 +326,9 @@ erDiagram
     INDUSTRY_GROUP ||--o{ INDUSTRY : contains
     INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
     SKILL ||--o{ JOB_SKILL : belongs_to
-    LOCATION ||--o{ JOB_POSTING : located_at
+    PROVINCE ||--o{ WARD : contains
+    PROVINCE ||--o{ JOB_POSTING : located_at
+    WARD ||--o{ JOB_POSTING : located_at
 
     %% =========================
     %% CV

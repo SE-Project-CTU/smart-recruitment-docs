@@ -2,7 +2,7 @@
 
 ## Group Summary
 
-Nhóm API quản trị `USER`, `ROLE`, `PERMISSION`, `ROLE_PERMISSION`, `COMPANY`, `JOB_POSTING`, `INDUSTRY_GROUP`, `INDUSTRY`, `LOCATION`, `CV_TEMPLATE` và `SKILL`.
+Nhóm API quản trị `USER`, `ROLE`, `PERMISSION`, `ROLE_PERMISSION`, `COMPANY`, `JOB_POSTING`, `INDUSTRY_GROUP`, `INDUSTRY`, `PROVINCE`, `WARD`, `CV_TEMPLATE` và `SKILL`.
 
 Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `APPLICATION` và dữ liệu AI không được CRUD trực tiếp qua nhóm này.
 
@@ -21,10 +21,11 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 | 9   | Quản lý permission         | `GET/POST /api/v1/admin/permissions`, `PATCH .../{id}` | `PERMISSION`       |
 | 10  | Quản lý nhóm ngành         | `GET/POST /api/v1/admin/industry-groups`, `PATCH .../{id}` | `INDUSTRY_GROUP` |
 | 11  | Quản lý ngành nghề         | `GET/POST /api/v1/admin/industries`, `PATCH .../{id}` | `INDUSTRY`           |
-| 12  | Quản lý địa điểm           | `GET/POST /api/v1/admin/locations`, `PATCH .../{id}` | `LOCATION`            |
-| 13  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}` | `CV_TEMPLATE`         |
-| 14  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}` | `SKILL`                 |
-| 15  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`             | Aggregated read model   |
+| 12  | Quản lý Tỉnh/Thành phố     | `GET/POST /api/v1/admin/provinces`, `PATCH .../{id}` | `PROVINCE`            |
+| 13  | Quản lý Phường/Xã          | `GET/POST /api/v1/admin/wards`, `PATCH .../{id}` | `WARD`                |
+| 14  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}` | `CV_TEMPLATE`         |
+| 15  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}` | `SKILL`                 |
+| 16  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`             | Aggregated read model   |
 
 ## Shared Rules
 
@@ -42,6 +43,7 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 | `fullName` / `avatarUrl`                 | `full_name` / `avatar_url`                 | `USER`                                      |
 | `roleId` / `permissionId`                | `role_id` / `permission_id`                | RBAC resources                              |
 | `verificationStatus` / `verifiedAt`      | `verification_status` / `verified_at`      | `COMPANY`                                   |
+| `provinceId` / `wardId`                  | `province_id` / `ward_id`                  | `PROVINCE`, `WARD`, `JOB_POSTING`           |
 | `category` / `isActive`                  | `category` / `is_active`                   | `SKILL`, `INDUSTRY_GROUP`, `INDUSTRY`, `CV_TEMPLATE` |
 | `defaultContent` / `defaultPresentation` | `default_content` / `default_presentation` | `CV_TEMPLATE`                               |
 | `createdAt` / `updatedAt`                | `created_at` / `updated_at`                | Persisted resources                         |
@@ -474,7 +476,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 9 (PENDING): Replace Role Permissions</strong></summary>
+<summary><strong>API 8 (Pending): Replace Role Permissions</strong></summary>
 
 ### Title & Summary
 
@@ -529,7 +531,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 10 (PENDING): Manage Permissions</strong></summary>
+<summary><strong>API 9 (Pending): Manage Permissions</strong></summary>
 
 ### Title & Summary
 
@@ -598,7 +600,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 11 (PENDING): Manage Industry Groups</strong></summary>
+<summary><strong>API 10 (Pending): Manage Industry Groups</strong></summary>
 
 ### Title & Summary
 
@@ -661,7 +663,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 12 (PENDING): Manage Industries</strong></summary>
+<summary><strong>API 11 (Pending): Manage Industries</strong></summary>
 
 ### Title & Summary
 
@@ -730,20 +732,20 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 13: Manage Locations</strong></summary>
+<summary><strong>API 12 (Pending): Manage Provinces</strong></summary>
 
 ### Title & Summary
 
-**Quản lý địa điểm**
+**Quản lý Tỉnh/Thành phố**
 
-Tạo, cập nhật và bật/tắt địa điểm dùng trong tin tuyển dụng.
+Tạo, cập nhật và bật/tắt Tỉnh/Thành phố dùng cho địa điểm công việc.
 
 ### Method & Path
 
 ```http
-GET  /api/v1/admin/locations
-POST /api/v1/admin/locations
-PATCH /api/v1/admin/locations/{id}
+GET  /api/v1/admin/provinces
+POST /api/v1/admin/provinces
+PATCH /api/v1/admin/provinces/{id}
 ```
 
 ### Authentication & Authorization
@@ -760,7 +762,7 @@ Chỉ Admin.
 
 | Parameter | Required | DataType | Validation Rules |
 | --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên địa điểm. |
+| `search`  |       No | String   | Tìm theo tên Tỉnh/Thành phố. |
 | `status`  |       No | Enum     | `ACTIVE`, `INACTIVE`. |
 | `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
 
@@ -774,7 +776,7 @@ Chỉ Admin.
 
 ### Response Status Codes
 
-`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` location không tồn tại; `409` name đang được job dùng; `422` validation; `500` lỗi CSDL.
+`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` province không tồn tại; `409` name đang được dùng; `422` validation; `500` lỗi CSDL.
 
 ### Example Success Response
 
@@ -782,7 +784,73 @@ Chỉ Admin.
 {
   "data": {
     "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
-    "name": "Ho Chi Minh City",
+    "name": "Thành phố Hồ Chí Minh",
+    "status": "ACTIVE"
+  },
+  "meta": {},
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 13 (Pending): Manage Wards</strong></summary>
+
+### Title & Summary
+
+**Quản lý Phường/Xã**
+
+Tạo, cập nhật và bật/tắt Phường/Xã thuộc Tỉnh/Thành phố.
+
+### Method & Path
+
+```http
+GET  /api/v1/admin/wards
+POST /api/v1/admin/wards
+PATCH /api/v1/admin/wards/{id}
+```
+
+### Authentication & Authorization
+
+Chỉ Admin.
+
+### Headers
+
+`Authorization`, `Content-Type` với POST/PATCH và `X-Correlation-ID` UUID là bắt buộc.
+
+### Request Parameters / Body
+
+**Query Parameters (dành cho GET):**
+
+| Parameter | Required | DataType | Validation Rules |
+| --------- | -------: | -------- | ---------------- |
+| `provinceId` |    No | UUID     | Lọc theo Tỉnh/Thành phố. |
+| `search`     |    No | String   | Tìm theo tên Phường/Xã. |
+| `status`     |    No | Enum     | `ACTIVE`, `INACTIVE`. |
+| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+
+**Body (dành cho POST / PATCH):**
+
+| Field        |     Required | DataType | Validation Rules      |
+| ------------ | -----------: | -------- | --------------------- |
+| `id`         |  Conditional | UUID     | Bắt buộc với PATCH.   |
+| `provinceId` | Yes for POST | UUID     | Province phải tồn tại.|
+| `name`       | Yes for POST | String   | 2-150 ký tự.          |
+| `status`     |           No | Enum     | `ACTIVE`, `INACTIVE`. |
+
+### Response Status Codes
+
+`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` ward/province không tồn tại; `422` validation; `500` lỗi CSDL.
+
+### Example Success Response
+
+```json
+{
+  "data": {
+    "id": "c1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "provinceId": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
+    "name": "Phường Ben Nghe",
     "status": "ACTIVE"
   },
   "meta": {},
