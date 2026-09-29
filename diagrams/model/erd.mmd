@@ -137,6 +137,14 @@ erDiagram
         DATETIME updated_at
     }
 
+    JOB_EMBEDDING {
+        UUID id PK
+        UUID job_id FK
+        VECTOR embedding
+        VARCHAR model
+        DATETIME created_at
+    }
+
     INDUSTRY_GROUP {
         UUID id PK
         VARCHAR name
@@ -289,6 +297,7 @@ erDiagram
     USER ||--o{ JOB_POSTING : creates
 
     JOB_POSTING ||--o{ JOB_INDUSTRY : has
+    JOB_POSTING ||--o| JOB_EMBEDDING : has
     INDUSTRY_GROUP ||--o{ INDUSTRY : contains
     INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
     LOCATION ||--o{ JOB_POSTING : located_at
