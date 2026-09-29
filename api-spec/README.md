@@ -6,7 +6,7 @@ Tài liệu này mô tả REST API của nền tảng SmartHire dựa trên Syst
 
 ## API Groups
 
-API được chia thành **6 nhóm**, mỗi nhóm tương ứng một file tài liệu:
+API được chia thành **7 nhóm**, mỗi nhóm tương ứng một file tài liệu:
 
 | # | Nhóm API | File | Phạm vi chính |
 |---|---|---|---|
@@ -14,8 +14,9 @@ API được chia thành **6 nhóm**, mỗi nhóm tương ứng một file tài 
 | 2 | Company & Membership | [02-company.md](02-company.md) | Doanh nghiệp, thành viên, lời mời, yêu cầu tham gia và theo dõi doanh nghiệp |
 | 3 | CV & Template | [03-cv.md](03-cv.md) | Template, CV, phiên bản CV, xuất PDF và trạng thái Public/Private |
 | 4 | Recruitment & Application | [04-recruitment.md](04-recruitment.md) | Tin tuyển dụng, tìm kiếm, ứng tuyển và lịch sử trạng thái hồ sơ |
-| 5 | Administration | [05-admin.md](05-admin.md) | Kiểm duyệt, người dùng, RBAC, danh mục, template và báo cáo |
+| 5 | Administration | [05-admin.md](05-admin.md) | Kiểm duyệt, người dùng, RBAC, danh mục (kỹ năng, ngành nghề, địa điểm), template và báo cáo |
 | 6 | AI Assistant | [06-ai.md](06-ai.md) | Gợi ý viết CV, phân tích độ phù hợp và đề xuất việc làm |
+| 7 | Media & File Upload | [07-media.md](07-media.md) | Tải lên hình ảnh (avatar, logo), tệp PDF (CV), quản lý và xóa tệp tin |
 
 ## Conventions
 

@@ -170,11 +170,27 @@ erDiagram
         ENUM status
     }
 
+    SKILL {
+        UUID id PK
+        VARCHAR name UK
+        %% VARCHAR category
+        BOOLEAN is_active
+        DATETIME created_at
+    }
+
+    JOB_SKILL {
+        UUID job_id PK, FK
+        UUID skill_id PK, FK
+    }
+
     CV_TEMPLATE {
         UUID id PK
         VARCHAR name
         VARCHAR thumbnail_url
         VARCHAR template_url
+        JSONB default_content
+        JSONB default_presentation
+        ENUM language
         BOOLEAN is_active
         DATETIME created_at
     }
@@ -297,9 +313,11 @@ erDiagram
     USER ||--o{ JOB_POSTING : creates
 
     JOB_POSTING ||--o{ JOB_INDUSTRY : has
+    JOB_POSTING ||--o{ JOB_SKILL : requires
     JOB_POSTING ||--o| JOB_EMBEDDING : has
     INDUSTRY_GROUP ||--o{ INDUSTRY : contains
     INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
+    SKILL ||--o{ JOB_SKILL : belongs_to
     LOCATION ||--o{ JOB_POSTING : located_at
 
     %% =========================
