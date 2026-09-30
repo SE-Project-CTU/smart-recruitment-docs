@@ -107,7 +107,8 @@ erDiagram
         UUID company_id FK
         UUID created_by FK
         VARCHAR title
-        UUID location_id FK
+        UUID province_id FK
+        UUID ward_id FK
         VARCHAR detailed_location
 
         %% Overall requirements
@@ -137,6 +138,14 @@ erDiagram
         DATETIME updated_at
     }
 
+    JOB_EMBEDDING {
+        UUID id PK
+        UUID job_id FK
+        VECTOR embedding
+        VARCHAR model
+        DATETIME created_at
+    }
+
     INDUSTRY_GROUP {
         UUID id PK
         VARCHAR name
@@ -156,10 +165,30 @@ erDiagram
         UUID industry_id PK, FK
     }
 
-    LOCATION {
+    PROVINCE {
         UUID id PK
         VARCHAR name UK
         ENUM status
+    }
+
+    WARD {
+        UUID id PK
+        UUID province_id FK
+        VARCHAR name
+        ENUM status
+    }
+
+    SKILL {
+        UUID id PK
+        VARCHAR name UK
+        %% VARCHAR category
+        BOOLEAN is_active
+        DATETIME created_at
+    }
+
+    JOB_SKILL {
+        UUID job_id PK, FK
+        UUID skill_id PK, FK
     }
 
     CV_TEMPLATE {
@@ -170,6 +199,9 @@ erDiagram
         VARCHAR thumbnail_url
         JSONB default_layout
         VARCHAR version
+        JSONB default_content
+        JSONB default_presentation
+        ENUM language
         BOOLEAN is_active
         DATETIME created_at
         DATETIME updated_at
@@ -198,6 +230,14 @@ erDiagram
         JSONB presentation
         ENUM language
         INTEGER version_number
+        DATETIME created_at
+    }
+
+    CV_EMBEDDING {
+        UUID id PK
+        UUID cv_version_id FK
+        VECTOR embedding
+        VARCHAR model
         DATETIME created_at
     }
 
@@ -287,9 +327,14 @@ erDiagram
     USER ||--o{ JOB_POSTING : creates
 
     JOB_POSTING ||--o{ JOB_INDUSTRY : has
+    JOB_POSTING ||--o{ JOB_SKILL : requires
+    JOB_POSTING ||--o| JOB_EMBEDDING : has
     INDUSTRY_GROUP ||--o{ INDUSTRY : contains
     INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
-    LOCATION ||--o{ JOB_POSTING : located_at
+    SKILL ||--o{ JOB_SKILL : belongs_to
+    PROVINCE ||--o{ WARD : contains
+    PROVINCE ||--o{ JOB_POSTING : located_at
+    WARD ||--o{ JOB_POSTING : located_at
 
     %% =========================
     %% CV
@@ -317,6 +362,7 @@ erDiagram
 
     APPLICATION ||--o| AI_MATCH_RESULT : analyzed_by
     CV_VERSION ||--o{ AI_MATCH_RESULT : analyzed_by
+    CV_VERSION ||--o| CV_EMBEDDING : represented_by
 
     JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
     USER ||--o{ JOB_RECOMMENDATION : receives
