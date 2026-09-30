@@ -3,19 +3,11 @@
   "areas": [
     {
       "id": "sidebar",
-      "sections": [
-        "skills",
-        "education",
-        "certifications"
-      ]
+      "sections": ["skills", "education", "certifications"]
     },
     {
       "id": "main",
-      "sections": [
-        "objective",
-        "experience",
-        "projects"
-      ]
+      "sections": ["objective", "experience", "projects"]
     }
   ]
 }
