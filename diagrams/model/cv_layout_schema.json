@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "areas": [
+    {
+      "id": "sidebar",
+      "sections": [
+        "skills",
+        "education",
+        "certifications"
+      ]
+    },
+    {
+      "id": "main",
+      "sections": [
+        "objective",
+        "experience",
+        "projects"
+      ]
+    }
+  ]
+}
