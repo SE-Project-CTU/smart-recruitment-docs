@@ -45,7 +45,8 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 | `verificationStatus` / `verifiedAt`      | `verification_status` / `verified_at`      | `COMPANY`                                   |
 | `provinceId` / `wardId`                  | `province_id` / `ward_id`                  | `PROVINCE`, `WARD`, `JOB_POSTING`           |
 | `category` / `isActive`                  | `category` / `is_active`                   | `SKILL`, `INDUSTRY_GROUP`, `INDUSTRY`, `CV_TEMPLATE` |
-| `defaultContent` / `defaultPresentation` | `default_content` / `default_presentation` | `CV_TEMPLATE`                               |
+| `code` / `version`                        | `code` / `version`                         | `CV_TEMPLATE`                               |
+| `defaultLayout` / `defaultContent` / `defaultPresentation` | `default_layout` / `default_content` / `default_presentation` | `CV_TEMPLATE` |
 | `createdAt` / `updatedAt`                | `created_at` / `updated_at`                | Persisted resources                         |
 
 <details>
@@ -867,7 +868,7 @@ Chỉ Admin.
 
 **Quản lý template CV**
 
-Tạo, xem, cập nhật và bật/tắt template CV. Template đang được CV sử dụng không hard delete.
+Tạo, xem, cập nhật và bật/tắt template CV (`CV_TEMPLATE`). Template lưu `code` (để FE component mapping), `defaultLayout`, `defaultContent`, `defaultPresentation` (ba giá trị gợi ý ban đầu khi Candidate tạo CV), `version` và `thumbnailUrl`.
 
 ### Method & Path
 
@@ -891,8 +892,7 @@ Chỉ Admin.
 
 | Parameter | Required | DataType | Validation Rules |
 | --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên template. |
-| `language` |      No | String   | ISO 639-1 (e.g. `vi`, `en`). |
+| `search`  |       No | String   | Tìm theo tên hoặc code template. |
 | `isActive` |      No | Boolean  | Lọc theo trạng thái bật/tắt. |
 | `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
 
@@ -901,17 +901,19 @@ Chỉ Admin.
 | Field                 |     Required | DataType    | Validation Rules                            |
 | --------------------- | -----------: | ----------- | ------------------------------------------- |
 | `id`                  |  Conditional | UUID        | Bắt buộc với PATCH.                         |
+| `code`                | Yes for POST | String      | Định danh kỹ thuật duy nhất (e.g. `modern-blue`, `minimalist-v1`), lowercase kebab-case. |
 | `name`                | Yes for POST | String      | 2-150 ký tự.                                |
-| `thumbnailUrl`        | Yes for POST | String      | URL hợp lệ.                                 |
-| `templateUrl`         | Yes for POST | String      | URL cấu trúc template hợp lệ.               |
-| `defaultContent`      | Yes for POST | JSON Object | Tuân schema CV content.                     |
-| `defaultPresentation` | Yes for POST | JSON Object | Tuân schema CV presentation.                |
-| `language`            | Yes for POST | String      | ISO 639-1.                                  |
-| `isActive`            |           No | Boolean     | Tắt bằng false nếu template đang được dùng. |
+| `description`         |           No | String      | Mô tả định dạng template.                   |
+| `thumbnailUrl`        | Yes for POST | String      | URL ảnh xem trước hợp lệ.                   |
+| `defaultLayout`       | Yes for POST | JSON Object | Tuân thủ `cv_layout_schema.json`; có `version`, `type`, `areas[].id` và `areas[].sections`. |
+| `defaultContent`      | Yes for POST | JSON Object | Tuân thủ `cv_content_schema.json`; có `metadata`, `profile` và `sections.order`/`sections.objective` đúng cấu trúc. |
+| `defaultPresentation` | Yes for POST | JSON Object | Tuân thủ `cv_presentation_schema.json`; có `metadata` và `styles.global`/`styles.fields`. |
+| `version`             |           No | Integer     | Mặc định 1; tăng khi nâng cấp template.     |
+| `isActive`            |           No | Boolean     | Tắt bằng false nếu template ngưng hỗ trợ.   |
 
 ### Response Status Codes
 
-`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` template không tồn tại; `409` template đang được dùng; `422` schema/URL/language sai; `500` lỗi CSDL/storage.
+`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` template không tồn tại; `409` code template đã tồn tại; `422` schema defaultLayout/defaultContent/defaultPresentation không hợp lệ; `500` lỗi CSDL/storage.
 
 ### Example Success Response
 
@@ -919,14 +921,48 @@ Chỉ Admin.
 {
   "data": {
     "id": "6a6c7345-ec6f-4b09-bf05-2a4a4a2e5a80",
+    "code": "modern-blue",
     "name": "Modern Blue",
+    "description": "Template hiện đại với bố cục dạng lưới linh hoạt",
     "thumbnailUrl": "https://cdn.smarthire.example/templates/modern-blue.png",
-    "templateUrl": "https://cdn.smarthire.example/templates/modern-blue.json",
-    "defaultContent": {},
-    "defaultPresentation": {},
-    "language": "vi",
+    "defaultLayout": {
+      "version": "1.0",
+      "type": "two-column",
+      "areas": [
+        { "id": "sidebar", "sections": ["skills", "education", "certifications"] },
+        { "id": "main", "sections": ["objective", "experience", "projects"] }
+      ]
+    },
+    "defaultContent": {
+      "metadata": { "version": "1.0", "templateId": "tpl_modern_tech_01", "language": "vi", "updatedAt": "2026-09-24T10:00:00Z" },
+      "profile": {
+        "fullName": "", "title": "", "avatarUrl": "https://cdn.smarthire.example/avatar-placeholder.png",
+        "email": "", "phone": "", "dob": "", "address": "",
+        "website": "https://smarthire.example", "socialLink": "https://linkedin.com"
+      },
+      "sections": {
+        "order": ["objective", "experience", "education", "skills", "projects", "certifications", "awards", "interests", "additionalInfo"],
+        "objective": { "title": "Mục tiêu nghề nghiệp", "visible": true, "content": "" },
+        "experience": { "title": "Kinh nghiệm làm việc", "visible": true, "items": [] },
+        "education": { "title": "Học vấn", "visible": true, "items": [] },
+        "skills": { "title": "Kỹ năng chuyên môn", "visible": true, "items": [] },
+        "projects": { "title": "Dự án nổi bật", "visible": true, "items": [] },
+        "certifications": { "title": "Chứng chỉ", "visible": true, "items": [] },
+        "awards": { "title": "Giải thưởng", "visible": true, "items": [] },
+        "interests": { "title": "Sở thích", "visible": true, "content": "" },
+        "additionalInfo": { "title": "Thông tin bổ sung", "visible": true, "content": "" }
+      }
+    },
+    "defaultPresentation": {
+      "metadata": { "version": "1.0", "templateId": "tpl_modern_tech_01", "updatedAt": "2026-09-24T10:51:00Z" },
+      "styles": {
+        "global": { "fontFamily": "Inter", "baseFontSize": 14, "primaryColor": "#2563EB", "lineHeight": 1.5 },
+        "fields": {}
+      }
+    },    "version": 1,
     "isActive": true,
-    "createdAt": "2026-09-01T08:00:00Z"
+    "createdAt": "2026-09-01T08:00:00Z",
+    "updatedAt": "2026-09-01T08:00:00Z"
   },
   "meta": {},
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
@@ -1050,3 +1086,4 @@ Chỉ Admin.
 ```
 
 </details>
+

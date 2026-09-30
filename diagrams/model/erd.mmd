@@ -193,14 +193,18 @@ erDiagram
 
     CV_TEMPLATE {
         UUID id PK
+        VARCHAR code UK
         VARCHAR name
+        TEXT description
         VARCHAR thumbnail_url
-        VARCHAR template_url
+        VARCHAR version
+        JSONB default_layout
         JSONB default_content
         JSONB default_presentation
         ENUM language
         BOOLEAN is_active
         DATETIME created_at
+        DATETIME updated_at
     }
 
     CV {
@@ -209,6 +213,7 @@ erDiagram
         UUID template_id FK
         VARCHAR title
         JSONB content
+        JSONB layout
         JSONB presentation
         ENUM language
         BOOLEAN is_public
@@ -221,6 +226,7 @@ erDiagram
         UUID cv_id FK
         UUID template_id FK
         JSONB content
+        JSONB layout
         JSONB presentation
         ENUM language
         INTEGER version_number

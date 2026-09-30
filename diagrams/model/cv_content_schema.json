@@ -16,8 +16,24 @@
     "website": "https://nguyenvana.dev",
     "socialLink": "https://linkedin.com/in/nguyenvana"
   },
-  "objective": "Lập trình viên Fullstack với hơn 3 năm kinh nghiệm phát triển các hệ thống Web API bằng ASP.NET Core và ReactJS. Có thế mạnh về tối ưu hóa CSDL PostgreSQL, kiến trúc Microservices và tích hợp các giải pháp AI vào sản phẩm.",
   "sections": {
+    "order": [
+      "objective",
+      "experience",
+      "education",
+      "skills",
+      "projects",
+      "certifications",
+      "awards",
+      "interests",
+      "additionalInfo"
+    ],
+
+    "objective": {
+      "title": "Mục tiêu nghề nghiệp",
+      "visible": true,
+      "content": "Tôi mong muốn trở thành một chuyên gia phát triển phần mềm, đóng góp vào các dự án công nghệ tiên tiến và tích hợp AI."
+    },
     "experience": {
       "title": "Kinh nghiệm làm việc",
       "visible": true,
