@@ -30,6 +30,7 @@ Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp ti
 | API field | ERD column | Resource |
 | --- | --- | --- |
 | `id` | `id` | `MEDIA_FILE` |
+| `ownerId` | `owner_id` | `MEDIA_FILE` |
 | `fileName` | `file_name` | `MEDIA_FILE` |
 | `fileUrl` | `file_url` | `MEDIA_FILE` |
 | `fileType` | `file_type` | `MEDIA_FILE` |
