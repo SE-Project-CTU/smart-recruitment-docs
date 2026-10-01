@@ -314,7 +314,7 @@ POST /api/v1/job-postings
 
 - Yêu cầu Access Token hợp lệ.
 - Role: `Recruiter`.
-- Caller phải là membership `Active` của `companyId`; Owner hoặc member có permission đăng tin được gọi.
+- Caller phải là membership `Active` của `companyId`; Owner hoặc member được phép đăng tin theo quy tắc phân quyền trong ứng dụng.
 
 ### Headers
 
@@ -637,7 +637,7 @@ Không có request body.
 
 **Cập nhật tin tuyển dụng**
 
-Cho phép creator hoặc Recruiter có permission cập nhật nội dung tin (bao gồm địa chỉ, kỹ năng, ngành nghề). Các field audit và company relationship do server quản lý.
+Cho phép creator hoặc Recruiter được phép cập nhật nội dung tin theo quy tắc phân quyền trong ứng dụng (bao gồm địa chỉ, kỹ năng, ngành nghề). Các field audit và company relationship do server quản lý.
 
 ### Method & Path
 
@@ -648,7 +648,7 @@ PATCH /api/v1/job-postings/{id}
 ### Authentication & Authorization
 
 - Yêu cầu Access Token hợp lệ.
-- Recruiter phải là creator hoặc member có permission quản lý tin của company.
+- Recruiter phải là creator hoặc member được phép quản lý tin trong company theo quy tắc phân quyền trong ứng dụng.
 
 ### Headers
 
@@ -756,7 +756,7 @@ PATCH /api/v1/job-postings/{id}/status
 ### Authentication & Authorization
 
 - Yêu cầu Access Token hợp lệ.
-- Recruiter creator/member có permission quản lý tin.
+- Recruiter là creator hoặc member được phép quản lý tin theo quy tắc phân quyền trong ứng dụng.
 
 ### Headers
 
@@ -780,7 +780,7 @@ PATCH /api/v1/job-postings/{id}/status
 | `200` | OK | Cập nhật status thành công. |
 | `400` | Bad Request | JSON/UUID sai format. |
 | `401` | Unauthorized | Access Token không hợp lệ. |
-| `403` | Forbidden | Không có permission. |
+| `403` | Forbidden | Không có quyền thực hiện thao tác này. |
 | `404` | Not Found | Tin không tồn tại. |
 | `409` | Conflict | Chuyển trạng thái không hợp lệ theo state machine. |
 | `422` | Unprocessable Entity | Status không được phép. |
@@ -991,7 +991,7 @@ GET /api/v1/job-postings/{id}/applications
 ### Authentication & Authorization
 
 - Yêu cầu Access Token hợp lệ.
-- Recruiter phải là creator hoặc member có permission quản lý job/company.
+- Recruiter phải là creator hoặc member được phép quản lý job/company theo quy tắc phân quyền trong ứng dụng.
 
 ### Headers
 

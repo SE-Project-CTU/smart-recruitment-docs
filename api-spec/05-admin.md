@@ -2,7 +2,7 @@
 
 ## Group Summary
 
-Nhóm API quản trị `USER`, `ROLE`, `PERMISSION`, `ROLE_PERMISSION`, `COMPANY`, `JOB_POSTING`, `INDUSTRY_GROUP`, `INDUSTRY`, `PROVINCE`, `WARD`, `CV_TEMPLATE` và `SKILL`.
+Nhóm API quản trị `USER`, `ROLE`, `USER_ROLE`, `COMPANY`, `JOB_POSTING`, `INDUSTRY_GROUP`, `INDUSTRY`, `PROVINCE`, `WARD`, `CV_TEMPLATE` và `SKILL`.
 
 Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `APPLICATION` và dữ liệu AI không được CRUD trực tiếp qua nhóm này.
 
@@ -17,15 +17,13 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 | 5   | Duyệt/từ chối doanh nghiệp | `PATCH /api/v1/admin/companies/{id}/verification`  | `COMPANY`               |
 | 6   | Tin tuyển dụng cần duyệt   | `GET /api/v1/admin/job-postings`                   | `JOB_POSTING`           |
 | 7   | Duyệt/từ chối tin          | `PATCH /api/v1/admin/job-postings/{id}/moderation` | `JOB_POSTING`           |
-| 8   | Gán permission cho role    | `PUT /api/v1/admin/roles/{id}/permissions`         | `ROLE_PERMISSION`       |
-| 9   | Quản lý permission         | `GET/POST /api/v1/admin/permissions`, `PATCH .../{id}` | `PERMISSION`       |
-| 10  | Quản lý nhóm ngành         | `GET/POST /api/v1/admin/industry-groups`, `PATCH .../{id}` | `INDUSTRY_GROUP` |
-| 11  | Quản lý ngành nghề         | `GET/POST /api/v1/admin/industries`, `PATCH .../{id}` | `INDUSTRY`           |
-| 12  | Quản lý Tỉnh/Thành phố     | `GET/POST /api/v1/admin/provinces`, `PATCH .../{id}` | `PROVINCE`            |
-| 13  | Quản lý Phường/Xã          | `GET/POST /api/v1/admin/wards`, `PATCH .../{id}` | `WARD`                |
-| 14  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}` | `CV_TEMPLATE`         |
-| 15  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}` | `SKILL`                 |
-| 16  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`             | Aggregated read model   |
+| 8   | Quản lý nhóm ngành         | `GET/POST /api/v1/admin/industry-groups`, `PATCH .../{id}` | `INDUSTRY_GROUP` |
+| 9   | Quản lý ngành nghề         | `GET/POST /api/v1/admin/industries`, `PATCH .../{id}` | `INDUSTRY`           |
+| 10  | Quản lý Tỉnh/Thành phố     | `GET/POST /api/v1/admin/provinces`, `PATCH .../{id}` | `PROVINCE`            |
+| 11  | Quản lý Phường/Xã          | `GET/POST /api/v1/admin/wards`, `PATCH .../{id}` | `WARD`                |
+| 12  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}` | `CV_TEMPLATE`         |
+| 13  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}` | `SKILL`                 |
+| 14  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`             | Aggregated read model   |
 
 ## Shared Rules
 
@@ -41,7 +39,7 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 | API field                                | ERD column                                 | Resource                                    |
 | ---------------------------------------- | ------------------------------------------ | ------------------------------------------- |
 | `fullName` / `avatarUrl`                 | `full_name` / `avatar_url`                 | `USER`                                      |
-| `roleId` / `permissionId`                | `role_id` / `permission_id`                | RBAC resources                              |
+| `roleId`                                  | `role_id`                                  | `ROLE`, `USER_ROLE`                         |
 | `verificationStatus` / `verifiedAt`      | `verification_status` / `verified_at`      | `COMPANY`                                   |
 | `provinceId` / `wardId`                  | `province_id` / `ward_id`                  | `PROVINCE`, `WARD`, `JOB_POSTING`           |
 | `category` / `isActive`                  | `category` / `is_active`                   | `SKILL`, `INDUSTRY_GROUP`, `INDUSTRY`, `CV_TEMPLATE` |
@@ -477,194 +475,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 8 (Pending): Replace Role Permissions</strong></summary>
-
-### Title & Summary
-
-**Gán permission cho role**
-
-Thay thế toàn bộ mapping `ROLE_PERMISSION` của role trong transaction.
-
-### Method & Path
-
-```http
-PUT /api/v1/admin/roles/{id}/permissions
-```
-
-### Authentication & Authorization
-
-Chỉ Admin.
-
-### Headers
-
-`Authorization`, `Content-Type: application/json` và `X-Correlation-ID` UUID là bắt buộc.
-
-### Request Parameters / Body
-
-| Field           | Required | DataType    | Validation Rules                      |
-| --------------- | -------: | ----------- | ------------------------------------- |
-| `id`            |      Yes | UUID        | Role phải tồn tại.                    |
-| `permissionIds` |      Yes | Array<UUID> | Không trùng; permission phải tồn tại. |
-
-### Response Status Codes
-
-`200` thành công; `400` sai body; `401` token sai; `403` không phải Admin; `404` role/permission không tồn tại; `409` role hệ thống không đổi được; `422` validation; `500` transaction lỗi.
-
-### Example Request
-
-```json
-{ "permissionIds": ["c0f9b1d8-1d4e-4b1e-bf9d-6b8c3c5e9e50"] }
-```
-
-### Example Success Response
-
-```json
-{
-  "data": {
-    "roleId": "b7a9d725-761d-4a6b-a46c-9be7d9b0b1c4",
-    "permissionIds": ["c0f9b1d8-1d4e-4b1e-bf9d-6b8c3c5e9e50"]
-  },
-  "meta": {},
-  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
-}
-```
-
-</details>
-
-<details>
-<summary><strong>API 9 (Pending): Manage Permissions</strong></summary>
-
-### Title & Summary
-
-**Quản lý permission**
-
-Liệt kê, tạo và cập nhật permission dùng trong RBAC.
-
-### Method & Path
-
-```http
-GET  /api/v1/admin/permissions
-POST /api/v1/admin/permissions
-PATCH /api/v1/admin/permissions/{id}
-```
-
-### Authentication & Authorization
-
-Chỉ Admin.
-
-### Headers
-
-`Authorization`, `Content-Type` với POST/PATCH và `X-Correlation-ID` UUID là bắt buộc.
-
-### Request Parameters / Body
-
-**Query Parameters (dành cho GET):**
-
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên permission hoặc mô tả. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
-
-**Body (dành cho POST / PATCH):**
-
-| Field         |     Required | DataType      | Validation Rules     |
-| ------------- | -----------: | ------------- | -------------------- |
-| `id`          |  Conditional | UUID          | Bắt buộc với PATCH.  |
-| `name`        | Yes for POST | String        | Unique, 2-100 ký tự. |
-| `description` |           No | String / null | Tối đa 500 ký tự.    |
-
-### Response Status Codes
-
-`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` permission không tồn tại; `409` name trùng/đang dùng; `422` validation; `500` lỗi CSDL.
-
-### Example Request
-
-```json
-{ "name": "job.review", "description": "Review and manage job postings." }
-```
-
-### Example Success Response
-
-```json
-{
-  "data": {
-    "id": "c0f9b1d8-1d4e-4b1e-bf9d-6b8c3c5e9e50",
-    "name": "job.review",
-    "description": "Review and manage job postings.",
-    "createdAt": "2026-09-29T11:00:00Z"
-  },
-  "meta": {},
-  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
-}
-```
-
-</details>
-
-<details>
-<summary><strong>API 10 (Pending): Manage Industry Groups</strong></summary>
-
-### Title & Summary
-
-**Quản lý nhóm ngành**
-
-Tạo, cập nhật và bật/tắt nhóm ngành; không hard delete nhóm có ngành liên kết.
-
-### Method & Path
-
-```http
-GET  /api/v1/admin/industry-groups
-POST /api/v1/admin/industry-groups
-PATCH /api/v1/admin/industry-groups/{id}
-```
-
-### Authentication & Authorization
-
-Chỉ Admin.
-
-### Headers
-
-`Authorization`, `Content-Type` với POST/PATCH và `X-Correlation-ID` UUID là bắt buộc.
-
-### Request Parameters / Body
-
-**Query Parameters (dành cho GET):**
-
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên nhóm ngành. |
-| `isActive` |      No | Boolean  | Lọc theo trạng thái bật/tắt. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
-
-**Body (dành cho POST / PATCH):**
-
-| Field      |     Required | DataType | Validation Rules     |
-| ---------- | -----------: | -------- | -------------------- |
-| `id`       |  Conditional | UUID     | Bắt buộc với PATCH.  |
-| `name`     | Yes for POST | String   | Unique, 2-150 ký tự. |
-| `isActive` |           No | Boolean  | Dùng để ẩn/tắt.      |
-
-### Response Status Codes
-
-`200` GET/PATCH; `201` POST; `400` sai request; `401` token sai; `403` không phải Admin; `404` group không tồn tại; `409` name trùng; `422` validation; `500` lỗi CSDL.
-
-### Example Success Response
-
-```json
-{
-  "data": {
-    "id": "b9d5cc8c-3378-4c4a-8ee7-b8c8c6d0d4d1",
-    "name": "Information Technology",
-    "isActive": true
-  },
-  "meta": {},
-  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
-}
-```
-
-</details>
-
-<details>
-<summary><strong>API 11 (Pending): Manage Industries</strong></summary>
+<summary><strong>API 8 (Pending): Manage Industries</strong></summary>
 
 ### Title & Summary
 
@@ -733,7 +544,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 12 (Pending): Manage Provinces</strong></summary>
+<summary><strong>API 9 (Pending): Manage Provinces</strong></summary>
 
 ### Title & Summary
 
@@ -796,7 +607,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 13 (Pending): Manage Wards</strong></summary>
+<summary><strong>API 10 (Pending): Manage Wards</strong></summary>
 
 ### Title & Summary
 
@@ -862,7 +673,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 14: Manage CV Templates</strong></summary>
+<summary><strong>API 11: Manage CV Templates</strong></summary>
 
 ### Title & Summary
 
@@ -972,7 +783,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 15: Manage Skills</strong></summary>
+<summary><strong>API 12: Manage Skills</strong></summary>
 
 ### Title & Summary
 
@@ -1036,7 +847,7 @@ Chỉ Admin.
 </details>
 
 <details>
-<summary><strong>API 16: Get Operations Dashboard</strong></summary>
+<summary><strong>API 13: Get Operations Dashboard</strong></summary>
 
 ### Title & Summary
 

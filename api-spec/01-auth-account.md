@@ -2,7 +2,7 @@
 
 ## Group Summary
 
-Nhóm API quản lý vòng đời tài khoản, xác thực JWT, refresh token, thông tin cá nhân, mật khẩu và phân quyền. Dữ liệu chính liên quan đến `USER`, `ROLE`, `USER_ROLE`, `PERMISSION`, `ROLE_PERMISSION` và `REFRESH_TOKEN`.
+Nhóm API quản lý vòng đời tài khoản, xác thực JWT, refresh token, thông tin cá nhân, mật khẩu và phân quyền. Dữ liệu chính liên quan đến `USER`, `ROLE`, `USER_ROLE` và `REFRESH_TOKEN`.
 
 ## API List
 

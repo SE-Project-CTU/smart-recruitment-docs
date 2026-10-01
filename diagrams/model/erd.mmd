@@ -21,21 +21,9 @@ erDiagram
         VARCHAR name UK
     }
 
-    PERMISSION {
-        UUID id PK
-        VARCHAR name UK
-        VARCHAR description
-        DATETIME created_at
-    }
-
     USER_ROLE {
         UUID user_id PK, FK
         UUID role_id PK, FK
-    }
-
-    ROLE_PERMISSION {
-        UUID role_id PK, FK
-        UUID permission_id PK, FK
     }
 
     REFRESH_TOKEN {
@@ -296,8 +284,6 @@ erDiagram
 
     USER ||--o{ USER_ROLE : has
     ROLE ||--o{ USER_ROLE : assigned_to
-    ROLE ||--o{ ROLE_PERMISSION : grants
-    PERMISSION ||--o{ ROLE_PERMISSION : included_in
 
     USER ||--o{ REFRESH_TOKEN : owns
 
