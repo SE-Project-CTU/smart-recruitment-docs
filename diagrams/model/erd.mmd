@@ -66,6 +66,8 @@ erDiagram
         DATETIME created_at
     }
 
+    %% EF Core: composite FK (company_id, inviter_id) -> COMPANY_MEMBERSHIP(company_id, user_id).
+    %% invitee_id remains a direct FK to USER because invitees may not be company members yet.
     COMPANY_INVITATION {
         UUID id PK
         UUID company_id FK
@@ -76,6 +78,8 @@ erDiagram
         DATETIME created_at
     }
 
+    %% EF Core: composite FK (company_id, reviewed_by) -> COMPANY_MEMBERSHIP(company_id, user_id).
+    %% reviewed_by is nullable until the request is reviewed; the composite FK is enforced when non-null.
     COMPANY_JOIN_REQUEST {
         UUID id PK
         UUID company_id FK
@@ -302,12 +306,12 @@ erDiagram
     COMPANY ||--o{ COMPANY_MEMBERSHIP : has
 
     COMPANY ||--o{ COMPANY_INVITATION : sends
-    USER ||--o{ COMPANY_INVITATION : inviter
+    COMPANY_MEMBERSHIP ||--o{ COMPANY_INVITATION : invited_by_member
     USER ||--o{ COMPANY_INVITATION : invitee
 
     COMPANY ||--o{ COMPANY_JOIN_REQUEST : receives
     USER ||--o{ COMPANY_JOIN_REQUEST : submits
-    USER ||--o{ COMPANY_JOIN_REQUEST : reviews
+    COMPANY_MEMBERSHIP ||--o{ COMPANY_JOIN_REQUEST : reviewed_by_member
 
     USER ||--o{ COMPANY_FOLLOW : follows
     COMPANY ||--o{ COMPANY_FOLLOW : followed_by
