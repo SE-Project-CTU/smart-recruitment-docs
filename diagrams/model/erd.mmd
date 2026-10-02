@@ -4,6 +4,10 @@ config:
 ---
 
 erDiagram
+    %% EF Core key/constraint conventions:
+    %% - USER_ROLE, COMPANY_FOLLOW, JOB_INDUSTRY, JOB_SKILL use composite PKs from their FK columns.
+    %% - Entity tables with lifecycle/history/API identity use a single UUID PK and separate UNIQUE constraints where noted.
+    %% - Mermaid erDiagram cannot express alternate/composite FKs or FK delete behavior; see explicit notes below each affected entity.
     USER {
         UUID id PK
         VARCHAR email UK
@@ -51,7 +55,7 @@ erDiagram
         DATETIME updated_at
     }
 
-    %% UNIQUE(company_id, user_id)
+    %% EF Core: UNIQUE(company_id, user_id); principal alternate key for JOB_POSTING composite FK.
     COMPANY_MEMBERSHIP {
         UUID id PK
         UUID company_id FK
@@ -88,8 +92,11 @@ erDiagram
         DATETIME created_at
     }
 
-    %% FOREIGN KEY (company_id, created_by)
-    %% REFERENCES company_membership(company_id, user_id)
+    %% EF Core constraints:
+    %% - company_id -> COMPANY.id (required owner relationship)
+    %% - (company_id, created_by) -> COMPANY_MEMBERSHIP(company_id, user_id)
+    %%   This enforces that the creator is a member of this same company.
+    %%   Configure UNIQUE(company_id, user_id) on COMPANY_MEMBERSHIP as the alternate principal key.
     JOB_POSTING {
         UUID id PK
         UUID company_id FK
@@ -258,7 +265,7 @@ erDiagram
         DATETIME created_at
     }
 
-    %% UNIQUE(candidate_id, job_id)
+    %% EF Core: UNIQUE(candidate_id, job_id); keep id as PK because recommendations have their own lifecycle/identity.
     JOB_RECOMMENDATION {
         UUID id PK
         UUID candidate_id FK
@@ -309,8 +316,9 @@ erDiagram
     %% RECRUITMENT
     %% =========================
 
-    COMPANY ||--o{ JOB_POSTING : publishes
-    USER ||--o{ JOB_POSTING : creates
+    COMPANY ||--o{ JOB_POSTING : owns
+    %% JOB_POSTING.created_by is a USER id constrained through COMPANY_MEMBERSHIP(company_id, user_id).
+    COMPANY_MEMBERSHIP ||--o{ JOB_POSTING : created_by_member
 
     JOB_POSTING ||--o{ JOB_INDUSTRY : has
     JOB_POSTING ||--o{ JOB_SKILL : requires
