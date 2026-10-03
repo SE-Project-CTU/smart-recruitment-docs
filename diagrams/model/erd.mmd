@@ -113,12 +113,13 @@ erDiagram
         %% Overall requirements
         INTEGER experience_years
         ENUM job_level 
+        %% Intern, Fresher, Junior, MidLevel, Senior, Lead, Manager, Executive
         VARCHAR education_level
         INTEGER vacancies
         ENUM work_mode 
-        %% Full-time, Part-time, Contract, Internship, Freelance
-        ENUM job_type 
         %% Remote, On-site, Hybrid
+        ENUM job_type 
+        %% Full-time, Part-time, Contract, Internship, Freelance
 
         %% Detailed information 
         TEXT description
