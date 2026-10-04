@@ -14,7 +14,7 @@ erDiagram
         VARCHAR phone UK
         VARCHAR password_hash
         VARCHAR full_name
-        VARCHAR avatar_url
+        UUID avatar_file_id FK
         ENUM status
         DATETIME created_at
         DATETIME updated_at
@@ -48,7 +48,7 @@ erDiagram
         VARCHAR address
         VARCHAR website
         TEXT description
-        VARCHAR logo_url
+        UUID logo_file_id FK
         ENUM verification_status
         DATETIME verified_at
         DATETIME created_at
@@ -195,7 +195,7 @@ erDiagram
         VARCHAR code UK
         VARCHAR name
         TEXT description
-        VARCHAR thumbnail_url
+        UUID thumbnail_file_id FK
         VARCHAR version
         JSONB default_layout
         JSONB default_content
@@ -240,12 +240,14 @@ erDiagram
         DATETIME created_at
     }
 
+    %% Exactly one CV source is required: cv_version_id or uploaded_cv_file_id.
+    
     APPLICATION {
         UUID id PK
         UUID job_id FK
         UUID candidate_id FK
         UUID cv_version_id FK
-        VARCHAR uploaded_cv_url
+        UUID uploaded_cv_file_id FK
         TEXT cover_letter
         ENUM status
         DATETIME applied_at
@@ -352,7 +354,8 @@ erDiagram
     CV ||--o{ CV_VERSION : has
 
     APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
-    APPLICATION }o--|| CV_VERSION : submitted_with
+    APPLICATION }o--o| CV_VERSION : submitted_with
+    APPLICATION o|--o| MEDIA_FILE : uploaded_pdf
     USER ||--o{ APPLICATION_STATUS_HISTORY : changes
 
     %% =========================
@@ -371,3 +374,6 @@ erDiagram
     %% =========================
 
     USER ||--o{ MEDIA_FILE : owns
+    USER o|--o| MEDIA_FILE : avatar
+    COMPANY o|--o| MEDIA_FILE : logo
+    CV_TEMPLATE o|--|| MEDIA_FILE : thumbnail
