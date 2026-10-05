@@ -4,13 +4,17 @@ config:
 ---
 
 erDiagram
+    %% EF Core key/constraint conventions:
+    %% - USER_ROLE, COMPANY_FOLLOW, JOB_INDUSTRY, JOB_SKILL use composite PKs from their FK columns.
+    %% - Entity tables with lifecycle/history/API identity use a single UUID PK and separate UNIQUE constraints where noted.
+    %% - Mermaid erDiagram cannot express alternate/composite FKs or FK delete behavior; see explicit notes below each affected entity.
     USER {
         UUID id PK
         VARCHAR email UK
         VARCHAR phone UK
         VARCHAR password_hash
         VARCHAR full_name
-        VARCHAR avatar_url
+        UUID avatar_file_id FK
         ENUM status
         DATETIME created_at
         DATETIME updated_at
@@ -21,21 +25,9 @@ erDiagram
         VARCHAR name UK
     }
 
-    PERMISSION {
-        UUID id PK
-        VARCHAR name UK
-        VARCHAR description
-        DATETIME created_at
-    }
-
     USER_ROLE {
         UUID user_id PK, FK
         UUID role_id PK, FK
-    }
-
-    ROLE_PERMISSION {
-        UUID role_id PK, FK
-        UUID permission_id PK, FK
     }
 
     REFRESH_TOKEN {
@@ -56,14 +48,14 @@ erDiagram
         VARCHAR address
         VARCHAR website
         TEXT description
-        VARCHAR logo_url
+        UUID logo_file_id FK
         ENUM verification_status
         DATETIME verified_at
         DATETIME created_at
         DATETIME updated_at
     }
 
-    %% UNIQUE(company_id, user_id)
+    %% EF Core: UNIQUE(company_id, user_id); principal alternate key for JOB_POSTING composite FK.
     COMPANY_MEMBERSHIP {
         UUID id PK
         UUID company_id FK
@@ -74,6 +66,8 @@ erDiagram
         DATETIME created_at
     }
 
+    %% EF Core: composite FK (company_id, inviter_id) -> COMPANY_MEMBERSHIP(company_id, user_id).
+    %% invitee_id remains a direct FK to USER because invitees may not be company members yet.
     COMPANY_INVITATION {
         UUID id PK
         UUID company_id FK
@@ -84,6 +78,8 @@ erDiagram
         DATETIME created_at
     }
 
+    %% EF Core: composite FK (company_id, reviewed_by) -> COMPANY_MEMBERSHIP(company_id, user_id).
+    %% reviewed_by is nullable until the request is reviewed; the composite FK is enforced when non-null.
     COMPANY_JOIN_REQUEST {
         UUID id PK
         UUID company_id FK
@@ -100,8 +96,11 @@ erDiagram
         DATETIME created_at
     }
 
-    %% FOREIGN KEY (company_id, created_by)
-    %% REFERENCES company_membership(company_id, user_id)
+    %% EF Core constraints:
+    %% - company_id -> COMPANY.id (required owner relationship)
+    %% - (company_id, created_by) -> COMPANY_MEMBERSHIP(company_id, user_id)
+    %%   This enforces that the creator is a member of this same company.
+    %%   Configure UNIQUE(company_id, user_id) on COMPANY_MEMBERSHIP as the alternate principal key.
     JOB_POSTING {
         UUID id PK
         UUID company_id FK
@@ -114,12 +113,13 @@ erDiagram
         %% Overall requirements
         INTEGER experience_years
         ENUM job_level 
+        %% Intern, Fresher, Junior, MidLevel, Senior, Lead, Manager, Executive
         VARCHAR education_level
         INTEGER vacancies
         ENUM work_mode 
-        %% Full-time, Part-time, Contract, Internship, Freelance
-        ENUM job_type 
         %% Remote, On-site, Hybrid
+        ENUM job_type 
+        %% Full-time, Part-time, Contract, Internship, Freelance
 
         %% Detailed information 
         TEXT description
@@ -156,7 +156,6 @@ erDiagram
         UUID id PK
         UUID group_id FK
         VARCHAR name UK
-        ENUM status
         BOOLEAN is_active
     }
 
@@ -196,7 +195,7 @@ erDiagram
         VARCHAR code UK
         VARCHAR name
         TEXT description
-        VARCHAR thumbnail_url
+        UUID thumbnail_file_id FK
         VARCHAR version
         JSONB default_layout
         JSONB default_content
@@ -241,12 +240,14 @@ erDiagram
         DATETIME created_at
     }
 
+    %% Exactly one CV source is required: cv_version_id or uploaded_cv_file_id.
+    
     APPLICATION {
         UUID id PK
         UUID job_id FK
         UUID candidate_id FK
         UUID cv_version_id FK
-        VARCHAR uploaded_cv_url
+        UUID uploaded_cv_file_id FK
         TEXT cover_letter
         ENUM status
         DATETIME applied_at
@@ -265,12 +266,13 @@ erDiagram
     AI_MATCH_RESULT {
         UUID id PK
         UUID application_id FK
+        UUID cv_version_id FK
         DECIMAL score
         TEXT analysis
         DATETIME created_at
     }
 
-    %% UNIQUE(candidate_id, job_id)
+    %% EF Core: UNIQUE(candidate_id, job_id); keep id as PK because recommendations have their own lifecycle/identity.
     JOB_RECOMMENDATION {
         UUID id PK
         UUID candidate_id FK
@@ -296,8 +298,6 @@ erDiagram
 
     USER ||--o{ USER_ROLE : has
     ROLE ||--o{ USER_ROLE : assigned_to
-    ROLE ||--o{ ROLE_PERMISSION : grants
-    PERMISSION ||--o{ ROLE_PERMISSION : included_in
 
     USER ||--o{ REFRESH_TOKEN : owns
 
@@ -309,12 +309,12 @@ erDiagram
     COMPANY ||--o{ COMPANY_MEMBERSHIP : has
 
     COMPANY ||--o{ COMPANY_INVITATION : sends
-    USER ||--o{ COMPANY_INVITATION : inviter
+    COMPANY_MEMBERSHIP ||--o{ COMPANY_INVITATION : invited_by_member
     USER ||--o{ COMPANY_INVITATION : invitee
 
     COMPANY ||--o{ COMPANY_JOIN_REQUEST : receives
     USER ||--o{ COMPANY_JOIN_REQUEST : submits
-    USER ||--o{ COMPANY_JOIN_REQUEST : reviews
+    COMPANY_MEMBERSHIP ||--o{ COMPANY_JOIN_REQUEST : reviewed_by_member
 
     USER ||--o{ COMPANY_FOLLOW : follows
     COMPANY ||--o{ COMPANY_FOLLOW : followed_by
@@ -323,8 +323,9 @@ erDiagram
     %% RECRUITMENT
     %% =========================
 
-    COMPANY ||--o{ JOB_POSTING : publishes
-    USER ||--o{ JOB_POSTING : creates
+    COMPANY ||--o{ JOB_POSTING : owns
+    %% JOB_POSTING.created_by is a USER id constrained through COMPANY_MEMBERSHIP(company_id, user_id).
+    COMPANY_MEMBERSHIP ||--o{ JOB_POSTING : created_by_member
 
     JOB_POSTING ||--o{ JOB_INDUSTRY : has
     JOB_POSTING ||--o{ JOB_SKILL : requires
@@ -353,7 +354,8 @@ erDiagram
     CV ||--o{ CV_VERSION : has
 
     APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
-    APPLICATION }o--|| CV_VERSION : submitted_with
+    APPLICATION }o--o| CV_VERSION : submitted_with
+    APPLICATION o|--o| MEDIA_FILE : uploaded_pdf
     USER ||--o{ APPLICATION_STATUS_HISTORY : changes
 
     %% =========================
@@ -372,3 +374,6 @@ erDiagram
     %% =========================
 
     USER ||--o{ MEDIA_FILE : owns
+    USER o|--o| MEDIA_FILE : avatar
+    COMPANY o|--o| MEDIA_FILE : logo
+    CV_TEMPLATE o|--|| MEDIA_FILE : thumbnail
