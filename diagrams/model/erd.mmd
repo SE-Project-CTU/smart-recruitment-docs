@@ -284,6 +284,10 @@ erDiagram
     MEDIA_FILE {
         UUID id PK
         UUID owner_id FK
+
+        %% varchar(512)
+        VARCHAR public_id UK
+
         VARCHAR file_name
         VARCHAR file_url
         VARCHAR file_type

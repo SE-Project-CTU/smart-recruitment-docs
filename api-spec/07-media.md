@@ -4,6 +4,15 @@
 
 Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp tin đa phương tiện và tài liệu dạng `multipart/form-data` (hình ảnh đại diện, logo doanh nghiệp, hình thu nhỏ template CV và tệp hồ sơ CV dạng PDF). Dữ liệu chính liên quan đến thực thể `MEDIA_FILE`.
 
+`MEDIA_FILE` là nguồn dữ liệu tệp tin trung tâm được các entity khác tham chiếu qua FK thay vì lưu URL trực tiếp:
+
+| Entity | FK column | Ý nghĩa |
+| --- | --- | --- |
+| `USER` | `avatar_file_id` | Avatar của user |
+| `COMPANY` | `logo_file_id` | Logo của công ty |
+| `CV_TEMPLATE` | `thumbnail_file_id` | Ảnh thumbnail xem trước template |
+| `APPLICATION` | `uploaded_cv_file_id` | CV PDF đính kèm khi ứng tuyển |
+
 ## API List
 
 | #   | API | Method & Path | Resource | Roles |
@@ -21,7 +30,13 @@ Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp ti
 - **Giới hạn dung lượng và định dạng:**
   - **Tải lên hình ảnh (`/image`):** Chấp nhận định dạng `.jpg`, `.jpeg`, `.png`, `.webp`. Dung lượng tối đa **5 MB**.
   - **Tải lên PDF (`/pdf`):** Chỉ chấp nhận định dạng `.pdf`. Dung lượng tối đa **10 MB**.
-- File sau khi tải lên được lưu lên Cloud Storage (S3 / Google Cloud Storage), hệ thống sinh ra `fileUrl` duy nhất và ghi vết thông tin người sở hữu (`owner_id`) vào bảng `MEDIA_FILE`.
+- File sau khi tải lên được lưu lên Cloud Storage (S3 / Google Cloud Storage), hệ thống sinh ra `fileUrl` duy nhất và tạo bản ghi `MEDIA_FILE` với `owner_id` là user hiện tại.
+- **Luồng sử dụng — Upload trước, gắn FK sau:**
+  - Upload avatar → nhận `id` (UUID của `MEDIA_FILE`) → gửi `avatarFileId` khi cập nhật `PATCH /api/v1/account/me`.
+  - Upload logo công ty → nhận `id` → gửi `logoFileId` khi tạo/cập nhật `POST/PATCH /api/v1/companies`.
+  - Upload thumbnail template → nhận `id` → gửi `thumbnailFileId` khi tạo/cập nhật template qua Admin API.
+  - Upload CV PDF → nhận `id` → gửi `uploadedCvFileId` khi ứng tuyển `POST /api/v1/job-postings/{id}/applications`.
+- **Ràng buộc xóa:** Không được xóa `MEDIA_FILE` khi nó đang được tham chiếu bởi `USER.avatar_file_id`, `COMPANY.logo_file_id`, `CV_TEMPLATE.thumbnail_file_id` hoặc `APPLICATION.uploaded_cv_file_id`. Server trả `409 Conflict` với `code: FILE_IN_USE`.
 - Người dùng chỉ được phép xóa các tệp do chính mình làm chủ sở hữu (`owner_id = current_user_id`), trừ vai trò `Admin` có quyền xóa mọi tệp.
 - Response dùng `data`, `meta`, `correlationId`; lỗi dùng `error`, `correlationId` theo [README.md](README.md).
 
@@ -44,7 +59,7 @@ Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp ti
 
 **Tải lên hình ảnh (Avatar, Logo, Thumbnail)**
 
-Cho phép người dùng đã xác thực tải lên tệp ảnh làm avatar cá nhân, logo doanh nghiệp hoặc thumbnail template.
+Cho phép người dùng đã xác thực tải lên tệp ảnh làm avatar cá nhân, logo doanh nghiệp hoặc thumbnail template CV. Sau khi upload thành công, lấy `id` trả về để gán vào field FK tương ứng (`avatarFileId`, `logoFileId`, `thumbnailFileId`).
 
 ### Method & Path
 
@@ -70,7 +85,7 @@ Form Data parameters:
 
 ### Response Status Codes
 
-`201` Created thành công; `400` không có file hoặc sai mục đích; `401` token sai; `413` file vượt quá dung lượng (Payload Too Large); `415` định dạng file không hỗ trợ (Unsupported Media Type); `500` lỗi storage.
+`201` Created thành công; `400` không có file; `401` token sai; `413` file vượt quá dung lượng (Payload Too Large); `415` định dạng file không hỗ trợ (Unsupported Media Type); `500` lỗi storage.
 
 ### Example Success Response
 
@@ -78,6 +93,7 @@ Form Data parameters:
 {
   "data": {
     "id": "e4f8d9a2-1b3c-4d5e-8f9a-0b1c2d3e4f5a",
+    "ownerId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
     "fileName": "avatar_candidate_123.jpg",
     "fileUrl": "https://cdn.smarthire.example/images/avatars/e4f8d9a2-1b3c-4d5e-8f9a-0b1c2d3e4f5a.jpg",
     "fileType": "image/jpeg",
@@ -89,6 +105,8 @@ Form Data parameters:
 }
 ```
 
+> **Tip:** Dùng `data.id` này làm giá trị cho `avatarFileId`, `logoFileId` hoặc `thumbnailFileId` ở các API tương ứng.
+
 </details>
 
 <details>
@@ -96,9 +114,9 @@ Form Data parameters:
 
 ### Title & Summary
 
-**Tải lên tệp PDF (CV cá nhân, tài liệu xác minh)**
+**Tải lên tệp PDF (CV cá nhân)**
 
-Cho phép Ứng viên tải lên file CV PDF cá nhân từ thiết bị để ứng tuyển, hoặc Nhà tuyển dụng tải tài liệu xác minh công ty.
+Cho phép Ứng viên tải lên file CV PDF từ thiết bị để ứng tuyển. Sau khi upload thành công, lấy `id` trả về để gán vào `uploadedCvFileId` khi gọi API ứng tuyển.
 
 ### Method & Path
 
@@ -108,7 +126,7 @@ POST /api/v1/media/upload/pdf
 
 ### Authentication & Authorization
 
-Candidate, Recruiter hoặc Admin với Access Token hợp lệ.
+Candidate hoặc Admin với Access Token hợp lệ.
 
 ### Headers
 
@@ -132,6 +150,7 @@ Form Data parameters:
 {
   "data": {
     "id": "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+    "ownerId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
     "fileName": "Nguyen_Van_A_Resume.pdf",
     "fileUrl": "https://cdn.smarthire.example/documents/cvs/b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e.pdf",
     "fileType": "application/pdf",
@@ -142,6 +161,8 @@ Form Data parameters:
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```
+
+> **Tip:** Dùng `data.id` này làm giá trị cho `uploadedCvFileId` khi gọi `POST /api/v1/job-postings/{id}/applications`.
 
 </details>
 
@@ -162,7 +183,7 @@ GET /api/v1/media/{id}
 
 ### Authentication & Authorization
 
-Access Token hợp lệ.
+Access Token hợp lệ. Chỉ owner hoặc Admin được xem metadata của tệp.
 
 ### Headers
 
@@ -176,7 +197,7 @@ Access Token hợp lệ.
 
 ### Response Status Codes
 
-`200` thành công; `401` token sai; `404` không tìm thấy tệp tin; `500` lỗi CSDL.
+`200` thành công; `401` token sai; `403` không có quyền xem; `404` không tìm thấy tệp tin; `500` lỗi CSDL.
 
 ### Example Success Response
 
@@ -205,7 +226,7 @@ Access Token hợp lệ.
 
 **Xóa tệp tin**
 
-Xóa tệp tin khỏi hệ thống lưu trữ và xóa bản ghi `MEDIA_FILE` trong CSDL.
+Xóa tệp tin khỏi hệ thống lưu trữ và xóa bản ghi `MEDIA_FILE` trong CSDL. Không thể xóa khi tệp đang được tham chiếu bởi FK từ `USER`, `COMPANY`, `CV_TEMPLATE` hoặc `APPLICATION`.
 
 ### Method & Path
 
@@ -229,7 +250,7 @@ Chủ sở hữu của tệp (`owner_id = current_user_id`) hoặc người dùn
 
 ### Response Status Codes
 
-`200` xóa thành công; `401` token sai; `403` không có quyền xóa tệp của người khác; `404` tệp không tồn tại; `500` lỗi xóa storage/CSDL.
+`200` xóa thành công; `401` token sai; `403` không có quyền xóa tệp của người khác; `404` tệp không tồn tại; `409` tệp đang được tham chiếu bởi entity khác (`FILE_IN_USE`); `500` lỗi xóa storage/CSDL.
 
 ### Example Success Response
 
@@ -240,6 +261,19 @@ Chủ sở hữu của tệp (`owner_id = current_user_id`) hoặc người dùn
     "deleted": true
   },
   "meta": {},
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+### Example Error Response (File In Use)
+
+```json
+{
+  "error": {
+    "code": "FILE_IN_USE",
+    "message": "Không thể xóa tệp tin đang được sử dụng bởi avatar, logo hoặc đính kèm đơn ứng tuyển.",
+    "details": []
+  },
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```

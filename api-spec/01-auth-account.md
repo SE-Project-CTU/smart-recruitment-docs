@@ -530,7 +530,7 @@ Không có path parameter, query parameter hoặc request body.
     "email": "candidate@example.com",
     "phone": "+84901234567",
     "fullName": "Nguyen Van A",
-    "avatarUrl": null,
+    "avatar": null,
     "roles": ["Candidate"],
     "status": "Active",
     "createdAt": "2026-09-28T10:30:00Z",
