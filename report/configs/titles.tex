@@ -46,6 +46,20 @@
   {0.5em}
   {}
 
+% 3. CẤU HÌNH KHOẢNG CÁCH CHO HEADING (\titlespacing*{câu_lệnh}{lề_trái}{trên}{dưới})
+% Giảm tham số thứ 4 (after-sep) để thu hẹp khoảng cách với dòng kế tiếp
+\titlespacing*{\section}
+  {0pt}{1.5ex plus 0.5ex minus 0.2ex}{0.2ex plus 0.2ex}
+
+\titlespacing*{\subsection}
+  {0pt}{1.2ex plus 0.4ex minus 0.2ex}{0.2ex plus 0.2ex}
+
+\titlespacing*{\subsubsection}
+  {0pt}{1.0ex plus 0.3ex minus 0.2ex}{0.2ex plus 0.1ex}
+
+\titlespacing*{\paragraph}
+  {0pt}{0.8ex plus 0.2ex minus 0.2ex}{0.2ex plus 0.1ex}
+
 % --- CẤU HÌNH DÀNH CHO HÌNH VÀ BẢNG (Chuyển sang dạng 1.1, 1.2) ---
 \renewcommand{\figurename}{Hình}
 \renewcommand{\tablename}{Bảng}
