@@ -295,6 +295,70 @@ erDiagram
         DATETIME created_at
     }
 
+    NOTIFICATION {
+        UUID id PK
+        UUID recipient_id FK
+        ENUM type
+        %% "COMPANY_NEW_JOB_POSTING", "APPLICATION_STATUS_UPDATE", "COMPANY_INVITATION", "COMPANY_JOIN_REQUEST", "JOB_RECOMMENDATION", "SYSTEM_ALERT"
+
+        VARCHAR title
+        TEXT body
+        JSONB payload
+
+        %% COMPANY_NEW_JOB_POSTING 
+        %% {
+        %%   "job_id": "<UUID>",
+        %%   "company_id": "<UUID>",
+        %%   "job_title": "<string>"
+        %% }
+
+        %% APPLICATION_STATUS_UPDATE 
+        %% {
+        %%     "job_id": "UUID",             
+        %%     "job_title": "VARCHAR", 
+        %%     "new_status": "ENUM",         
+        %%     "old_status": "ENUM",
+        %%     "note": "TEXT"               
+        %% }
+
+        %% COMPANY_INVITATION
+        %% {
+        %%     "company_id": "UUID",         
+        %%     "company_name": "VARCHAR",    
+        %%     "invitation_status": "ENUM"  
+        %% }
+
+        %% COMPANY_JOIN_REQUEST
+        %% {
+        %%     "company_id": "UUID",         
+        %%     "company_name": "VARCHAR",    
+        %%     "applicant_id": "UUID",       
+        %%     "applicant_name": "VARCHAR",  
+        %%     "request_status": "ENUM"      
+        %% }
+
+        %% JOB_RECOMMENDATION
+        %% {
+        %%     "recommendation_id": "UUID",  
+        %%     "company_id": "UUID",         
+        %%     "company_name": "VARCHAR",    
+        %%     "job_title": "VARCHAR",       
+        %% }
+
+        %% SYSTEM_ALERT
+        %% {
+        %%     "alert_code": "VARCHAR",      // Mã cảnh báo (ví dụ: "MAINTENANCE_UPDATE", "ACCOUNT_SUSPENDED")
+        %%     "severity": "ENUM",           // Mức độ nghiêm trọng (ví dụ: INFO, WARNING, CRITICAL)
+        %%     "details": "TEXT"             // Chi tiết hoặc ngữ cảnh của cảnh báo
+        %% }
+
+        VARCHAR resource_type
+        UUID resource_id
+        DATETIME created_at
+        DATETIME read_at
+        DATETIME expires_at
+    }
+
 
     %% =========================
     %% ACCOUNT
@@ -304,6 +368,7 @@ erDiagram
     ROLE ||--o{ USER_ROLE : assigned_to
 
     USER ||--o{ REFRESH_TOKEN : owns
+    USER ||--o{ NOTIFICATION : receives
 
     %% =========================
     %% COMPANY
