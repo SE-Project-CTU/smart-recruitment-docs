@@ -215,6 +215,7 @@ erDiagram
         JSONB layout
         JSONB presentation
         ENUM language
+        VARCHAR preview_file_id FK
         BOOLEAN is_public
         DATETIME created_at
         DATETIME updated_at
@@ -421,6 +422,7 @@ erDiagram
     JOB_POSTING ||--o{ APPLICATION : receives
     USER ||--o{ APPLICATION : submits
     CV ||--o{ CV_VERSION : has
+    CV ||--|| MEDIA_FILE : preview_file
 
     APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
     APPLICATION }o--o| CV_VERSION : submitted_with
