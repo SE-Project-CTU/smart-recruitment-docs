@@ -113,8 +113,11 @@ erDiagram
         %% Overall requirements
         INTEGER experience_years
         ENUM job_level 
-        %% Intern, Fresher, Junior, MidLevel, Senior, Lead, Manager, Executive
-        VARCHAR education_level
+        %% Staff, Team Lead, Supervisor, Department Head, Branch Manager, Deputy Director, Director, Executive, Intern
+
+        ENUM education_level
+        %% No requirement, Below high school, High school, Vocational, College, Bachelor, Postgraduate
+       
         INTEGER vacancies
         ENUM work_mode 
         %% Remote, On-site, Hybrid
@@ -168,12 +171,14 @@ erDiagram
         UUID id PK
         VARCHAR name UK
         ENUM status
+        BOOLEAN is_centrally_governed
     }
 
     WARD {
         UUID id PK
         UUID province_id FK
         VARCHAR name
+        BOOLEAN is_commune
         ENUM status
     }
 
