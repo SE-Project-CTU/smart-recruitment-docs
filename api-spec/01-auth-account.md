@@ -254,7 +254,7 @@ POST /api/v1/auth/register/recruiter
 
 **Đăng nhập và cấp token**
 
-Xác thực email/mật khẩu, kiểm tra trạng thái tài khoản và cấp Access Token JWT cùng Refresh Token. JWT chứa định danh người dùng và role claims.
+Xác thực email/mật khẩu, kiểm tra trạng thái tài khoản, trả Access Token JWT và đặt Refresh Token vào cookie HttpOnly. JSON response không chứa refresh token. JWT chứa định danh người dùng và role claims.
 
 ### Method & Path
 
@@ -311,8 +311,6 @@ POST /api/v1/auth/login
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.example",
     "tokenType": "Bearer",
     "expiresIn": 900,
-    "refreshToken": "rt_7a3c5d9f2e1b4c8a",
-    "refreshTokenExpiresAt": "2026-12-27T10:30:00Z",
     "user": {
       "id": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
       "email": "candidate@example.com",
@@ -325,6 +323,8 @@ POST /api/v1/auth/login
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```
+
+Refresh token được gửi bằng cookie `refreshToken` (HttpOnly, Secure, SameSite=None, Path=/, hết hạn sau 7 ngày), không nằm trong JSON response.
 
 ### Example Unauthorized Response
 
@@ -360,7 +360,7 @@ POST /api/v1/auth/refresh
 ### Authentication & Authorization
 
 - Không yêu cầu Access Token.
-- Yêu cầu Refresh Token hợp lệ trong body.
+- Yêu cầu Refresh Token hợp lệ trong cookie `refreshToken`; nếu cookie không có thì nhận từ body.
 - Người dùng sở hữu token phải có tài khoản đang hoạt động.
 
 ### Headers
@@ -375,7 +375,7 @@ POST /api/v1/auth/refresh
 
 | Field | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `refreshToken` | Yes | String | Không rỗng; server hash token để đối chiếu `REFRESH_TOKEN.token_hash`; chưa hết hạn và `revoked_at` là null. |
+| `refreshToken` | Conditional | String | Gửi nếu request không có cookie `refreshToken`; token phải còn hiệu lực. |
 
 ### Response Status Codes
 
@@ -403,14 +403,14 @@ POST /api/v1/auth/refresh
   "data": {
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.new-example",
     "tokenType": "Bearer",
-    "expiresIn": 900,
-    "refreshToken": "rt_new_98f2d1c4a6b7",
-    "refreshTokenExpiresAt": "2026-12-27T10:45:00Z"
+    "expiresIn": 900
   },
   "meta": {},
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```
+
+Server thay cookie `refreshToken` bằng token mới; refresh token mới không nằm trong JSON response.
 
 </details>
 
@@ -578,7 +578,7 @@ PATCH /api/v1/account/me
 |---|---:|---|---|
 | `fullName` | No | String | Nếu có, từ 2 đến 100 ký tự sau khi trim. |
 | `phone` | No | String / null | Nếu có phải hợp lệ và unique; `null` dùng để xóa phone nếu chính sách cho phép. |
-| `avatarUrl` | No | String / null | URL hợp lệ hoặc null; file avatar phải được upload qua Media API trước. |
+| `avatarFileId` | No | UUID / null | ID file đã upload qua Media API; `null` để xóa avatar. |
 
 Phải có ít nhất một field được gửi. Các field `email`, `passwordHash`, `roles`, `status` bị từ chối với `422`.
 
@@ -601,7 +601,7 @@ Phải có ít nhất một field được gửi. Các field `email`, `passwordH
 {
   "fullName": "Nguyen Van A Updated",
   "phone": "+84901112233",
-  "avatarUrl": "https://cdn.smarthire.example/avatars/user-7d9e6f7a.png"
+  "avatarFileId": "e4f8d9a2-1b3c-4d5e-8f9a-0b1c2d3e4f5a"
 }
 ```
 

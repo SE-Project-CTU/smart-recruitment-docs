@@ -10,21 +10,22 @@ Doanh nghiệp được tạo ở trạng thái chờ xác minh. Việc phê duy
 
 | # | API | Method & Path | Roles |
 |---|---|---|---|
+| 14 | Liệt kê doanh nghiệp | `GET /api/v1/companies` | Public |
 | 1 | Tạo doanh nghiệp | `POST /api/v1/companies` | Recruiter |
 | 2 | Xem chi tiết doanh nghiệp | `GET /api/v1/companies/{id}` | Public |
-| 3 | Cập nhật doanh nghiệp | `PATCH /api/v1/companies/{id}` | Company Owner |
-| 4 | Xem danh sách thành viên | `GET /api/v1/companies/{id}/members` | Owner, Recruiter member |
-| 5 | Mời Recruiter tham gia | `POST /api/v1/companies/{id}/invitations` | Company Owner |
+| 3 | Cập nhật doanh nghiệp | `PATCH /api/v1/companies/{id}` | Recruiter; kiểm tra quyền company trong handler |
+| 4 | Xem danh sách thành viên | `GET /api/v1/companies/{id}/members` | Recruiter; kiểm tra quyền company trong handler |
+| 5 | Mời Recruiter tham gia | `POST /api/v1/companies/{id}/invitations` | Recruiter; kiểm tra quyền company trong handler |
 | 6 | Xem lời mời của tôi | `GET /api/v1/me/company-invitations` | Recruiter |
 | 7 | Chấp nhận lời mời | `POST /api/v1/company-invitations/{invitationId}/accept` | Invitee |
 | 8 | Từ chối lời mời | `POST /api/v1/company-invitations/{invitationId}/reject` | Invitee |
 | 9 | Gửi yêu cầu tham gia | `POST /api/v1/companies/{id}/join-requests` | Recruiter |
-| 10 | Xem yêu cầu tham gia | `GET /api/v1/companies/{id}/join-requests` | Company Owner |
-| 11 | Duyệt/Từ chối yêu cầu tham gia | `PATCH /api/v1/companies/{id}/join-requests/{requestId}` | Company Owner |
-| 12 | Chuyển quyền chủ doanh nghiệp | `PUT /api/v1/companies/{id}/ownership` | Company Owner |
+| 10 | Xem yêu cầu tham gia | `GET /api/v1/companies/{id}/join-requests` | Recruiter; kiểm tra quyền company trong handler |
+| 11 | Duyệt/Từ chối yêu cầu tham gia | `PATCH /api/v1/companies/{id}/join-requests/{requestId}` | Recruiter; kiểm tra quyền company trong handler |
+| 12 | Chuyển quyền chủ doanh nghiệp | `PUT /api/v1/companies/{id}/ownership` | Recruiter; kiểm tra quyền company trong handler |
 | 13a | Theo dõi doanh nghiệp | `POST /api/v1/companies/{id}/followers` | Candidate |
 | 13b | Bỏ theo dõi doanh nghiệp | `DELETE /api/v1/companies/{id}/followers` | Candidate |
-| 13c | Xem followers doanh nghiệp | `GET /api/v1/companies/{id}/followers` | Public |
+| 13c | Xem followers doanh nghiệp | `GET /api/v1/companies/{id}/followers` | Recruiter |
 
 ## Shared Rules
 
@@ -79,7 +80,8 @@ POST /api/v1/companies
 | `address` | Yes | String | Từ 5 đến 500 ký tự. |
 | `website` | No | String / null | URL hợp lệ nếu cung cấp. |
 | `description` | No | String / null | Tối đa 5000 ký tự. |
-| `logoUrl` | No | String / null | URL hợp lệ; file logo phải được upload trước qua Media API. |
+| `logoFileId` | No | UUID / null | ID file logo đã upload qua Media API. |
+| `logoUrl` | No | String / null | URL logo; tùy cách cấu hình có thể dùng thay file ID. |
 
 ### Response Status Codes
 
@@ -104,6 +106,7 @@ POST /api/v1/companies
 	"address": "123 Nguyen Hue, Ho Chi Minh City",
 	"website": "https://smarthire.example",
 	"description": "Recruitment technology company",
+	"logoFileId": null,
 	"logoUrl": null
 }
 ```
@@ -241,13 +244,13 @@ PATCH /api/v1/companies/{id}
 
 | Field | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `companyId` | Yes | UUID | UUID hợp lệ; phải tồn tại. |
 | `name` | No | String | 2-200 ký tự sau trim. |
 | `email` | No | String | Email hợp lệ. |
 | `phone` | No | String | Số điện thoại hợp lệ. |
 | `address` | No | String | 5-500 ký tự. |
 | `website` | No | String / null | URL hợp lệ nếu cung cấp. |
 | `description` | No | String / null | Tối đa 5000 ký tự. |
+| `logoFileId` | No | UUID / null | ID file logo; có thể gửi null để gỡ liên kết file. |
 | `logoUrl` | No | String / null | URL hợp lệ hoặc null. |
 
 Không cho phép cập nhật `id`, `taxCode`, `verificationStatus`, `verifiedAt` hoặc membership qua endpoint này. Phải có ít nhất một field cập nhật.
@@ -410,9 +413,8 @@ POST /api/v1/companies/{id}/invitations
 
 | Field | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `companyId` | Yes | UUID | Company tồn tại và caller là Owner Active. |
-| `inviteeId` | Yes | UUID | User tồn tại, có role Recruiter, không phải member Active hiện tại. |
-| `expiresAt` | No | DateTime | ISO 8601 UTC; phải lớn hơn hiện tại; mặc định theo chính sách hệ thống. |
+| `email` | Yes | String | Email tài khoản Recruiter được mời. |
+| `expiresAt` | No | DateTimeOffset / null | Thời điểm hết hạn theo ISO 8601. |
 
 ### Response Status Codes
 
@@ -431,7 +433,7 @@ POST /api/v1/companies/{id}/invitations
 
 ```json
 {
-	"inviteeId": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
+	"email": "recruiter@example.com",
 	"expiresAt": "2026-10-05T10:30:00Z"
 }
 ```
@@ -1097,6 +1099,77 @@ X-Correlation-ID: 5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af
 		"hasPreviousPage": false
 	},
 	"correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 14: List Companies</strong></summary>
+
+### Title & Summary
+
+**Liệt kê doanh nghiệp công khai**
+
+Tìm kiếm và phân trang danh sách company. Endpoint cho phép anonymous truy cập.
+
+### Method & Path
+
+```http
+GET /api/v1/companies
+```
+
+### Authentication & Authorization
+
+Không yêu cầu Access Token.
+
+### Request Parameters / Body
+
+| Parameter | Required | DataType | Validation Rules |
+|---|---:|---|---|
+| `search` | No | String | Từ khóa tìm company. |
+| `status` | No | Enum | `CompanyVerificationStatus`; không parse được sẽ bị bỏ qua. |
+| `page` | No | Integer | Mặc định 1; handler chuẩn hóa giá trị nhỏ hơn 1 thành 1. |
+| `pageSize` | No | Integer | Mặc định 20; handler dùng 20 nếu ngoài khoảng 1–100. |
+
+### Response Status Codes
+
+| Status | Meaning | Condition |
+|---:|---|---|
+| `200` | OK | Trả về danh sách company và pagination metadata. |
+| `400` | Bad Request | Page hoặc pageSize không hợp lệ theo response factory. |
+
+### Example Success Response
+
+```json
+{
+  "data": [
+    {
+      "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+      "name": "Example Company",
+      "taxCode": "0123456789",
+      "email": "contact@example.com",
+      "phone": "+84901234567",
+      "address": null,
+      "website": null,
+      "description": null,
+      "logoUrl": null,
+      "verificationStatus": "Pending",
+      "verifiedAt": null,
+      "createdAt": "2026-10-23T10:00:00Z",
+      "updatedAt": "2026-10-23T10:00:00Z",
+      "membership": null
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 1,
+    "totalPages": 1,
+    "hasNextPage": false,
+    "hasPreviousPage": false
+  },
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```
 

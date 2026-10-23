@@ -2,21 +2,22 @@
 
 ## Purpose
 
-Tài liệu này mô tả REST API của nền tảng SmartHire dựa trên System Features trong SRS và ERD hiện tại.
+Tài liệu này mô tả REST API theo backend ASP.NET Core hiện tại. Controller, request/response contract và handler trong source backend là nguồn sự thật; các API chưa có route trong backend được ghi rõ là chưa triển khai.
 
 ## API Groups
 
-API được chia thành **7 nhóm**, mỗi nhóm tương ứng một file tài liệu:
+API được chia thành **8 nhóm**, mỗi nhóm tương ứng một file tài liệu:
 
 | # | Nhóm API | File | Phạm vi chính |
 |---|---|---|---|
 | 1 | Authentication & Account | [01-auth-account.md](01-auth-account.md) | Đăng ký, đăng nhập, JWT, refresh token, hồ sơ cá nhân, mật khẩu và RBAC |
 | 2 | Company & Membership | [02-company.md](02-company.md) | Doanh nghiệp, thành viên, lời mời, yêu cầu tham gia và theo dõi doanh nghiệp |
-| 3 | CV & Template | [03-cv.md](03-cv.md) | Template, CV, phiên bản CV, xuất PDF và trạng thái Public/Private |
-| 4 | Recruitment & Application | [04-recruitment.md](04-recruitment.md) | Tin tuyển dụng, tìm kiếm, ứng tuyển và lịch sử trạng thái hồ sơ |
-| 5 | Administration | [05-admin.md](05-admin.md) | Kiểm duyệt, người dùng, RBAC, danh mục (kỹ năng, ngành nghề, địa điểm), template và báo cáo |
-| 6 | AI Assistant | [06-ai.md](06-ai.md) | Gợi ý viết CV, phân tích độ phù hợp và đề xuất việc làm |
+| 3 | CV & Template | [03-cv.md](03-cv.md) | Template, CV và phiên bản CV; API export PDF chưa có trong backend |
+| 4 | Recruitment & Application | [04-recruitment.md](04-recruitment.md) | Tin tuyển dụng, ứng tuyển và catalog công khai (industry, skill, location) |
+| 5 | Administration | [05-admin.md](05-admin.md) | Các API quản trị trong tài liệu hiện là đặc tả dự kiến, chưa có route backend |
+| 6 | AI Assistant | [06-ai.md](06-ai.md) | Các API AI trong tài liệu hiện là đặc tả dự kiến, chưa có route backend |
 | 7 | Media & File Upload | [07-media.md](07-media.md) | Tải lên hình ảnh (avatar, logo), tệp PDF (CV), quản lý và xóa tệp tin |
+| 8 | Notifications | [08-notifications.md](08-notifications.md) | Danh sách, đếm, đọc và xóa thông báo của user hiện tại |
 
 ## Conventions
 
@@ -25,7 +26,7 @@ API được chia thành **7 nhóm**, mỗi nhóm tương ứng một file tài 
 - Authentication dùng `Authorization: Bearer <access-token>`.
 - `X-Correlation-ID` là UUID dùng để truy vết request.
 - ID dùng kiểu UUID; thời gian dùng ISO 8601 UTC.
-- Tất cả response JSON thành công dùng envelope thống nhất:
+- Hầu hết response JSON thành công dùng envelope thống nhất; `POST /api/v1/cvs` hiện trả `CvResult` trực tiếp:
 
 ```json
 {

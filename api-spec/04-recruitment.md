@@ -10,16 +10,17 @@ Nhóm API quản lý tin tuyển dụng và quy trình ứng tuyển. Dữ liệ
 
 | # | API | Method & Path | Roles |
 |---|---|---|---|
-| 1 | Liệt kê nhóm ngành | `GET /api/v1/industry-groups` | Public |
+| 1 | Liệt kê nhóm ngành | `GET /api/v1/industry-groups`, `GET /api/v1/industry-groups/with-industries` | Public |
 | 2 | Liệt kê ngành nghề | `GET /api/v1/industries` | Public |
-| 3 | Liệt kê Tỉnh/Thành phố & Phường/Xã | `GET /api/v1/provinces`, `GET /api/v1/wards` | Public |
+| 3 | Liệt kê Tỉnh/Thành phố & Phường/Xã | `GET /api/v1/provinces`, `GET /api/v1/provinces/with-wards`, `GET /api/v1/wards` | Public |
+| 3a | Liệt kê kỹ năng | `GET /api/v1/skills` | Public |
 | 4 | Tạo tin tuyển dụng | `POST /api/v1/job-postings` | Recruiter member |
 | 5 | Tìm kiếm tin tuyển dụng | `GET /api/v1/job-postings` | Public |
 | 6 | Xem chi tiết tin tuyển dụng | `GET /api/v1/job-postings/{id}` | Public |
 | 7 | Cập nhật tin tuyển dụng | `PATCH /api/v1/job-postings/{id}` | Recruiter creator/member |
 | 8 | Cập nhật trạng thái tin | `PATCH /api/v1/job-postings/{id}/status` | Recruiter creator/member |
 | 9 | Tạo hồ sơ ứng tuyển | `POST /api/v1/job-postings/{id}/applications` | Candidate |
-| 10 | Danh sách application của tôi | `GET /api/v1/me/applications` | Candidate |
+| 10 | Danh sách application của tôi | `GET /api/v1/applications/me` | Candidate |
 | 11 | Danh sách ứng viên theo tin | `GET /api/v1/job-postings/{id}/applications` | Recruiter member |
 | 12 | Xem chi tiết application | `GET /api/v1/applications/{id}` | Candidate owner, Recruiter authorized |
 | 13 | Cập nhật trạng thái application | `PATCH /api/v1/applications/{id}/status` | Recruiter authorized |
@@ -33,7 +34,7 @@ Nhóm API quản lý tin tuyển dụng và quy trình ứng tuyển. Dữ liệ
 - Recruiter chỉ được tạo hoặc quản lý tin khi có `COMPANY_MEMBERSHIP.status = Active` trong company tương ứng.
 - Tin chỉ được công khai khi company đã verified và tin đã được Admin duyệt theo policy.
 - `deadline` phải là ISO 8601 UTC; sau deadline hệ thống tự chuyển tin sang trạng thái hết hạn và khóa ứng tuyển.
-- Ứng tuyển phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvUrl`.
+- Ứng tuyển phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvFileId`; response có thể chứa URL tại `uploadedCvUrl`.
 - Application duy nhất theo cặp `(candidateId, jobId)`; request trùng phải trả `409`.
 - Tất cả response JSON dùng envelope `data`, `meta`, `correlationId`; lỗi dùng `error`, `correlationId` theo [README.md](README.md).
 
@@ -82,6 +83,7 @@ Trả về các nhóm ngành đang hoạt động để Candidate lọc việc v
 
 ```http
 GET /api/v1/industry-groups
+GET /api/v1/industry-groups/with-industries
 ```
 
 ### Authentication & Authorization
@@ -224,6 +226,7 @@ Trả về danh mục `PROVINCE` và `WARD` đang hoạt động để phục v�
 
 ```http
 GET /api/v1/provinces
+GET /api/v1/provinces/with-wards
 GET /api/v1/wards
 ```
 
@@ -240,12 +243,12 @@ GET /api/v1/wards
 
 ### Request Parameters / Body
 
-**`GET /api/v1/provinces`**
+**`GET /api/v1/provinces` and `GET /api/v1/provinces/with-wards`**
 | Parameter | Required | DataType | Validation Rules |
 |---|---:|---|---|
 | `search` | No | String | Tối đa 100 ký tự. |
 | `page` | No | Integer | Mặc định 1. |
-| `pageSize` | No | Integer | Mặc định 50; tối đa 100. |
+| `pageSize` | No | Integer | Mặc định 10. |
 
 **`GET /api/v1/wards`**
 | Parameter | Required | DataType | Validation Rules |
@@ -253,7 +256,7 @@ GET /api/v1/wards
 | `provinceId` | No | UUID | Lọc các phường/xã thuộc tỉnh/thành chỉ định. |
 | `search` | No | String | Tối đa 100 ký tự. |
 | `page` | No | Integer | Mặc định 1. |
-| `pageSize` | No | Integer | Mặc định 50; tối đa 100. |
+| `pageSize` | No | Integer | Mặc định 10. |
 
 ### Response Status Codes
 
@@ -271,14 +274,14 @@ GET /api/v1/wards
     {
       "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
       "name": "Thành phố Hồ Chí Minh",
-      "code": "HCM",
-      "status": "Active"
+      "status": "Active",
+      "isCentrallyGoverned": true
     },
     {
       "id": "e15b31ad-bc78-4327-a4d7-0ba2a8a7d95d",
       "name": "Thành phố Hà Nội",
-      "code": "HN",
-      "status": "Active"
+      "status": "Active",
+      "isCentrallyGoverned": true
     }
   ],
   "meta": {
@@ -334,11 +337,11 @@ POST /api/v1/job-postings
 | `wardId` | No | UUID / null | Ward active thuộc `provinceId` tương ứng. |
 | `detailedLocation` | No | String / null | Tối đa 500 ký tự (số nhà, tên đường, tòa nhà). |
 | `experienceYears` | Yes | Integer | Từ 0 đến 60. |
-| `jobLevel` | Yes | Enum | `INTERN`, `JUNIOR`, `MIDDLE`, `SENIOR`, `LEAD`, `MANAGER`. |
-| `educationLevel` | No | String / null | Tối đa 150 ký tự. |
+| `jobLevel` | Yes | Enum | `Staff`, `TeamLead`, `Supervisor`, `DepartmentHead`, `BranchManager`, `DeputyDirector`, `Director`, `Executive`, `Intern`. |
+| `educationLevel` | Yes | Enum | `NoRequirement`, `BelowHighSchool`, `HighSchool`, `Vocational`, `College`, `Bachelor`, `Postgraduate`. |
 | `vacancies` | Yes | Integer | Lớn hơn 0. |
-| `workMode` | Yes | Enum | `FULL_TIME`, `PART_TIME`, `CONTRACT`, `INTERNSHIP`, `FREELANCE`. |
-| `jobType` | Yes | Enum | `REMOTE`, `ON_SITE`, `HYBRID`. |
+| `workMode` | Yes | Enum | Employment type: `FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`. |
+| `jobType` | Yes | Enum | Work location: `Remote`, `Onsite`, `Hybrid`. |
 | `description` | Yes | String | Tối thiểu 20 ký tự. |
 | `requirements` | Yes | String | Tối thiểu 20 ký tự. |
 | `benefits` | No | String / null | Tối đa 10000 ký tự. |
@@ -347,7 +350,7 @@ POST /api/v1/job-postings
 | `salaryNegotiable` | Yes | Boolean | Nếu true có thể bỏ salary range. |
 | `deadline` | Yes | DateTime | ISO 8601 UTC và lớn hơn thời điểm hiện tại. |
 | `industryIds` | Yes | Array<UUID> | Ít nhất một industry active; không trùng phần tử. |
-| `skillIds` | No | Array<UUID> | Danh sách UUID của kỹ năng (`SKILL`) yêu cầu cho vị trí. |
+| `skillIds` | Yes | Array<UUID> | Ít nhất một skill ID; hiện request validation yêu cầu danh sách không rỗng. |
 
 ### Response Status Codes
 
@@ -439,7 +442,7 @@ POST /api/v1/job-postings
 
 **Tìm kiếm và lọc tin tuyển dụng**
 
-Tìm các tin đã được công khai, chưa hết hạn và phù hợp với các tiêu chí lọc địa lý (`provinceId`, `wardId`), kỹ năng (`skillId`), ngành nghề và mức lương.
+Tìm các tin đã được công khai, chưa hết hạn theo các tiêu chí trong `SearchJobPostingsRequest`.
 
 ### Method & Path
 
@@ -463,19 +466,19 @@ GET /api/v1/job-postings
 
 | Parameter | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `keyword` | No | String | Tối đa 200 ký tự; tìm trong title/description/requirements. |
-| `industryId` | No | UUID | Industry tồn tại. |
-| `provinceId` | No | UUID | Province tồn tại. |
-| `wardId` | No | UUID | Ward tồn tại và thuộc `provinceId`. |
-| `skillId` | No | UUID | Kỹ năng liên kết trong `JOB_SKILL`. |
-| `jobLevel` | No | Enum | Giá trị enum của job posting. |
-| `workMode` | No | Enum | Giá trị enum của job type. |
-| `jobType` | No | Enum | Giá trị enum của work mode. |
-| `salaryMin` | No | Decimal | Không âm. |
-| `salaryMax` | No | Decimal | Không âm và >= salaryMin. |
+| `keyword` | No | String | Từ khóa. |
+| `company` | No | String | Lọc theo tên company. |
+| `salaryMin` | No | Decimal | Mức lương tối thiểu. |
+| `salaryMax` | No | Decimal | Mức lương tối đa. |
+| `provinceId` | No | UUID | Lọc theo tỉnh/thành. |
+| `wardId` | No | UUID | Lọc theo phường/xã. |
+| `jobLevel` | No | String | Giá trị JobLevel hợp lệ. |
+| `jobType` | No | String | Employment type (`FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`). |
+| `workMode` | No | String | Work location (`Remote`, `Onsite`, `Hybrid`). |
+| `experienceYears` | No | Integer | Số năm kinh nghiệm. |
 | `page` | No | Integer | Mặc định 1. |
 | `pageSize` | No | Integer | Mặc định 20; tối đa 100. |
-| `sort` | No | Enum | `createdAt`, `deadline`, `salaryMax`; mặc định `createdAt`. |
+| `sort` | No | String | `createdAt` hoặc `salaryMax`; mặc định `createdAt`. |
 | `direction` | No | Enum | `asc` hoặc `desc`; mặc định `desc`. |
 
 Không có request body.
@@ -500,15 +503,16 @@ Không có request body.
       "title": "Senior Backend Developer",
       "provinceId": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
       "wardId": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
-      "jobLevel": "SENIOR",
-      "vacancies": 2,
-      "workMode": "FULL_TIME",
-      "jobType": "HYBRID",
+      "companyName": "Tech Solutions",
+      "experienceYears": 5,
+      "jobLevel": "Staff",
+      "workMode": "Hybrid",
+      "jobType": "FullTime",
       "salaryMin": 2500,
       "salaryMax": 4000,
       "salaryNegotiable": true,
       "deadline": "2026-10-31T23:59:59Z",
-      "status": "OPEN",
+      "status": "Open",
       "createdAt": "2026-09-29T10:00:00Z"
     }
   ],
@@ -817,7 +821,7 @@ PATCH /api/v1/job-postings/{id}/status
 
 **Ứng tuyển vào tin tuyển dụng**
 
-Tạo `APPLICATION` cho Candidate bằng một `CV_VERSION` hoặc URL file PDF. Hệ thống ghi nhận lịch sử trạng thái ban đầu và chặn application trùng.
+Tạo `APPLICATION` cho Candidate bằng một `CV_VERSION` hoặc PDF `MEDIA_FILE` đã upload. Hệ thống ghi nhận lịch sử trạng thái ban đầu và chặn application trùng.
 
 ### Method & Path
 
@@ -835,32 +839,29 @@ POST /api/v1/job-postings/{id}/applications
 | Header | Required | DataType | Validation Rules |
 |---|---:|---|---|
 | `Authorization` | Yes | String | `Bearer <access-token>`. |
-| `Content-Type` | Yes | String | `application/json` hoặc `multipart/form-data` nếu upload trực tiếp. |
+| `Content-Type` | Yes | String | `application/json`. Tệp PDF phải upload trước qua `/api/v1/media/upload/pdf`. |
 | `X-Correlation-ID` | Yes | UUID | UUID hợp lệ. |
 ### Request Parameters / Body
 
 | Field | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `id` | Yes | UUID | Job posting phải tồn tại và đang nhận hồ sơ. |
-| `cvVersionId` | Conditional | UUID | Bắt buộc nếu không gửi `uploadedCvUrl`; version phải thuộc Candidate hiện tại. |
-| `uploadedCvUrl` | Conditional | String | Bắt buộc nếu không gửi `cvVersionId`; phải là PDF hợp lệ, tối đa 5 MB, URL do storage cấp. |
+| `cvVersionId` | Conditional | UUID | Bắt buộc nếu không gửi `uploadedCvFileId`; version phải thuộc Candidate hiện tại. |
+| `uploadedCvFileId` | Conditional | UUID | Bắt buộc nếu không gửi `cvVersionId`; tham chiếu file PDF đã upload và thuộc Candidate hiện tại. |
 | `coverLetter` | No | String / null | Tối đa 10000 ký tự. |
 
-Phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvUrl`. Không nhận `candidateId`, `status`, `appliedAt` từ client.
+Phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvFileId`. Request dùng JSON; không gửi PDF trực tiếp ở endpoint ứng tuyển. Không nhận `candidateId`, `status`, `appliedAt` từ client.
 
 ### Response Status Codes
 
 | Status | Meaning | Condition |
 |---:|---|---|
 | `201` | Created | Application và status history ban đầu được tạo. |
-| `400` | Bad Request | Body/multipart sai format. |
+| `400` | Bad Request | Body sai format hoặc request validation thất bại. |
 | `401` | Unauthorized | Access Token không hợp lệ. |
 | `403` | Forbidden | User không có role Candidate. |
-| `404` | Not Found | Job hoặc CV version không tồn tại. |
+| `404` | Not Found | Job posting, CV version hoặc uploaded media file không tồn tại. |
 | `409` | Conflict | Candidate đã ứng tuyển job này hoặc job không còn nhận hồ sơ. |
-| `413` | Payload Too Large | PDF vượt quá 5 MB. |
-| `415` | Unsupported Media Type | File không phải PDF. |
-| `422` | Unprocessable Entity | Gửi cả hai hoặc không gửi nguồn CV. |
+| `422` | Unprocessable Entity | Gửi cả hai hoặc không gửi nguồn CV; CV version/file không hợp lệ. |
 | `500` | Internal Server Error | Lỗi tạo application. |
 
 ### Example Request
@@ -906,7 +907,7 @@ Candidate xem các application của chính mình, trạng thái hiện tại v�
 ### Method & Path
 
 ```http
-GET /api/v1/me/applications
+GET /api/v1/applications/me
 ```
 
 ### Authentication & Authorization
@@ -1287,6 +1288,56 @@ GET /api/v1/applications/{id}/status-history
     "hasNextPage": false,
     "hasPreviousPage": false
   },
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 15: List Skills</strong></summary>
+
+### Title & Summary
+
+**Liệt kê kỹ năng đang hoạt động**
+
+Dùng để hiển thị catalog kỹ năng và chọn kỹ năng khi tạo tin tuyển dụng.
+
+### Method & Path
+
+```http
+GET /api/v1/skills
+```
+
+### Authentication & Authorization
+
+Public endpoint; chỉ trả về skill đang active.
+
+### Request Parameters / Body
+
+| Parameter | Required | DataType | Validation Rules |
+|---|---:|---|---|
+| `search` | No | String | Từ khóa tên kỹ năng. |
+| `page` | No | Integer | Mặc định 1; phân trang one-based. |
+| `pageSize` | No | Integer | Mặc định 20. |
+
+Không có request body.
+
+### Response Status Codes
+
+| Status | Meaning | Condition |
+|---:|---|---|
+| `200` | OK | Trả danh sách kỹ năng và pagination metadata. |
+| `400` | Bad Request | Page, pageSize hoặc search không hợp lệ. |
+
+### Example Success Response
+
+```json
+{
+  "data": [
+    { "id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d", "name": "C#", "isActive": true }
+  ],
+  "meta": { "page": 1, "pageSize": 20, "totalItems": 1, "totalPages": 1, "hasNextPage": false, "hasPreviousPage": false },
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```

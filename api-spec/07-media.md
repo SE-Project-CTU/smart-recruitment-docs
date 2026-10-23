@@ -20,7 +20,7 @@ Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp ti
 | 1   | Tải lên hình ảnh | `POST /api/v1/media/upload/image` | `MEDIA_FILE` | Candidate, Recruiter, Admin |
 | 2   | Tải lên tệp PDF | `POST /api/v1/media/upload/pdf` | `MEDIA_FILE` | Candidate, Recruiter, Admin |
 | 3   | Xem thông tin tệp tin | `GET /api/v1/media/{id}` | `MEDIA_FILE` | Candidate, Recruiter, Admin |
-| 4   | Xóa tệp tin | `DELETE /api/v1/media/{id}` | `MEDIA_FILE` | Owner, Admin |
+| 4   | Xóa tệp tin | `DELETE /api/v1/media/{id}` | `MEDIA_FILE` | Candidate, Recruiter, Admin (handler chỉ cho owner hoặc Admin) |
 
 ## Shared Rules
 
@@ -30,14 +30,15 @@ Nhóm API quản lý việc tải lên, đọc thông tin và xóa các tệp ti
 - **Giới hạn dung lượng và định dạng:**
   - **Tải lên hình ảnh (`/image`):** Chấp nhận định dạng `.jpg`, `.jpeg`, `.png`, `.webp`. Dung lượng tối đa **5 MB**.
   - **Tải lên PDF (`/pdf`):** Chỉ chấp nhận định dạng `.pdf`. Dung lượng tối đa **10 MB**.
-- File sau khi tải lên được lưu lên Cloud Storage (S3 / Google Cloud Storage), hệ thống sinh ra `fileUrl` duy nhất và tạo bản ghi `MEDIA_FILE` với `owner_id` là user hiện tại.
+- File được tải lên Cloudinary; server tạo bản ghi `MEDIA_FILE` với `owner_id` là user hiện tại. Upload trả thông tin media file gồm `id`, `ownerId`, `fileName`, `fileUrl`, `fileType`, `fileSize`, `createdAt`.
 - **Luồng sử dụng — Upload trước, gắn FK sau:**
   - Upload avatar → nhận `id` (UUID của `MEDIA_FILE`) → gửi `avatarFileId` khi cập nhật `PATCH /api/v1/account/me`.
   - Upload logo công ty → nhận `id` → gửi `logoFileId` khi tạo/cập nhật `POST/PATCH /api/v1/companies`.
   - Upload thumbnail template → nhận `id` → gửi `thumbnailFileId` khi tạo/cập nhật template qua Admin API.
   - Upload CV PDF → nhận `id` → gửi `uploadedCvFileId` khi ứng tuyển `POST /api/v1/job-postings/{id}/applications`.
-- **Ràng buộc xóa:** Không được xóa `MEDIA_FILE` khi nó đang được tham chiếu bởi `USER.avatar_file_id`, `COMPANY.logo_file_id`, `CV_TEMPLATE.thumbnail_file_id` hoặc `APPLICATION.uploaded_cv_file_id`. Server trả `409 Conflict` với `code: FILE_IN_USE`.
-- Người dùng chỉ được phép xóa các tệp do chính mình làm chủ sở hữu (`owner_id = current_user_id`), trừ vai trò `Admin` có quyền xóa mọi tệp.
+- **Ràng buộc xóa:** Không được xóa `MEDIA_FILE` khi nó đang được tham chiếu bởi entity khác. Server trả `409 Conflict` với `code: FILE_IN_USE`.
+- Xóa đánh dấu media file đã xóa trong database, sau đó enqueue xóa vật lý Cloudinary bằng background job; response trả `{ id, deleted }` trong envelope.
+- Người dùng chỉ được phép xóa tệp của mình (`owner_id = current_user_id`), trừ role `Admin` có thể xóa mọi tệp.
 - Response dùng `data`, `meta`, `correlationId`; lỗi dùng `error`, `correlationId` theo [README.md](README.md).
 
 ## ERD Response Mapping
@@ -226,7 +227,7 @@ Access Token hợp lệ. Chỉ owner hoặc Admin được xem metadata của t�
 
 **Xóa tệp tin**
 
-Xóa tệp tin khỏi hệ thống lưu trữ và xóa bản ghi `MEDIA_FILE` trong CSDL. Không thể xóa khi tệp đang được tham chiếu bởi FK từ `USER`, `COMPANY`, `CV_TEMPLATE` hoặc `APPLICATION`.
+Đánh dấu `MEDIA_FILE` đã xóa trong CSDL và enqueue tác vụ xóa file vật lý khỏi Cloudinary. Không thể xóa khi file đang được tham chiếu bởi entity khác.
 
 ### Method & Path
 

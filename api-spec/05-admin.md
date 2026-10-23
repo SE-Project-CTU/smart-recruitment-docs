@@ -2,6 +2,8 @@
 
 ## Group Summary
 
+> **Trạng thái triển khai:** Backend hiện tại chưa expose các route `/api/v1/admin/*` được mô tả trong tài liệu này (không có AdminController). Các mục bên dưới được giữ lại như đặc tả dự kiến, không phải endpoint có thể gọi ở backend hiện tại.
+
 Nhóm API quản trị `USER`, `ROLE`, `USER_ROLE`, `COMPANY`, `JOB_POSTING`, `INDUSTRY_GROUP`, `INDUSTRY`, `PROVINCE`, `WARD`, `CV_TEMPLATE` và `SKILL`.
 
 Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `APPLICATION` và dữ liệu AI không được CRUD trực tiếp qua nhóm này.
