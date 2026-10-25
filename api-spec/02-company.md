@@ -26,6 +26,7 @@ Doanh nghiệp được tạo ở trạng thái chờ xác minh. Việc phê duy
 | 13a | Theo dõi doanh nghiệp | `POST /api/v1/companies/{id}/followers` | Candidate |
 | 13b | Bỏ theo dõi doanh nghiệp | `DELETE /api/v1/companies/{id}/followers` | Candidate |
 | 13c | Xem followers doanh nghiệp | `GET /api/v1/companies/{id}/followers` | Recruiter |
+| 15 | Liệt kê tin tuyển dụng của công ty | `GET /api/v1/companies/{id}/job-postings` | Recruiter member |
 
 ## Shared Rules
 
@@ -1159,6 +1160,102 @@ Không yêu cầu Access Token.
       "createdAt": "2026-10-23T10:00:00Z",
       "updatedAt": "2026-10-23T10:00:00Z",
       "membership": null
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 1,
+    "totalPages": 1,
+    "hasNextPage": false,
+    "hasPreviousPage": false
+  },
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 15: List Company Job Postings</strong></summary>
+
+### Title & Summary
+
+**Liệt kê tin tuyển dụng của công ty**
+
+Lấy danh sách tất cả các tin tuyển dụng thuộc về một công ty. Chỉ Recruiter là thành viên `Active` của công ty mới có quyền truy cập. Endpoint này trả về tin ở mọi trạng thái (`Published`, `Closed`, `PendingReview`, `Draft`, `Paused`, `Expired`), kèm theo số lượng đơn ứng tuyển `totalApplications` và thông tin người đăng tin `creator`.
+
+### Method & Path
+
+```http
+GET /api/v1/companies/{id}/job-postings
+```
+
+### Authentication & Authorization
+
+- Yêu cầu Access Token hợp lệ.
+- Role: `Recruiter`.
+- Recruiter phải có `COMPANY_MEMBERSHIP.status = Active` tại công ty tương ứng.
+
+### Query Parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `status` | string | Không | Lọc theo trạng thái tin: `PUBLISHED`, `CLOSED`, `PENDING_REVIEW`, `DRAFT`, `PAUSED`, `EXPIRED`. Bỏ trống để lấy tất cả. |
+| `search` | string | Không | Tìm kiếm theo tiêu đề tin (`title`). |
+| `page` | integer | Không | Số trang (1-based, mặc định: 1). |
+| `pageSize` | integer | Không | Kích thước trang (1 - 100, mặc định: 20). |
+
+### Responses
+
+| HTTP Status | Reason | Mô tả |
+|---|---|---|
+| `200` | OK | Trả về danh sách tin tuyển dụng có phân trang. |
+| `401` | Unauthorized | Thiếu hoặc access token không hợp lệ. |
+| `403` | Forbidden | User không phải là thành viên Active của công ty. |
+| `404` | Not Found | Không tìm thấy công ty với ID tương ứng. |
+
+### Example Success Response
+
+```json
+{
+  "data": [
+    {
+      "id": "a5000000-0000-4000-8000-000000000006",
+      "title": "Senior Backend Developer (C# / .NET)",
+      "company": {
+        "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+        "name": "Example Company"
+      },
+      "creator": {
+        "id": "a1000000-0000-4000-8000-000000000001",
+        "fullName": "Nguyễn Văn A",
+        "email": "hr@example.com",
+        "avatarUrl": "https://example.com/avatar.png"
+      },
+      "province": {
+        "id": "a3000000-0000-4000-8000-000000000001",
+        "name": "Hồ Chí Minh"
+      },
+      "ward": {
+        "id": "a4000000-0000-4000-8000-000000000001",
+        "name": "Bến Nghé"
+      },
+      "detailedLocation": "123 Lê Duẩn",
+      "experienceYears": 3,
+      "jobLevel": "SENIOR",
+      "educationLevel": "BACHELOR",
+      "vacancies": 2,
+      "workMode": "HYBRID",
+      "jobType": "FULL_TIME",
+      "salaryMin": 25000000,
+      "salaryMax": 40000000,
+      "salaryNegotiable": false,
+      "deadline": "2026-11-30T17:00:00Z",
+      "status": "CLOSED",
+      "totalApplications": 5,
+      "createdAt": "2026-10-20T10:00:00Z",
+      "updatedAt": "2026-10-25T09:00:00Z"
     }
   ],
   "meta": {

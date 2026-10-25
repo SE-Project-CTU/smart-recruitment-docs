@@ -15,6 +15,7 @@ Nhóm API quản lý tin tuyển dụng và quy trình ứng tuyển. Dữ liệ
 | 3 | Liệt kê Tỉnh/Thành phố & Phường/Xã | `GET /api/v1/provinces`, `GET /api/v1/provinces/with-wards`, `GET /api/v1/wards` | Public |
 | 3a | Liệt kê kỹ năng | `GET /api/v1/skills` | Public |
 | 4 | Tạo tin tuyển dụng | `POST /api/v1/job-postings` | Recruiter member |
+| 4a | Liệt kê tin tuyển dụng của công ty | `GET /api/v1/companies/{id}/job-postings` | Recruiter member (Chi tiết tại [02-company.md](02-company.md)) |
 | 5 | Tìm kiếm tin tuyển dụng | `GET /api/v1/job-postings` | Public |
 | 6 | Xem chi tiết tin tuyển dụng | `GET /api/v1/job-postings/{id}` | Public |
 | 7 | Cập nhật tin tuyển dụng | `PATCH /api/v1/job-postings/{id}` | Recruiter creator/member |
