@@ -581,54 +581,62 @@ Không có request body.
 
 ```json
 {
-  "data": {
-    "id": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-    "companyId": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
-    "createdBy": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
-    "title": "Senior Backend Developer",
-    "province": {
-      "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
-      "name": "Thành phố Hồ Chí Minh",
-      "code": "HCM"
+    "data": {
+        "id": "a5000000-0000-4000-8000-000000000001",
+        "companyId": "a2000000-0000-4000-8000-000000000001",
+        "company": {
+            "id": "a2000000-0000-4000-8000-000000000001",
+            "name": "Mekong Digital Solutions",
+            "address": "Ninh Kiều, Cần Thơ",
+            "logoUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+        },
+        "createdBy": "a1000000-0000-4000-8000-000000000004",
+        "title": "Backend Developer (C# / .NET)",
+        "description": "Phát triển API cho nền tảng quản trị bán hàng phục vụ hàng nghìn cửa hàng. Tham gia thiết kế dịch vụ, tối ưu truy vấn và phối hợp cùng nhóm frontend, QA.",
+        "requirements": "Có kinh nghiệm C# và ASP.NET Core; hiểu REST API, SQL, Git. Biết PostgreSQL, Docker hoặc cloud là lợi thế.",
+        "benefits": "Lương 18–30 triệu, bảo hiểm đầy đủ, ngân sách học tập và làm việc hybrid.",
+        "province": {
+            "id": "7c856880-7886-4ade-98c1-1393fe2b401c",
+            "name": "Thành phố Cần Thơ"
+        },
+        "ward": {
+            "id": "8e7bfa9f-1d4c-4c1e-87c2-0f3989d453d3",
+            "name": "Phường Ngã Bảy"
+        },
+        "detailedLocation": "Tòa nhà Mekong, Ninh Kiều",
+        "experienceYears": 2,
+        "jobLevel": "STAFF",
+        "educationLevel": "BACHELOR",
+        "vacancies": 3,
+        "workMode": "FULL_TIME",
+        "jobType": "HYBRID",
+        "salaryMin": 18000000,
+        "salaryMax": 30000000,
+        "salaryNegotiable": false,
+        "deadline": "2026-11-23T09:30:15.423112+00:00",
+        "status": "PUBLISHED",
+        "industryIds": [
+            "c1d2e3f4-4444-4000-8000-000000000001"
+        ],
+        "skills": [
+            {
+                "id": "d1e2f3a4-5555-4000-8000-000000000001",
+                "name": "C# / .NET Core"
+            },
+            {
+                "id": "d1e2f3a4-5555-4000-8000-000000000002",
+                "name": "PostgreSQL"
+            },
+            {
+                "id": "d1e2f3a4-5555-4000-8000-000000000003",
+                "name": "Docker"
+            }
+        ],
+        "createdAt": "2026-10-19T09:30:15.423112+00:00",
+        "updatedAt": "2026-10-24T09:30:15.423112+00:00"
     },
-    "ward": {
-      "id": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
-      "name": "Phường Bến Nghé",
-      "code": "70001"
-    },
-    "detailedLocation": "Tầng 12, Tòa nhà Bitexco, Bến Nghé, Quận 1",
-    "experienceYears": 3,
-    "jobLevel": "SENIOR",
-    "educationLevel": "Bachelor in Computer Science",
-    "vacancies": 2,
-    "workMode": "FULL_TIME",
-    "jobType": "HYBRID",
-    "description": "Build and maintain scalable recruitment services.",
-    "requirements": "Three years of backend development experience in Java/Spring Boot or Node.js.",
-    "benefits": "Health insurance, macbook pro and flexible working hours.",
-    "salaryMin": 2500,
-    "salaryMax": 4000,
-    "salaryNegotiable": true,
-    "deadline": "2026-10-31T23:59:59Z",
-    "status": "OPEN",
-    "industryIds": ["1f2d6c5a-bb50-4e8f-b1a2-27c5d1f42a87"],
-    "skills": [
-      {
-        "id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
-        "name": "Java",
-        "category": "TECHNICAL"
-      },
-      {
-        "id": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e",
-        "name": "Spring Boot",
-        "category": "TECHNICAL"
-      }
-    ],
-    "createdAt": "2026-09-29T10:00:00Z",
-    "updatedAt": "2026-09-29T10:00:00Z"
-  },
-  "meta": {},
-  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+    "meta": {},
+    "correlationId": "550e8400-e29b-41d4-a716-446655440000"
 }
 ```
 
