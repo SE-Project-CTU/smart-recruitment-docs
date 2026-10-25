@@ -340,8 +340,8 @@ POST /api/v1/job-postings
 | `jobLevel` | Yes | Enum | `Staff`, `TeamLead`, `Supervisor`, `DepartmentHead`, `BranchManager`, `DeputyDirector`, `Director`, `Executive`, `Intern`. |
 | `educationLevel` | Yes | Enum | `NoRequirement`, `BelowHighSchool`, `HighSchool`, `Vocational`, `College`, `Bachelor`, `Postgraduate`. |
 | `vacancies` | Yes | Integer | Lớn hơn 0. |
-| `workMode` | Yes | Enum | Employment type: `FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`. |
-| `jobType` | Yes | Enum | Work location: `Remote`, `Onsite`, `Hybrid`. |
+| `workMode` | Yes | Enum | Work location: `Remote`, `Onsite`, `Hybrid`. |
+| `jobType` | Yes | Enum | Employment type: `FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`. |
 | `description` | Yes | String | Tối thiểu 20 ký tự. |
 | `requirements` | Yes | String | Tối thiểu 20 ký tự. |
 | `benefits` | No | String / null | Tối đa 10000 ký tự. |
@@ -537,7 +537,7 @@ Không có request body.
 
 **Xem chi tiết tin tuyển dụng**
 
-Trả về toàn bộ field của `JOB_POSTING`, company summary, thông tin địa chính (`PROVINCE`, `WARD`), danh sách kỹ năng yêu cầu (`SKILL`) và danh sách industry liên kết.
+Trả về toàn bộ field của `JOB_POSTING`, company summary, creator summary, thông tin địa chính (`PROVINCE`, `WARD`), danh sách kỹ năng yêu cầu (`SKILL`) và danh sách ngành nghề liên kết (`INDUSTRY`).
 
 ### Method & Path
 
@@ -583,18 +583,22 @@ Không có request body.
 {
     "data": {
         "id": "a5000000-0000-4000-8000-000000000001",
-        "companyId": "a2000000-0000-4000-8000-000000000001",
+        "title": "Backend Developer (C# / .NET)",
+        "description": "Phát triển API cho nền tảng quản trị bán hàng phục vụ hàng nghìn cửa hàng. Tham gia thiết kế dịch vụ, tối ưu truy vấn và phối hợp cùng nhóm frontend, QA.",
+        "requirements": "Có kinh nghiệm C# và ASP.NET Core; hiểu REST API, SQL, Git. Biết PostgreSQL, Docker hoặc cloud là lợi thế.",
+        "benefits": "Lương 18–30 triệu, bảo hiểm đầy đủ, ngân sách học tập và làm việc hybrid.",
         "company": {
             "id": "a2000000-0000-4000-8000-000000000001",
             "name": "Mekong Digital Solutions",
             "address": "Ninh Kiều, Cần Thơ",
             "logoUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
         },
-        "createdBy": "a1000000-0000-4000-8000-000000000004",
-        "title": "Backend Developer (C# / .NET)",
-        "description": "Phát triển API cho nền tảng quản trị bán hàng phục vụ hàng nghìn cửa hàng. Tham gia thiết kế dịch vụ, tối ưu truy vấn và phối hợp cùng nhóm frontend, QA.",
-        "requirements": "Có kinh nghiệm C# và ASP.NET Core; hiểu REST API, SQL, Git. Biết PostgreSQL, Docker hoặc cloud là lợi thế.",
-        "benefits": "Lương 18–30 triệu, bảo hiểm đầy đủ, ngân sách học tập và làm việc hybrid.",
+        "creator": {
+            "id": "a1000000-0000-4000-8000-000000000004",
+            "fullName": "Nguyễn Văn A",
+            "email": "hr@mekongdigital.vn",
+            "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256"
+        },
         "province": {
             "id": "7c856880-7886-4ade-98c1-1393fe2b401c",
             "name": "Thành phố Cần Thơ"
@@ -608,15 +612,18 @@ Không có request body.
         "jobLevel": "STAFF",
         "educationLevel": "BACHELOR",
         "vacancies": 3,
-        "workMode": "FULL_TIME",
-        "jobType": "HYBRID",
+        "workMode": "HYBRID",
+        "jobType": "FULL_TIME",
         "salaryMin": 18000000,
         "salaryMax": 30000000,
         "salaryNegotiable": false,
         "deadline": "2026-11-23T09:30:15.423112+00:00",
         "status": "PUBLISHED",
-        "industryIds": [
-            "c1d2e3f4-4444-4000-8000-000000000001"
+        "industries": [
+            {
+                "id": "c1d2e3f4-4444-4000-8000-000000000001",
+                "name": "Công nghệ thông tin"
+            }
         ],
         "skills": [
             {
@@ -683,8 +690,8 @@ PATCH /api/v1/job-postings/{id}
 | `jobLevel` | No | Enum | Giá trị job level hợp lệ. |
 | `educationLevel` | No | String / null | Tối đa 150 ký tự. |
 | `vacancies` | No | Integer | Lớn hơn 0. |
-| `workMode` | No | Enum | Giá trị job type hợp lệ. |
-| `jobType` | No | Enum | Giá trị work mode hợp lệ. |
+| `workMode` | No | Enum | Giá trị work mode hợp lệ (`Remote`, `Onsite`, `Hybrid`). |
+| `jobType` | No | Enum | Giá trị job type hợp lệ (`FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`). |
 | `description` | No | String | Tối thiểu 20 ký tự. |
 | `requirements` | No | String | Tối thiểu 20 ký tự. |
 | `benefits` | No | String / null | Tối đa 10000 ký tự. |
