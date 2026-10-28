@@ -195,6 +195,8 @@ erDiagram
         UUID skill_id PK, FK
     }
 
+    %% default_content contains metadata.defaultStyle and Tiptap documents/marks/attrs.
+    %% Presentation defaults/styles are stored in content; no separate presentation JSON.
     CV_TEMPLATE {
         UUID id PK
         VARCHAR code UK
@@ -204,21 +206,23 @@ erDiagram
         VARCHAR version
         JSONB default_layout
         JSONB default_content
-        JSONB default_presentation
         ENUM language
         BOOLEAN is_active
         DATETIME created_at
         DATETIME updated_at
     }
 
+    %% content embeds defaultStyle plus Tiptap rich-text documents.
+    %% layout remains separate because it controls section placement/order.
     CV {
         UUID id PK
         UUID candidate_id FK
         UUID template_id FK
         VARCHAR title
         JSONB content
+        VARCHAR content_hash
+        VARCHAR layout_hash
         JSONB layout
-        JSONB presentation
         ENUM language
         UUID preview_file_id FK
         BOOLEAN is_public
@@ -232,7 +236,6 @@ erDiagram
         UUID template_id FK
         JSONB content
         JSONB layout
-        JSONB presentation
         ENUM language
         INTEGER version_number
         DATETIME created_at

@@ -1,0 +1,1073 @@
+{
+  "metadata": {
+    "version": "5.0",
+    "templateCode": "modern_two_column",
+    "language": "vi",
+    "updatedAt": "2026-10-22T04:58:25.752507+00:00",
+    "defaultStyle": {
+      "fontFamily": "inter",
+      "baseFontSize": 14,
+      "primaryColors": ["#2563EB", "#1E293B"],
+      "lineHeight": 1.5
+    }
+  },
+  "profile": {
+    "fullName": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Phan Quốc Bình",
+              "marks": [
+                { "type": "bold" },
+                { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "24px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "title": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Senior ",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "color": "#2563EB",
+                    "fontSize": "16px",
+                    "fontWeight": "500",
+                    "fontStyle": "italic"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "ASP.NET Core",
+              "marks": [
+                { "type": "bold" },
+                { "type": "textStyle", "attrs": { "color": "#1B3B6F", "fontSize": "18px" } }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " & Fullstack Developer",
+              "marks": [
+                {
+                  "type": "textStyle",
+                  "attrs": {
+                    "color": "#2563EB",
+                    "fontSize": "16px",
+                    "fontWeight": "500",
+                    "fontStyle": "italic"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "avatarUrl": "https://res.cloudinary.com/smarthire/image/upload/v12345/avatar.jpg",
+    "email": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "nguyenvana@gmail.com",
+              "marks": [
+                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "phone": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "0901234567",
+              "marks": [
+                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dob": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "1998-05-20",
+              "marks": [
+                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "address": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Quận Ninh Kiều, Cần Thơ",
+              "marks": [
+                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "website": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://nguyenvana.dev",
+              "marks": [
+                { "type": "underline" },
+                { "type": "textStyle", "attrs": { "color": "#2563EB", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "socialLink": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://linkedin.com/in/nguyenvana",
+              "marks": [
+                { "type": "underline" },
+                { "type": "textStyle", "attrs": { "color": "#2563EB", "fontSize": "13px" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sections": {
+    "order": [
+      "objective",
+      "experience",
+      "education",
+      "skills",
+      "projects",
+      "certifications",
+      "awards",
+      "interests",
+      "additionalInfo"
+    ],
+    "objective": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Mục tiêu nghề nghiệp",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "content": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": { "textAlign": "justify" },
+            "content": [
+              {
+                "type": "text",
+                "text": "Tôi mong muốn trở thành một chuyên gia phát triển phần mềm, đóng góp vào các dự án công nghệ tiên tiến và tích hợp AI. Tôi hướng tới việc phát triển các giải pháp sáng tạo, tối ưu hóa quy trình và nâng cao trải nghiệm người dùng. Tôi luôn sẵn sàng học hỏi và áp dụng các công nghệ mới để mang lại giá trị thực tế cho doanh nghiệp.",
+                "marks": [
+                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "14px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "experience": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Kinh nghiệm làm việc",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "exp_01",
+          "company": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Công ty Công nghệ SmartHire",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "position": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Backend Developer (C# / .NET)",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "#2563EB",
+                          "fontSize": "14px",
+                          "fontWeight": "500",
+                          "fontStyle": "italic"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "startDate": "2024-03",
+          "endDate": null,
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Chịu trách nhiệm thiết kế kiến trúc Modular Monolith và phát triển hệ thống gợi ý CV tích hợp AI.",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "exp_02",
+          "company": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Công ty Phần mềm ABC",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "position": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Fullstack Developer",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "#2563EB",
+                          "fontSize": "14px",
+                          "fontWeight": "500",
+                          "fontStyle": "italic"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "startDate": "2022-06",
+          "endDate": "2024-02",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Phát triển các ứng dụng web sử dụng React, Node.js và tích hợp RESTful API.",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "education": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Học vấn",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "edu_01",
+          "school": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Trường CNTT&TT - Đại học Cần Thơ",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "title": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Kỹ sư Kỹ thuật Phần mềm",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "#475569", "fontSize": "14px", "fontWeight": "500" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "start": "2020-09",
+          "end": "2024-06",
+          "details": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Tốt nghiệp loại Giỏi GPA 3.6/4.0.",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "skills": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Kỹ năng chuyên môn",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "sk_01",
+          "name": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Frontend",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "React, TypeScript, TailwindCSS, Next.js, Redux Toolkit, Zustand",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_02",
+          "name": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Backend",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "ASP.NET Core, C#, Node.js, Express.js, RESTful API, GraphQL",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_03",
+          "name": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Database",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "SQL Server, PostgreSQL, MongoDB, Redis, Entity Framework Core",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_04",
+          "name": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "DevOps & Cloud",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "left" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Docker, Kubernetes, AWS (EC2, S3, RDS), CI/CD pipelines (GitHub Actions)",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "projects": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Dự án nổi bật",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "prj_01",
+          "projectName": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Nền tảng tuyển dụng SmartHire",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Leader / Main Backend Architect",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "#2563EB",
+                          "fontSize": "14px",
+                          "fontWeight": "500",
+                          "fontStyle": "italic"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "start": "2026-01",
+          "end": "2026-05",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "justify" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Hệ thống kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI.",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "bulletList",
+                "attrs": { "listStyleType": "disc" },
+                "content": [
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Thiết kế kiến trúc Modular Monolith, đảm bảo khả năng mở rộng và bảo trì.",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": { "color": "#334155", "fontSize": "13px" }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Tích hợp AI để gợi ý CV và phân tích dữ liệu ứng viên.",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": { "color": "#334155", "fontSize": "13px" }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "prj_02",
+          "projectName": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Ứng dụng quản lý dự án",
+                    "marks": [
+                      { "type": "bold" },
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Fullstack Developer",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": {
+                          "color": "#2563EB",
+                          "fontSize": "14px",
+                          "fontWeight": "500",
+                          "fontStyle": "italic"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "start": "2026-06",
+          "end": "2026-10",
+          "description": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": "justify" },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Phát triển ứng dụng quản lý dự án với các tính năng như theo dõi tiến độ, phân công công việc và báo cáo.",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "bulletList",
+                "attrs": { "listStyleType": "disc" },
+                "content": [
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Sử dụng React và Node.js để xây dựng giao diện người dùng và API.",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": { "color": "#334155", "fontSize": "13px" }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Tích hợp hệ thống thông báo thời gian thực bằng WebSocket.",
+                            "marks": [
+                              {
+                                "type": "textStyle",
+                                "attrs": { "color": "#334155", "fontSize": "13px" }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "certifications": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Chứng chỉ",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "cert_01",
+          "name": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "AWS Certified Solutions Architect",
+                    "marks": [
+                      {
+                        "type": "textStyle",
+                        "attrs": { "color": "#1E293B", "fontSize": "14px", "fontWeight": "500" }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "issueDate": "2025-08"
+        }
+      ]
+    },
+    "awards": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Giải thưởng",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "award_01",
+          "awardName": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Giải Nhất Hackathon CNTT 2025",
+                    "marks": [
+                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "14px" } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "date": "2025-12"
+        }
+      ]
+    },
+    "interests": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Sở thích",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "content": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": { "textAlign": "left" },
+            "content": [
+              {
+                "type": "text",
+                "text": "Thích nghiên cứu các công nghệ mới, đặc biệt là Generative AI và Cloud Computing.",
+                "marks": [
+                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "additionalInfo": {
+      "title": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Thông tin bổ sung",
+                "marks": [
+                  { "type": "bold" },
+                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "content": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": { "textAlign": "left" },
+            "content": [
+              {
+                "type": "text",
+                "text": "Sẵn sàng làm việc từ xa (Remote) và đi công tác ngắn ngày khi có yêu cầu.",
+                "marks": [
+                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
