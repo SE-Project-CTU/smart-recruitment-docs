@@ -123,9 +123,9 @@ Chỉ role `Admin` với Access Token hợp lệ.
 
 ### Title & Summary
 
-**Khóa hoặc khôi phục tài khoản**
+**Khóa, khôi phục hoặc vô hiệu hóa tài khoản**
 
-Cập nhật status user và revoke toàn bộ Refresh Token khi khóa.
+Cập nhật status user (`Active`, `Locked`, `Inactive`) và thu hồi (revoke) toàn bộ Refresh Token khi khóa (`Locked`) hoặc vô hiệu hóa (`Inactive`).
 
 ### Method & Path
 
@@ -135,7 +135,7 @@ PATCH /api/v1/admin/users/{id}/status
 
 ### Authentication & Authorization
 
-Chỉ Admin; không được khóa Admin cuối cùng đang hoạt động hoặc tự khóa chính mình.
+Chỉ Admin; không được khóa hoặc vô hiệu hóa Admin cuối cùng đang hoạt động.
 
 ### Headers
 
@@ -143,15 +143,15 @@ Chỉ Admin; không được khóa Admin cuối cùng đang hoạt động hoặ
 
 ### Request Parameters / Body
 
-| Field    | Required | DataType | Validation Rules        |
-| -------- | -------: | -------- | ----------------------- |
-| `id`     |      Yes | UUID     | User phải tồn tại.      |
-| `status` |      Yes | Enum     | `Active` hoặc `Locked`. |
-| `reason` |      Yes | String   | 5-1000 ký tự.           |
+| Field    |    Required | DataType | Validation Rules                                              |
+| -------- | ----------: | -------- | ------------------------------------------------------------- |
+| `id`     |         Yes | UUID     | User phải tồn tại trong hệ thống.                             |
+| `status` |         Yes | Enum     | `Active`, `Locked`, hoặc `Inactive`.                          |
+| `reason` | Conditional | String   | Bắt buộc khi khóa (`Locked`), 5-1000 ký tự giải trình lý do. |
 
 ### Response Status Codes
 
-`200` thành công; `400` sai body; `401` token sai; `403` không có quyền; `404` user không tồn tại; `409` state conflict; `422` validation; `500` lỗi transaction.
+`200` thành công; `400` sai body; `401` token sai; `403` không có quyền; `404` user không tồn tại; `409` trạng thái không đổi (xung đột); `422` validation; `500` lỗi transaction.
 
 ### Example Request
 

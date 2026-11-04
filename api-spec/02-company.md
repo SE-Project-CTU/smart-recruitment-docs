@@ -26,6 +26,7 @@ Doanh nghiệp được tạo ở trạng thái chờ xác minh. Việc phê duy
 | 13a | Theo dõi doanh nghiệp | `POST /api/v1/companies/{id}/followers` | Candidate |
 | 13b | Bỏ theo dõi doanh nghiệp | `DELETE /api/v1/companies/{id}/followers` | Candidate |
 | 13c | Xem followers doanh nghiệp | `GET /api/v1/companies/{id}/followers` | Recruiter |
+| 13d | Danh sách công ty đã theo dõi | `GET /api/v1/me/followed-companies` | Candidate |
 | 15 | Liệt kê tin tuyển dụng của công ty | `GET /api/v1/companies/{id}/job-postings` | Recruiter member |
 
 ## Shared Rules
@@ -159,7 +160,10 @@ GET /api/v1/companies/{id}
 ### Authentication & Authorization
 
 - Không bắt buộc Access Token đối với thông tin công khai.
-- Nếu có Access Token, server có thể trả thêm membership của user hiện tại.
+- Nếu có Access Token:
+  - Trả về `membership`: Thông tin vai trò và trạng thái nếu user là thành viên doanh nghiệp.
+  - Trả về `isFollowed`: `true` nếu Candidate hiện tại đang theo dõi công ty, `false` nếu chưa theo dõi (`null` nếu chưa đăng nhập).
+  - Trả về `hasPendingJoinRequest`: `true` nếu Recruiter hiện tại đang có yêu cầu gia nhập chờ duyệt, `false` nếu không.
 
 ### Headers
 
@@ -203,7 +207,10 @@ Không có request body.
 		"verificationStatus": "Verified",
 		"verifiedAt": "2026-09-29T08:00:00Z",
 		"createdAt": "2026-09-28T10:30:00Z",
-		"updatedAt": "2026-09-29T08:00:00Z"
+		"updatedAt": "2026-09-29T08:00:00Z",
+		"membership": null,
+		"isFollowed": true,
+		"hasPendingJoinRequest": false
 	},
 	"meta": {},
 	"correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
@@ -1014,12 +1021,14 @@ Candidate có thể theo dõi hoặc bỏ theo dõi doanh nghiệp. Người dù
 POST   /api/v1/companies/{id}/followers
 DELETE /api/v1/companies/{id}/followers
 GET    /api/v1/companies/{id}/followers
+GET    /api/v1/me/followed-companies
 ```
 
 ### Authentication & Authorization
 
 - `POST` và `DELETE` yêu cầu Access Token hợp lệ và role `Candidate`.
-- `GET` yêu cầu Access Token hợp lệ và role `Recruiter`.
+- `GET /api/v1/companies/{id}/followers` yêu cầu Access Token hợp lệ và role `Recruiter`.
+- `GET /api/v1/me/followed-companies` yêu cầu Access Token hợp lệ và role `Candidate`.
 
 ### Headers
 
