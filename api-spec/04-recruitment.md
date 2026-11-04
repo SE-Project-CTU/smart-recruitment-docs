@@ -375,17 +375,17 @@ POST /api/v1/job-postings
   "wardId": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
   "detailedLocation": "Tầng 12, Tòa nhà Bitexco, Bến Nghé, Quận 1",
   "experienceYears": 3,
-  "jobLevel": "SENIOR",
-  "educationLevel": "Bachelor in Computer Science",
+  "jobLevel": "Staff",
+  "educationLevel": "Bachelor",
   "vacancies": 2,
-  "workMode": "FULL_TIME",
-  "jobType": "HYBRID",
-  "description": "Build and maintain scalable recruitment services.",
-  "requirements": "Three years of backend development experience in Java/Spring Boot or Node.js.",
-  "benefits": "Health insurance, macbook pro and flexible working hours.",
-  "salaryMin": 2500,
-  "salaryMax": 4000,
-  "salaryNegotiable": true,
+  "workMode": "Hybrid",
+  "jobType": "FullTime",
+  "description": "Xây dựng và bảo trì hệ thống dịch vụ tuyển dụng thông minh hiệu năng cao.",
+  "requirements": "Ít nhất 3 năm kinh nghiệm phát triển backend với C# .NET hoặc Java/Go.",
+  "benefits": "Bảo hiểm sức khỏe cao cấp, cấp MacBook Pro, môi trường làm việc linh hoạt.",
+  "salaryMin": 25000000,
+  "salaryMax": 40000000,
+  "salaryNegotiable": false,
   "deadline": "2026-10-31T23:59:59Z",
   "industryIds": ["1f2d6c5a-bb50-4e8f-b1a2-27c5d1f42a87"],
   "skillIds": [
@@ -401,30 +401,57 @@ POST /api/v1/job-postings
 {
   "data": {
     "id": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-    "companyId": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
-    "createdBy": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
+    "company": {
+      "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+      "name": "Tech Solutions",
+      "address": "Tầng 12, Tòa nhà Bitexco, Bến Nghé, Quận 1",
+      "logoUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+    },
+    "creator": {
+      "id": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
+      "fullName": "Nguyễn Văn A",
+      "email": "hr@techsolutions.vn",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256"
+    },
     "title": "Senior Backend Developer",
-    "provinceId": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
-    "wardId": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+    "province": {
+      "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
+      "name": "Thành phố Hồ Chí Minh"
+    },
+    "ward": {
+      "id": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      "name": "Phường Bến Nghé"
+    },
     "detailedLocation": "Tầng 12, Tòa nhà Bitexco, Bến Nghé, Quận 1",
     "experienceYears": 3,
-    "jobLevel": "SENIOR",
-    "educationLevel": "Bachelor in Computer Science",
+    "jobLevel": "Staff",
+    "educationLevel": "Bachelor",
     "vacancies": 2,
-    "workMode": "FULL_TIME",
-    "jobType": "HYBRID",
-    "description": "Build and maintain scalable recruitment services.",
-    "requirements": "Three years of backend development experience in Java/Spring Boot or Node.js.",
-    "benefits": "Health insurance, macbook pro and flexible working hours.",
-    "salaryMin": 2500,
-    "salaryMax": 4000,
-    "salaryNegotiable": true,
+    "workMode": "Hybrid",
+    "jobType": "FullTime",
+    "description": "Xây dựng và bảo trì hệ thống dịch vụ tuyển dụng thông minh hiệu năng cao.",
+    "requirements": "Ít nhất 3 năm kinh nghiệm phát triển backend với C# .NET hoặc Java/Go.",
+    "benefits": "Bảo hiểm sức khỏe cao cấp, cấp MacBook Pro, môi trường làm việc linh hoạt.",
+    "salaryMin": 25000000,
+    "salaryMax": 40000000,
+    "salaryNegotiable": false,
     "deadline": "2026-10-31T23:59:59Z",
-    "status": "PENDING_REVIEW",
-    "industryIds": ["1f2d6c5a-bb50-4e8f-b1a2-27c5d1f42a87"],
-    "skillIds": [
-      "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
-      "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e"
+    "status": "PendingReview",
+    "industries": [
+      {
+        "id": "1f2d6c5a-bb50-4e8f-b1a2-27c5d1f42a87",
+        "name": "Công nghệ thông tin"
+      }
+    ],
+    "skills": [
+      {
+        "id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
+        "name": "C# / .NET Core"
+      },
+      {
+        "id": "4b5c6d7e-8f9a-0b1c-2d3e-4f5a6b7c8d9e",
+        "name": "PostgreSQL"
+      }
     ],
     "createdAt": "2026-09-29T10:00:00Z",
     "updatedAt": "2026-09-29T10:00:00Z"
@@ -500,20 +527,31 @@ Không có request body.
   "data": [
     {
       "id": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-      "companyId": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+      "company": {
+        "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+        "name": "Tech Solutions",
+        "logoFileUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+      },
       "title": "Senior Backend Developer",
-      "provinceId": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
-      "wardId": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
-      "companyName": "Tech Solutions",
-      "experienceYears": 5,
+      "province": {
+        "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
+        "name": "Thành phố Hồ Chí Minh"
+      },
+      "ward": {
+        "id": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+        "name": "Phường Bến Nghé"
+      },
+      "experienceYears": 3,
       "jobLevel": "Staff",
       "workMode": "Hybrid",
       "jobType": "FullTime",
-      "salaryMin": 2500,
-      "salaryMax": 4000,
-      "salaryNegotiable": true,
+      "salaryMin": 25000000,
+      "salaryMax": 40000000,
+      "salaryNegotiable": false,
       "deadline": "2026-10-31T23:59:59Z",
-      "status": "Open",
+      "status": "Published",
+      "skillNames": ["C# / .NET Core", "PostgreSQL"],
+      "industryNames": ["Công nghệ thông tin"],
       "createdAt": "2026-09-29T10:00:00Z"
     }
   ],
@@ -610,16 +648,16 @@ Không có request body.
         },
         "detailedLocation": "Tòa nhà Mekong, Ninh Kiều",
         "experienceYears": 2,
-        "jobLevel": "STAFF",
-        "educationLevel": "BACHELOR",
+        "jobLevel": "Staff",
+        "educationLevel": "Bachelor",
         "vacancies": 3,
-        "workMode": "HYBRID",
-        "jobType": "FULL_TIME",
+        "workMode": "Hybrid",
+        "jobType": "FullTime",
         "salaryMin": 18000000,
         "salaryMax": 30000000,
         "salaryNegotiable": false,
         "deadline": "2026-11-23T09:30:15.423112+00:00",
-        "status": "PUBLISHED",
+        "status": "Published",
         "industries": [
             {
                 "id": "c1d2e3f4-4444-4000-8000-000000000001",
@@ -641,7 +679,10 @@ Không có request body.
             }
         ],
         "createdAt": "2026-10-19T09:30:15.423112+00:00",
-        "updatedAt": "2026-10-24T09:30:15.423112+00:00"
+        "updatedAt": "2026-10-24T09:30:15.423112+00:00",
+        "hasApplied": false,
+        "applicationId": null,
+        "isFollowingCompany": false
     },
     "meta": {},
     "correlationId": "550e8400-e29b-41d4-a716-446655440000"
@@ -896,11 +937,10 @@ Phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvFileId`. Request
   "data": {
     "id": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
     "jobId": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-    "candidateId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
     "cvVersionId": "0d55e7ee-44f4-4d30-a65c-d9c5af5cf6c8",
     "uploadedCvUrl": null,
-    "coverLetter": "I am excited to apply for this backend developer position.",
-    "status": "SUBMITTED",
+    "coverLetter": "Tôi rất quan tâm đến vị trí Backend Developer này.",
+    "status": "Submitted",
     "appliedAt": "2026-09-29T12:00:00Z",
     "updatedAt": "2026-09-29T12:00:00Z"
   },
@@ -918,7 +958,7 @@ Phải gửi đúng một trong `cvVersionId` hoặc `uploadedCvFileId`. Request
 
 **Theo dõi lịch sử ứng tuyển**
 
-Candidate xem các application của chính mình, trạng thái hiện tại và thông tin job cơ bản.
+Candidate xem các application của chính mình, trạng thái hiện tại và thông tin tóm tắt của Job (được nhúng sẵn trong response, không cần query N+1).
 
 ### Method & Path
 
@@ -943,7 +983,7 @@ GET /api/v1/applications/me
 
 | Parameter | Required | DataType | Validation Rules |
 |---|---:|---|---|
-| `status` | No | Enum | Status application hợp lệ. |
+| `status` | No | Enum | Status application hợp lệ (`Submitted`, `Reviewing`, `Shortlisted`, `Interviewing`, `Offered`, `Hired`, `Rejected`, `Withdrawn`). |
 | `page` | No | Integer | Mặc định 1. |
 | `pageSize` | No | Integer | Mặc định 20; tối đa 100. |
 | `sort` | No | Enum | `appliedAt` hoặc `updatedAt`. |
@@ -953,7 +993,7 @@ GET /api/v1/applications/me
 
 | Status | Meaning | Condition |
 |---:|---|---|
-| `200` | OK | Trả về danh sách application. |
+| `200` | OK | Trả về danh sách application kèm thông tin job tóm tắt. |
 | `400` | Bad Request | Query không hợp lệ. |
 | `401` | Unauthorized | Access Token không hợp lệ. |
 | `403` | Forbidden | User không phải Candidate. |
@@ -967,11 +1007,36 @@ GET /api/v1/applications/me
     {
       "id": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
       "jobId": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-      "candidateId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+      "job": {
+        "id": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
+        "title": "Senior Backend Developer",
+        "company": {
+          "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+          "name": "Tech Solutions",
+          "logoUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+        },
+        "province": {
+          "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
+          "name": "Thành phố Hồ Chí Minh"
+        },
+        "ward": {
+          "id": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+          "name": "Phường Bến Nghé"
+        },
+        "experienceYears": 3,
+        "jobLevel": "Staff",
+        "workMode": "Hybrid",
+        "jobType": "FullTime",
+        "salaryMin": 25000000,
+        "salaryMax": 40000000,
+        "salaryNegotiable": false,
+        "deadline": "2026-10-31T23:59:59Z",
+        "status": "Published"
+      },
       "cvVersionId": "0d55e7ee-44f4-4d30-a65c-d9c5af5cf6c8",
       "uploadedCvUrl": null,
-      "coverLetter": "I am excited to apply for this backend developer position.",
-      "status": "INTERVIEW",
+      "coverLetter": "Tôi rất quan tâm đến vị trí Backend Developer này.",
+      "status": "Interviewing",
       "appliedAt": "2026-09-29T12:00:00Z",
       "updatedAt": "2026-10-01T09:00:00Z"
     }
@@ -1046,11 +1111,17 @@ GET /api/v1/job-postings/{id}/applications
     {
       "id": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
       "jobId": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-      "candidateId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+      "candidate": {
+        "id": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+        "fullName": "Trần Thị B",
+        "email": "candidate@example.com",
+        "phone": "+84901234567",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256"
+      },
       "cvVersionId": "0d55e7ee-44f4-4d30-a65c-d9c5af5cf6c8",
       "uploadedCvUrl": null,
-      "coverLetter": "I am excited to apply for this backend developer position.",
-      "status": "SUBMITTED",
+      "coverLetter": "Kính gửi quý công ty, tôi ứng tuyển vị trí...",
+      "status": "Submitted",
       "appliedAt": "2026-09-29T12:00:00Z",
       "updatedAt": "2026-09-29T12:00:00Z"
     }
@@ -1076,7 +1147,7 @@ GET /api/v1/job-postings/{id}/applications
 
 **Xem chi tiết hồ sơ ứng tuyển**
 
-Trả về toàn bộ field của `APPLICATION`, kèm thông tin CV/job theo policy authorization.
+Trả về toàn bộ thông tin đơn ứng tuyển: tóm tắt job (`job`), thông tin ứng viên (`candidate`), bản chụp CV tại thời điểm nộp (`cvSnapshot`) hoặc URL CV tải lên.
 
 ### Method & Path
 
@@ -1123,11 +1194,62 @@ Không có request body.
   "data": {
     "id": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
     "jobId": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
-    "candidateId": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+    "job": {
+      "id": "c8b2f7a1-3c2e-4a7c-a8e1-3d3dc0be8d91",
+      "title": "Senior Backend Developer",
+      "company": {
+        "id": "a6a0e6ce-c1dd-4bb8-bf2a-5f7d4c6d7b55",
+        "name": "Tech Solutions",
+        "logoUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+      },
+      "province": {
+        "id": "f24c42be-cd89-4548-b5e8-1cb3b9b8ea6e",
+        "name": "Thành phố Hồ Chí Minh"
+      },
+      "ward": {
+        "id": "d7b1a2c3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+        "name": "Phường Bến Nghé"
+      },
+      "experienceYears": 3,
+      "jobLevel": "Staff",
+      "workMode": "Hybrid",
+      "jobType": "FullTime",
+      "salaryMin": 25000000,
+      "salaryMax": 40000000,
+      "salaryNegotiable": false,
+      "deadline": "2026-10-31T23:59:59Z",
+      "status": "Published"
+    },
+    "candidate": {
+      "id": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+      "fullName": "Trần Thị B",
+      "email": "candidate@example.com",
+      "phone": "+84901234567",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256"
+    },
     "cvVersionId": "0d55e7ee-44f4-4d30-a65c-d9c5af5cf6c8",
     "uploadedCvUrl": null,
-    "coverLetter": "I am excited to apply for this backend developer position.",
-    "status": "INTERVIEW",
+    "cvSnapshot": {
+      "versionId": "0d55e7ee-44f4-4d30-a65c-d9c5af5cf6c8",
+      "cvId": "b3e6ae75-3264-47ec-94c6-e2f1f7a70c9d",
+      "templateId": "6a6c7345-ec6f-4b09-bf05-2a4a4a2e5a80",
+      "versionNumber": 2,
+      "language": "Vietnamese",
+      "content": {
+        "profile": {
+          "fullName": "Trần Thị B",
+          "title": "Backend Developer",
+          "email": "candidate@example.com",
+          "phone": "+84901234567"
+        },
+        "sections": {}
+      },
+      "layout": { "version": "1.0", "areas": [] },
+      "presentation": { "metadata": { "version": "1.0" }, "styles": {} },
+      "createdAt": "2026-09-29T11:00:00Z"
+    },
+    "coverLetter": "Tôi rất quan tâm đến vị trí Backend Developer này.",
+    "status": "Interviewing",
     "appliedAt": "2026-09-29T12:00:00Z",
     "updatedAt": "2026-10-01T09:00:00Z"
   },
@@ -1282,17 +1404,29 @@ GET /api/v1/applications/{id}/status-history
     {
       "id": "c6d97e94-8128-4ce5-bb44-70fbfd8bfbb0",
       "applicationId": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
-      "status": "SUBMITTED",
-      "changedBy": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+      "status": "Submitted",
+      "changedBy": {
+        "id": "7d9e6f7a-08d8-4e2a-8f68-5d0cb4f47e4a",
+        "fullName": "Trần Thị B",
+        "email": "candidate@example.com",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256",
+        "role": "Candidate"
+      },
       "note": null,
       "createdAt": "2026-09-29T12:00:00Z"
     },
     {
       "id": "ee3f0ca0-a6f7-4e27-8508-9032fc4b6fd5",
       "applicationId": "5fc43d70-1c27-4c94-9306-d1a1d4dc9c60",
-      "status": "INTERVIEW",
-      "changedBy": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
-      "note": "Invite candidate to technical interview.",
+      "status": "Interviewing",
+      "changedBy": {
+        "id": "e2c5a5c7-3658-442d-87c1-cf8ff34d2d8b",
+        "fullName": "Nguyễn Văn A",
+        "email": "hr@techsolutions.vn",
+        "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=256",
+        "role": "Recruiter"
+      },
+      "note": "Mời ứng viên tham gia phỏng vấn chuyên môn vòng 1.",
       "createdAt": "2026-10-01T09:00:00Z"
     }
   ],
