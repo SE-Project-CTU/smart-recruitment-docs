@@ -10,22 +10,22 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 
 ## API List
 
-| #   | API                        | Method & Path                                      | Resource                |
-| --- | -------------------------- | -------------------------------------------------- | ----------------------- |
-| 1   | Tìm kiếm người dùng        | `GET /api/v1/admin/users`                          | `USER`                  |
-| 2   | Khóa/mở tài khoản          | `PATCH /api/v1/admin/users/{id}/status`            | `USER`, `REFRESH_TOKEN` |
-| 3   | Doanh nghiệp cần duyệt     | `GET /api/v1/admin/companies`                      | `COMPANY`               |
-| 4   | Xem chi tiết doanh nghiệp  | `GET /api/v1/admin/companies/{id}`                 | `COMPANY`               |
-| 5   | Duyệt/từ chối doanh nghiệp | `PATCH /api/v1/admin/companies/{id}/verification`  | `COMPANY`               |
-| 6   | Tin tuyển dụng cần duyệt   | `GET /api/v1/admin/job-postings`                   | `JOB_POSTING`           |
-| 7   | Duyệt/từ chối tin          | `PATCH /api/v1/admin/job-postings/{id}/moderation` | `JOB_POSTING`           |
-| 8   | Quản lý nhóm ngành         | `GET/POST /api/v1/admin/industry-groups`, `PATCH .../{id}` | `INDUSTRY_GROUP` |
-| 9   | Quản lý ngành nghề         | `GET/POST /api/v1/admin/industries`, `PATCH .../{id}` | `INDUSTRY`           |
-| 10  | Quản lý Tỉnh/Thành phố     | `GET/POST /api/v1/admin/provinces`, `PATCH .../{id}` | `PROVINCE`            |
-| 11  | Quản lý Phường/Xã          | `GET/POST /api/v1/admin/wards`, `PATCH .../{id}` | `WARD`                |
-| 12  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}` | `CV_TEMPLATE`         |
-| 13  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}` | `SKILL`                 |
-| 14  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`             | Aggregated read model   |
+| #   | API                        | Method & Path                                              | Resource                |
+| --- | -------------------------- | ---------------------------------------------------------- | ----------------------- |
+| 1   | Tìm kiếm người dùng        | `GET /api/v1/admin/users`                                  | `USER`                  |
+| 2   | Khóa/mở tài khoản          | `PATCH /api/v1/admin/users/{id}/status`                    | `USER`, `REFRESH_TOKEN` |
+| 3   | Doanh nghiệp cần duyệt     | `GET /api/v1/admin/companies`                              | `COMPANY`               |
+| 4   | Xem chi tiết doanh nghiệp  | `GET /api/v1/admin/companies/{id}`                         | `COMPANY`               |
+| 5   | Duyệt/từ chối doanh nghiệp | `PATCH /api/v1/admin/companies/{id}/verification`          | `COMPANY`               |
+| 6   | Tin tuyển dụng cần duyệt   | `GET /api/v1/admin/job-postings`                           | `JOB_POSTING`           |
+| 7   | Duyệt/từ chối tin          | `PATCH /api/v1/admin/job-postings/{id}/moderation`         | `JOB_POSTING`           |
+| 8   | Quản lý nhóm ngành         | `GET/POST /api/v1/admin/industry-groups`, `PATCH .../{id}` | `INDUSTRY_GROUP`        |
+| 9   | Quản lý ngành nghề         | `GET/POST /api/v1/admin/industries`, `PATCH .../{id}`      | `INDUSTRY`              |
+| 10  | Quản lý Tỉnh/Thành phố     | `GET/POST /api/v1/admin/provinces`, `PATCH .../{id}`       | `PROVINCE`              |
+| 11  | Quản lý Phường/Xã          | `GET/POST /api/v1/admin/wards`, `PATCH .../{id}`           | `WARD`                  |
+| 12  | Quản lý template CV        | `GET/POST /api/v1/admin/cv-templates`, `PATCH .../{id}`    | `CV_TEMPLATE`           |
+| 13  | Quản lý kỹ năng            | `GET/POST /api/v1/admin/skills`, `PATCH .../{id}`          | `SKILL`                 |
+| 14  | Dashboard vận hành         | `GET /api/v1/admin/dashboard/overview`                     | Aggregated read model   |
 
 ## Shared Rules
 
@@ -38,16 +38,16 @@ Tất cả endpoint yêu cầu role `Admin`. `JOB_EMBEDDING`, `CV_EMBEDDING`, `A
 
 ## ERD Response Mapping
 
-| API field                                | ERD column                                 | Resource                                    |
-| ---------------------------------------- | ------------------------------------------ | ------------------------------------------- |
-| `fullName` / `avatarUrl`                 | `full_name` / `avatar_url`                 | `USER`                                      |
-| `roleId`                                  | `role_id`                                  | `ROLE`, `USER_ROLE`                         |
-| `verificationStatus` / `verifiedAt`      | `verification_status` / `verified_at`      | `COMPANY`                                   |
-| `provinceId` / `wardId`                  | `province_id` / `ward_id`                  | `PROVINCE`, `WARD`, `JOB_POSTING`           |
-| `category` / `isActive`                  | `category` / `is_active`                   | `SKILL`, `INDUSTRY_GROUP`, `INDUSTRY`, `CV_TEMPLATE` |
-| `code` / `version`                        | `code` / `version`                         | `CV_TEMPLATE`                               |
-| `defaultLayout` / `defaultContent` / `defaultPresentation` | `default_layout` / `default_content` / `default_presentation` | `CV_TEMPLATE` |
-| `createdAt` / `updatedAt`                | `created_at` / `updated_at`                | Persisted resources                         |
+| API field                                                  | ERD column                                                    | Resource                                             |
+| ---------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------- |
+| `fullName` / `avatarUrl`                                   | `full_name` / `avatar_url`                                    | `USER`                                               |
+| `roleId`                                                   | `role_id`                                                     | `ROLE`, `USER_ROLE`                                  |
+| `verificationStatus` / `verifiedAt`                        | `verification_status` / `verified_at`                         | `COMPANY`                                            |
+| `provinceId` / `wardId`                                    | `province_id` / `ward_id`                                     | `PROVINCE`, `WARD`, `JOB_POSTING`                    |
+| `category` / `isActive`                                    | `category` / `is_active`                                      | `SKILL`, `INDUSTRY_GROUP`, `INDUSTRY`, `CV_TEMPLATE` |
+| `code` / `version`                                         | `code` / `version`                                            | `CV_TEMPLATE`                                        |
+| `defaultLayout` / `defaultContent` / `defaultPresentation` | `default_layout` / `default_content` / `default_presentation` | `CV_TEMPLATE`                                        |
+| `createdAt` / `updatedAt`                                  | `created_at` / `updated_at`                                   | Persisted resources                                  |
 
 <details>
 <summary><strong>API 1: Search Users</strong></summary>
@@ -263,8 +263,8 @@ Chỉ Admin.
 
 ### Request Parameters / Body
 
-| Field | Required | DataType | Validation Rules |
-| ----- | -------: | -------- | ---------------- |
+| Field | Required | DataType | Validation Rules      |
+| ----- | -------: | -------- | --------------------- |
 | `id`  |      Yes | UUID     | Company phải tồn tại. |
 
 ### Response Status Codes
@@ -457,7 +457,10 @@ Chỉ Admin.
 ### Example Request
 
 ```json
-{ "status": "REJECTED", "reason": "The job description contains prohibited content." }
+{
+  "status": "REJECTED",
+  "reason": "The job description contains prohibited content."
+}
 ```
 
 ### Example Success Response
@@ -505,13 +508,13 @@ Chỉ Admin.
 
 **Query Parameters (dành cho GET):**
 
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `groupId` |       No | UUID     | Lọc theo nhóm ngành. |
-| `search`  |       No | String   | Tìm theo tên ngành nghề. |
-| `status`  |       No | Enum     | `ACTIVE`, `INACTIVE`. |
-| `isActive` |      No | Boolean  | Lọc theo trạng thái bật/tắt. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+| Parameter           | Required | DataType | Validation Rules                    |
+| ------------------- | -------: | -------- | ----------------------------------- |
+| `groupId`           |       No | UUID     | Lọc theo nhóm ngành.                |
+| `search`            |       No | String   | Tìm theo tên ngành nghề.            |
+| `status`            |       No | Enum     | `ACTIVE`, `INACTIVE`.               |
+| `isActive`          |       No | Boolean  | Lọc theo trạng thái bật/tắt.        |
+| `page` / `pageSize` |       No | Integer  | Mặc định 1/20; pageSize tối đa 100. |
 
 **Body (dành cho POST / PATCH):**
 
@@ -574,11 +577,11 @@ Chỉ Admin.
 
 **Query Parameters (dành cho GET):**
 
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên Tỉnh/Thành phố. |
-| `status`  |       No | Enum     | `ACTIVE`, `INACTIVE`. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+| Parameter           | Required | DataType | Validation Rules                    |
+| ------------------- | -------: | -------- | ----------------------------------- |
+| `search`            |       No | String   | Tìm theo tên Tỉnh/Thành phố.        |
+| `status`            |       No | Enum     | `ACTIVE`, `INACTIVE`.               |
+| `page` / `pageSize` |       No | Integer  | Mặc định 1/20; pageSize tối đa 100. |
 
 **Body (dành cho POST / PATCH):**
 
@@ -637,21 +640,21 @@ Chỉ Admin.
 
 **Query Parameters (dành cho GET):**
 
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `provinceId` |    No | UUID     | Lọc theo Tỉnh/Thành phố. |
-| `search`     |    No | String   | Tìm theo tên Phường/Xã. |
-| `status`     |    No | Enum     | `ACTIVE`, `INACTIVE`. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+| Parameter           | Required | DataType | Validation Rules                    |
+| ------------------- | -------: | -------- | ----------------------------------- |
+| `provinceId`        |       No | UUID     | Lọc theo Tỉnh/Thành phố.            |
+| `search`            |       No | String   | Tìm theo tên Phường/Xã.             |
+| `status`            |       No | Enum     | `ACTIVE`, `INACTIVE`.               |
+| `page` / `pageSize` |       No | Integer  | Mặc định 1/20; pageSize tối đa 100. |
 
 **Body (dành cho POST / PATCH):**
 
-| Field        |     Required | DataType | Validation Rules      |
-| ------------ | -----------: | -------- | --------------------- |
-| `id`         |  Conditional | UUID     | Bắt buộc với PATCH.   |
-| `provinceId` | Yes for POST | UUID     | Province phải tồn tại.|
-| `name`       | Yes for POST | String   | 2-150 ký tự.          |
-| `status`     |           No | Enum     | `ACTIVE`, `INACTIVE`. |
+| Field        |     Required | DataType | Validation Rules       |
+| ------------ | -----------: | -------- | ---------------------- |
+| `id`         |  Conditional | UUID     | Bắt buộc với PATCH.    |
+| `provinceId` | Yes for POST | UUID     | Province phải tồn tại. |
+| `name`       | Yes for POST | String   | 2-150 ký tự.           |
+| `status`     |           No | Enum     | `ACTIVE`, `INACTIVE`.  |
 
 ### Response Status Codes
 
@@ -703,26 +706,26 @@ Chỉ Admin.
 
 **Query Parameters (dành cho GET):**
 
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên hoặc code template. |
-| `isActive` |      No | Boolean  | Lọc theo trạng thái bật/tắt. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+| Parameter           | Required | DataType | Validation Rules                    |
+| ------------------- | -------: | -------- | ----------------------------------- |
+| `search`            |       No | String   | Tìm theo tên hoặc code template.    |
+| `isActive`          |       No | Boolean  | Lọc theo trạng thái bật/tắt.        |
+| `page` / `pageSize` |       No | Integer  | Mặc định 1/20; pageSize tối đa 100. |
 
 **Body (dành cho POST / PATCH):**
 
-| Field                 |     Required | DataType    | Validation Rules                            |
-| --------------------- | -----------: | ----------- | ------------------------------------------- |
-| `id`                  |  Conditional | UUID        | Bắt buộc với PATCH.                         |
-| `code`                | Yes for POST | String      | Định danh kỹ thuật duy nhất (e.g. `modern-blue`, `minimalist-v1`), lowercase kebab-case. |
-| `name`                | Yes for POST | String      | 2-150 ký tự.                                |
-| `description`         |           No | String      | Mô tả định dạng template.                   |
-| `thumbnailUrl`        | Yes for POST | String      | URL ảnh xem trước hợp lệ.                   |
-| `defaultLayout`       | Yes for POST | JSON Object | Tuân thủ `cv_layout_schema.json`; có `version`, `type`, `areas[].id` và `areas[].sections`. |
+| Field                 |     Required | DataType    | Validation Rules                                                                                                    |
+| --------------------- | -----------: | ----------- | ------------------------------------------------------------------------------------------------------------------- |
+| `id`                  |  Conditional | UUID        | Bắt buộc với PATCH.                                                                                                 |
+| `code`                | Yes for POST | String      | Định danh kỹ thuật duy nhất (e.g. `modern-blue`, `minimalist-v1`), lowercase kebab-case.                            |
+| `name`                | Yes for POST | String      | 2-150 ký tự.                                                                                                        |
+| `description`         |           No | String      | Mô tả định dạng template.                                                                                           |
+| `thumbnailUrl`        | Yes for POST | String      | URL ảnh xem trước hợp lệ.                                                                                           |
+| `defaultLayout`       | Yes for POST | JSON Object | Tuân thủ `cv_layout_schema.json`; có `version`, `type`, `areas[].id` và `areas[].sections`.                         |
 | `defaultContent`      | Yes for POST | JSON Object | Tuân thủ `cv_content_schema.json`; có `metadata`, `profile` và `sections.order`/`sections.objective` đúng cấu trúc. |
-| `defaultPresentation` | Yes for POST | JSON Object | Tuân thủ `cv_presentation_schema.json`; có `metadata` và `styles.global`/`styles.fields`. |
-| `version`             |           No | Integer     | Mặc định 1; tăng khi nâng cấp template.     |
-| `isActive`            |           No | Boolean     | Tắt bằng false nếu template ngưng hỗ trợ.   |
+| `defaultPresentation` | Yes for POST | JSON Object | Tuân thủ `cv_presentation_schema.json`; có `metadata` và `styles.global`/`styles.fields`.                           |
+| `version`             |           No | Integer     | Mặc định 1; tăng khi nâng cấp template.                                                                             |
+| `isActive`            |           No | Boolean     | Tắt bằng false nếu template ngưng hỗ trợ.                                                                           |
 
 ### Response Status Codes
 
@@ -742,37 +745,91 @@ Chỉ Admin.
       "version": "1.0",
       "type": "two-column",
       "areas": [
-        { "id": "sidebar", "sections": ["skills", "education", "certifications"] },
+        {
+          "id": "sidebar",
+          "sections": ["skills", "education", "certifications"]
+        },
         { "id": "main", "sections": ["objective", "experience", "projects"] }
       ]
     },
     "defaultContent": {
-      "metadata": { "version": "1.0", "templateId": "tpl_modern_tech_01", "language": "vi", "updatedAt": "2026-09-24T10:00:00Z" },
+      "metadata": {
+        "version": "1.0",
+        "templateId": "tpl_modern_tech_01",
+        "language": "vi",
+        "updatedAt": "2026-09-24T10:00:00Z"
+      },
       "profile": {
-        "fullName": "", "title": "", "avatarUrl": "https://cdn.smarthire.example/avatar-placeholder.png",
-        "email": "", "phone": "", "dob": "", "address": "",
-        "website": "https://smarthire.example", "socialLink": "https://linkedin.com"
+        "fullName": "",
+        "title": "",
+        "avatarUrl": "https://cdn.smarthire.example/avatar-placeholder.png",
+        "email": "",
+        "phone": "",
+        "dob": "",
+        "address": "",
+        "website": "https://smarthire.example",
+        "socialLink": "https://linkedin.com"
       },
       "sections": {
-        "order": ["objective", "experience", "education", "skills", "projects", "certifications", "awards", "interests", "additionalInfo"],
-        "objective": { "title": "Mục tiêu nghề nghiệp", "visible": true, "content": "" },
-        "experience": { "title": "Kinh nghiệm làm việc", "visible": true, "items": [] },
+        "order": [
+          "objective",
+          "experience",
+          "education",
+          "skills",
+          "projects",
+          "certifications",
+          "awards",
+          "interests",
+          "additionalInfo"
+        ],
+        "objective": {
+          "title": "Mục tiêu nghề nghiệp",
+          "visible": true,
+          "content": ""
+        },
+        "experience": {
+          "title": "Kinh nghiệm làm việc",
+          "visible": true,
+          "items": []
+        },
         "education": { "title": "Học vấn", "visible": true, "items": [] },
-        "skills": { "title": "Kỹ năng chuyên môn", "visible": true, "items": [] },
+        "skills": {
+          "title": "Kỹ năng chuyên môn",
+          "visible": true,
+          "items": []
+        },
         "projects": { "title": "Dự án nổi bật", "visible": true, "items": [] },
-        "certifications": { "title": "Chứng chỉ", "visible": true, "items": [] },
+        "certifications": {
+          "title": "Chứng chỉ",
+          "visible": true,
+          "items": []
+        },
         "awards": { "title": "Giải thưởng", "visible": true, "items": [] },
         "interests": { "title": "Sở thích", "visible": true, "content": "" },
-        "additionalInfo": { "title": "Thông tin bổ sung", "visible": true, "content": "" }
+        "additionalInfo": {
+          "title": "Thông tin bổ sung",
+          "visible": true,
+          "content": ""
+        }
       }
     },
     "defaultPresentation": {
-      "metadata": { "version": "1.0", "templateId": "tpl_modern_tech_01", "updatedAt": "2026-09-24T10:51:00Z" },
+      "metadata": {
+        "version": "1.0",
+        "templateId": "tpl_modern_tech_01",
+        "updatedAt": "2026-09-24T10:51:00Z"
+      },
       "styles": {
-        "global": { "fontFamily": "Inter", "baseFontSize": 14, "primaryColor": "#2563EB", "lineHeight": 1.5 },
+        "global": {
+          "fontFamily": "Inter",
+          "baseFontSize": 14,
+          "primaryColor": "#2563EB",
+          "lineHeight": 1.5
+        },
         "fields": {}
       }
-    },    "version": 1,
+    },
+    "version": 1,
     "isActive": true,
     "createdAt": "2026-09-01T08:00:00Z",
     "updatedAt": "2026-09-01T08:00:00Z"
@@ -813,11 +870,11 @@ Chỉ Admin.
 
 **Query Parameters (dành cho GET):**
 
-| Parameter | Required | DataType | Validation Rules |
-| --------- | -------: | -------- | ---------------- |
-| `search`  |       No | String   | Tìm theo tên kỹ năng hoặc category. |
-| `isActive` |      No | Boolean  | Lọc theo trạng thái bật/tắt. |
-| `page` / `pageSize` | No | Integer | Mặc định 1/20; pageSize tối đa 100. |
+| Parameter           | Required | DataType | Validation Rules                    |
+| ------------------- | -------: | -------- | ----------------------------------- |
+| `search`            |       No | String   | Tìm theo tên kỹ năng hoặc category. |
+| `isActive`          |       No | Boolean  | Lọc theo trạng thái bật/tắt.        |
+| `page` / `pageSize` |       No | Integer  | Mặc định 1/20; pageSize tối đa 100. |
 
 **Body (dành cho POST / PATCH):**
 
@@ -836,10 +893,16 @@ Chỉ Admin.
 ```json
 {
   "data": {
-    "id": "e8d4a1b2-9c3f-4e5a-8b1d-2f3a4b5c6d7e",
-    "name": "PostgreSQL",
+    "id": "6045904c-4d15-47fa-9164-7b5989ba02dc",
+    "code": "sidebar_classic",
+    "name": "Sidebar Classic",
+    "description": "Mẫu CV 1 cột phong cách hiện đại dành cho lập trình viên và khối ngành công nghệ.",
+    "thumbnailUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640",
+    "version": "1.0",
+    "language": "VIETNAMESE",
     "isActive": true,
-    "createdAt": "2026-09-29T12:00:00Z"
+    "createdAt": "2026-10-11T10:00:00+00:00",
+    "updatedAt": "2026-10-11T10:00:00+00:00"
   },
   "meta": {},
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
@@ -889,9 +952,25 @@ Chỉ Admin.
   "data": {
     "period": { "from": "2026-09-01T00:00:00Z", "to": "2026-09-29T23:59:59Z" },
     "users": { "total": 1200, "new": 85, "active": 1100, "locked": 100 },
-    "companies": { "total": 130, "pendingVerification": 8, "verified": 115, "rejected": 7 },
-    "jobPostings": { "total": 420, "pendingReview": 15, "open": 260, "expired": 90, "closed": 55 },
-    "applications": { "total": 3200, "new": 420, "interviews": 180, "rejected": 900 }
+    "companies": {
+      "total": 130,
+      "pendingVerification": 8,
+      "verified": 115,
+      "rejected": 7
+    },
+    "jobPostings": {
+      "total": 420,
+      "pendingReview": 15,
+      "open": 260,
+      "expired": 90,
+      "closed": 55
+    },
+    "applications": {
+      "total": 3200,
+      "new": 420,
+      "interviews": 180,
+      "rejected": 900
+    }
   },
   "meta": {},
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
@@ -899,4 +978,3 @@ Chỉ Admin.
 ```
 
 </details>
-
