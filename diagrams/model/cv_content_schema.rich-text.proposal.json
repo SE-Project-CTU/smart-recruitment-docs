@@ -1,29 +1,36 @@
 {
   "metadata": {
-    "version": "5.0",
-    "templateCode": "modern_two_column",
-    "language": "vi",
-    "updatedAt": "2026-10-22T04:58:25.752507+00:00",
+    "version": "1.0",
+    "templateCode": "senior_harvard",
+    "language": "en",
+    "updatedAt": "2026-10-28T00:00:00+00:00",
     "defaultStyle": {
       "fontFamily": "inter",
-      "baseFontSize": 14,
-      "primaryColors": ["#2563EB", "#1E293B"],
-      "lineHeight": 1.5
+      "fontScale": 1,
+      "primaryColors": ["#000000", "#466E8C"],
+      "lineHeight": 1.2
     }
   },
   "profile": {
     "fullName": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 24
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "Phan Quốc Bình",
+              "text": "PHAN QUOC BINH",
               "marks": [
-                { "type": "bold" },
-                { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "24px" } }
+                {
+                  "type": "bold"
+                }
               ]
             }
           ]
@@ -32,64 +39,47 @@
     },
     "title": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 15
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "Senior ",
-              "marks": [
-                {
-                  "type": "textStyle",
-                  "attrs": {
-                    "color": "#2563EB",
-                    "fontSize": "16px",
-                    "fontWeight": "500",
-                    "fontStyle": "italic"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "ASP.NET Core",
-              "marks": [
-                { "type": "bold" },
-                { "type": "textStyle", "attrs": { "color": "#1B3B6F", "fontSize": "18px" } }
-              ]
-            },
-            {
-              "type": "text",
-              "text": " & Fullstack Developer",
-              "marks": [
-                {
-                  "type": "textStyle",
-                  "attrs": {
-                    "color": "#2563EB",
-                    "fontSize": "16px",
-                    "fontWeight": "500",
-                    "fontStyle": "italic"
-                  }
-                }
-              ]
+              "text": "Fullstack Developer"
             }
           ]
         }
       ]
     },
-    "avatarUrl": "https://res.cloudinary.com/smarthire/image/upload/v12345/avatar.jpg",
+    "avatarUrl": "",
     "email": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "nguyenvana@gmail.com",
+              "text": "binh26042005@gmail.com",
               "marks": [
-                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "mailto:binh26042005@gmail.com"
+                  }
+                }
               ]
             }
           ]
@@ -98,15 +88,26 @@
     },
     "phone": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "0901234567",
+              "text": "0387405218",
               "marks": [
-                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "tel:0387405218"
+                  }
+                }
               ]
             }
           ]
@@ -115,16 +116,19 @@
     },
     "dob": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "1998-05-20",
-              "marks": [
-                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-              ]
+              "text": "20/04/2005"
             }
           ]
         }
@@ -132,16 +136,19 @@
     },
     "address": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "Quận Ninh Kiều, Cần Thơ",
-              "marks": [
-                { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-              ]
+              "text": "Can Tho"
             }
           ]
         }
@@ -149,34 +156,37 @@
     },
     "website": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "https://nguyenvana.dev",
-              "marks": [
-                { "type": "underline" },
-                { "type": "textStyle", "attrs": { "color": "#2563EB", "fontSize": "13px" } }
-              ]
-            }
-          ]
+          "type": "paragraph"
         }
       ]
     },
     "socialLink": {
       "type": "doc",
+      "attrs": {
+        "fontSize": 12
+      },
       "content": [
         {
           "type": "paragraph",
+          "attrs": {
+            "textAlign": "center"
+          },
           "content": [
             {
               "type": "text",
-              "text": "https://linkedin.com/in/nguyenvana",
+              "text": "linkedin.com/in/phan-quoc-binh",
               "marks": [
-                { "type": "underline" },
-                { "type": "textStyle", "attrs": { "color": "#2563EB", "fontSize": "13px" } }
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "https://www.linkedin.com/in/phan-quoc-binh"
+                  }
+                }
               ]
             }
           ]
@@ -185,30 +195,23 @@
     }
   },
   "sections": {
-    "order": [
-      "objective",
-      "experience",
-      "education",
-      "skills",
-      "projects",
-      "certifications",
-      "awards",
-      "interests",
-      "additionalInfo"
-    ],
     "objective": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Mục tiêu nghề nghiệp",
+                "text": "Objective",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -218,17 +221,16 @@
       "visible": true,
       "content": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 13
+        },
         "content": [
           {
             "type": "paragraph",
-            "attrs": { "textAlign": "justify" },
             "content": [
               {
                 "type": "text",
-                "text": "Tôi mong muốn trở thành một chuyên gia phát triển phần mềm, đóng góp vào các dự án công nghệ tiên tiến và tích hợp AI. Tôi hướng tới việc phát triển các giải pháp sáng tạo, tối ưu hóa quy trình và nâng cao trải nghiệm người dùng. Tôi luôn sẵn sàng học hỏi và áp dụng các công nghệ mới để mang lại giá trị thực tế cho doanh nghiệp.",
-                "marks": [
-                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "14px" } }
-                ]
+                "text": "Software Engineering student with hands-on experience in frontend development and full-stack projects using JavaScript and TypeScript. Seeking a Full Stack JavaScript Developer position to build useful features and improve real-world applications."
               }
             ]
           }
@@ -238,16 +240,20 @@
     "experience": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Kinh nghiệm làm việc",
+                "text": "Work Experience",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -260,16 +266,20 @@
           "id": "exp_01",
           "company": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Công ty Công nghệ SmartHire",
+                    "text": "FPT Software (Can Tho)",
                     "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                      {
+                        "type": "bold"
+                      }
                     ]
                   }
                 ]
@@ -278,22 +288,19 @@
           },
           "position": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Backend Developer (C# / .NET)",
+                    "text": "Java Intern",
                     "marks": [
                       {
-                        "type": "textStyle",
-                        "attrs": {
-                          "color": "#2563EB",
-                          "fontSize": "14px",
-                          "fontWeight": "500",
-                          "fontStyle": "italic"
-                        }
+                        "type": "italic"
                       }
                     ]
                   }
@@ -301,215 +308,35 @@
               }
             ]
           },
-          "startDate": "2024-03",
-          "endDate": null,
-          "description": {
+          "startDate": {
             "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Chịu trách nhiệm thiết kế kiến trúc Modular Monolith và phát triển hệ thống gợi ý CV tích hợp AI.",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "exp_02",
-          "company": {
-            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Công ty Phần mềm ABC",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
-                    ]
+                    "text": "2026-05"
                   }
                 ]
               }
             ]
           },
-          "position": {
+          "endDate": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Fullstack Developer",
-                    "marks": [
-                      {
-                        "type": "textStyle",
-                        "attrs": {
-                          "color": "#2563EB",
-                          "fontSize": "14px",
-                          "fontWeight": "500",
-                          "fontStyle": "italic"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "startDate": "2022-06",
-          "endDate": "2024-02",
-          "description": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Phát triển các ứng dụng web sử dụng React, Node.js và tích hợp RESTful API.",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "education": {
-      "title": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Học vấn",
-                "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "visible": true,
-      "items": [
-        {
-          "id": "edu_01",
-          "school": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Trường CNTT&TT - Đại học Cần Thơ",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "title": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Kỹ sư Kỹ thuật Phần mềm",
-                    "marks": [
-                      {
-                        "type": "textStyle",
-                        "attrs": { "color": "#475569", "fontSize": "14px", "fontWeight": "500" }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "start": "2020-09",
-          "end": "2024-06",
-          "details": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Tốt nghiệp loại Giỏi GPA 3.6/4.0.",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "skills": {
-      "title": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Kỹ năng chuyên môn",
-                "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "visible": true,
-      "items": [
-        {
-          "id": "sk_01",
-          "name": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Frontend",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
-                    ]
+                    "text": "2026-08"
                   }
                 ]
               }
@@ -517,229 +344,15 @@
           },
           "description": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
             "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "React, TypeScript, TailwindCSS, Next.js, Redux Toolkit, Zustand",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "sk_02",
-          "name": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Backend",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "description": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "ASP.NET Core, C#, Node.js, Express.js, RESTful API, GraphQL",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "sk_03",
-          "name": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Database",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "description": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "SQL Server, PostgreSQL, MongoDB, Redis, Entity Framework Core",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "sk_04",
-          "name": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "DevOps & Cloud",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "14px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "description": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "left" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Docker, Kubernetes, AWS (EC2, S3, RDS), CI/CD pipelines (GitHub Actions)",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#475569", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "projects": {
-      "title": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Dự án nổi bật",
-                "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "visible": true,
-      "items": [
-        {
-          "id": "prj_01",
-          "projectName": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Nền tảng tuyển dụng SmartHire",
-                    "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "role": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Leader / Main Backend Architect",
-                    "marks": [
-                      {
-                        "type": "textStyle",
-                        "attrs": {
-                          "color": "#2563EB",
-                          "fontSize": "14px",
-                          "fontWeight": "500",
-                          "fontStyle": "italic"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          "start": "2026-01",
-          "end": "2026-05",
-          "description": {
-            "type": "doc",
-            "content": [
-              {
-                "type": "paragraph",
-                "attrs": { "textAlign": "justify" },
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Hệ thống kết nối tuyển dụng và hỗ trợ viết CV thông minh tích hợp AI.",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                    ]
-                  }
-                ]
-              },
               {
                 "type": "bulletList",
-                "attrs": { "listStyleType": "disc" },
+                "attrs": {
+                  "listStyleType": "disc"
+                },
                 "content": [
                   {
                     "type": "listItem",
@@ -749,13 +362,7 @@
                         "content": [
                           {
                             "type": "text",
-                            "text": "Thiết kế kiến trúc Modular Monolith, đảm bảo khả năng mở rộng và bảo trì.",
-                            "marks": [
-                              {
-                                "type": "textStyle",
-                                "attrs": { "color": "#334155", "fontSize": "13px" }
-                              }
-                            ]
+                            "text": "Developed and refactored application features, resolving issues based on code review feedback."
                           }
                         ]
                       }
@@ -769,13 +376,771 @@
                         "content": [
                           {
                             "type": "text",
-                            "text": "Tích hợp AI để gợi ý CV và phân tích dữ liệu ứng viên.",
-                            "marks": [
-                              {
-                                "type": "textStyle",
-                                "attrs": { "color": "#334155", "fontSize": "13px" }
-                              }
-                            ]
+                            "text": "Collaborated with team members following Agile Scrum and Git Flow practices."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "exp_02",
+          "company": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Giratech AI",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "position": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Frontend Developer (Remote)",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "startDate": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2025-07"
+                  }
+                ]
+              }
+            ]
+          },
+          "endDate": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2026-02"
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "bulletList",
+                "attrs": {
+                  "listStyleType": "disc"
+                },
+                "content": [
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Developed and maintained production web applications using React/Next.js, TypeScript, and modern frontend libraries, focusing on reusable and responsive UI components."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Integrated REST APIs and application workflows, contributing to feature development, UI improvements, and frontend architecture across multiple production projects."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Projects: VN168 (https://vn168.vn), CMS, GiraTech Landing Page (https://giratech.vn), Loyalty App CMS."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "education": {
+      "title": {
+        "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Education",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "edu_01",
+          "school": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Can Tho University",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "title": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Software Engineering"
+                  }
+                ]
+              }
+            ]
+          },
+          "start": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2023"
+                  }
+                ]
+              }
+            ]
+          },
+          "end": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2027"
+                  }
+                ]
+              }
+            ]
+          },
+          "details": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "GPA: 3.81/4.0 (Present)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Expected graduation: 2027."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "English: TOEIC 675 (01/2026), able to communicate at a basic level."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "skills": {
+      "title": {
+        "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Skills",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "sk_01",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Languages",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "JavaScript, TypeScript, C#, Java, SQL, HTML, CSS"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_02",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Frontend",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "React.js, Next.js, Tailwind CSS, Responsive Design, State Management"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_03",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Backend",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Node.js, Express.js, ASP.NET Core, EF Core, Spring Boot, Clean Architecture, RESTful API, JWT, CI/CD"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_04",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Database",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "PostgreSQL, MongoDB"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_05",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Tools & AI",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Git & GitHub, Docker, GitHub Actions, Render, Antigravity, Codex, Postman, Figma"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sk_06",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Fundamentals",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "OOP, DSA, Design Patterns"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "projects": {
+      "title": {
+        "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Projects",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "visible": true,
+      "items": [
+        {
+          "id": "prj_01",
+          "projectName": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Graph Algorithm Visualization Platform",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Software Developer",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "start": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2026-01"
+                  }
+                ]
+              }
+            ]
+          },
+          "end": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2026-09"
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "bulletList",
+                "attrs": {
+                  "listStyleType": "disc"
+                },
+                "content": [
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Built an interactive desktop application implementing and visualizing 6 graph algorithms with step-by-step execution and playback controls."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Designed a reusable execution-state model to synchronize algorithm steps, pseudo-code, data structures, and Cytoscape visualization."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Implemented Dijkstra’s shortest-path algorithm with a custom binary min-heap and path reconstruction, alongside Eulerian Cycle validation and traversal."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Designed a modular architecture separating algorithm logic, graph services, state management, and UI, with Command Pattern-based undo/redo for graph editing."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Tech: TypeScript, React.js, Electron.js, Cytoscape.js, Zustand."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "GitHub: https://github.com/VN-PhanQuocBinh/eulerian-cycle"
                           }
                         ]
                       }
@@ -790,16 +1155,20 @@
           "id": "prj_02",
           "projectName": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Ứng dụng quản lý dự án",
+                    "text": "SmartHire – Recruitment & CV Management Platform",
                     "marks": [
-                      { "type": "bold" },
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "15px" } }
+                      {
+                        "type": "bold"
+                      }
                     ]
                   }
                 ]
@@ -808,22 +1177,19 @@
           },
           "role": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Fullstack Developer",
+                    "text": "Team Leader - Fullstack Developer (Team of 3)",
                     "marks": [
                       {
-                        "type": "textStyle",
-                        "attrs": {
-                          "color": "#2563EB",
-                          "fontSize": "14px",
-                          "fontWeight": "500",
-                          "fontStyle": "italic"
-                        }
+                        "type": "italic"
                       }
                     ]
                   }
@@ -831,27 +1197,45 @@
               }
             ]
           },
-          "start": "2026-06",
-          "end": "2026-10",
-          "description": {
+          "start": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
             "content": [
               {
                 "type": "paragraph",
-                "attrs": { "textAlign": "justify" },
                 "content": [
                   {
                     "type": "text",
-                    "text": "Phát triển ứng dụng quản lý dự án với các tính năng như theo dõi tiến độ, phân công công việc và báo cáo.",
-                    "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                    ]
+                    "text": "2026-09"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          "end": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph"
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
               {
                 "type": "bulletList",
-                "attrs": { "listStyleType": "disc" },
+                "attrs": {
+                  "listStyleType": "disc"
+                },
                 "content": [
                   {
                     "type": "listItem",
@@ -861,13 +1245,7 @@
                         "content": [
                           {
                             "type": "text",
-                            "text": "Sử dụng React và Node.js để xây dựng giao diện người dùng và API.",
-                            "marks": [
-                              {
-                                "type": "textStyle",
-                                "attrs": { "color": "#334155", "fontSize": "13px" }
-                              }
-                            ]
+                            "text": "Led the team through 3 Agile sprints, planned tasks, assigned work, and tracked progress using GitHub Projects."
                           }
                         ]
                       }
@@ -881,13 +1259,286 @@
                         "content": [
                           {
                             "type": "text",
-                            "text": "Tích hợp hệ thống thông báo thời gian thực bằng WebSocket.",
-                            "marks": [
-                              {
-                                "type": "textStyle",
-                                "attrs": { "color": "#334155", "fontSize": "13px" }
-                              }
-                            ]
+                            "text": "Designed database schemas and implemented 28 backend APIs, using EF Core transactions and background jobs to support data consistency and reduce response delays."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Developed the CV Builder UI with React and TypeScript, supporting CV creation and editing; worked with the backend to align API responses with frontend requirements."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Configured GitHub Actions CI/CD and deployed the frontend to Vercel and backend to Render, completing 3 successful deployments."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Tech: C#, ASP.NET Core, EF Core, PostgreSQL, React, TypeScript, Docker, GitHub Actions."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Demo: https://smart-recruitment-app.vercel.app (backend may take a moment to start)."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "GitHub: https://github.com/SE-Project-CTU/smart-recruitment-app"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "prj_03",
+          "projectName": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Smart Book Management System",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "role": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Fullstack Developer",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "start": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2025-09"
+                  }
+                ]
+              }
+            ]
+          },
+          "end": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2025-12"
+                  }
+                ]
+              }
+            ]
+          },
+          "description": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "bulletList",
+                "attrs": {
+                  "listStyleType": "disc"
+                },
+                "content": [
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Built semantic book search using multilingual embeddings and MongoDB Atlas Vector Search to find and rank relevant books."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Developed an AI library assistant using semantic search and Gemini to recommend books and save chat history."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Built REST APIs for authentication, book management, and borrowing with JWT role-based access; added automated embedding updates, Vietnamese keyword search, and Docker deployment."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Tech: Vue.js, Express.js (TypeScript), MongoDB, Cloudinary, Hugging Face API, AI Studio, Docker."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Demo: https://my-library-frontend-0-0-1.onrender.com (backend may take a moment to start)."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "GitHub BE: https://github.com/VN-PhanQuocBinh/my-library."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "GitHub FE: https://github.com/VN-PhanQuocBinh/my-library-user-frontend."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "GitHub FE (CMS): https://github.com/VN-PhanQuocBinh/my-library-admin-frontend."
                           }
                         ]
                       }
@@ -903,16 +1554,20 @@
     "certifications": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Chứng chỉ",
+                "text": "Certifications",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -925,17 +1580,19 @@
           "id": "cert_01",
           "name": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "AWS Certified Solutions Architect",
+                    "text": "TOEIC 675 – IIG Vietnam",
                     "marks": [
                       {
-                        "type": "textStyle",
-                        "attrs": { "color": "#1E293B", "fontSize": "14px", "fontWeight": "500" }
+                        "type": "bold"
                       }
                     ]
                   }
@@ -943,23 +1600,80 @@
               }
             ]
           },
-          "issueDate": "2025-08"
+          "issueDate": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2026-01"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "cert_02",
+          "name": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Responsive Web Design – freeCodeCamp"
+                  }
+                ]
+              }
+            ]
+          },
+          "issueDate": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2025"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
     "awards": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Giải thưởng",
+                "text": "Awards",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -972,38 +1686,63 @@
           "id": "award_01",
           "awardName": {
             "type": "doc",
+            "attrs": {
+              "fontSize": 13
+            },
             "content": [
               {
                 "type": "paragraph",
                 "content": [
                   {
                     "type": "text",
-                    "text": "Giải Nhất Hackathon CNTT 2025",
+                    "text": "First Prize – CTU IT Hackathon",
                     "marks": [
-                      { "type": "textStyle", "attrs": { "color": "#1E293B", "fontSize": "14px" } }
+                      {
+                        "type": "bold"
+                      }
                     ]
                   }
                 ]
               }
             ]
           },
-          "date": "2025-12"
+          "date": {
+            "type": "doc",
+            "attrs": {
+              "fontSize": 12
+            },
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2025-12"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
     "interests": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Sở thích",
+                "text": "Interests",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -1013,17 +1752,16 @@
       "visible": true,
       "content": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 13
+        },
         "content": [
           {
             "type": "paragraph",
-            "attrs": { "textAlign": "left" },
             "content": [
               {
                 "type": "text",
-                "text": "Thích nghiên cứu các công nghệ mới, đặc biệt là Generative AI và Cloud Computing.",
-                "marks": [
-                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                ]
+                "text": "Building side projects and exploring new web technologies."
               }
             ]
           }
@@ -1033,16 +1771,20 @@
     "additionalInfo": {
       "title": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 14
+        },
         "content": [
           {
             "type": "paragraph",
             "content": [
               {
                 "type": "text",
-                "text": "Thông tin bổ sung",
+                "text": "Additional Information",
                 "marks": [
-                  { "type": "bold" },
-                  { "type": "textStyle", "attrs": { "color": "#0F172A", "fontSize": "18px" } }
+                  {
+                    "type": "bold"
+                  }
                 ]
               }
             ]
@@ -1052,17 +1794,25 @@
       "visible": true,
       "content": {
         "type": "doc",
+        "attrs": {
+          "fontSize": 13
+        },
         "content": [
           {
             "type": "paragraph",
-            "attrs": { "textAlign": "left" },
             "content": [
               {
                 "type": "text",
-                "text": "Sẵn sàng làm việc từ xa (Remote) và đi công tác ngắn ngày khi có yêu cầu.",
-                "marks": [
-                  { "type": "textStyle", "attrs": { "color": "#334155", "fontSize": "13px" } }
-                ]
+                "text": "Languages: Vietnamese (native), English (TOEIC 675)."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Availability: Open to full-time opportunities from July 2027."
               }
             ]
           }
