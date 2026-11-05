@@ -1,0 +1,902 @@
+[
+  {
+    "tên công ty": "CÔNG TY TNHH SAMSUNG ELECTRONICS VIỆT NAM THÁI NGUYÊN",
+    "mst": "4601124536",
+    "email": "tuyendung.sevt@samsung.com",
+    "số điện thoại": "02083123456",
+    "website": "samsung.com/vn",
+    "địa chỉ trụ sở": "Khu công nghiệp Yên Bình, Phường Đồng Tiến, Thành phố Phổ Yên, Tỉnh Thái Nguyên",
+    "giới thiệu công ty": "Sản xuất, kinh doanh thiết bị điện tử, điện lạnh, công nghệ thông tin, viễn thông hàng đầu tại Việt Nam và toàn cầu."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN CÔNG NGHIỆP - VIỄN THÔNG QUÂN ĐỘI",
+    "mst": "0100109106",
+    "email": "tuyendung@viettel.com.vn",
+    "số điện thoại": "18008098",
+    "website": "viettel.com.vn",
+    "địa chỉ trụ sở": "Lô D26, Khu đô thị mới Cầu Giấy, Phường Yên Hòa, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "Tập đoàn Viễn thông Quân đội Viettel - giữ vững vị thế Nơi làm việc tốt nhất Việt Nam trong nhiều năm liên tiếp trong ngành Viễn thông, Hạ tầng, IT."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN VINGROUP - CTCP",
+    "mst": "0101245486",
+    "email": "tuyendung@vingroup.net",
+    "số điện thoại": "02439749999",
+    "website": "vingroup.net",
+    "địa chỉ trụ sở": "Số 7 Đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, TP Hà Nội",
+    "giới thiệu công ty": "Tập đoàn kinh tế tư nhân đa ngành hàng đầu Việt Nam, hoạt động chính trong lĩnh vực kinh doanh bất động sản, công nghệ, công nghiệp và thương mại dịch vụ."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM",
+    "mst": "0100150619",
+    "email": "tuyendung@bidv.com.vn",
+    "số điện thoại": "19009247",
+    "website": "bidv.com.vn",
+    "địa chỉ trụ sở": "Tháp BIDV, số 194 Trần Quang Khải, Phường Lý Thái Tổ, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "BIDV là một trong những ngân hàng thương mại có quy mô lớn nhất Việt Nam, cung cấp đa dạng các dịch vụ tài chính, ngân hàng cho cá nhân và doanh nghiệp."
+  },
+  {
+    "tên công ty": "CÔNG TY CP FPT",
+    "mst": "0101248141",
+    "email": "tuyendungfpt@fpt.com.vn",
+    "số điện thoại": "02473007300",
+    "website": "fpt.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà FPT, số 10 Phạm Văn Bạch, Phường Dịch Vọng, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "Tập đoàn công nghệ hàng đầu Việt Nam với hoạt động kinh doanh cốt lõi trong lĩnh vực công nghệ thông tin, viễn thông và giáo dục."
+  },
+  {
+    "tên công ty": "CÔNG TY CP ĐẦU TƯ THẾ GIỚI DI ĐỘNG",
+    "mst": "0306731335",
+    "email": "tuyendung@thegioididong.com",
+    "số điện thoại": "02838125960",
+    "website": "mwg.vn",
+    "địa chỉ trụ sở": "Tòa nhà MWG Lô T2-1.2, Đường D1, Khu Công Nghệ Cao, Phường Tân Phú, TP Thủ Đức, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn bán lẻ điện thoại di động, điện máy và bách hóa tiêu dùng lớn nhất Việt Nam."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP VIỆT NAM THỊNH VƯỢNG",
+    "mst": "0100233583",
+    "email": "tuyendung@vpbank.com.vn",
+    "số điện thoại": "1900545415",
+    "website": "vpbank.com.vn",
+    "địa chỉ trụ sở": "89 Láng Hạ, Phường Láng Hạ, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "VPBank xác định mục tiêu chiến lược phát triển trở thành ngân hàng có vị trí vững chắc trong Top 3 ngân hàng lớn nhất Việt Nam với môi trường làm việc năng động, sáng tạo."
+  },
+  {
+    "tên công ty": "CÔNG TY CP TẬP ĐOÀN HÒA PHÁT",
+    "mst": "0900189284",
+    "email": "tuyendung@hoaphat.com.vn",
+    "số điện thoại": "02436282011",
+    "website": "hoaphat.com.vn",
+    "địa chỉ trụ sở": "Khu công nghiệp Phố Nối A, Xã Giai Phạm, Huyện Yên Mỹ, Tỉnh Hưng Yên",
+    "giới thiệu công ty": "Tập đoàn công nghiệp hàng đầu Việt Nam, sản xuất và gia công kim loại, sắt thép, kim khí và các lĩnh vực nông nghiệp, bất động sản."
+  },
+  {
+    "tên công ty": "CÔNG TY CP TẬP ĐOÀN MASAN",
+    "mst": "0303576603",
+    "email": "tuyendung@masangroup.com",
+    "số điện thoại": "02862563862",
+    "website": "masangroup.com",
+    "địa chỉ trụ sở": "Phòng 802, Lầu 8, Tòa nhà Central Plaza, Số 17 Lê Duẩn, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn tiêu dùng hàng đầu, chuyên sản xuất, chế biến và kinh doanh thực phẩm tươi sống, hàng tiêu dùng nhanh (FMCG)."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH DKSH VIỆT NAM",
+    "mst": "0101732675",
+    "email": "hr.vietnam@dksh.com",
+    "số điện thoại": "02743756888",
+    "website": "dksh.com",
+    "địa chỉ trụ sở": "Số 23 Đại lộ Độc Lập, Khu công nghiệp Việt Nam - Singapore, Phường Bình Hòa, Thành phố Thuận An, Tỉnh Bình Dương",
+    "giới thiệu công ty": "DKSH mang đến sự tăng trưởng cho các công ty tại châu Á Thái Bình Dương, châu Âu và Bắc Mỹ trên các lĩnh vực Chăm sóc sức khỏe, Hàng tiêu dùng, Hóa chất và Công nghệ."
+  },
+  {
+    "tên công ty": "Công Ty Tài Chính TNHH MTV Mirae Asset",
+    "mst": "0310462006",
+    "email": "tuyendung@miraeasset.com.vn",
+    "số điện thoại": "1900234567",
+    "website": "mafc.com.vn",
+    "địa chỉ trụ sở": "91 Pasteur, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thành viên của Tập đoàn Mirae Asset (Hàn Quốc) - được Ngân hàng Nhà nước cấp phép hoạt động trong lĩnh vực cung cấp các giải pháp tài chính tiêu dùng."
+  },
+  {
+    "tên công ty": "BÁO ĐIỆN TỬ VNEXPRESS.NET",
+    "mst": "0101372551",
+    "email": "tuyendung@vnexpress.net",
+    "số điện thoại": "02473008899",
+    "website": "vnexpress.net",
+    "địa chỉ trụ sở": "Tầng 10, Tòa nhà FPT, Số 10 Phạm Văn Bạch, Phường Dịch Vọng, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "Báo điện tử VnExpress.net là tờ báo tiếng Việt nhiều người xem nhất hiện nay. Môi trường làm việc năng động với đội ngũ nhân sự trẻ và nhiệt huyết."
+  },
+  {
+    "tên công ty": "TMA Solutions",
+    "mst": "0301440049",
+    "email": "recruit@tmasolutions.com",
+    "số điện thoại": "02839951060",
+    "website": "tmasolutions.vn",
+    "địa chỉ trụ sở": "111 Đường Nguyễn Đình Chính, Phường 15, Quận Phú Nhuận, TP Hồ Chí Minh",
+    "giới thiệu công ty": "TMA Technology Group – Tập đoàn Công nghệ hàng đầu Việt Nam được thành lập năm 1997, chuyên cung cấp dịch vụ gia công phần mềm cho đối tác quốc tế."
+  },
+  {
+    "tên công ty": "NOVALAND GROUP CORP",
+    "mst": "0301449557",
+    "email": "tuyendung@novaland.com.vn",
+    "số điện thoại": "1900636666",
+    "website": "novaland.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà Novaland, Số 65 Nguyễn Du, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn Novaland - thành viên trong hệ sinh thái NovaGroup, là Tập đoàn đầu tư và phát triển bất động sản hàng đầu Việt Nam."
+  },
+  {
+    "tên công ty": "CÔNG TY CP HÀNG KHÔNG VIETJET",
+    "mst": "0102325399",
+    "email": "careers@vietjetair.com",
+    "số điện thoại": "19001886",
+    "website": "vietjetair.com",
+    "địa chỉ trụ sở": "302/3 Phố Kim Mã, Phường Ngọc Khánh, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "Hãng hàng không tư nhân đầu tiên tại Việt Nam mang đến cơ hội bay cho tất cả mọi người, hoạt động theo mô hình hàng không thế hệ mới."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP KỸ THƯƠNG VIỆT NAM",
+    "mst": "0100230800",
+    "email": "tuyendung@techcombank.com.vn",
+    "số điện thoại": "1800588822",
+    "website": "techcombank.com",
+    "địa chỉ trụ sở": "Số 6 Quang Trung, Phường Trần Hưng Đạo, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Techcombank là một trong những ngân hàng thương mại lớn và có hiệu quả hoạt động tốt nhất tại Việt Nam, đang dẫn đầu về xu hướng ngân hàng số."
+  },
+  {
+    "tên công ty": "Công ty Cổ phần Đầu Tư K&G Việt Nam",
+    "mst": "0105995532",
+    "email": "tuyendung@kgvietnam.com",
+    "số điện thoại": "02432123456",
+    "website": "kgvietnam.com",
+    "địa chỉ trụ sở": "Tầng 11, khối A, tòa nhà Sông Đà, đường Phạm Hùng, phường Mỹ Đình 1, quận Nam Từ Liêm, TP Hà Nội",
+    "giới thiệu công ty": "K&G Việt Nam là một trong những công ty hàng đầu Việt Nam về sản xuất và phân phối các sản phẩm hàng tiêu dùng, sở hữu thương hiệu thời trang Aristino nổi tiếng."
+  },
+  {
+    "tên công ty": "FE CREDIT",
+    "mst": "0311504951",
+    "email": "talent@fecredit.com.vn",
+    "số điện thoại": "1900234588",
+    "website": "fecredit.com.vn",
+    "địa chỉ trụ sở": "Tầng 2, Tòa nhà REE Tower, Số 9 Đoàn Văn Bơ, Phường 12, Quận 4, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Công ty Tài chính TNHH Ngân hàng Việt Nam Thịnh Vượng SMBC là công ty tài chính tiêu dùng lớn tại Việt Nam, với hơn 50% thị phần vay tiêu dùng toàn quốc."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN CÔNG NGHỆ VÀ TRUYỀN THÔNG AWING VIỆT NAM",
+    "mst": "0106208888",
+    "email": "tuyendung@awing.vn",
+    "số điện thoại": "02462886699",
+    "website": "awing.vn",
+    "địa chỉ trụ sở": "Tầng 5, Tòa nhà Báo Sinh Viên VN, Phạm Văn Bạch, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "AWING là công ty AdTech hàng đầu, sở hữu kênh media lớn thứ 4 tại Việt Nam, cung cấp giải pháp quảng cáo trên nền tảng Wi-Fi công cộng miễn phí."
+  },
+  {
+    "tên công ty": "Công Ty Tài Chính TNHH Một Thành Viên Home Credit Việt Nam",
+    "mst": "0307672788",
+    "email": "recruitment@homecredit.vn",
+    "số điện thoại": "1900633633",
+    "website": "homecredit.vn",
+    "địa chỉ trụ sở": "Tầng G, 8 và 10 Tòa nhà Phụ Nữ, số 20 Nguyễn Đăng Giai, Phường Thảo Điền, TP Thủ Đức, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Là một trong những công ty tài chính số dẫn đầu tại Việt Nam, phục vụ hơn 16 triệu khách hàng trên toàn quốc và duy trì môi trường văn hóa doanh nghiệp thân thiện."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH PHẦN MỀM FPT (FPT SOFTWARE)",
+    "mst": "0103608502",
+    "email": "recruitment@fsoft.com.vn",
+    "số điện thoại": "02437689048",
+    "website": "fptsoftware.com",
+    "địa chỉ trụ sở": "Tòa nhà FPT, Phố Khúc Thừa Dụ, Khu đô thị mới Cầu Giấy, Phường Dịch Vọng, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "FPT Software là công ty xuất khẩu dịch vụ phần mềm lớn nhất Việt Nam, chuyên cung cấp các giải pháp công nghệ và chuyển đổi số toàn diện cho khách hàng toàn cầu."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN VNG",
+    "mst": "0303490096",
+    "email": "tuyendung@vng.com.vn",
+    "số điện thoại": "02839623040",
+    "website": "vng.com.vn",
+    "địa chỉ trụ sở": "Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Kỳ lân công nghệ đầu tiên của Việt Nam, hoạt động trong 4 mảng chính: Trò chơi trực tuyến, Nền tảng kết nối, Thanh toán điện tử và Dịch vụ đám mây."
+  },
+  {
+    "tên công ty": "CÔNG TY CP SỮA VIỆT NAM (VINAMILK)",
+    "mst": "0300588569",
+    "email": "tuyendung@vinamilk.com.vn",
+    "số điện thoại": "02854155555",
+    "website": "vinamilk.com.vn",
+    "địa chỉ trụ sở": "Số 10, Đường Tân Trào, Phường Tân Phú, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Vinamilk là doanh nghiệp sản xuất sữa và các sản phẩm từ sữa hàng đầu Việt Nam, liên tục góp mặt trong top những nơi làm việc tốt nhất."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP NGOẠI THƯƠNG VIỆT NAM (VIETCOMBANK)",
+    "mst": "0100112437",
+    "email": "tuyendung@vietcombank.com.vn",
+    "số điện thoại": "1900545413",
+    "website": "vietcombank.com.vn",
+    "địa chỉ trụ sở": "198 Trần Quang Khải, Phường Lý Thái Tổ, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Ngân hàng thương mại số 1 tại Việt Nam về quy mô lợi nhuận và chất lượng tài sản, tiên phong trong các dịch vụ tài chính, ngân hàng số."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH SHOPEE",
+    "mst": "0106773786",
+    "email": "hr.vn@shopee.com",
+    "số điện thoại": "19001221",
+    "website": "shopee.vn",
+    "địa chỉ trụ sở": "Tầng 28, Tòa nhà trung tâm Lotte Hà Nội, 54 Liễu Giai, Phường Cống Vị, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "Sàn thương mại điện tử hàng đầu tại Đông Nam Á và Đài Loan, cung cấp nền tảng mua sắm trực tuyến kết nối hàng triệu người mua và người bán."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TIKI",
+    "mst": "0309532909",
+    "email": "careers@tiki.vn",
+    "số điện thoại": "19006035",
+    "website": "tiki.vn",
+    "địa chỉ trụ sở": "Tòa nhà Viettel, 285 Cách Mạng Tháng Tám, Phường 12, Quận 10, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Nền tảng thương mại điện tử đáng tin cậy nhất Việt Nam, khởi đầu từ bán sách và nay mở rộng ra mọi ngành hàng tiêu dùng."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH RECESS (LAZADA VIỆT NAM)",
+    "mst": "0311636531",
+    "email": "recruitment@lazada.vn",
+    "số điện thoại": "19006509",
+    "website": "lazada.vn",
+    "địa chỉ trụ sở": "Tầng 19, Tòa nhà Saigon Centre – Tháp 2, 67 Lê Lợi, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thành viên của tập đoàn Alibaba, Lazada là một trong những nền tảng thương mại điện tử tiên phong và lớn nhất tại Đông Nam Á."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DỊCH VỤ DI ĐỘNG TRỰC TUYẾN (MOMO)",
+    "mst": "0305316697",
+    "email": "careers@mservice.com.vn",
+    "số điện thoại": "1900545441",
+    "website": "momo.vn",
+    "địa chỉ trụ sở": "Tòa nhà Phú Mỹ Hưng, Số 8 Hoàng Văn Thái, Phường Tân Phú, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Kỳ lân Fintech của Việt Nam với siêu ứng dụng thanh toán MoMo, phục vụ hàng chục triệu người dùng với hệ sinh thái tài chính đa dạng."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN BƯU CHÍNH VIỄN THÔNG VIỆT NAM (VNPT)",
+    "mst": "0100684378",
+    "email": "tuyendung@vnpt.vn",
+    "số điện thoại": "18001091",
+    "website": "vnpt.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà VNPT, số 57 Huỳnh Thúc Kháng, Phường Láng Hạ, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "Doanh nghiệp nhà nước đóng vai trò chủ chốt trong hạ tầng viễn thông và công nghệ thông tin quốc gia, tiên phong kiến tạo xã hội số."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP Á CHÂU (ACB)",
+    "mst": "0301452948",
+    "email": "tuyendung@acb.com.vn",
+    "số điện thoại": "1900545486",
+    "website": "acb.com.vn",
+    "địa chỉ trụ sở": "442 Nguyễn Thị Minh Khai, Phường 5, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Một trong những ngân hàng thương mại cổ phần hàng đầu tại Việt Nam, nổi bật với hệ thống quản trị rủi ro chặt chẽ và môi trường làm việc cởi mở."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP QUÂN ĐỘI (MBBANK)",
+    "mst": "0100283873",
+    "email": "hr@mbbank.com.vn",
+    "số điện thoại": "1900545426",
+    "website": "mbbank.com.vn",
+    "địa chỉ trụ sở": "Số 18 Lê Văn Lương, Phường Trung Hòa, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "Ngân hàng TMCP Quân đội mang đến các dịch vụ tài chính hiện đại, đang vươn lên mạnh mẽ trở thành tập đoàn tài chính số hàng đầu khu vực."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP TIÊN PHONG (TPBANK)",
+    "mst": "0102730028",
+    "email": "tuyendung@tpb.com.vn",
+    "số điện thoại": "1900585885",
+    "website": "tpb.vn",
+    "địa chỉ trụ sở": "Tòa nhà TPBank, 57 Lý Thường Kiệt, Phường Trần Hưng Đạo, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Ngân hàng số hàng đầu Việt Nam, tiên phong áp dụng công nghệ định danh eKYC, LiveBank và các dịch vụ tài chính công nghệ cao."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP QUỐC TẾ VIỆT NAM (VIB)",
+    "mst": "0100233488",
+    "email": "tuyendung@vib.com.vn",
+    "số điện thoại": "18008180",
+    "website": "vib.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà Sailing Tower, 111A Pasteur, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "VIB là ngân hàng bán lẻ sáng tạo nhất Việt Nam, dẫn đầu trong mảng thẻ tín dụng và các dịch vụ tài chính hướng đến giới trẻ."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH GRAB",
+    "mst": "0312650437",
+    "email": "careers.vn@grab.com",
+    "số điện thoại": "02871087108",
+    "website": "grab.com/vn",
+    "địa chỉ trụ sở": "Tòa nhà Mapletree Business Centre, 1060 Nguyễn Văn Linh, Phường Tân Phong, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Siêu ứng dụng đa dịch vụ cung cấp các giải pháp giao thông, giao nhận thức ăn, giao hàng hóa và thanh toán di động hàng đầu Đông Nam Á."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN GIẢI PHÁP THANH TOÁN VIỆT NAM (VNPAY)",
+    "mst": "0102182292",
+    "email": "tuyendung@vnpay.vn",
+    "số điện thoại": "1900555577",
+    "website": "vnpay.vn",
+    "địa chỉ trụ sở": "Tầng 8, Tòa nhà số 22 Láng Hạ, Phường Láng Hạ, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "Kỳ lân công nghệ thứ 2 của Việt Nam, cung cấp giải pháp thanh toán VNPAY-QR và xây dựng ứng dụng ngân hàng số cho hơn 40 ngân hàng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN CÔNG NGHỆ CMC",
+    "mst": "0100244112",
+    "email": "tuyendung@cmc.com.vn",
+    "số điện thoại": "02439225804",
+    "website": "cmc.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà CMC, 11 Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, TP Hà Nội",
+    "giới thiệu công ty": "Tập đoàn công nghệ tư nhân quy mô lớn, cung cấp dịch vụ hạ tầng đám mây, an ninh mạng và chuyển đổi số cho doanh nghiệp."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN MẶT TRỜI (SUN GROUP)",
+    "mst": "0400623125",
+    "email": "tuyendung@sungroup.com.vn",
+    "số điện thoại": "02363819181",
+    "website": "sungroup.com.vn",
+    "địa chỉ trụ sở": "Tầng 9, Tòa nhà ACB, 218 Bạch Đằng, Phường Phước Ninh, Quận Hải Châu, TP Đà Nẵng",
+    "giới thiệu công ty": "Tập đoàn hàng đầu trong lĩnh vực phát triển du lịch nghỉ dưỡng, giải trí, bất động sản cao cấp và đầu tư hạ tầng tại Việt Nam."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN THỰC PHẨM SỮA TH (TH TRUE MILK)",
+    "mst": "2901122606",
+    "email": "tuyendung@thmilk.vn",
+    "số điện thoại": "1800545440",
+    "website": "thmilk.vn",
+    "địa chỉ trụ sở": "Xã Nghĩa Sơn, Huyện Nghĩa Đàn, Tỉnh Nghệ An",
+    "giới thiệu công ty": "Doanh nghiệp tiên phong ứng dụng công nghệ cao vào nông nghiệp, sản xuất các sản phẩm sữa tươi sạch và thực phẩm đồ uống tự nhiên."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN VÀNG BẠC ĐÁ QUÝ PHÚ NHUẬN (PNJ)",
+    "mst": "0300521758",
+    "email": "tuyendung@pnj.com.vn",
+    "số điện thoại": "1800545457",
+    "website": "pnj.com.vn",
+    "địa chỉ trụ sở": "170E Phan Đăng Lưu, Phường 3, Quận Phú Nhuận, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thương hiệu chế tác và bán lẻ trang sức hàng đầu Việt Nam và vươn tầm Châu Á, nổi bật với môi trường làm việc tôn trọng và phát triển nhân tài."
+  },
+  {
+    "tên công ty": "NGÂN HÀNG TMCP CÔNG THƯƠNG VIỆT NAM (VIETINBANK)",
+    "mst": "0100111948",
+    "email": "tuyendung@vietinbank.vn",
+    "số điện thoại": "1900558868",
+    "website": "vietinbank.vn",
+    "địa chỉ trụ sở": "108 Trần Hưng Đạo, Phường Cửa Nam, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Ngân hàng thương mại quốc doanh lớn và lâu đời, đóng vai trò trụ cột của nền kinh tế với hệ thống mạng lưới chi nhánh rộng khắp cả nước."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN ĐẤT XANH",
+    "mst": "0303104343",
+    "email": "tuyendung@datxanh.com.vn",
+    "số điện thoại": "02862525252",
+    "website": "datxanh.vn",
+    "địa chỉ trụ sở": "2W Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn Đất Xanh là một trong những doanh nghiệp hàng đầu Việt Nam trong lĩnh vực đầu tư và phân phối bất động sản, sở hữu mạng lưới phủ khắp cả nước."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN XÂY DỰNG HÒA BÌNH",
+    "mst": "0301449615",
+    "email": "tuyendung@hbcg.vn",
+    "số điện thoại": "02839325030",
+    "website": "hbcg.vn",
+    "địa chỉ trụ sở": "Tòa nhà Pax Sky, 123 Nguyễn Đình Chiểu, Phường Võ Thị Sáu, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Hòa Bình là nhà thầu xây dựng tổng hợp hàng đầu tại Việt Nam, chuyên thi công các công trình dân dụng, công nghiệp và hạ tầng quy mô lớn."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN XÂY DỰNG COTECCONS",
+    "mst": "0303443233",
+    "email": "tuyendung@coteccons.vn",
+    "số điện thoại": "02835142255",
+    "website": "coteccons.vn",
+    "địa chỉ trụ sở": "Tòa nhà Coteccons, 236/6 Điện Biên Phủ, Phường 17, Quận Bình Thạnh, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Coteccons là công ty xây dựng số 1 Việt Nam, nổi tiếng với việc áp dụng mô hình Design & Build và thi công các dự án mang tính biểu tượng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN GIAO HÀNG TIẾT KIỆM",
+    "mst": "0106181807",
+    "email": "talent@ghtk.vn",
+    "số điện thoại": "19006092",
+    "website": "ghtk.vn",
+    "địa chỉ trụ sở": "Tòa nhà GHTK, Đường Phạm Hùng, Phường Mễ Trì, Quận Nam Từ Liêm, TP Hà Nội",
+    "giới thiệu công ty": "Giao Hàng Tiết Kiệm (GHTK) là đơn vị vận chuyển công nghệ hàng đầu phục vụ hệ sinh thái thương mại điện tử với tốc độ nhanh và độ phủ sóng toàn quốc."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DỊCH VỤ GIAO HÀNG NHANH",
+    "mst": "0311907295",
+    "email": "tuyendung@ghn.vn",
+    "số điện thoại": "19001201",
+    "website": "ghn.vn",
+    "địa chỉ trụ sở": "Tầng 3, Tòa nhà Rivera Park, 7/28 Thành Thái, Phường 14, Quận 10, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thành lập năm 2012, GHN là một trong những công ty giao nhận đầu tiên tại Việt Nam phục vụ chuyên biệt cho thị trường mua sắm trực tuyến."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM",
+    "mst": "0102637213",
+    "email": "tuyendung@vnpost.vn",
+    "số điện thoại": "1900545481",
+    "website": "vnpost.vn",
+    "địa chỉ trụ sở": "Số 5 Phạm Hùng, Phường Mỹ Đình 2, Quận Nam Từ Liêm, TP Hà Nội",
+    "giới thiệu công ty": "VNPost là doanh nghiệp bưu chính quốc gia với mạng lưới điểm phục vụ lớn nhất Việt Nam, cung cấp các dịch vụ bưu chính, chuyển phát và tài chính."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY HÀNG KHÔNG VIỆT NAM - CTCP",
+    "mst": "0100107518",
+    "email": "tuyendung@vietnamairlines.com",
+    "số điện thoại": "19001100",
+    "website": "vietnamairlines.com",
+    "địa chỉ trụ sở": "Số 200 Nguyễn Sơn, Phường Bồ Đề, Quận Long Biên, TP Hà Nội",
+    "giới thiệu công ty": "Vietnam Airlines là hãng hàng không quốc gia Việt Nam, mang tiêu chuẩn 4 sao quốc tế, đóng vai trò chủ lực trong vận tải hàng không nội địa và quốc tế."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DƯỢC PHẨM FPT LONG CHÂU",
+    "mst": "0315275368",
+    "email": "tuyendung.longchau@fpt.com",
+    "số điện thoại": "18006928",
+    "website": "nhathuoclongchau.com",
+    "địa chỉ trụ sở": "379-381 Hai Bà Trưng, Phường 8, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Chuỗi nhà thuốc FPT Long Châu (thuộc FPT Retail) là hệ thống bán lẻ dược phẩm uy tín và có quy mô dẫn đầu tại Việt Nam hiện nay."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DƯỢC PHẨM PHARMACITY",
+    "mst": "0311770883",
+    "email": "tuyendung@pharmacity.vn",
+    "số điện thoại": "18006821",
+    "website": "pharmacity.vn",
+    "địa chỉ trụ sở": "248A Nơ Trang Long, Phường 12, Quận Bình Thạnh, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Được thành lập vào năm 2011, Pharmacity là một trong những chuỗi nhà thuốc bán lẻ hiện đại đầu tiên và lớn nhất tại thị trường Việt Nam."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN BỆNH VIỆN ĐA KHOA TÂM ANH",
+    "mst": "0102362369",
+    "email": "tuyendung@tamanhhospital.vn",
+    "số điện thoại": "18006858",
+    "website": "tamanhhospital.vn",
+    "địa chỉ trụ sở": "Số 108 Hoàng Như Tiếp, Phường Bồ Đề, Quận Long Biên, TP Hà Nội",
+    "giới thiệu công ty": "Hệ thống Bệnh viện Đa khoa Tâm Anh là địa chỉ y tế cao cấp, quy tụ đội ngũ chuyên gia, bác sĩ giỏi và trang thiết bị hiện đại bậc nhất."
+  },
+  {
+    "tên công ty": "HỆ THỐNG Y TẾ MEDLATEC",
+    "mst": "0102777265",
+    "email": "tuyendung@medlatec.com",
+    "số điện thoại": "1900565656",
+    "website": "medlatec.vn",
+    "địa chỉ trụ sở": "Số 42-44 Nghĩa Dũng, Phường Phúc Xá, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "MEDLATEC là hệ thống y tế tư nhân có thế mạnh vượt trội về dịch vụ xét nghiệm cận lâm sàng và dịch vụ lấy mẫu xét nghiệm tận nơi."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN THƯƠNG MẠI DỊCH VỤ CỔNG VÀNG",
+    "mst": "0102716068",
+    "email": "tuyendung@ggg.com.vn",
+    "số điện thoại": "19006622",
+    "website": "ggg.com.vn",
+    "địa chỉ trụ sở": "Số 60 Giang Văn Minh, Phường Đội Cấn, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "Golden Gate là tập đoàn kinh doanh chuỗi nhà hàng ẩm thực lớn nhất Việt Nam, sở hữu các thương hiệu nổi tiếng như Kichi-Kichi, Gogi House, Manwah."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN TRUNG NGUYÊN",
+    "mst": "0304381831",
+    "email": "tuyendung@trungnguyenlegend.com",
+    "số điện thoại": "02839251845",
+    "website": "trungnguyenlegend.com",
+    "địa chỉ trụ sở": "82-84 Bùi Thị Xuân, Phường Bến Thành, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Trung Nguyên Legend là tập đoàn cà phê số 1 Việt Nam, nổi tiếng với các sản phẩm cà phê năng lượng và chuỗi không gian Trung Nguyên Legend."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DỊCH VỤ CÀ PHÊ CAO NGUYÊN",
+    "mst": "0301980894",
+    "email": "tuyendung@highlandscoffee.com.vn",
+    "số điện thoại": "19001755",
+    "website": "highlandscoffee.com.vn",
+    "địa chỉ trụ sở": "119-127 Nguyễn Cơ Thạch, Phường An Lợi Đông, TP Thủ Đức, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Highlands Coffee là chuỗi cửa hàng cà phê và trà thành công nhất Việt Nam, mang đến không gian hiện đại kết nối cộng đồng."
+  },
+  {
+    "tên công ty": "CÔNG TY SỮA ĐẬU NÀNH VIỆT NAM - VINASOY",
+    "mst": "4300222956",
+    "email": "tuyendung@vinasoy.com.vn",
+    "số điện thoại": "02553714456",
+    "website": "vinasoycorp.vn",
+    "địa chỉ trụ sở": "Số 02 Nguyễn Chí Thanh, Phường Quảng Phú, Thành phố Quảng Ngãi, Tỉnh Quảng Ngãi",
+    "giới thiệu công ty": "Vinasoy là chuyên gia hàng đầu và là doanh nghiệp chiếm thị phần số 1 tại Việt Nam trong lĩnh vực sản xuất sữa đậu nành đóng hộp."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY CỔ PHẦN BIA - RƯỢU - NƯỚC GIẢI KHÁT SÀI GÒN",
+    "mst": "0300583659",
+    "email": "tuyendung@sabeco.com.vn",
+    "số điện thoại": "02838294081",
+    "website": "sabeco.com.vn",
+    "địa chỉ trụ sở": "187 Nguyễn Chí Thanh, Phường 12, Quận 5, TP Hồ Chí Minh",
+    "giới thiệu công ty": "SABECO là nhà sản xuất bia lâu đời và lớn nhất tại Việt Nam, sở hữu các thương hiệu quốc dân như Bia Saigon và Bia 333."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN QUỐC TẾ ANH VĂN HỘI VIỆT MỸ",
+    "mst": "0305018698",
+    "email": "hr@vus-etsc.edu.vn",
+    "số điện thoại": "02873083333",
+    "website": "vus.edu.vn",
+    "địa chỉ trụ sở": "189 Nguyễn Thị Minh Khai, Phường Phạm Ngũ Lão, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "VUS là hệ thống giáo dục và đào tạo Anh ngữ hàng đầu tại Việt Nam với chất lượng giảng dạy đạt tiêu chuẩn quốc tế (NEAS)."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH ILA VIỆT NAM",
+    "mst": "0302000508",
+    "email": "careers@ilavietnam.edu.vn",
+    "số điện thoại": "19006965",
+    "website": "ila.edu.vn",
+    "địa chỉ trụ sở": "146 Nguyễn Đình Chiểu, Phường Võ Thị Sáu, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "ILA là tổ chức giáo dục tiếng Anh có vốn đầu tư nước ngoài, tiên phong mang đến phương pháp học tập thế kỷ 21 cho học viên Việt Nam."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN BÁN LẺ KỸ THUẬT SỐ FPT",
+    "mst": "0311609355",
+    "email": "tuyendungfrt@fpt.com.vn",
+    "số điện thoại": "18006601",
+    "website": "fptshop.com.vn",
+    "địa chỉ trụ sở": "261-263 Khánh Hội, Phường 2, Quận 4, TP Hồ Chí Minh",
+    "giới thiệu công ty": "FPT Retail sở hữu chuỗi cửa hàng FPT Shop, là nhà bán lẻ các sản phẩm kỹ thuật số, công nghệ uy tín và phủ sóng khắp 63 tỉnh thành."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN XĂNG DẦU VIỆT NAM",
+    "mst": "0100107370",
+    "email": "tuyendung@petrolimex.com.vn",
+    "số điện thoại": "02438222620",
+    "website": "petrolimex.com.vn",
+    "địa chỉ trụ sở": "Số 1 Khâm Thiên, Phường Khâm Thiên, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "Petrolimex là tập đoàn năng lượng lớn nhất Việt Nam, hoạt động kinh doanh chủ lực trong lĩnh vực xuất nhập khẩu và bán lẻ xăng dầu."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH KPMG VIỆT NAM",
+    "mst": "0101452231",
+    "email": "recruiting@kpmg.com.vn",
+    "số điện thoại": "02439461600",
+    "website": "kpmg.com.vn",
+    "địa chỉ trụ sở": "Tầng 46, Tòa tháp Keangnam, Lô E6, Phường Mễ Trì, Quận Nam Từ Liêm, TP Hà Nội",
+    "giới thiệu công ty": "KPMG là một trong bốn hãng kiểm toán và tư vấn lớn nhất toàn cầu (Big 4), chuyên cung cấp các dịch vụ kiểm toán độc lập, tư vấn thuế, pháp lý và tư vấn quản trị doanh nghiệp."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH PWC (VIỆT NAM)",
+    "mst": "0100150725",
+    "email": "vn_careers@pwc.com",
+    "số điện thoại": "02838230796",
+    "website": "pwc.com/vn",
+    "địa chỉ trụ sở": "Tầng 8, Tòa nhà Saigon Tower, 29 Lê Duẩn, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "PwC Việt Nam thuộc mạng lưới PwC toàn cầu, cung cấp các dịch vụ chuyên nghiệp về kiểm toán, tư vấn thuế, pháp lý và tư vấn thương vụ (M&A) hàng đầu thị trường."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH DELOITTE VIỆT NAM",
+    "mst": "0100112500",
+    "email": "deloittevietnamhr@deloitte.com",
+    "số điện thoại": "02471050000",
+    "website": "deloitte.com/vn",
+    "địa chỉ trụ sở": "Tầng 15, Tòa nhà Vinaconex, 34 Láng Hạ, Phường Láng Hạ, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "Deloitte Việt Nam là công ty tư vấn và kiểm toán có lịch sử lâu đời nhất trong nhóm Big 4 tại Việt Nam, mang đến các giải pháp toàn diện về tài chính và rủi ro."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH ERNST & YOUNG VIỆT NAM (EY)",
+    "mst": "0102026000",
+    "email": "eyvn.careers@vn.ey.com",
+    "số điện thoại": "02838245252",
+    "website": "ey.com/vi_vn",
+    "địa chỉ trụ sở": "Tầng 20, Tòa nhà Bitexco Financial Tower, Số 2 Hải Triều, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "EY là nhà cung cấp dịch vụ bảo đảm, thuế, giao dịch và tư vấn hàng đầu thế giới, cam kết xây dựng một thế giới làm việc tốt đẹp hơn."
+  },
+  {
+    "tên công ty": "CÔNG TY LUẬT TNHH YKVN",
+    "mst": "0101234567",
+    "email": "recruitment@ykvn-law.com",
+    "số điện thoại": "02838223155",
+    "website": "ykvn-law.com",
+    "địa chỉ trụ sở": "Tầng 4, Tòa nhà The Landmark, 5B Tôn Đức Thắng, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "YKVN là hãng luật nội địa hàng đầu tại Việt Nam, chuyên tư vấn pháp lý cho các giao dịch M&A, tài chính - ngân hàng và giải quyết tranh chấp quy mô lớn."
+  },
+  {
+    "tên công ty": "CÔNG TY LUẬT TNHH BAKER & MCKENZIE VIỆT NAM",
+    "mst": "0101987654",
+    "email": "hcmc.recruitment@bakermckenzie.com",
+    "số điện thoại": "02838295585",
+    "website": "bakermckenzie.com/vietnam",
+    "địa chỉ trụ sở": "Tầng 12, Tòa nhà Saigon Tower, 29 Lê Duẩn, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thành viên của mạng lưới luật sư toàn cầu Baker McKenzie, cung cấp các dịch vụ tư vấn pháp lý doanh nghiệp quốc tế chuyên nghiệp."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN VCCORP",
+    "mst": "0101871229",
+    "email": "tuyendung@vccorp.vn",
+    "số điện thoại": "02473095555",
+    "website": "vccorp.vn",
+    "địa chỉ trụ sở": "Tầng 17, Tòa nhà Center Building, Số 1 Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, TP Hà Nội",
+    "giới thiệu công ty": "VCCorp là đơn vị tiên phong trong lĩnh vực công nghệ và nội dung số, sở hữu hệ sinh thái quảng cáo trực tuyến và các trang tin tức điện tử lớn nhất Việt Nam."
+  },
+  {
+    "tên công ty": "TỔ HỢP TRUYỀN THÔNG DATVIETVAC",
+    "mst": "0301456789",
+    "email": "hr@datvietvac.vn",
+    "số điện thoại": "02839333535",
+    "website": "datvietvac.vn",
+    "địa chỉ trụ sở": "222 Pasteur, Phường Võ Thị Sáu, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "DatVietVAC là hệ sinh thái công nghệ truyền thông giải trí hàng đầu Việt Nam, sản xuất và phân phối các chương trình truyền hình, nền tảng số đình đám."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN YEAH1",
+    "mst": "0304592171",
+    "email": "tuyendung@yeah1.vn",
+    "số điện thoại": "02873006071",
+    "website": "yeah1group.com",
+    "địa chỉ trụ sở": "Tòa nhà 191 Nam Kỳ Khởi Nghĩa, Phường Võ Thị Sáu, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn truyền thông đa phương tiện lớn tại Việt Nam, tập trung vào giải trí kỹ thuật số, thương mại điện tử và sản xuất nội dung sáng tạo."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN LỘC TRỜI",
+    "mst": "1600111111",
+    "email": "tuyendung@loctroi.vn",
+    "số điện thoại": "02963944666",
+    "website": "loctroi.vn",
+    "địa chỉ trụ sở": "Số 23 Hà Hoàng Hổ, Phường Mỹ Xuyên, Thành phố Long Xuyên, Tỉnh An Giang",
+    "giới thiệu công ty": "Tập đoàn dịch vụ nông nghiệp hàng đầu Việt Nam, cung cấp chuỗi giá trị nông nghiệp bền vững, từ hạt giống, vật tư đến chế biến nông sản."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN CHĂN NUÔI C.P. VIỆT NAM",
+    "mst": "3600222222",
+    "email": "tuyendungcp@cp.com.vn",
+    "số điện thoại": "02513836251",
+    "website": "cp.com.vn",
+    "địa chỉ trụ sở": "Số 2, Đường 2A, Khu công nghiệp Biên Hòa II, Phường Long Bình Tân, Thành phố Biên Hòa, Tỉnh Đồng Nai",
+    "giới thiệu công ty": "Thành viên của Charoen Pokphand Group, là doanh nghiệp dẫn đầu trong lĩnh vực nông nghiệp khép kín (Feed-Farm-Food) tại Việt Nam."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN DỆT MAY VIỆT NAM (VINATEX)",
+    "mst": "0100111111",
+    "email": "hr@vinatex.com.vn",
+    "số điện thoại": "02438257700",
+    "website": "vinatex.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà Vinatex, 25 Bà Triệu, Phường Hàng Bài, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Tập đoàn quốc gia đóng vai trò nòng cốt trong ngành công nghiệp dệt may Việt Nam, với chuỗi cung ứng sản xuất từ sợi, dệt, nhuộm đến may mặc."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY CỔ PHẦN MAY VIỆT TIẾN",
+    "mst": "0300444444",
+    "email": "tuyendung@viettien.com.vn",
+    "số điện thoại": "02838640800",
+    "website": "viettien.com.vn",
+    "địa chỉ trụ sở": "07 Lê Minh Xuân, Phường 7, Quận Tân Bình, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thương hiệu thời trang công sở nam uy tín số 1 Việt Nam, với hệ thống xưởng may quy mô lớn và dây chuyền quản lý chất lượng khắt khe."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN NHỰA BÌNH MINH",
+    "mst": "0301444444",
+    "email": "tuyendung@binhminhplastic.com.vn",
+    "số điện thoại": "02839690973",
+    "website": "binhminhplastic.com.vn",
+    "địa chỉ trụ sở": "240 Hậu Giang, Phường 9, Quận 6, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Nhà sản xuất ống nhựa và phụ tùng ống nhựa hàng đầu, tiên phong trong việc cung cấp vật liệu xây dựng chất lượng cao cho thị trường nội địa."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN HOA SEN",
+    "mst": "3700333333",
+    "email": "tuyendung@hoasengroup.vn",
+    "số điện thoại": "02839990111",
+    "website": "hoasengroup.vn",
+    "địa chỉ trụ sở": "Số 9, Đại lộ Thống Nhất, Khu công nghiệp Sóng Thần II, Phường Dĩ An, Thành phố Dĩ An, Tỉnh Bình Dương",
+    "giới thiệu công ty": "Doanh nghiệp số 1 trong lĩnh vực sản xuất và kinh doanh tôn thép ở Việt Nam, đồng thời là nhà xuất khẩu tôn thép hàng đầu khu vực Đông Nam Á."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DU LỊCH VÀ TIẾP THỊ GTVT VIỆT NAM - VIETRAVEL",
+    "mst": "0301111111",
+    "email": "tuyendung@vietravel.com",
+    "số điện thoại": "19001839",
+    "website": "vietravel.com",
+    "địa chỉ trụ sở": "190 Pasteur, Phường Võ Thị Sáu, Quận 3, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Vietravel là công ty lữ hành hàng đầu Châu Á, tổ chức đa dạng các tour du lịch trong nước và quốc tế với chất lượng dịch vụ chuyên nghiệp."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY DU LỊCH SÀI GÒN - TNHH MỘT THÀNH VIÊN (SAIGONTOURIST GROUP)",
+    "mst": "0300666666",
+    "email": "tuyendung@saigontourist.com.vn",
+    "số điện thoại": "02838279279",
+    "website": "saigontourist.com.vn",
+    "địa chỉ trụ sở": "23 Lê Lợi, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn du lịch hàng đầu Việt Nam, quản lý hàng loạt khách sạn, khu nghỉ dưỡng cao cấp, nhà hàng và các dịch vụ lữ hành, giải trí đa dạng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN VINPEARL",
+    "mst": "4200456848",
+    "email": "v.tuyendung@vinpearl.com",
+    "số điện thoại": "1900232389",
+    "website": "vinpearl.com",
+    "địa chỉ trụ sở": "Đảo Hòn Tre, Phường Vĩnh Nguyên, Thành phố Nha Trang, Tỉnh Khánh Hòa",
+    "giới thiệu công ty": "Thương hiệu dịch vụ du lịch nghỉ dưỡng và giải trí lớn nhất Việt Nam thuộc Tập đoàn Vingroup, sở hữu chuỗi khách sạn, resort và công viên chủ đề đẳng cấp."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN KIDO",
+    "mst": "0301777777",
+    "email": "tuyendung@kdc.vn",
+    "số điện thoại": "02838270468",
+    "website": "kdc.vn",
+    "địa chỉ trụ sở": "138-142 Hai Bà Trưng, Phường Đa Kao, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn thực phẩm dẫn đầu thị trường Việt Nam trong các ngành hàng kem, dầu ăn và các sản phẩm bánh kẹo, đồ uống dinh dưỡng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN THIÊN LONG",
+    "mst": "0301888888",
+    "email": "tuyendung@thienlongvn.com",
+    "số điện thoại": "02837505555",
+    "website": "thienlonggroup.com",
+    "địa chỉ trụ sở": "Lô 6-8-10-12, Đường số 3, Khu công nghiệp Tân Tạo, Phường Tân Tạo A, Quận Bình Tân, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Thương hiệu văn phòng phẩm quốc dân tại Việt Nam, sản xuất và phân phối các loại bút viết, dụng cụ học sinh và mỹ thuật với hệ thống phân phối rộng khắp."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH SẢN XUẤT VÀ KINH DOANH VINFAST",
+    "mst": "0108926276",
+    "email": "tuyendung@vinfast.vn",
+    "số điện thoại": "1900232389",
+    "website": "vinfastauto.com",
+    "địa chỉ trụ sở": "Khu kinh tế Đình Vũ – Cát Hải, Đảo Cát Hải, Thị trấn Cát Hải, Huyện Cát Hải, TP Hải Phòng",
+    "giới thiệu công ty": "VinFast là nhà sản xuất ô tô và xe máy điện hàng đầu Việt Nam, tiên phong trong công cuộc điện hóa giao thông và vươn tầm quốc tế."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH SẢN XUẤT HÀNG TIÊU DÙNG BÌNH TIÊN (BITI'S)",
+    "mst": "0301445678",
+    "email": "tuyendung@bitis.com.vn",
+    "số điện thoại": "02838753443",
+    "website": "bitis.com.vn",
+    "địa chỉ trụ sở": "22 Lý Chiêu Hoàng, Phường 10, Quận 6, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Biti's là thương hiệu giày dép quốc dân của Việt Nam với bề dày lịch sử phát triển, luôn đổi mới và nâng cao chất lượng sản phẩm."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN VÀNG BẠC ĐÁ QUÝ DOJI",
+    "mst": "0100365621",
+    "email": "hr@doji.vn",
+    "số điện thoại": "18001168",
+    "website": "doji.vn",
+    "địa chỉ trụ sở": "Tòa nhà DOJI Tower, Số 5 Lê Duẩn, Phường Điện Biên, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "DOJI là tập đoàn kinh doanh vàng bạc đá quý và trang sức cao cấp hàng đầu Việt Nam, mở rộng đầu tư đa ngành nghề."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN BẢO VIỆT",
+    "mst": "0100111761",
+    "email": "tuyendung@baoviet.com.vn",
+    "số điện thoại": "1900558899",
+    "website": "baoviet.com.vn",
+    "địa chỉ trụ sở": "Số 8 Lê Thái Tổ, Phường Hàng Trống, Quận Hoàn Kiếm, TP Hà Nội",
+    "giới thiệu công ty": "Bảo Việt là Tập đoàn Tài chính - Bảo hiểm hàng đầu Việt Nam, cung cấp các giải pháp tài chính toàn diện về bảo hiểm, đầu tư và chứng khoán."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH MANULIFE (VIỆT NAM)",
+    "mst": "0301980000",
+    "email": "careers_vn@manulife.com",
+    "số điện thoại": "19001776",
+    "website": "manulife.com.vn",
+    "địa chỉ trụ sở": "Tòa nhà Manulife Plaza, 75 Hoàng Văn Thái, Phường Tân Phú, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Manulife là công ty bảo hiểm nhân thọ có vốn đầu tư nước ngoài đầu tiên tại Việt Nam, mang đến các giải pháp bảo vệ sức khỏe và tài chính."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH BẢO HIỂM NHÂN THỌ PRUDENTIAL VIỆT NAM",
+    "mst": "0301999999",
+    "email": "tuyendung@prudential.com.vn",
+    "số điện thoại": "18001247",
+    "website": "prudential.com.vn",
+    "địa chỉ trụ sở": "Tầng 25, Tòa nhà Sài Gòn Trade Center, 37 Tôn Đức Thắng, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Prudential là một trong những công ty bảo hiểm nhân thọ uy tín nhất, luôn tiên phong mang đến các sản phẩm bảo hiểm tiên tiến tại thị trường Việt Nam."
+  },
+  {
+    "tên công ty": "TỔNG CÔNG TY CỔ PHẦN BƯU CHÍNH VIETTEL (VIETTEL POST)",
+    "mst": "0104093672",
+    "email": "tuyendung@viettelpost.com.vn",
+    "số điện thoại": "19008095",
+    "website": "viettelpost.com.vn",
+    "địa chỉ trụ sở": "Số 1 Giang Văn Minh, Phường Kim Mã, Quận Ba Đình, TP Hà Nội",
+    "giới thiệu công ty": "Viettel Post là đơn vị thành viên của Tập đoàn Viettel, cung cấp dịch vụ chuyển phát nhanh, logistics và thương mại điện tử hàng đầu."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DỊCH VỤ TỨC THỜI (AHAMOVE)",
+    "mst": "0313506115",
+    "email": "tuyendung@ahamove.com",
+    "số điện thoại": "1900545411",
+    "website": "ahamove.com",
+    "địa chỉ trụ sở": "Tầng 1, Tòa nhà Rivera Park, 7/28 Thành Thái, Phường 14, Quận 10, TP Hồ Chí Minh",
+    "giới thiệu công ty": "AhaMove là ứng dụng giao hàng theo nhu cầu hàng đầu tại Việt Nam, tối ưu hóa quá trình vận chuyển bằng nền tảng công nghệ mạnh mẽ."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN BE GROUP",
+    "mst": "0108294711",
+    "email": "tuyendung@be.com.vn",
+    "số điện thoại": "1900232345",
+    "website": "be.com.vn",
+    "địa chỉ trụ sở": "Tầng 16, Tòa nhà SaiGon Tower, 29 Lê Duẩn, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Be Group là công ty công nghệ Việt Nam phát triển ứng dụng gọi xe đa dịch vụ 'be', cạnh tranh mạnh mẽ trong hệ sinh thái vận tải và giao nhận số."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN FOODY (SHOPEEFOOD)",
+    "mst": "0311828036",
+    "email": "hr@foody.vn",
+    "số điện thoại": "19002042",
+    "website": "shopeefood.vn",
+    "địa chỉ trụ sở": "Tòa nhà Jabes 1, 244 Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Nền tảng giao đồ ăn trực tuyến (ShopeeFood) và đánh giá địa điểm ăn uống hàng đầu, tạo cầu nối hiệu quả giữa nhà hàng, shipper và người tiêu dùng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN ÁNH DƯƠNG VIỆT NAM (VINASUN)",
+    "mst": "0302732123",
+    "email": "tuyendung@vinasuntaxi.com",
+    "số điện thoại": "02838272727",
+    "website": "vinasuntaxi.com",
+    "địa chỉ trụ sở": "648 Nguyễn Trãi, Phường 11, Quận 5, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Vinasun là thương hiệu taxi truyền thống uy tín, không ngừng cải tiến dịch vụ và áp dụng công nghệ để phục vụ tốt nhất nhu cầu di chuyển của khách hàng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TẬP ĐOÀN MAI LINH",
+    "mst": "0301121111",
+    "email": "tuyendung@mailinh.vn",
+    "số điện thoại": "02838298888",
+    "website": "mailinh.vn",
+    "địa chỉ trụ sở": "22 Nguyễn Bỉnh Khiêm, Phường Đa Kao, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn Mai Linh là đơn vị vận tải hành khách hàng đầu phủ sóng 63 tỉnh thành phố, với màu xanh lá đặc trưng thân thiện và an toàn."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH AEON VIỆT NAM",
+    "mst": "0311241111",
+    "email": "tuyendung@aeon.com.vn",
+    "số điện thoại": "02862887711",
+    "website": "aeon.com.vn",
+    "địa chỉ trụ sở": "Số 30 Bờ Bao Tân Thắng, Phường Sơn Kỳ, Quận Tân Phú, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn bán lẻ hàng đầu từ Nhật Bản, chuyên phát triển hệ thống trung tâm thương mại hiện đại, siêu thị tổng hợp và bách hóa trên toàn quốc."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN TRUNG TÂM THƯƠNG MẠI LOTTE VIỆT NAM",
+    "mst": "0304741111",
+    "email": "tuyendung@lotte.vn",
+    "số điện thoại": "02837753232",
+    "website": "lottemart.com.vn",
+    "địa chỉ trụ sở": "469 Nguyễn Hữu Thọ, Phường Tân Hưng, Quận 7, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Lotte Mart là chuỗi siêu thị quy mô lớn từ Hàn Quốc, cung cấp trải nghiệm mua sắm đẳng cấp cùng hàng vạn sản phẩm đa dạng cho gia đình."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN CENTRAL RETAIL TẠI VIỆT NAM",
+    "mst": "0311112222",
+    "email": "recruitment@vn.centralretail.com",
+    "số điện thoại": "02839958368",
+    "website": "centralretail.com.vn",
+    "địa chỉ trụ sở": "163 Phan Đăng Lưu, Phường 1, Quận Phú Nhuận, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Nhà bán lẻ đa mô hình đa lĩnh vực hàng đầu (quản lý hệ thống GO!, Big C, Nguyễn Kim), mang lại giải pháp mua sắm tiện ích và chất lượng."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DỊCH VỤ THƯƠNG MẠI TỔNG HỢP WINCOMMERCE",
+    "mst": "0108921111",
+    "email": "tuyendung@winmart.masangroup.com",
+    "số điện thoại": "02471066866",
+    "website": "winmart.vn",
+    "địa chỉ trụ sở": "Tầng 5, Tòa nhà MPlaza Saigon, 39 Lê Duẩn, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Đơn vị vận hành chuỗi siêu thị WinMart và cửa hàng WinMart+, sở hữu mạng lưới bán lẻ nhu yếu phẩm và thực phẩm tươi sống quy mô lớn nhất Việt Nam."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN DƯỢC PHẨM AN KHANG PHARMA",
+    "mst": "0314811111",
+    "email": "tuyendung@nhathuocankhang.com",
+    "số điện thoại": "19001572",
+    "website": "nhathuocankhang.com",
+    "địa chỉ trụ sở": "128 Trần Quang Khải, Phường Tân Định, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Chuỗi nhà thuốc An Khang (thuộc Tập đoàn MWG) chuyên cung cấp dược phẩm, thực phẩm chức năng và thiết bị y tế với dịch vụ tư vấn tận tâm."
+  },
+  {
+    "tên công ty": "CÔNG TY CỔ PHẦN VACXIN VIỆT NAM (VNVC)",
+    "mst": "0107631111",
+    "email": "tuyendung@vnvc.vn",
+    "số điện thoại": "02871026595",
+    "website": "vnvc.vn",
+    "địa chỉ trụ sở": "Số 180 Trường Chinh, Phường Khương Thượng, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "VNVC là hệ thống trung tâm tiêm chủng an toàn, hiện đại bậc nhất, cung cấp đầy đủ các loại vắc xin cho trẻ em và người lớn trên toàn quốc."
+  },
+  {
+    "tên công ty": "TẬP ĐOÀN Y KHOA HOÀN MỸ",
+    "mst": "0304111111",
+    "email": "tuyendung@hoanmy.com",
+    "số điện thoại": "02838206001",
+    "website": "hoanmy.com",
+    "địa chỉ trụ sở": "Lầu 11, Tòa nhà Huba, 22 Võ Văn Kiệt, Phường Nguyễn Thái Bình, Quận 1, TP Hồ Chí Minh",
+    "giới thiệu công ty": "Tập đoàn y tế tư nhân có quy mô và mạng lưới dẫn đầu Việt Nam, chuyên cung cấp các dịch vụ chăm sóc sức khỏe, khám và điều trị chất lượng cao."
+  },
+  {
+    "tên công ty": "CÔNG TY TNHH GIÁO DỤC ĐÀO TẠO APOLLO VIỆT NAM",
+    "mst": "0100991111",
+    "email": "hr@apollo.edu.vn",
+    "số điện thoại": "1900292970",
+    "website": "apollo.edu.vn",
+    "địa chỉ trụ sở": "Số 181-183-185 Phố Thái Hà, Phường Láng Hạ, Quận Đống Đa, TP Hà Nội",
+    "giới thiệu công ty": "Apollo English là tổ chức đào tạo tiếng Anh hàng đầu với kinh nghiệm lâu năm, sử dụng giáo trình quốc tế và đội ngũ giảng viên bản ngữ chuyên môn cao."
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-11-05 15:53:43",
+  "total": 3,
+  "success": 3,
+  "failed": 0,
+  "details": [
+    {
+      "index": 1,
+      "email": "hr.manager1@techcorp.vn",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "83590b68-781c-43fd-826f-6fcb3bc4d42a",
+      "data": {
+        "id": "8bda82d9-867e-4e9f-8ccf-bfbfcc68d959",
+        "email": "hr.manager1@techcorp.vn",
+        "phone": "+84981234567",
+        "fullName": "Nguyễn Văn Quản Lý",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-05T08:53:42.5855608+00:00"
+      }
+    },
+    {
+      "index": 2,
+      "email": "recruiter.tran@innovatech.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "5886ac54-a310-4ce5-8c35-f55491f53a0d",
+      "data": {
+        "id": "c45041c6-7162-43d5-91f5-ef897ca461b8",
+        "email": "recruiter.tran@innovatech.com",
+        "phone": "+84912345678",
+        "fullName": "Trần Thị Tuyển Dụng",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-05T08:53:42.9985182+00:00"
+      }
+    },
+    {
+      "index": 3,
+      "email": "hr.hoangle@fptsoftware.fake",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "79339b51-ee99-4d7f-bb17-9721769aaf33",
+      "data": {
+        "id": "db7a6fc0-33c8-4b53-ba82-e71528bad411",
+        "email": "hr.hoangle@fptsoftware.fake",
+        "phone": null,
+        "fullName": "Lê Hoàng Nhân Sự",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-05T08:53:43.3424554+00:00"
+      }
+    }
+  ]
+}

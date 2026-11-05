@@ -1,0 +1,20 @@
+[
+  {
+    "fullName": "Nguyễn Văn Quản Lý",
+    "email": "hr.manager1@techcorp.vn",
+    "phone": "0981234567",
+    "password": "Password123@"
+  },
+  {
+    "fullName": "Trần Thị Tuyển Dụng",
+    "email": "recruiter.tran@innovatech.com",
+    "phone": "0912345678",
+    "password": "Password123@"
+  },
+  {
+    "fullName": "Lê Hoàng Nhân Sự",
+    "email": "hr.hoangle@fptsoftware.fake",
+    "phone": null,
+    "password": "Password123@"
+  }
+]
