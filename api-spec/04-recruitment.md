@@ -26,6 +26,10 @@ Nhóm API quản lý tin tuyển dụng và quy trình ứng tuyển. Dữ liệ
 | 12 | Xem chi tiết application | `GET /api/v1/applications/{id}` | Candidate owner, Recruiter authorized |
 | 13 | Cập nhật trạng thái application | `PATCH /api/v1/applications/{id}/status` | Recruiter authorized |
 | 14 | Lịch sử trạng thái application | `GET /api/v1/applications/{id}/status-history` | Candidate owner, Recruiter authorized |
+| 15 | Liệt kê kỹ năng | `GET /api/v1/skills` | Public |
+| 16 | Lưu tin tuyển dụng (Bookmark) | `POST /api/v1/job-postings/{id}/bookmarks` | Candidate |
+| 17 | Bỏ lưu tin tuyển dụng (Unbookmark) | `DELETE /api/v1/job-postings/{id}/bookmarks` | Candidate |
+| 18 | Danh sách tin tuyển dụng đã lưu của tôi | `GET /api/v1/me/bookmarked-jobs` | Candidate |
 
 ## Shared Rules
 
@@ -682,7 +686,8 @@ Không có request body.
         "updatedAt": "2026-10-24T09:30:15.423112+00:00",
         "hasApplied": false,
         "applicationId": null,
-        "isFollowingCompany": false
+        "isFollowingCompany": false,
+        "isBookmarked": false
     },
     "meta": {},
     "correlationId": "550e8400-e29b-41d4-a716-446655440000"
@@ -1488,6 +1493,217 @@ Không có request body.
     { "id": "3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d", "name": "C#", "isActive": true }
   ],
   "meta": { "page": 1, "pageSize": 20, "totalItems": 1, "totalPages": 1, "hasNextPage": false, "hasPreviousPage": false },
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 16: Bookmark Job</strong></summary>
+
+### Title & Summary
+
+**Lưu tin tuyển dụng vào danh sách quan tâm của ứng viên**
+
+Dùng để ứng viên lưu lại tin tuyển dụng đang mở để theo dõi hoặc nộp đơn sau. Mối quan hệ được lưu trữ vào bảng `JOB_BOOKMARK`.
+
+### Method & Path
+
+```http
+POST /api/v1/job-postings/{id}/bookmarks
+```
+
+### Authentication & Authorization
+
+Yêu cầu access token của tài khoản ứng viên (`Candidate`).
+
+### Headers
+
+| Header | Required | DataType | Validation Rules |
+|---|---:|---|---|
+| `Authorization` | Yes | String | Bearer token hợp lệ của Candidate. |
+| `Accept` | Yes | String | Hỗ trợ `application/json`. |
+| `X-Correlation-ID` | Yes | UUID | UUID hợp lệ. |
+
+### Request Parameters / Body
+
+| Parameter | In | Required | DataType | Validation Rules |
+|---|---|---:|---|---|
+| `id` | path | Yes | UUID | ID của tin tuyển dụng cần lưu. |
+
+Không có request body.
+
+### Response Status Codes
+
+| Status | Meaning | Condition |
+|---:|---|---|
+| `201` | Created | Lưu tin tuyển dụng thành công. |
+| `400` | Bad Request | `id` không đúng định dạng UUID hoặc tin chưa được công khai (`CANNOT_BOOKMARK_UNPUBLISHED_JOB`). |
+| `401` | Unauthorized | Token không hợp lệ hoặc thiếu thông tin định danh người dùng. |
+| `403` | Forbidden | Tài khoản không có vai trò `Candidate`. |
+| `404` | Not Found | Tin tuyển dụng không tồn tại (`JOB_POSTING_NOT_FOUND`). |
+| `409` | Conflict | Tin tuyển dụng đã nằm trong danh sách lưu của ứng viên (`JOB_ALREADY_BOOKMARKED`). |
+
+### Example Success Response
+
+```json
+{
+  "data": {
+    "jobPostingId": "a5000000-0000-4000-8000-000000000001",
+    "bookmarked": true,
+    "createdAt": "2026-11-05T10:30:00+00:00"
+  },
+  "meta": {},
+  "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
+}
+```
+
+</details>
+
+<details>
+<summary><strong>API 17: Unbookmark Job</strong></summary>
+
+### Title & Summary
+
+**Xóa tin tuyển dụng khỏi danh sách quan tâm của ứng viên**
+
+Dùng để ứng viên hủy lưu một tin tuyển dụng đã lưu trước đó.
+
+### Method & Path
+
+```http
+DELETE /api/v1/job-postings/{id}/bookmarks
+```
+
+### Authentication & Authorization
+
+Yêu cầu access token của tài khoản ứng viên (`Candidate`).
+
+### Headers
+
+| Header | Required | DataType | Validation Rules |
+|---|---:|---|---|
+| `Authorization` | Yes | String | Bearer token hợp lệ của Candidate. |
+| `X-Correlation-ID` | Yes | UUID | UUID hợp lệ. |
+
+### Request Parameters / Body
+
+| Parameter | In | Required | DataType | Validation Rules |
+|---|---|---:|---|---|
+| `id` | path | Yes | UUID | ID của tin tuyển dụng cần bỏ lưu. |
+
+Không có request body.
+
+### Response Status Codes
+
+| Status | Meaning | Condition |
+|---:|---|---|
+| `204` | No Content | Bỏ lưu tin tuyển dụng thành công. Không trả body. |
+| `400` | Bad Request | `id` không đúng định dạng UUID. |
+| `401` | Unauthorized | Token không hợp lệ. |
+| `403` | Forbidden | Không có vai trò `Candidate`. |
+| `404` | Not Found | Tin tuyển dụng chưa từng được lưu trong danh sách quan tâm (`JOB_BOOKMARK_NOT_FOUND`). |
+
+</details>
+
+<details>
+<summary><strong>API 18: List My Bookmarked Jobs</strong></summary>
+
+### Title & Summary
+
+**Lấy danh sách tin tuyển dụng đã lưu của ứng viên hiện tại**
+
+Trả về danh sách phân trang các tin tuyển dụng mà ứng viên đã bookmark, sắp xếp theo thời gian lưu mới nhất lên đầu (`bookmarkedAt` descending).
+
+### Method & Path
+
+```http
+GET /api/v1/me/bookmarked-jobs
+```
+
+### Authentication & Authorization
+
+Yêu cầu access token của tài khoản ứng viên (`Candidate`).
+
+### Headers
+
+| Header | Required | DataType | Validation Rules |
+|---|---:|---|---|
+| `Authorization` | Yes | String | Bearer token hợp lệ của Candidate. |
+| `Accept` | Yes | String | Hỗ trợ `application/json`. |
+| `X-Correlation-ID` | Yes | UUID | UUID hợp lệ. |
+
+### Request Parameters / Body
+
+| Parameter | In | Required | DataType | Validation Rules |
+|---|---|---:|---|---|
+| `search` | query | No | String | Từ khóa tìm kiếm theo tiêu đề tin tuyển dụng hoặc tên công ty. |
+| `page` | query | No | Integer | Số trang (one-based, mặc định `1`). |
+| `pageSize` | query | No | Integer | Số lượng tin mỗi trang (mặc định `20`, tối đa `100`). |
+
+Không có request body.
+
+### Response Status Codes
+
+| Status | Meaning | Condition |
+|---:|---|---|
+| `200` | OK | Trả về danh sách tin đã lưu cùng metadata phân trang. |
+| `400` | Bad Request | Tham số phân trang hoặc tìm kiếm không hợp lệ. |
+| `401` | Unauthorized | Token không hợp lệ hoặc thiếu định danh. |
+| `403` | Forbidden | Không có quyền `Candidate`. |
+
+### Example Success Response
+
+```json
+{
+  "data": [
+    {
+      "id": "a5000000-0000-4000-8000-000000000001",
+      "company": {
+        "id": "a2000000-0000-4000-8000-000000000001",
+        "name": "Mekong Digital Solutions",
+        "logoFileUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640"
+      },
+      "title": "Backend Developer (C# / .NET)",
+      "province": {
+        "id": "7c856880-7886-4ade-98c1-1393fe2b401c",
+        "name": "Thành phố Cần Thơ"
+      },
+      "ward": {
+        "id": "8e7bfa9f-1d4c-4c1e-87c2-0f3989d453d3",
+        "name": "Phường Ngã Bảy"
+      },
+      "experienceYears": 2,
+      "jobLevel": "staff",
+      "workMode": "hybrid",
+      "jobType": "fullTime",
+      "salaryMin": 18000000,
+      "salaryMax": 30000000,
+      "salaryNegotiable": false,
+      "deadline": "2026-11-23T09:30:15.423112+00:00",
+      "status": "OPEN",
+      "skillNames": [
+        "C# / .NET Core",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "industryNames": [
+        "Công nghệ thông tin"
+      ],
+      "createdAt": "2026-10-19T09:30:15.423112+00:00",
+      "bookmarkedAt": "2026-11-05T10:30:00+00:00",
+      "isBookmarked": true
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 1,
+    "totalPages": 1,
+    "hasNextPage": false,
+    "hasPreviousPage": false
+  },
   "correlationId": "5f1c0d68-9a3f-4c85-bf50-4a7c17c1e2af"
 }
 ```
