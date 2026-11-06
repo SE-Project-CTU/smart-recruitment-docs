@@ -1,0 +1,909 @@
+{
+  "timestamp": "2026-11-06 15:35:13",
+  "totalProcessed": 100,
+  "success": 100,
+  "alreadyExists": 0,
+  "failed": 0,
+  "details": [
+    {
+      "hrEmail": "hr.nguyenvanquanly@gmail.com",
+      "companyName": "CÔNG TY TNHH SAMSUNG ELECTRONICS VIỆT NAM THÁI NGUYÊN",
+      "taxCode": "4601124536",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "6683e06a-d57b-46c4-82fe-28aceb501ace",
+      "correlationId": "3e23096c-dd27-4d58-9530-9310bad294ff"
+    },
+    {
+      "hrEmail": "hr.nguyenvanquanly@gmail.com",
+      "companyName": "TẬP ĐOÀN CÔNG NGHIỆP - VIỄN THÔNG QUÂN ĐỘI",
+      "taxCode": "0100109106",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "147c5def-d28c-4424-88da-e725c6dc1180",
+      "correlationId": "d8082da0-aef3-4d29-b855-9127a91c53c0"
+    },
+    {
+      "hrEmail": "hr.nguyenvanquanly@gmail.com",
+      "companyName": "TẬP ĐOÀN VINGROUP - CTCP",
+      "taxCode": "0101245486",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "3ddc12fc-3e15-4127-826c-697e416d8fd3",
+      "correlationId": "b446fa6b-f697-4048-bd77-0358a2ec99b2"
+    },
+    {
+      "hrEmail": "hr.nguyenvanquanly@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM",
+      "taxCode": "0100150619",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "c89219e8-84b6-45c3-9a0f-98d0b03b2f56",
+      "correlationId": "f98ea71c-643c-49ee-8235-fd7364020d78"
+    },
+    {
+      "hrEmail": "hr.nguyenvanquanly@gmail.com",
+      "companyName": "CÔNG TY CP FPT",
+      "taxCode": "0101248141",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "193edbf7-b0aa-482f-9250-7bef71fbc3de",
+      "correlationId": "3cf20679-f634-4f04-9390-76eac009cd84"
+    },
+    {
+      "hrEmail": "hr.tranthituyendung@gmail.com",
+      "companyName": "CÔNG TY CP ĐẦU TƯ THẾ GIỚI DI ĐỘNG",
+      "taxCode": "0306731335",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "8cc6f2fc-49e3-4b5e-a475-38d6f84eef42",
+      "correlationId": "2bf6cb78-a206-49dd-b643-eb507f77cee2"
+    },
+    {
+      "hrEmail": "hr.tranthituyendung@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP VIỆT NAM THỊNH VƯỢNG",
+      "taxCode": "0100233583",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "0598bd8c-4560-4db4-9383-ff5067ddc8fc",
+      "correlationId": "5ee82cab-7735-4cf4-92bb-ed5f37bda841"
+    },
+    {
+      "hrEmail": "hr.tranthituyendung@gmail.com",
+      "companyName": "CÔNG TY CP TẬP ĐOÀN HÒA PHÁT",
+      "taxCode": "0900189284",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "1ae5a55f-533e-4d6e-bec3-2723ed392f58",
+      "correlationId": "2e8ccc16-5285-4aeb-8289-f298080e7392"
+    },
+    {
+      "hrEmail": "hr.tranthituyendung@gmail.com",
+      "companyName": "CÔNG TY CP TẬP ĐOÀN MASAN",
+      "taxCode": "0303576603",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b6033027-6615-46ad-a225-f6902d38a837",
+      "correlationId": "48451bb9-d4bf-47bd-884f-92e281a30751"
+    },
+    {
+      "hrEmail": "hr.tranthituyendung@gmail.com",
+      "companyName": "CÔNG TY TNHH DKSH VIỆT NAM",
+      "taxCode": "0101732675",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "c3a9e150-e539-4d02-b4a3-4f392691d77b",
+      "correlationId": "b442e76d-ffa1-4d74-baf6-b08dcf964c17"
+    },
+    {
+      "hrEmail": "hr.lehoangnhansu@gmail.com",
+      "companyName": "Công Ty Tài Chính TNHH MTV Mirae Asset",
+      "taxCode": "0310462006",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7123be86-b850-4eb4-88fc-44783d480cd6",
+      "correlationId": "7dbdd2f9-3b91-40ff-8449-d23837e55558"
+    },
+    {
+      "hrEmail": "hr.lehoangnhansu@gmail.com",
+      "companyName": "BÁO ĐIỆN TỬ VNEXPRESS.NET",
+      "taxCode": "0101372551",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d4ec549c-e48d-4866-9fde-7e838ef060b8",
+      "correlationId": "6e597867-5e8b-49d3-bc01-7c2bf56214e5"
+    },
+    {
+      "hrEmail": "hr.lehoangnhansu@gmail.com",
+      "companyName": "TMA Solutions",
+      "taxCode": "0301440049",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "e789959d-2a2f-4527-8925-9971598e2c9a",
+      "correlationId": "71ef942f-c7d9-4e45-b234-83dc507fa3a5"
+    },
+    {
+      "hrEmail": "hr.lehoangnhansu@gmail.com",
+      "companyName": "NOVALAND GROUP CORP",
+      "taxCode": "0301449557",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "56399462-9c96-456f-8056-2dcf4ad864dc",
+      "correlationId": "b066af11-aab6-4dcc-b989-59181e809b63"
+    },
+    {
+      "hrEmail": "hr.lehoangnhansu@gmail.com",
+      "companyName": "CÔNG TY CP HÀNG KHÔNG VIETJET",
+      "taxCode": "0102325399",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "1ba28754-4e35-4079-a18a-9c8df88b23bf",
+      "correlationId": "25540047-57b0-4695-a811-d2c5c3b9607d"
+    },
+    {
+      "hrEmail": "hr.phamminhtuan@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP KỸ THƯƠNG VIỆT NAM",
+      "taxCode": "0100230800",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "a9d54e75-a64c-4562-9e85-ff1889ac6fa8",
+      "correlationId": "53ea1cbc-2a90-4c2b-9331-59f6dcfa2923"
+    },
+    {
+      "hrEmail": "hr.phamminhtuan@gmail.com",
+      "companyName": "Công ty Cổ phần Đầu Tư K&G Việt Nam",
+      "taxCode": "0105995532",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "06442c11-667b-4115-bdce-5346014e7ebc",
+      "correlationId": "67603aba-de36-4f35-90f9-befbeba8bdee"
+    },
+    {
+      "hrEmail": "hr.phamminhtuan@gmail.com",
+      "companyName": "FE CREDIT",
+      "taxCode": "0311504951",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "780ffa51-3f47-4574-bc53-cf11b3bcfaa2",
+      "correlationId": "19f10aba-11ea-49e8-8093-70d9897e252a"
+    },
+    {
+      "hrEmail": "hr.phamminhtuan@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN CÔNG NGHỆ VÀ TRUYỀN THÔNG AWING VIỆT NAM",
+      "taxCode": "0106208888",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "528c47f1-c86a-4bb2-8b5c-9bb73cbe367e",
+      "correlationId": "f72cba80-5a55-4f26-92e0-e36811b8bd46"
+    },
+    {
+      "hrEmail": "hr.phamminhtuan@gmail.com",
+      "companyName": "Công Ty Tài Chính TNHH Một Thành Viên Home Credit Việt Nam",
+      "taxCode": "0307672788",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b61c98d1-6e09-467d-9eb0-52b34221a9b5",
+      "correlationId": "fdf69d0b-ef90-4925-9b92-6d31bfd2016d"
+    },
+    {
+      "hrEmail": "hr.dothithuha@gmail.com",
+      "companyName": "CÔNG TY TNHH PHẦN MỀM FPT (FPT SOFTWARE)",
+      "taxCode": "0103608502",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "9b2ab2fd-86a6-4cb8-84ce-65ec2304766f",
+      "correlationId": "c67b5f67-c0d6-4565-be09-230a2fce9ff3"
+    },
+    {
+      "hrEmail": "hr.dothithuha@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN VNG",
+      "taxCode": "0303490096",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "cc013843-0d39-426b-9735-f315120e113b",
+      "correlationId": "cf5a74b3-1870-4fbb-8b4d-d451a7d1a33a"
+    },
+    {
+      "hrEmail": "hr.dothithuha@gmail.com",
+      "companyName": "CÔNG TY CP SỮA VIỆT NAM (VINAMILK)",
+      "taxCode": "0300588569",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "61858586-71e8-4b06-bc4e-89877490e621",
+      "correlationId": "e26f92a3-661a-4441-8d8a-bc82cf63219b"
+    },
+    {
+      "hrEmail": "hr.dothithuha@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP NGOẠI THƯƠNG VIỆT NAM (VIETCOMBANK)",
+      "taxCode": "0100112437",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "1fb048d5-f3e8-4c4e-8db5-9f121b63bef2",
+      "correlationId": "3c8d884e-8154-417a-bd42-d3feba2e7676"
+    },
+    {
+      "hrEmail": "hr.dothithuha@gmail.com",
+      "companyName": "CÔNG TY TNHH SHOPEE",
+      "taxCode": "0106773786",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b3b63838-fa28-4ba3-8a68-ee60560112f8",
+      "correlationId": "6a8e1780-046b-49ab-9122-3476706629e9"
+    },
+    {
+      "hrEmail": "hr.hoangvannam@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TIKI",
+      "taxCode": "0309532909",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "12299692-333b-4d68-ac36-a09631cf7956",
+      "correlationId": "2a6ce205-f6da-4e28-a939-e773f71df1a7"
+    },
+    {
+      "hrEmail": "hr.hoangvannam@gmail.com",
+      "companyName": "CÔNG TY TNHH RECESS (LAZADA VIỆT NAM)",
+      "taxCode": "0311636531",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "66b271b1-4a2f-437c-a506-7d2e1578d00d",
+      "correlationId": "27e707ec-218f-4b0a-a334-5db8ffa46686"
+    },
+    {
+      "hrEmail": "hr.hoangvannam@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DỊCH VỤ DI ĐỘNG TRỰC TUYẾN (MOMO)",
+      "taxCode": "0305316697",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "847405f6-1c50-486a-86e8-90eff7ed5ac0",
+      "correlationId": "393cf1ed-bc77-4a05-b6ad-aa93ba0d3ddf"
+    },
+    {
+      "hrEmail": "hr.hoangvannam@gmail.com",
+      "companyName": "TẬP ĐOÀN BƯU CHÍNH VIỄN THÔNG VIỆT NAM (VNPT)",
+      "taxCode": "0100684378",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "71feab88-6fea-492d-a163-cb90a6185aec",
+      "correlationId": "f4084327-3864-483f-808e-161d355a076a"
+    },
+    {
+      "hrEmail": "hr.hoangvannam@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP Á CHÂU (ACB)",
+      "taxCode": "0301452948",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d9acb055-7380-4cbd-b35d-74fba0160924",
+      "correlationId": "3986d2b3-4178-4cd5-ba59-c69375f60add"
+    },
+    {
+      "hrEmail": "hr.vubichphuong@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP QUÂN ĐỘI (MBBANK)",
+      "taxCode": "0100283873",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "c82b8cbb-09b3-40f4-bb92-98a6039c549e",
+      "correlationId": "0c5fdc8a-286a-43aa-9d84-cfe172af096e"
+    },
+    {
+      "hrEmail": "hr.vubichphuong@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP TIÊN PHONG (TPBANK)",
+      "taxCode": "0102730028",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "80d77c3a-5282-4b0d-9b91-0ca35bab866b",
+      "correlationId": "c3ddeb0f-2218-4e3a-8f96-35c964b91705"
+    },
+    {
+      "hrEmail": "hr.vubichphuong@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP QUỐC TẾ VIỆT NAM (VIB)",
+      "taxCode": "0100233488",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "87d4f84c-7ab7-4f94-8937-ae4d9f41aae1",
+      "correlationId": "ca0437e1-d395-4a57-a71e-461e50abcdc6"
+    },
+    {
+      "hrEmail": "hr.vubichphuong@gmail.com",
+      "companyName": "CÔNG TY TNHH GRAB",
+      "taxCode": "0312650437",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7debef4a-ceb8-40b4-95c5-20a0c5bf0c71",
+      "correlationId": "779c8488-6f14-43e7-b994-773e5e42a724"
+    },
+    {
+      "hrEmail": "hr.vubichphuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN GIẢI PHÁP THANH TOÁN VIỆT NAM (VNPAY)",
+      "taxCode": "0102182292",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "229a43d3-a33a-4ef9-a217-0962f5606fc1",
+      "correlationId": "04d1e2ee-f903-4049-ab07-d90630125093"
+    },
+    {
+      "hrEmail": "hr.dangquocanh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN CÔNG NGHỆ CMC",
+      "taxCode": "0100244112",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "1c627e5c-420d-44c4-9269-fa3b26e0b08e",
+      "correlationId": "32197886-faca-4d4d-9fec-a834120937c1"
+    },
+    {
+      "hrEmail": "hr.dangquocanh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN MẶT TRỜI (SUN GROUP)",
+      "taxCode": "0400623125",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "df34f164-2d3e-4350-bcd9-60c382ee0b52",
+      "correlationId": "7698bb8e-f4ac-44ec-b9bb-18baee2b6ad5"
+    },
+    {
+      "hrEmail": "hr.dangquocanh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN THỰC PHẨM SỮA TH (TH TRUE MILK)",
+      "taxCode": "2901122606",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "f0d18076-fb21-4469-9939-07c0e0b87888",
+      "correlationId": "0d2f3276-0b20-4912-987e-c131e3485e90"
+    },
+    {
+      "hrEmail": "hr.dangquocanh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN VÀNG BẠC ĐÁ QUÝ PHÚ NHUẬN (PNJ)",
+      "taxCode": "0300521758",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b6a06e4d-10d8-46e4-be97-4ca9ca201fc3",
+      "correlationId": "f5512a65-720e-4bf0-854c-38a68edcb6e5"
+    },
+    {
+      "hrEmail": "hr.dangquocanh@gmail.com",
+      "companyName": "NGÂN HÀNG TMCP CÔNG THƯƠNG VIỆT NAM (VIETINBANK)",
+      "taxCode": "0100111948",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "2296cf89-8a68-450b-a512-d3b295176386",
+      "correlationId": "9e43244a-2f9d-4176-aef8-1b428841cd51"
+    },
+    {
+      "hrEmail": "hr.buithanhhuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN ĐẤT XANH",
+      "taxCode": "0303104343",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7057f309-0a16-4ab1-a8d9-ff209cd3c5b8",
+      "correlationId": "078ebe6d-e4e0-4e7b-b768-e16437eda77e"
+    },
+    {
+      "hrEmail": "hr.buithanhhuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN XÂY DỰNG HÒA BÌNH",
+      "taxCode": "0301449615",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "47992a8a-7aa5-4a7a-a88e-bec33c7be4f4",
+      "correlationId": "d5e9a396-c49b-4152-ab4e-5d1490c11c47"
+    },
+    {
+      "hrEmail": "hr.buithanhhuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN XÂY DỰNG COTECCONS",
+      "taxCode": "0303443233",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "8ac865cf-84ac-422e-8f66-d0413d336e82",
+      "correlationId": "868adfce-84fd-40e3-9dd6-b2d6bfb3e572"
+    },
+    {
+      "hrEmail": "hr.buithanhhuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN GIAO HÀNG TIẾT KIỆM",
+      "taxCode": "0106181807",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "3211ff14-4a15-4eb8-a79b-698c383f242f",
+      "correlationId": "ba5be542-672b-4b36-bb23-26093c2495e2"
+    },
+    {
+      "hrEmail": "hr.buithanhhuong@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DỊCH VỤ GIAO HÀNG NHANH",
+      "taxCode": "0311907295",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b20fc2e8-8d88-444a-a8ab-b909a709b992",
+      "correlationId": "4c80cf80-1ac8-47cf-ad1f-c5a3d856e812"
+    },
+    {
+      "hrEmail": "hr.ngomaianh@gmail.com",
+      "companyName": "TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM",
+      "taxCode": "0102637213",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "46bc420b-710e-4d3a-a849-1cad65a305c8",
+      "correlationId": "4be90380-785b-4f7b-8584-5b46421b4317"
+    },
+    {
+      "hrEmail": "hr.ngomaianh@gmail.com",
+      "companyName": "TỔNG CÔNG TY HÀNG KHÔNG VIỆT NAM - CTCP",
+      "taxCode": "0100107518",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "94404eb7-c350-419d-bcff-85715259c413",
+      "correlationId": "bb072e77-a945-4382-bfc1-6cb9eeb53466"
+    },
+    {
+      "hrEmail": "hr.ngomaianh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DƯỢC PHẨM FPT LONG CHÂU",
+      "taxCode": "0315275368",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d6c405ec-36fe-4d40-8f2d-37df33f6c887",
+      "correlationId": "29c98389-0897-4b1d-bdcb-512e7ec75016"
+    },
+    {
+      "hrEmail": "hr.ngomaianh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DƯỢC PHẨM PHARMACITY",
+      "taxCode": "0311770883",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "c34e8ea2-f66e-4f8a-9521-a89e1d493f42",
+      "correlationId": "fa740345-af96-4c90-bd39-c7b4158681f3"
+    },
+    {
+      "hrEmail": "hr.ngomaianh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN BỆNH VIỆN ĐA KHOA TÂM ANH",
+      "taxCode": "0102362369",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "e50d1b0b-7d1a-4451-865e-f927444bf1b8",
+      "correlationId": "b4c792c3-a047-4baa-bc18-8554051c6de9"
+    },
+    {
+      "hrEmail": "hr.duongvanhuy@gmail.com",
+      "companyName": "HỆ THỐNG Y TẾ MEDLATEC",
+      "taxCode": "0102777265",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "fa7c39d0-17e5-4840-b0a6-b187d819a883",
+      "correlationId": "54545e84-a450-43bd-908e-8228a01ec1bb"
+    },
+    {
+      "hrEmail": "hr.duongvanhuy@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN THƯƠNG MẠI DỊCH VỤ CỔNG VÀNG",
+      "taxCode": "0102716068",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "073f53a8-f4c7-45bd-ba0b-7f2cece6c923",
+      "correlationId": "15cc75dd-606f-4944-92b7-b269c02c18eb"
+    },
+    {
+      "hrEmail": "hr.duongvanhuy@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN TRUNG NGUYÊN",
+      "taxCode": "0304381831",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "89a9e7ff-52d0-49b9-997b-6fad7112586b",
+      "correlationId": "be3a3a85-308c-4f22-92e1-dd3aa7911c1a"
+    },
+    {
+      "hrEmail": "hr.duongvanhuy@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DỊCH VỤ CÀ PHÊ CAO NGUYÊN",
+      "taxCode": "0301980894",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "750a6f3d-1970-41db-b392-c87358f10e39",
+      "correlationId": "8e1d8474-8520-4915-8e70-1249464418fa"
+    },
+    {
+      "hrEmail": "hr.duongvanhuy@gmail.com",
+      "companyName": "CÔNG TY SỮA ĐẬU NÀNH VIỆT NAM - VINASOY",
+      "taxCode": "4300222956",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "4f83f08a-75d1-41ae-9830-bc3ae2655fec",
+      "correlationId": "1aa8c6a0-53f8-451f-a2e8-ecb6ca6bb30b"
+    },
+    {
+      "hrEmail": "hr.lythikhanhlinh@gmail.com",
+      "companyName": "TỔNG CÔNG TY CỔ PHẦN BIA - RƯỢU - NƯỚC GIẢI KHÁT SÀI GÒN",
+      "taxCode": "0300583659",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "04e46481-b36f-4aeb-a4a5-524f4467e3b2",
+      "correlationId": "3fdb676d-8d91-4e15-93a6-cfb971c4dd29"
+    },
+    {
+      "hrEmail": "hr.lythikhanhlinh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN QUỐC TẾ ANH VĂN HỘI VIỆT MỸ",
+      "taxCode": "0305018698",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7424c8bd-1f19-44a7-a37c-b55d9862f95d",
+      "correlationId": "5bb51719-d9c0-45d2-8d81-e51b1e8e9c91"
+    },
+    {
+      "hrEmail": "hr.lythikhanhlinh@gmail.com",
+      "companyName": "CÔNG TY TNHH ILA VIỆT NAM",
+      "taxCode": "0302000508",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "f0bbe026-7efc-4a94-a89c-d49e5f92bce6",
+      "correlationId": "6c18abef-1e5d-4413-8893-df734d561b2c"
+    },
+    {
+      "hrEmail": "hr.lythikhanhlinh@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN BÁN LẺ KỸ THUẬT SỐ FPT",
+      "taxCode": "0311609355",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b25ee74b-8a87-40d7-9ae2-c121fc703117",
+      "correlationId": "cf141ccb-9f8a-4cf3-86c0-dd2013d39c9e"
+    },
+    {
+      "hrEmail": "hr.lythikhanhlinh@gmail.com",
+      "companyName": "TẬP ĐOÀN XĂNG DẦU VIỆT NAM",
+      "taxCode": "0100107370",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "9b55f0f5-d92a-46a4-9993-7b68b465f669",
+      "correlationId": "f214675d-918b-4f92-bb2d-60b6d7e65598"
+    },
+    {
+      "hrEmail": "hr.trinhhoanghai@gmail.com",
+      "companyName": "CÔNG TY TNHH KPMG VIỆT NAM",
+      "taxCode": "0101452231",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "4707c2b0-5b64-4df0-93ab-4bba90aae734",
+      "correlationId": "df278dc9-b4f2-4972-9881-d5bd05be65d4"
+    },
+    {
+      "hrEmail": "hr.trinhhoanghai@gmail.com",
+      "companyName": "CÔNG TY TNHH PWC (VIỆT NAM)",
+      "taxCode": "0100150725",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "ac29ba75-5db5-429c-8286-039a03767c57",
+      "correlationId": "677f9c4e-0ee4-4c20-bcec-f00c103c7498"
+    },
+    {
+      "hrEmail": "hr.trinhhoanghai@gmail.com",
+      "companyName": "CÔNG TY TNHH DELOITTE VIỆT NAM",
+      "taxCode": "0100112500",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "47a95338-66fd-4810-a57c-058abca83199",
+      "correlationId": "f31071f8-9476-40d7-86ab-a707fa80ed62"
+    },
+    {
+      "hrEmail": "hr.trinhhoanghai@gmail.com",
+      "companyName": "CÔNG TY TNHH ERNST & YOUNG VIỆT NAM (EY)",
+      "taxCode": "0102026000",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "9427fc08-7d4b-4eb5-a040-b7ef9aa138a6",
+      "correlationId": "6a8e3455-6724-4af0-bef2-9499ce2e7a00"
+    },
+    {
+      "hrEmail": "hr.trinhhoanghai@gmail.com",
+      "companyName": "CÔNG TY LUẬT TNHH YKVN",
+      "taxCode": "0101234567",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "e29a4ae3-7709-42a0-a59b-189319a210c6",
+      "correlationId": "bb556cf2-1a6a-4ec9-88b0-dc414987b7ca"
+    },
+    {
+      "hrEmail": "hr.phanthaonguyen@gmail.com",
+      "companyName": "CÔNG TY LUẬT TNHH BAKER & MCKENZIE VIỆT NAM",
+      "taxCode": "0101987654",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "24ed3fa3-371f-4777-83c6-a730849f875b",
+      "correlationId": "2b65744c-4d79-466d-bcc6-cc2ea6c1fe63"
+    },
+    {
+      "hrEmail": "hr.phanthaonguyen@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN VCCORP",
+      "taxCode": "0101871229",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "32b765a9-bc3d-4c97-8245-9c38e7dfa5e6",
+      "correlationId": "ae08efea-2eb3-480a-9260-c6c0949905d3"
+    },
+    {
+      "hrEmail": "hr.phanthaonguyen@gmail.com",
+      "companyName": "TỔ HỢP TRUYỀN THÔNG DATVIETVAC",
+      "taxCode": "0301456789",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "8904100a-817f-4138-b0b4-666669f05505",
+      "correlationId": "fc01e0e8-9c80-4065-ad94-7d59c47ef728"
+    },
+    {
+      "hrEmail": "hr.phanthaonguyen@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN YEAH1",
+      "taxCode": "0304592171",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "614e336e-25b1-4438-9366-32d37cce09cb",
+      "correlationId": "67487468-66ba-49d9-a69e-40fa192181c8"
+    },
+    {
+      "hrEmail": "hr.phanthaonguyen@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN LỘC TRỜI",
+      "taxCode": "1600111111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "81fd9d57-acf5-4bab-b4c6-143d624f1639",
+      "correlationId": "5be4d071-88fd-4d6a-ac12-f17d79500ab2"
+    },
+    {
+      "hrEmail": "hr.vominhkhoa@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN CHĂN NUÔI C.P. VIỆT NAM",
+      "taxCode": "3600222222",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "372724ba-f1dc-4a88-9ecc-99f8420cc861",
+      "correlationId": "ac72c236-5301-4627-88b6-750eeabdb9ec"
+    },
+    {
+      "hrEmail": "hr.vominhkhoa@gmail.com",
+      "companyName": "TẬP ĐOÀN DỆT MAY VIỆT NAM (VINATEX)",
+      "taxCode": "0100111111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "aa28d557-ecc6-48ad-95f0-d92e54fe1953",
+      "correlationId": "17c3d36e-41ce-457d-82da-d58656f27b45"
+    },
+    {
+      "hrEmail": "hr.vominhkhoa@gmail.com",
+      "companyName": "TỔNG CÔNG TY CỔ PHẦN MAY VIỆT TIẾN",
+      "taxCode": "0300444444",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d2aa1b03-30e2-4530-ba5c-d6ad4be530d5",
+      "correlationId": "08325b91-762c-4089-9c74-f4c4dacad539"
+    },
+    {
+      "hrEmail": "hr.vominhkhoa@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN NHỰA BÌNH MINH",
+      "taxCode": "0301444444",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "c65f884c-8a72-4f5b-adab-e4e3c573b789",
+      "correlationId": "3eccb9ac-29a8-4c25-aa75-13ffe4e35786"
+    },
+    {
+      "hrEmail": "hr.vominhkhoa@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN HOA SEN",
+      "taxCode": "3700333333",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d6993e03-0f98-44a3-8fe3-f34dad98971c",
+      "correlationId": "b3c30393-b0eb-4517-afad-25d0c2e55a49"
+    },
+    {
+      "hrEmail": "hr.nguyenngocmai@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DU LỊCH VÀ TIẾP THỊ GTVT VIỆT NAM - VIETRAVEL",
+      "taxCode": "0301111111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "25f9af80-5007-4e35-aa92-2209938321b7",
+      "correlationId": "1679707c-f84b-4cd0-a859-07e23844431b"
+    },
+    {
+      "hrEmail": "hr.nguyenngocmai@gmail.com",
+      "companyName": "TỔNG CÔNG TY DU LỊCH SÀI GÒN - TNHH MỘT THÀNH VIÊN (SAIGONTOURIST GROUP)",
+      "taxCode": "0300666666",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "9f44c350-e8f8-43be-8bd0-3bc9d76d20b8",
+      "correlationId": "61956299-b8ee-4629-be59-a51ef1bf54d4"
+    },
+    {
+      "hrEmail": "hr.nguyenngocmai@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN VINPEARL",
+      "taxCode": "4200456848",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "e29a5300-3b4c-46c8-9d1f-9f96eb3dbbba",
+      "correlationId": "7f6d4cd2-41fc-48b4-8257-df68eb7e6c96"
+    },
+    {
+      "hrEmail": "hr.nguyenngocmai@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN KIDO",
+      "taxCode": "0301777777",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "deb05e85-2a5c-4943-8a66-c1aa752005cf",
+      "correlationId": "5a2f0ae3-6046-4105-b527-cbd6ea3697f6"
+    },
+    {
+      "hrEmail": "hr.nguyenngocmai@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN THIÊN LONG",
+      "taxCode": "0301888888",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "8f7e71ee-2426-4c8e-9544-867465ce20e0",
+      "correlationId": "ad351dcd-c072-41d8-8891-0f5924302e67"
+    },
+    {
+      "hrEmail": "hr.tranducthang@gmail.com",
+      "companyName": "CÔNG TY TNHH SẢN XUẤT VÀ KINH DOANH VINFAST",
+      "taxCode": "0108926276",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "99db86e1-9590-43c7-934e-b32eced78dfa",
+      "correlationId": "c8b3f1c3-3bfa-4f3e-bd9f-5f47a1e0c361"
+    },
+    {
+      "hrEmail": "hr.tranducthang@gmail.com",
+      "companyName": "CÔNG TY TNHH SẢN XUẤT HÀNG TIÊU DÙNG BÌNH TIÊN (BITI'S)",
+      "taxCode": "0301445678",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "4e5b13c4-d7d1-4cb4-83ad-7f895e8be356",
+      "correlationId": "58aeee1b-adb5-40de-8d2b-6c6843d30774"
+    },
+    {
+      "hrEmail": "hr.tranducthang@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN VÀNG BẠC ĐÁ QUÝ DOJI",
+      "taxCode": "0100365621",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "f1b23dc5-3c38-4e7d-908f-5fb3757af5a9",
+      "correlationId": "832e0fae-2d79-494a-a24b-e605cc054a26"
+    },
+    {
+      "hrEmail": "hr.tranducthang@gmail.com",
+      "companyName": "TẬP ĐOÀN BẢO VIỆT",
+      "taxCode": "0100111761",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "998f1f40-807d-418f-8a9c-7ea8ba3a4397",
+      "correlationId": "165cfc59-9e81-405d-965a-5d75628c5062"
+    },
+    {
+      "hrEmail": "hr.tranducthang@gmail.com",
+      "companyName": "CÔNG TY TNHH MANULIFE (VIỆT NAM)",
+      "taxCode": "0301980000",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "09cc9542-158d-4f2c-ad58-5055e8830a46",
+      "correlationId": "3acd39f9-aa90-484b-83c8-6d09f70bd419"
+    },
+    {
+      "hrEmail": "hr.lethihongnhung@gmail.com",
+      "companyName": "CÔNG TY TNHH BẢO HIỂM NHÂN THỌ PRUDENTIAL VIỆT NAM",
+      "taxCode": "0301999999",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "d69472a4-2f5b-461c-8d44-f2430d7674c7",
+      "correlationId": "4d985f3b-4e4d-462d-a4fd-d5d1233e6010"
+    },
+    {
+      "hrEmail": "hr.lethihongnhung@gmail.com",
+      "companyName": "TỔNG CÔNG TY CỔ PHẦN BƯU CHÍNH VIETTEL (VIETTEL POST)",
+      "taxCode": "0104093672",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7c0033e1-577f-4464-aa6e-e8ad394919d8",
+      "correlationId": "d4e82066-71eb-4c8f-b485-8afee645036d"
+    },
+    {
+      "hrEmail": "hr.lethihongnhung@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DỊCH VỤ TỨC THỜI (AHAMOVE)",
+      "taxCode": "0313506115",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "b575a206-e297-4b4a-8324-c334459502e6",
+      "correlationId": "c4a7154f-fcd7-47d3-a59c-b77377ec8fa2"
+    },
+    {
+      "hrEmail": "hr.lethihongnhung@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN BE GROUP",
+      "taxCode": "0108294711",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "dcfd863d-552a-4391-8544-e9f0e0832874",
+      "correlationId": "88bafea1-acc2-4021-87d4-3896af7cc8b4"
+    },
+    {
+      "hrEmail": "hr.lethihongnhung@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN FOODY (SHOPEEFOOD)",
+      "taxCode": "0311828036",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "01f621bf-17cb-49c0-8b82-e91339b93d76",
+      "correlationId": "8967c265-2356-42d5-b770-6d76d81c6d5f"
+    },
+    {
+      "hrEmail": "hr.nguyenhaidang@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN ÁNH DƯƠNG VIỆT NAM (VINASUN)",
+      "taxCode": "0302732123",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "a13fe9d4-7de3-4a9f-8186-34cff1e8e10c",
+      "correlationId": "97c3228f-2ac0-43ac-b95a-fe8fcb783cb4"
+    },
+    {
+      "hrEmail": "hr.nguyenhaidang@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TẬP ĐOÀN MAI LINH",
+      "taxCode": "0301121111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "7ea8ac77-dd52-4c73-b6da-9c1009120d71",
+      "correlationId": "f21ff927-1d8f-4288-8851-82b3d18bbc8e"
+    },
+    {
+      "hrEmail": "hr.nguyenhaidang@gmail.com",
+      "companyName": "CÔNG TY TNHH AEON VIỆT NAM",
+      "taxCode": "0311241111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "5312d577-57de-4b7b-b784-03d67d696fad",
+      "correlationId": "cb5d9640-02c7-46e8-8c3b-54a523ed3193"
+    },
+    {
+      "hrEmail": "hr.nguyenhaidang@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN TRUNG TÂM THƯƠNG MẠI LOTTE VIỆT NAM",
+      "taxCode": "0304741111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "82675ccb-e217-46b8-b03d-4d56a6c1f951",
+      "correlationId": "846727d8-74c8-440d-a3db-51f75f6b32cc"
+    },
+    {
+      "hrEmail": "hr.nguyenhaidang@gmail.com",
+      "companyName": "TẬP ĐOÀN CENTRAL RETAIL TẠI VIỆT NAM",
+      "taxCode": "0311112222",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "1815f496-b0b6-48d7-a95f-a60aa27e62c0",
+      "correlationId": "ad55e16d-4cf7-45ba-a200-3b130506a802"
+    },
+    {
+      "hrEmail": "hr.huynhtanphat@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DỊCH VỤ THƯƠNG MẠI TỔNG HỢP WINCOMMERCE",
+      "taxCode": "0108921111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "a8fde7fb-b708-40c6-b199-e07aa0eb4822",
+      "correlationId": "4427d87a-89bc-4e6b-8e2e-486f77123f84"
+    },
+    {
+      "hrEmail": "hr.huynhtanphat@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN DƯỢC PHẨM AN KHANG PHARMA",
+      "taxCode": "0314811111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "0202c3b4-3e09-45bb-9161-abca8009f756",
+      "correlationId": "e6f924ef-70f3-4999-8cc0-05aebe277426"
+    },
+    {
+      "hrEmail": "hr.huynhtanphat@gmail.com",
+      "companyName": "CÔNG TY CỔ PHẦN VACXIN VIỆT NAM (VNVC)",
+      "taxCode": "0107631111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "6e82ee8c-cd7e-43d4-83ff-54ab86c628ea",
+      "correlationId": "17435185-148b-4bf7-88bf-81dc910c0c77"
+    },
+    {
+      "hrEmail": "hr.huynhtanphat@gmail.com",
+      "companyName": "TẬP ĐOÀN Y KHOA HOÀN MỸ",
+      "taxCode": "0304111111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "e7813075-121e-4dff-8645-1c188cf64671",
+      "correlationId": "6c79e517-42cb-4f1f-982a-77ccd8d7e2f2"
+    },
+    {
+      "hrEmail": "hr.huynhtanphat@gmail.com",
+      "companyName": "CÔNG TY TNHH GIÁO DỤC ĐÀO TẠO APOLLO VIỆT NAM",
+      "taxCode": "0100991111",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "companyId": "bfc9bfd9-cdf8-4d68-83ee-78434b6c6f21",
+      "correlationId": "7dd8d0f8-b72a-4dac-aa3a-65275f9eaa95"
+    }
+  ]
+}
