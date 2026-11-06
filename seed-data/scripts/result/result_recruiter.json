@@ -1,0 +1,368 @@
+{
+  "timestamp": "2026-11-06 14:40:36",
+  "total": 20,
+  "success": 20,
+  "failed": 0,
+  "details": [
+    {
+      "index": 1,
+      "email": "hr.nguyenvanquanly@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "e5ff4ba2-2878-4180-be19-cfbc7e91955d",
+      "data": {
+        "id": "b7a056b6-fa40-4414-8643-5a83e3796ed6",
+        "email": "hr.nguyenvanquanly@gmail.com",
+        "phone": "+84981234567",
+        "fullName": "Nguyễn Văn Quản Lý",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:30.3994188+00:00"
+      }
+    },
+    {
+      "index": 2,
+      "email": "hr.tranthituyendung@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "ecfbcbdc-9593-46b6-b613-0b78ac3aaadb",
+      "data": {
+        "id": "d44bc040-e56c-4d5d-8f23-b9ea21c0bf9b",
+        "email": "hr.tranthituyendung@gmail.com",
+        "phone": "+84912345678",
+        "fullName": "Trần Thị Tuyển Dụng",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:30.9881248+00:00"
+      }
+    },
+    {
+      "index": 3,
+      "email": "hr.lehoangnhansu@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "21b008b8-9c97-44f5-b5a4-b53f85d2b614",
+      "data": {
+        "id": "0a7bb5a3-27eb-495e-a0a1-f0db5e8c078a",
+        "email": "hr.lehoangnhansu@gmail.com",
+        "phone": "+84978123456",
+        "fullName": "Lê Hoàng Nhân Sự",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:31.3100475+00:00"
+      }
+    },
+    {
+      "index": 4,
+      "email": "hr.phamminhtuan@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "962dc4a6-f30d-49a6-9593-658a09bef0cf",
+      "data": {
+        "id": "e0662b6b-91fd-4fed-ad18-d38b1195b71e",
+        "email": "hr.phamminhtuan@gmail.com",
+        "phone": "+84905123456",
+        "fullName": "Phạm Minh Tuấn",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:31.6065062+00:00"
+      }
+    },
+    {
+      "index": 5,
+      "email": "hr.dothithuha@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "a376f858-6241-4ae5-b14f-e3734339f09e",
+      "data": {
+        "id": "6a352585-cc5e-4d51-a8e3-5145cbe3b360",
+        "email": "hr.dothithuha@gmail.com",
+        "phone": "+84934567890",
+        "fullName": "Đỗ Thị Thu Hà",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:31.9172239+00:00"
+      }
+    },
+    {
+      "index": 6,
+      "email": "hr.hoangvannam@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "a7bfef87-5e96-43e2-86b9-761944e2273c",
+      "data": {
+        "id": "daa6df0c-ae7d-4cb3-9170-5b7ac6ed3690",
+        "email": "hr.hoangvannam@gmail.com",
+        "phone": "+84961234567",
+        "fullName": "Hoàng Văn Nam",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:32.2141541+00:00"
+      }
+    },
+    {
+      "index": 7,
+      "email": "hr.vubichphuong@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "0cd38f10-fa15-4212-b4d7-a3138ddc610c",
+      "data": {
+        "id": "e96406ba-75e4-4e45-bc0b-4766cfa6298a",
+        "email": "hr.vubichphuong@gmail.com",
+        "phone": "+84945678901",
+        "fullName": "Vũ Bích Phương",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:32.5218593+00:00"
+      }
+    },
+    {
+      "index": 8,
+      "email": "hr.dangquocanh@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "04f98734-17fa-4213-8aa2-99f37c951df7",
+      "data": {
+        "id": "1719a626-2ac1-421e-91d0-bf7f2da16021",
+        "email": "hr.dangquocanh@gmail.com",
+        "phone": "+84923456789",
+        "fullName": "Đặng Quốc Anh",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:32.819325+00:00"
+      }
+    },
+    {
+      "index": 9,
+      "email": "hr.buithanhhuong@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "c05553bd-fcbf-4895-bf36-8de40f2c4e05",
+      "data": {
+        "id": "d190f6e7-1d3e-4b41-ae98-d1bfe47f2f24",
+        "email": "hr.buithanhhuong@gmail.com",
+        "phone": "+84918765432",
+        "fullName": "Bùi Thanh Hương",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:33.1133748+00:00"
+      }
+    },
+    {
+      "index": 10,
+      "email": "hr.ngomaianh@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "257e622b-fde2-4c59-b246-e8f421cdae18",
+      "data": {
+        "id": "3b310d0f-5d19-4f7c-94f9-543c91a8b342",
+        "email": "hr.ngomaianh@gmail.com",
+        "phone": "+84987654321",
+        "fullName": "Ngô Mai Anh",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:33.4375537+00:00"
+      }
+    },
+    {
+      "index": 11,
+      "email": "hr.duongvanhuy@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "39fbc0c5-7373-4b6e-96a5-9f6453260fa2",
+      "data": {
+        "id": "8c0278c1-dcd8-4bb0-b9d4-177dc071fca6",
+        "email": "hr.duongvanhuy@gmail.com",
+        "phone": "+84971122334",
+        "fullName": "Dương Văn Huy",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:33.7349777+00:00"
+      }
+    },
+    {
+      "index": 12,
+      "email": "hr.lythikhanhlinh@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "07bc624c-13bf-4969-9035-818bbafcc305",
+      "data": {
+        "id": "7e882b60-4ead-4180-a5da-730e2764275d",
+        "email": "hr.lythikhanhlinh@gmail.com",
+        "phone": "+84938877665",
+        "fullName": "Lý Thị Khánh Linh",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:34.0313441+00:00"
+      }
+    },
+    {
+      "index": 13,
+      "email": "hr.trinhhoanghai@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "6a828ef3-d8e8-4a10-beaf-110f7a47c63e",
+      "data": {
+        "id": "f02a34b5-d5c5-4c3b-b958-6a75286fdcf3",
+        "email": "hr.trinhhoanghai@gmail.com",
+        "phone": "+84909988776",
+        "fullName": "Trịnh Hoàng Hải",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:34.3410826+00:00"
+      }
+    },
+    {
+      "index": 14,
+      "email": "hr.phanthaonguyen@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "03c8f41a-2bd9-4505-8b42-f0f137b3579a",
+      "data": {
+        "id": "fcee9695-9a26-4395-b8a4-9899cc073a2b",
+        "email": "hr.phanthaonguyen@gmail.com",
+        "phone": "+84944556677",
+        "fullName": "Phan Thảo Nguyên",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:34.6372322+00:00"
+      }
+    },
+    {
+      "index": 15,
+      "email": "hr.vominhkhoa@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "7b271d34-2388-45d4-b172-14ab908050a0",
+      "data": {
+        "id": "c9024b75-66c9-4afb-b031-43178b08ef28",
+        "email": "hr.vominhkhoa@gmail.com",
+        "phone": "+84966778899",
+        "fullName": "Võ Minh Khoa",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:34.9299168+00:00"
+      }
+    },
+    {
+      "index": 16,
+      "email": "hr.nguyenngocmai@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "60ca1e0a-2aea-4b4b-b98e-5befc8240c8e",
+      "data": {
+        "id": "059e7c9a-8949-402d-b853-1b6686c2f255",
+        "email": "hr.nguyenngocmai@gmail.com",
+        "phone": "+84911223344",
+        "fullName": "Nguyễn Ngọc Mai",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:35.2267846+00:00"
+      }
+    },
+    {
+      "index": 17,
+      "email": "hr.tranducthang@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "d80c919b-43f6-49cc-bcbd-8b42f6f90a9b",
+      "data": {
+        "id": "354ec8a2-41c6-4a7f-af01-dfa516aec77e",
+        "email": "hr.tranducthang@gmail.com",
+        "phone": "+84988990011",
+        "fullName": "Trần Đức Thắng",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:35.498115+00:00"
+      }
+    },
+    {
+      "index": 18,
+      "email": "hr.lethihongnhung@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "57361093-438a-47b4-89b1-59252df02bde",
+      "data": {
+        "id": "bde9f7c3-cb69-4350-a086-e3e413274df4",
+        "email": "hr.lethihongnhung@gmail.com",
+        "phone": "+84977889900",
+        "fullName": "Lê Thị Hồng Nhung",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:35.7943659+00:00"
+      }
+    },
+    {
+      "index": 19,
+      "email": "hr.nguyenhaidang@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "2f050547-1ea0-4b68-9ce0-8c5ebee42e51",
+      "data": {
+        "id": "5b272fbf-cf19-4d25-9879-374d0e601686",
+        "email": "hr.nguyenhaidang@gmail.com",
+        "phone": "+84933445566",
+        "fullName": "Nguyễn Hải Đăng",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:36.0808116+00:00"
+      }
+    },
+    {
+      "index": 20,
+      "email": "hr.huynhtanphat@gmail.com",
+      "status": "SUCCESS",
+      "statusCode": 201,
+      "correlationId": "62de8d48-0c22-4b16-8cf5-eb495378e4ea",
+      "data": {
+        "id": "b6019a58-243a-4978-afbb-76aa4638da3e",
+        "email": "hr.huynhtanphat@gmail.com",
+        "phone": "+84901239876",
+        "fullName": "Huỳnh Tấn Phát",
+        "roles": [
+          "Recruiter"
+        ],
+        "status": "Active",
+        "createdAt": "2026-11-06T07:40:36.386768+00:00"
+      }
+    }
+  ]
+}
