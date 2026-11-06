@@ -181,8 +181,9 @@ def create_company(
 
 def main():
     default_base_dir = os.path.dirname(os.path.abspath(__file__))
-    default_hr_file = os.path.normpath(os.path.join(default_base_dir, "..", "seed-hr", "dataset", "recruiters_sample.json"))
-    default_company_file = os.path.normpath(os.path.join(default_base_dir, "..", "..", "raw-data", "company.json"))
+    default_hr_file = os.path.normpath(os.path.join(default_base_dir, "dataset", "recruiters_sample.json"))
+    default_company_file = os.path.normpath(os.path.join(default_base_dir, "..", "raw-data", "company.json"))
+    default_output_file = os.path.normpath(os.path.join(default_base_dir, "result", "result_company.json"))
 
     parser = argparse.ArgumentParser(
         description="Script tự động phân bổ và tạo doanh nghiệp cho các tài khoản HR trong SmartHire."
@@ -190,7 +191,7 @@ def main():
     parser.add_argument(
         "--hr-file", "-r",
         default=default_hr_file,
-        help="Đường dẫn file JSON danh sách tài khoản HR (mặc định: seed-hr/dataset/recruiters_sample.json)"
+        help="Đường dẫn file JSON danh sách tài khoản HR (mặc định: dataset/recruiters_sample.json)"
     )
     parser.add_argument(
         "--company-file", "-c",
@@ -221,8 +222,8 @@ def main():
     )
     parser.add_argument(
         "--output", "-o",
-        default="company_creation_report.json",
-        help="File JSON xuất báo cáo chi tiết (mặc định: company_creation_report.json)"
+        default=default_output_file,
+        help="File JSON xuất báo cáo chi tiết (mặc định: result/result_company.json)"
     )
 
     args = parser.parse_args()
@@ -374,9 +375,14 @@ def main():
             "failed": failed_count,
             "details": results_summary,
         }
-        with open(args.output, "w", encoding="utf-8") as f:
+        output_path = os.path.abspath(args.output)
+        output_dir = os.path.dirname(output_path)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report_data, f, ensure_ascii=False, indent=2)
-        print(f"\n📄 Báo cáo chi tiết đã được lưu tại: {args.output}")
+        print(f"\n📄 Báo cáo chi tiết đã được lưu tại: {output_path}")
     except Exception as e:
         print(f"\n⚠️  Không thể lưu file báo cáo: {e}")
 

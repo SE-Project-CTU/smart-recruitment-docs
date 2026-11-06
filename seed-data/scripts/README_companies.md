@@ -29,14 +29,14 @@ Script tự động phân bổ và khởi tạo hàng loạt hồ sơ doanh nghi
 
 ## 🚀 Hướng dẫn thực thi
 
-Mở terminal tại thư mục `smart-recruitment-docs/seed-data/script/seed-company`:
+Mở terminal tại thư mục `smart-recruitment-docs/seed-data/scripts`:
 
 ```bash
 # 1. Cài đặt thư viện requests (nếu chưa có)
 pip install requests
 
-# 2. Chạy với cấu hình chuẩn mặc định
-python scripts/create_companies.py -u http://localhost:5190 -n 5 -d 0.2 -o result_companies.json
+# 2. Chạy với cấu hình chuẩn mặc định (tự động nhận diện file HR và Công ty)
+python create_companies.py -u http://localhost:5190 -n 5 -d 0.2
 ```
 
 ### Các tùy chọn tham số (CLI Options)
@@ -44,10 +44,10 @@ python scripts/create_companies.py -u http://localhost:5190 -n 5 -d 0.2 -o resul
 | Tham số | Viết tắt | Mặc định | Mô tả |
 |---|---|---|---|
 | `--url` | `-u` | `http://localhost:5190` | Base URL của Backend API |
-| `--hr-file` | `-r` | `../seed-hr/dataset/recruiters_sample.json` | Đường dẫn file danh sách tài khoản HR |
-| `--company-file` | `-c` | `../../raw-data/company.json` | Đường dẫn file dữ liệu 100 công ty |
+| `--hr-file` | `-r` | `dataset/recruiters_sample.json` | Đường dẫn file danh sách tài khoản HR |
+| `--company-file` | `-c` | `../raw-data/company.json` | Đường dẫn file dữ liệu 100 công ty |
 | `--companies-per-hr` | `-n` | `5` | Số lượng công ty mỗi HR phụ trách tạo |
 | `--default-password` | `-p` | `Password123@` | Mật khẩu đăng nhập HR |
 | `--delay` | `-d` | `0.2` | Độ trễ nghỉ (giây) giữa mỗi request tạo |
-| `--output` | `-o` | `company_creation_report.json` | File JSON lưu kết quả báo cáo chi tiết |
+| `--output` | `-o` | `result/result_company.json` | File JSON lưu kết quả báo cáo chi tiết |
 
