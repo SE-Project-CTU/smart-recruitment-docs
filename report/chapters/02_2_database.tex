@@ -1,0 +1,981 @@
+%! TEX root = ../main.tex
+
+\subsection{Thiết kế cơ sở dữ liệu}
+
+Cơ sở dữ liệu SmartHire được thiết kế theo mô hình quan hệ nhằm lưu trữ và tổ chức dữ liệu phục vụ các nghiệp vụ chính của nền tảng. Các bảng được phân chia theo sáu phân hệ gồm quản lý tài khoản, doanh nghiệp và phân quyền, quản lý tệp tin và đa phương tiện, biên soạn CV theo mẫu, tuyển dụng và quản lý ứng tuyển, trợ lý AI và đề xuất thông minh, quản trị hệ thống vận hành. Cách phân chia này làm rõ vai trò của từng nhóm dữ liệu và thể hiện mối liên hệ giữa các đối tượng thông qua khóa chính, khóa ngoại.
+
+Trong các bảng mô tả dưới đây, mỗi dòng biểu diễn một thuộc tính của bảng, bao gồm kiểu dữ liệu, vai trò trong khóa, yêu cầu bắt buộc, bảng được tham chiếu và ý nghĩa của thuộc tính. Các bảng trung gian biểu diễn quan hệ giữa nhiều đối tượng cũng được trình bày trong phân hệ nghiệp vụ tương ứng.
+
+\subsubsection{Quy ước mô tả}
+
+Các bảng dưới đây được tổng hợp từ mô hình dữ liệu và cấu hình Entity Framework Core của backend. Tên bảng và tên thuộc tính được trình bày theo quy ước của mô hình dữ liệu. Kiểu dữ liệu sử dụng các tên gọi phổ biến, độc lập với hệ quản trị cơ sở dữ liệu như UUID, VARCHAR(n), TEXT, BOOLEAN, INTEGER, BIGINT, DECIMAL, DATETIME, JSON và vector 768 chiều. Cột được đánh dấu X tại “Không rỗng” khi bắt buộc lưu giá trị. Khóa ngoại chỉ rõ bảng được tham chiếu. Khóa chính ghép được đánh dấu X trên từng cột cấu thành khóa.
+
+Các giá trị thuộc kiểu liệt kê được trình bày theo ý nghĩa dữ liệu để dễ hiểu và không phụ thuộc cách lưu trữ cụ thể của hệ quản trị cơ sở dữ liệu.
+
+\subsubsection{Phân hệ Quản lý Tài khoản, Doanh nghiệp và Phân quyền}
+
+\paragraph{Bảng users.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh người dùng \\
+        \hline
+        email & VARCHAR\allowbreak(320) &  &  & X &  & Địa chỉ email đăng nhập \\
+        \hline
+        phone & VARCHAR\allowbreak(32) &  &  &  &  & Số điện thoại \\
+        \hline
+        password\_hash & TEXT &  &  & X &  & Mật khẩu đã băm \\
+        \hline
+        full\_\allowbreak name & VARCHAR\allowbreak(200) &  &  & X &  & Họ tên người dùng \\
+        \hline
+        avatar\_\allowbreak file\_\allowbreak id & UUID &  & X &  & media\_\allowbreak files & Tệp ảnh đại diện \\
+        \hline
+        status & VARCHAR(20) &  &  & X &  & Trạng thái tài khoản \\
+        \hline
+        created\_\allowbreak at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\_\allowbreak at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng users}
+    \label{tab:database-users}
+\end{table}
+
+\paragraph{Bảng roles.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh vai trò \\
+        \hline
+        name & VARCHAR\allowbreak(50) &  &  & X &  & Tên vai trò hệ thống \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng roles}
+    \label{tab:database-roles}
+\end{table}
+
+\paragraph{Bảng user\_roles.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        user\allowbreak \_id & UUID & X & X & X & users & Người dùng được gán vai trò \\
+        \hline
+        role\allowbreak \_id & UUID & X & X & X & roles & Vai trò được gán \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng user\_roles}
+    \label{tab:database-user_roles}
+\end{table}
+
+\paragraph{Bảng refresh\_tokens.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh token \\
+        \hline
+        user\allowbreak \_id & UUID &  & X & X & users & Chủ sở hữu token \\
+        \hline
+        token\allowbreak \_hash & text &  &  & X &  & Giá trị token đã băm \\
+        \hline
+        expires\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm hết hạn \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        revoked\allowbreak \_at & DATETIME &  &  &  &  & Thời điểm thu hồi nếu có \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng refresh\_tokens}
+    \label{tab:database-refresh_tokens}
+\end{table}
+
+\paragraph{Bảng companies.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh doanh nghiệp \\
+        \hline
+        name & VARCHAR\allowbreak(200) &  &  & X &  & Tên doanh nghiệp \\
+        \hline
+        tax\allowbreak \_code & VARCHAR\allowbreak(50) &  &  & X &  & Mã số thuế \\
+        \hline
+        email & VARCHAR\allowbreak(320) &  &  & X &  & Email liên hệ \\
+        \hline
+        phone & VARCHAR\allowbreak(32) &  &  & X &  & Điện thoại liên hệ \\
+        \hline
+        address & text &  &  &  &  & Địa chỉ \\
+        \hline
+        website & VARCHAR\allowbreak(500) &  &  &  &  & Trang web \\
+        \hline
+        description & text &  &  &  &  & Giới thiệu doanh nghiệp \\
+        \hline
+        logo\allowbreak \_file\allowbreak \_id & UUID &  & X &  & media\allowbreak \_files & Tệp logo \\
+        \hline
+        verification\allowbreak \_status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái xác minh \\
+        \hline
+        verified\allowbreak \_at & DATETIME &  &  &  &  & Thời điểm xác minh \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng companies}
+    \label{tab:database-companies}
+\end{table}
+
+\paragraph{Bảng company\_memberships.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        company\allowbreak \_id & UUID & X & X & X & companies & Doanh nghiệp thành viên \\
+        \hline
+        user\allowbreak \_id & UUID & X & X & X & users & Người dùng thành viên \\
+        \hline
+        role & VARCHAR\allowbreak(30) &  &  & X &  & Vai trò trong doanh nghiệp \\
+        \hline
+        status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái thành viên \\
+        \hline
+        joined\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tham gia \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng company\_memberships}
+    \label{tab:database-company_memberships}
+\end{table}
+
+\paragraph{Bảng company\_invitations.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh lời mời \\
+        \hline
+        company\allowbreak \_id & UUID &  & X & X & companies & Doanh nghiệp gửi lời mời \\
+        \hline
+        inviter\allowbreak \_id & UUID &  & X & X & users & Người gửi lời mời \\
+        \hline
+        invitee\allowbreak \_id & UUID &  & X &  & users & Người nhận lời mời nếu đã có tài khoản \\
+        \hline
+        email & VARCHAR\allowbreak(320) &  &  & X &  & Email người được mời \\
+        \hline
+        role & VARCHAR\allowbreak(30) &  &  & X &  & Vai trò được mời \\
+        \hline
+        status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái lời mời \\
+        \hline
+        expires\allowbreak \_at & DATETIME &  &  & X &  & Thời hạn lời mời \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm gửi \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng company\_invitations}
+    \label{tab:database-company_invitations}
+\end{table}
+
+\paragraph{Bảng company\_join\_requests.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh yêu cầu \\
+        \hline
+        company\allowbreak \_id & UUID &  & X & X & companies & Doanh nghiệp được yêu cầu gia nhập \\
+        \hline
+        user\allowbreak \_id & UUID &  & X & X & users & Người gửi yêu cầu \\
+        \hline
+        status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái xử lý \\
+        \hline
+        reviewed\allowbreak \_by & UUID &  & X &  & users & Người xét duyệt \\
+        \hline
+        reviewed\allowbreak \_at & DATETIME &  &  &  &  & Thời điểm xét duyệt \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm gửi yêu cầu \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng company\_join\_requests}
+    \label{tab:database-company_join_requests}
+\end{table}
+
+\paragraph{Bảng company\_follows.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        company\allowbreak \_id & UUID & X & X & X & companies & Doanh nghiệp được theo dõi \\
+        \hline
+        user\allowbreak \_id & UUID & X & X & X & users & Người theo dõi \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm bắt đầu theo dõi \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng company\_follows}
+    \label{tab:database-company_follows}
+\end{table}
+
+\subsubsection{Phân hệ Quản lý Tệp tin và Đa phương tiện}
+
+\paragraph{Bảng media\_files.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh tệp \\
+        \hline
+        owner\allowbreak \_id & UUID &  & X & X & users & Người sở hữu tệp \\
+        \hline
+        file\allowbreak \_name & VARCHAR(255) &  &  & X &  & Tên tệp \\
+        \hline
+        file\allowbreak \_url & text &  &  & X &  & Đường dẫn truy cập tệp \\
+        \hline
+        file\allowbreak \_type & VARCHAR(100) &  &  & X &  & Loại hoặc định dạng tệp \\
+        \hline
+        file\allowbreak \_size & bigint &  &  & X &  & Kích thước tệp theo byte \\
+        \hline
+        public\allowbreak \_id & VARCHAR(255) &  &  & X &  & Định danh tệp tại dịch vụ lưu trữ \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tải lên \\
+        \hline
+        deleted\allowbreak \_at & DATETIME &  &  &  &  & Thời điểm xóa mềm \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng media\_files}
+    \label{tab:database-media_files}
+\end{table}
+
+\subsubsection{Phân hệ Công cụ Biên soạn CV theo Mẫu}
+
+\paragraph{Bảng cv\_templates.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh mẫu CV \\
+        \hline
+        name & VARCHAR(150) &  &  & X &  & Tên mẫu \\
+        \hline
+        description & text &  &  &  &  & Mô tả mẫu \\
+        \hline
+        thumbnail\allowbreak \_file\allowbreak \_id & UUID &  & X &  & media\allowbreak \_files & Ảnh xem trước mẫu \\
+        \hline
+        content\allowbreak \_schema & JSON &  &  & X &  & Cấu trúc dữ liệu nội dung \\
+        \hline
+        layout\allowbreak \_schema & JSON &  &  & X &  & Cấu trúc bố cục \\
+        \hline
+        presentation\allowbreak \_schema & JSON &  &  & X &  & Cấu hình trình bày \\
+        \hline
+        is\allowbreak \_active & boolean &  &  & X &  & Trạng thái sử dụng \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng cv\_templates}
+    \label{tab:database-cv_templates}
+\end{table}
+
+\paragraph{Bảng cvs.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh CV \\
+        \hline
+        candidate\allowbreak \_id & UUID &  & X & X & users & Chủ sở hữu CV \\
+        \hline
+        title & VARCHAR(255) &  &  & X &  & Tiêu đề CV \\
+        \hline
+        is\allowbreak \_public & boolean &  &  & X &  & Trạng thái công khai \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+        preview\allowbreak \_file\allowbreak \_id & UUID &  & X &  & media\allowbreak \_files & Tệp xem trước \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng cvs}
+    \label{tab:database-cvs}
+\end{table}
+
+\paragraph{Bảng cv\_versions.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh phiên bản \\
+        \hline
+        cv\allowbreak \_id & UUID &  & X & X & cvs & CV chứa phiên bản \\
+        \hline
+        template\allowbreak \_id & UUID &  & X & X & cv\allowbreak \_templates & Mẫu CV áp dụng \\
+        \hline
+        version\allowbreak \_number & integer &  &  & X &  & Số thứ tự phiên bản \\
+        \hline
+        content & JSON &  &  & X &  & Nội dung CV \\
+        \hline
+        layout & JSON &  &  & X &  & Bố cục phiên bản \\
+        \hline
+        presentation & JSON &  &  & X &  & Kiểu trình bày \\
+        \hline
+        preview\allowbreak \_file\allowbreak \_id & UUID &  & X &  & media\allowbreak \_files & Tệp xem trước phiên bản \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo phiên bản \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng cv\_versions}
+    \label{tab:database-cv_versions}
+\end{table}
+
+\paragraph{Bảng cv\_embeddings.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh vector CV \\
+        \hline
+        cv\allowbreak \_version\allowbreak \_id & UUID &  & X & X & cv\allowbreak \_versions & Phiên bản CV được biểu diễn \\
+        \hline
+        embedding & Vector (768 chiều) &  &  & X &  & Vector ngữ nghĩa của CV \\
+        \hline
+        model & VARCHAR(100) &  &  & X &  & Tên mô hình tạo vector \\
+        \hline
+        created\allowbreak \_at & DATETIME &  &  & X &  & Thời điểm tạo vector \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng cv\_embeddings}
+    \label{tab:database-cv_embeddings}
+\end{table}
+
+\subsubsection{Phân hệ Tuyển dụng và Quản lý Ứng tuyển}
+
+\paragraph{Bảng job\_postings.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh tin tuyển dụng \\
+        \hline
+        company\allowbreak\_id & UUID &  & X & X & companies & Doanh nghiệp đăng tin \\
+        \hline
+        created\allowbreak\_by & UUID &  & X & X & users & Người tạo tin \\
+        \hline
+        title & VARCHAR\allowbreak(255) &  &  & X &  & Tiêu đề công việc \\
+        \hline
+        description & text &  &  & X &  & Nội dung mô tả \\
+        \hline
+        requirements & text &  &  & X &  & Yêu cầu ứng viên \\
+        \hline
+        province\allowbreak\_id & UUID &  & X & X & provinces & Tỉnh/thành phố \\
+        \hline
+        ward\allowbreak\_id & UUID &  & X &  & wards & Phường/xã \\
+        \hline
+        address & text &  &  &  &  & Địa chỉ chi tiết \\
+        \hline
+        job\allowbreak\_type & VARCHAR\allowbreak(30) &  &  & X &  & Hình thức công việc \\
+        \hline
+        work\allowbreak\_mode & VARCHAR\allowbreak(30) &  &  & X &  & Hình thức làm việc \\
+        \hline
+        level & VARCHAR\allowbreak(30) &  &  & X &  & Cấp bậc \\
+        \hline
+        experience\allowbreak\_years & integer &  &  &  &  & Số năm kinh nghiệm \\
+        \hline
+        salary\allowbreak\_min & DECIMAL &  &  &  &  & Mức lương tối thiểu \\
+        \hline
+        salary\allowbreak\_max & DECIMAL &  &  &  &  & Mức lương tối đa \\
+        \hline
+        status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái tin \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+        expires\allowbreak\_at & DATETIME &  &  &  &  & Thời điểm hết hạn \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_postings}
+    \label{tab:database-job_postings}
+\end{table}
+
+\paragraph{Bảng job\_skills.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        job\allowbreak\_id & UUID & X & X & X & job\allowbreak\_postings & Tin tuyển dụng \\
+        \hline
+        skill\allowbreak\_id & UUID & X & X & X & skills & Kỹ năng yêu cầu \\
+        \hline
+        is\allowbreak\_required & boolean &  &  & X &  & Kỹ năng bắt buộc hay ưu tiên \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_skills}
+    \label{tab:database-job_skills}
+\end{table}
+
+\paragraph{Bảng job\_industries.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        job\allowbreak\_id & UUID & X & X & X & job\allowbreak\_postings & Tin tuyển dụng \\
+        \hline
+        industry\allowbreak\_id & UUID & X & X & X & industries & Ngành nghề liên quan \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_industries}
+    \label{tab:database-job_industries}
+\end{table}
+
+\paragraph{Bảng job\_bookmarks.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        user\allowbreak\_id & UUID & X & X & X & users & Người lưu tin \\
+        \hline
+        job\allowbreak\_posting\allowbreak\_id & UUID & X & X & X & job\allowbreak\_postings & Tin được lưu \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm lưu tin \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_bookmarks}
+    \label{tab:database-job_bookmarks}
+\end{table}
+
+\paragraph{Bảng applications.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh hồ sơ ứng tuyển \\
+        \hline
+        job\allowbreak\_id & UUID &  & X & X & job\allowbreak\_postings & Tin được ứng tuyển \\
+        \hline
+        candidate\allowbreak\_id & UUID &  & X & X & users & Ứng viên \\
+        \hline
+        cv\allowbreak\_version\allowbreak\_id & UUID &  & X &  & cv\allowbreak\_versions & Phiên bản CV trực tuyến \\
+        \hline
+        uploaded\allowbreak\_cv\allowbreak\_file\allowbreak\_id & UUID &  & X &  & media\allowbreak\_files & Tệp CV tải lên \\
+        \hline
+        cover\allowbreak\_letter & text &  &  & X &  & Thư giới thiệu \\
+        \hline
+        status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái ứng tuyển \\
+        \hline
+        applied\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm nộp hồ sơ \\
+        \hline
+        updated\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng applications}
+    \label{tab:database-applications}
+\end{table}
+
+\paragraph{Bảng application\_status\_histories.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh bản ghi lịch sử \\
+        \hline
+        application\allowbreak\_id & UUID &  & X & X & applications & Hồ sơ ứng tuyển \\
+        \hline
+        changed\allowbreak\_by & UUID &  & X & X & users & Người thay đổi trạng thái \\
+        \hline
+        old\allowbreak\_status & VARCHAR\allowbreak(30) &  &  &  &  & Trạng thái trước \\
+        \hline
+        new\allowbreak\_status & VARCHAR\allowbreak(30) &  &  & X &  & Trạng thái sau \\
+        \hline
+        note & text &  &  &  &  & Ghi chú thay đổi \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm thay đổi \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng application\_status\_histories}
+    \label{tab:database-application_status_histories}
+\end{table}
+
+\subsubsection{Phân hệ Trợ lý AI và Đề xuất Thông minh}
+
+\paragraph{Bảng ai\_conversations.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh hội thoại \\
+        \hline
+        candidate\allowbreak\_id & UUID &  & X & X & users & Chủ hội thoại \\
+        \hline
+        cv\allowbreak\_id & UUID &  & X &  & cvs & CV liên quan nếu có \\
+        \hline
+        title & VARCHAR\allowbreak(255) &  &  & X &  & Tiêu đề hội thoại \\
+        \hline
+        is\allowbreak\_pinned & boolean &  &  & X &  & Trạng thái ghim \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        updated\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm cập nhật \\
+        \hline
+        last\allowbreak\_message\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm có tin nhắn gần nhất \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng ai\_conversations}
+    \label{tab:database-ai_conversations}
+\end{table}
+
+\paragraph{Bảng ai\_messages.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh tin nhắn \\
+        \hline
+        conversation\allowbreak\_id & UUID &  & X & X & ai\allowbreak\_conversations & Hội thoại chứa tin nhắn \\
+        \hline
+        role & VARCHAR\allowbreak(20) &  &  & X &  & Vai trò người gửi \\
+        \hline
+        content & text &  &  & X &  & Nội dung tin nhắn \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm gửi \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng ai\_messages}
+    \label{tab:database-ai_messages}
+\end{table}
+
+\paragraph{Bảng ai\_match\_results.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh kết quả phân tích \\
+        \hline
+        application\allowbreak\_id & UUID &  & X & X & applications & Hồ sơ ứng tuyển được phân tích \\
+        \hline
+        cv\allowbreak\_version\allowbreak\_id & UUID &  & X & X & cv\allowbreak\_versions & Phiên bản CV được đánh giá \\
+        \hline
+        score & DECIMAL &  &  & X &  & Điểm tương thích \\
+        \hline
+        analysis & text &  &  & X &  & Nội dung phân tích \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm phân tích \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng ai\_match\_results}
+    \label{tab:database-ai_match_results}
+\end{table}
+
+\paragraph{Bảng job\_embeddings.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh vector tin tuyển dụng \\
+        \hline
+        job\allowbreak\_id & UUID &  & X & X & job\allowbreak\_postings & Tin được biểu diễn \\
+        \hline
+        embedding & Vector (768 chiều) &  &  & X &  & Vector ngữ nghĩa của tin \\
+        \hline
+        model & VARCHAR\allowbreak(100) &  &  & X &  & Mô hình tạo vector \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm tạo vector \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_embeddings}
+    \label{tab:database-job_embeddings}
+\end{table}
+
+\paragraph{Bảng job\_recommendations.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh gợi ý \\
+        \hline
+        candidate\allowbreak\_id & UUID &  & X & X & users & Ứng viên nhận gợi ý \\
+        \hline
+        job\allowbreak\_id & UUID &  & X & X & job\allowbreak\_postings & Tin được đề xuất \\
+        \hline
+        score & DECIMAL &  &  & X &  & Điểm phù hợp \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm tạo gợi ý \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng job\_recommendations}
+    \label{tab:database-job_recommendations}
+\end{table}
+
+\subsubsection{Phân hệ Quản trị Hệ thống Vận hành}
+
+Phân hệ quản trị sử dụng các bảng danh mục và dữ liệu nền để quản lý thông tin dùng chung trên nền tảng. Một số bảng này đồng thời được các phân hệ tuyển dụng và CV tham chiếu.
+
+\paragraph{Bảng provinces.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh tỉnh/thành phố \\
+        \hline
+        code & VARCHAR\allowbreak(20) &  &  & X &  & Mã địa phương \\
+        \hline
+        name & VARCHAR\allowbreak(150) &  &  & X &  & Tên tỉnh/thành phố \\
+        \hline
+        status & VARCHAR\allowbreak(20) &  &  & X &  & Trạng thái danh mục \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng provinces}
+    \label{tab:database-provinces}
+\end{table}
+
+\paragraph{Bảng wards.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh phường/xã \\
+        \hline
+        province\allowbreak\_id & UUID &  & X & X & provinces & Tỉnh/thành phố trực thuộc \\
+        \hline
+        code & VARCHAR\allowbreak(20) &  &  & X &  & Mã phường/xã \\
+        \hline
+        name & VARCHAR\allowbreak(150) &  &  & X &  & Tên phường/xã \\
+        \hline
+        status & VARCHAR\allowbreak(20) &  &  & X &  & Trạng thái danh mục \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng wards}
+    \label{tab:database-wards}
+\end{table}
+
+\paragraph{Bảng industry\_groups.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh nhóm ngành \\
+        \hline
+        name & VARCHAR\allowbreak(150) &  &  & X &  & Tên nhóm ngành \\
+        \hline
+        description & text &  &  &  &  & Mô tả nhóm ngành \\
+        \hline
+        is\allowbreak\_active & boolean &  &  & X &  & Trạng thái hoạt động \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng industry\_groups}
+    \label{tab:database-industry_groups}
+\end{table}
+
+\paragraph{Bảng industries.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh ngành nghề \\
+        \hline
+        group\allowbreak\_id & UUID &  & X & X & industry\allowbreak\_groups & Nhóm ngành chứa ngành nghề \\
+        \hline
+        name & VARCHAR\allowbreak(150) &  &  & X &  & Tên ngành nghề \\
+        \hline
+        description & text &  &  &  &  & Mô tả ngành nghề \\
+        \hline
+        is\allowbreak\_active & boolean &  &  & X &  & Trạng thái hoạt động \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng industries}
+    \label{tab:database-industries}
+\end{table}
+
+\paragraph{Bảng skills.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh kỹ năng \\
+        \hline
+        name & VARCHAR\allowbreak(150) &  &  & X &  & Tên kỹ năng \\
+        \hline
+        is\allowbreak\_active & boolean &  &  & X &  & Trạng thái hoạt động \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng skills}
+    \label{tab:database-skills}
+\end{table}
+
+\paragraph{Bảng notifications.}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\centering\arraybackslash}p{1.15cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{4.0cm}|}
+        \hline
+        \textbf{Tên thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Khóa chính} & \textbf{Khóa ngoại} & \textbf{Không rỗng} & \textbf{Bảng tham chiếu} & \textbf{Diễn giải} \\
+        \hline
+        id & UUID & X &  & X &  & Định danh thông báo \\
+        \hline
+        recipient\allowbreak\_id & UUID &  & X & X & users & Người nhận thông báo \\
+        \hline
+        type & VARCHAR\allowbreak(30) &  &  & X &  & Loại thông báo \\
+        \hline
+        title & VARCHAR\allowbreak(200) &  &  & X &  & Tiêu đề thông báo \\
+        \hline
+        content & text &  &  & X &  & Nội dung thông báo \\
+        \hline
+        is\allowbreak\_read & boolean &  &  & X &  & Trạng thái đã đọc \\
+        \hline
+        created\allowbreak\_at & DATETIME &  &  & X &  & Thời điểm tạo \\
+        \hline
+        read\allowbreak\_at & DATETIME &  &  &  &  & Thời điểm đọc \\
+        \hline
+    \end{tabular}%
+    }
+    \caption{Mô tả cấu trúc bảng notifications}
+    \label{tab:database-notifications}
+\end{table}
+
+

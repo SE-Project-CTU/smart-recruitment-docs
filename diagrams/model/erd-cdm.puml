@@ -1,0 +1,312 @@
+@startuml
+top to bottom direction
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 11
+skinparam entity { BackgroundColor white; BorderColor black; FontColor black }
+skinparam package { BackgroundColor white; BorderColor black; FontColor black }
+hide methods
+hide circle
+hide stereotypes
+
+package "Tài khoản, doanh nghiệp và phân quyền" {
+  entity "COMPANIES" as COMPANIES {
+    id : UUID <<PK>>
+    address : VARCHAR
+    description : TEXT
+    email : VARCHAR
+    logo_file_id : UUID <<FK>>
+    name : VARCHAR
+    phone : VARCHAR
+    tax_code : VARCHAR
+    verification_status : TEXT
+    verified_at : DATETIME
+    website : VARCHAR
+  }
+  entity "COMPANY FOLLOWS" as COMPANY_FOLLOWS {
+    user_id : UUID <<PK>> <<FK>>
+    company_id : UUID <<PK>> <<FK>>
+  }
+  entity "COMPANY INVITATIONS" as COMPANY_INVITATIONS {
+    id : UUID <<PK>>
+    company_id : UUID <<FK>>
+    expires_at : DATETIME
+    invitee_id : UUID <<FK>>
+    inviter_id : UUID <<FK>>
+    status : TEXT
+  }
+  entity "COMPANY JOIN REQUESTS" as COMPANY_JOIN_REQUESTS {
+    id : UUID <<PK>>
+    company_id : UUID <<FK>>
+    reviewed_at : DATETIME
+    reviewed_by : UUID <<FK>>
+    status : TEXT
+    user_id : UUID <<FK>>
+  }
+  entity "COMPANY MEMBERSHIPS" as COMPANY_MEMBERSHIPS {
+    id : UUID <<PK>>
+    company_id : UUID <<FK>>
+    joined_at : DATETIME
+    role : TEXT
+    status : TEXT
+    user_id : UUID <<FK>>
+  }
+  entity "REFRESH TOKENS" as REFRESH_TOKENS {
+    id : UUID <<PK>>
+    expires_at : DATETIME
+    revoked_at : DATETIME
+    user_id : UUID <<FK>>
+  }
+  entity "ROLES" as ROLES {
+    id : UUID <<PK>>
+    name : TEXT
+  }
+  entity "USERS" as USERS {
+    id : UUID <<PK>>
+    avatar_file_id : UUID <<FK>>
+    email : VARCHAR
+    full_name : VARCHAR
+    password_hash : TEXT
+    phone : TEXT
+    status : TEXT
+  }
+  entity "USER ROLES" as USER_ROLES {
+    user_id : UUID <<PK>> <<FK>>
+    role_id : UUID <<PK>> <<FK>>
+  }
+}
+
+package "Tệp tin và đa phương tiện" {
+  entity "MEDIA FILES" as MEDIA_FILES {
+    id : UUID <<PK>>
+    file_name : VARCHAR
+    file_type : VARCHAR
+    owner_id : UUID <<FK>>
+  }
+}
+
+package "Biên soạn CV theo mẫu" {
+  entity "CVS" as CVS {
+    id : UUID <<PK>>
+    candidate_id : UUID <<FK>>
+    content : TEXT
+    is_public : BOOLEAN
+    layout : TEXT
+    preview_file_id : UUID <<FK>>
+    template_id : UUID <<FK>>
+    title : VARCHAR
+  }
+  entity "CV EMBEDDINGS" as CV_EMBEDDINGS {
+    id : UUID <<PK>>
+    cv_version_id : UUID <<FK>>
+    embedding : VECTOR
+  }
+  entity "CV TEMPLATES" as CV_TEMPLATES {
+    id : UUID <<PK>>
+    code : VARCHAR
+    default_content : TEXT
+    default_layout : TEXT
+    description : TEXT
+    is_active : BOOLEAN
+    name : VARCHAR
+    thumbnail_file_id : UUID <<FK>>
+  }
+  entity "CV VERSIONS" as CV_VERSIONS {
+    id : UUID <<PK>>
+    content : TEXT
+    cv_id : UUID <<FK>>
+    layout : TEXT
+    preview_file_id : UUID <<FK>>
+    template_id : UUID <<FK>>
+    version_number : INTEGER
+  }
+}
+
+package "Tuyển dụng và ứng tuyển" {
+  entity "APPLICATION STATUS HISTORIES" as APPLICATION_STATUS_HISTORIES {
+    id : UUID <<PK>>
+    application_id : UUID <<FK>>
+    changed_by : UUID <<FK>>
+    note : TEXT
+    status : VARCHAR
+  }
+  entity "INDUSTRIES" as INDUSTRIES {
+    id : UUID <<PK>>
+    group_id : UUID <<FK>>
+    is_active : BOOLEAN
+    name : VARCHAR
+  }
+  entity "INDUSTRY GROUPS" as INDUSTRY_GROUPS {
+    id : UUID <<PK>>
+    is_active : BOOLEAN
+    name : VARCHAR
+  }
+  entity "APPLICATIONS" as APPLICATIONS {
+    id : UUID <<PK>>
+    applied_at : DATETIME
+    candidate_id : UUID <<FK>>
+    cover_letter : TEXT
+    cv_version_id : UUID <<FK>>
+    job_id : UUID <<FK>>
+    status : VARCHAR
+    uploaded_cv_file_id : UUID <<FK>>
+  }
+  entity "JOB BOOKMARKS" as JOB_BOOKMARKS {
+    user_id : UUID <<PK>> <<FK>>
+    job_posting_id : UUID <<PK>> <<FK>>
+  }
+  entity "JOB INDUSTRIES" as JOB_INDUSTRIES {
+    job_id : UUID <<PK>> <<FK>>
+    industry_id : UUID <<PK>> <<FK>>
+  }
+  entity "JOB POSTINGS" as JOB_POSTINGS {
+    id : UUID <<PK>>
+    benefits : TEXT
+    company_id : UUID <<FK>>
+    created_by : UUID <<FK>>
+    deadline : DATETIME
+    description : TEXT
+    detailed_location : TEXT
+    education_level : TEXT
+    experience_years : INTEGER
+    job_level : TEXT
+    job_type : TEXT
+    province_id : UUID <<FK>>
+    requirements : TEXT
+    salary_max : DECIMAL
+    salary_min : DECIMAL
+    salary_negotiable : BOOLEAN
+    status : TEXT
+    title : TEXT
+    vacancies : INTEGER
+    ward_id : UUID <<FK>>
+    work_mode : TEXT
+  }
+  entity "JOB SKILLS" as JOB_SKILLS {
+    job_id : UUID <<PK>> <<FK>>
+    skill_id : UUID <<PK>> <<FK>>
+  }
+  entity "PROVINCES" as PROVINCES {
+    id : UUID <<PK>>
+    is_centrally_governed : BOOLEAN
+    name : VARCHAR
+    status : VARCHAR
+  }
+  entity "SKILLS" as SKILLS {
+    id : UUID <<PK>>
+    is_active : BOOLEAN
+    name : VARCHAR
+  }
+  entity "WARDS" as WARDS {
+    id : UUID <<PK>>
+    is_commune : BOOLEAN
+    name : VARCHAR
+    province_id : UUID <<FK>>
+    status : VARCHAR
+  }
+}
+
+package "Trợ lý AI và đề xuất thông minh" {
+  entity "AI CONVERSATIONS" as AI_CONVERSATIONS {
+    id : UUID <<PK>>
+    candidate_id : UUID <<FK>>
+    cv_id : UUID <<FK>>
+    is_pinned : BOOLEAN
+    last_message_at : DATETIME
+    title : VARCHAR
+  }
+  entity "AI MATCH RESULTS" as AI_MATCH_RESULTS {
+    id : UUID <<PK>>
+    analysis : TEXT
+    application_id : UUID <<FK>>
+    cv_version_id : UUID <<FK>>
+    score : DECIMAL
+  }
+  entity "AI MESSAGES" as AI_MESSAGES {
+    id : UUID <<PK>>
+    content : TEXT
+    conversation_id : UUID <<FK>>
+    metadata_json : TEXT
+    sender : VARCHAR
+  }
+  entity "JOB EMBEDDINGS" as JOB_EMBEDDINGS {
+    id : UUID <<PK>>
+    embedding : VECTOR
+    job_id : UUID <<FK>>
+  }
+  entity "JOB RECOMMENDATIONS" as JOB_RECOMMENDATIONS {
+    id : UUID <<PK>>
+    candidate_id : UUID <<FK>>
+    generated_at : DATETIME
+    job_id : UUID <<FK>>
+    score : DECIMAL
+  }
+}
+
+package "Quản trị hệ thống vận hành" {
+  entity "NOTIFICATIONS" as NOTIFICATIONS {
+    id : UUID <<PK>>
+    body : TEXT
+    expires_at : DATETIME
+    payload : TEXT
+    read_at : DATETIME
+    realtime_dispatched_at : DATETIME
+    recipient_id : UUID <<FK>>
+    resource_id : UUID <<FK>>
+    resource_type : VARCHAR
+    title : VARCHAR
+    type : TEXT
+  }
+}
+
+USERS ||--o{ USER_ROLES : assigned
+ROLES ||--o{ USER_ROLES : contains
+USERS ||--o{ REFRESH_TOKENS : owns
+COMPANIES ||--o{ COMPANY_MEMBERSHIPS : has
+USERS ||--o{ COMPANY_MEMBERSHIPS : joins
+COMPANIES ||--o{ COMPANY_INVITATIONS : sends
+USERS ||--o{ COMPANY_INVITATIONS : receives
+COMPANIES ||--o{ COMPANY_JOIN_REQUESTS : receives
+USERS ||--o{ COMPANY_JOIN_REQUESTS : submits
+COMPANIES ||--o{ COMPANY_FOLLOWS : followed
+USERS ||--o{ COMPANY_FOLLOWS : follows
+COMPANIES ||--o{ JOB_POSTINGS : owns
+COMPANY_MEMBERSHIPS ||--o{ JOB_POSTINGS : creates
+PROVINCES ||--o{ WARDS : contains
+PROVINCES ||--o{ JOB_POSTINGS : location
+WARDS o|--o{ JOB_POSTINGS : location
+JOB_POSTINGS ||--o{ JOB_SKILLS : requires
+SKILLS ||--o{ JOB_SKILLS : referenced
+JOB_POSTINGS ||--o{ JOB_INDUSTRIES : categorized
+INDUSTRIES ||--o{ JOB_INDUSTRIES : referenced
+INDUSTRY_GROUPS ||--o{ INDUSTRIES : groups
+USERS ||--o{ CVS : owns
+CV_TEMPLATES ||--o{ CVS : template
+CVS ||--o{ CV_VERSIONS : versions
+CV_TEMPLATES ||--o{ CV_VERSIONS : template
+CV_VERSIONS ||--o| CV_EMBEDDINGS : embedding
+JOB_POSTINGS ||--o| JOB_EMBEDDINGS : embedding
+JOB_POSTINGS ||--o{ APPLICATIONS : receives
+USERS ||--o{ APPLICATIONS : submits
+CV_VERSIONS o|--o{ APPLICATIONS : cv_source
+APPLICATIONS ||--o{ APPLICATION_STATUS_HISTORIES : status_history
+USERS ||--o{ APPLICATION_STATUS_HISTORIES : changed_by
+APPLICATIONS ||--o| AI_MATCH_RESULTS : match_result
+CV_VERSIONS ||--o{ AI_MATCH_RESULTS : assessed_version
+USERS ||--o{ JOB_RECOMMENDATIONS : candidate
+JOB_POSTINGS ||--o{ JOB_RECOMMENDATIONS : recommended_job
+AI_CONVERSATIONS ||--o{ AI_MESSAGES : messages
+USERS ||--o{ AI_CONVERSATIONS : candidate
+CVS o|--o{ AI_CONVERSATIONS : context
+USERS ||--o{ MEDIA_FILES : owner
+USERS ||--o{ NOTIFICATIONS : receives
+MEDIA_FILES o|--o{ CVS : preview
+MEDIA_FILES o|--o{ CV_TEMPLATES : thumbnail
+MEDIA_FILES o|--o{ APPLICATIONS : uploaded_cv
+MEDIA_FILES o|--o{ USERS : avatar
+MEDIA_FILES o|--o{ COMPANIES : logo
+@enduml
+
+
+
