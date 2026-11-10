@@ -265,9 +265,11 @@ ROLES ||--o{ USER_ROLES : contains
 USERS ||--o{ REFRESH_TOKENS : owns
 COMPANIES ||--o{ COMPANY_MEMBERSHIPS : has
 USERS ||--o{ COMPANY_MEMBERSHIPS : joins
-COMPANIES ||--o{ COMPANY_INVITATIONS : sends
+COMPANIES ||--o{ COMPANY_INVITATIONS : sends
+COMPANY_MEMBERSHIPS ||--o{ COMPANY_INVITATIONS : inviter_member
 USERS ||--o{ COMPANY_INVITATIONS : receives
-COMPANIES ||--o{ COMPANY_JOIN_REQUESTS : receives
+COMPANIES ||--o{ COMPANY_JOIN_REQUESTS : receives
+COMPANY_MEMBERSHIPS o|--o{ COMPANY_JOIN_REQUESTS : reviewer_member
 USERS ||--o{ COMPANY_JOIN_REQUESTS : submits
 COMPANIES ||--o{ COMPANY_FOLLOWS : followed
 USERS ||--o{ COMPANY_FOLLOWS : follows
@@ -287,6 +289,8 @@ CVS ||--o{ CV_VERSIONS : versions
 CV_TEMPLATES ||--o{ CV_VERSIONS : template
 CV_VERSIONS ||--o| CV_EMBEDDINGS : embedding
 JOB_POSTINGS ||--o| JOB_EMBEDDINGS : embedding
+JOB_POSTINGS ||--o{ JOB_BOOKMARKS : saved_as
+USERS ||--o{ JOB_BOOKMARKS : saves
 JOB_POSTINGS ||--o{ APPLICATIONS : receives
 USERS ||--o{ APPLICATIONS : submits
 CV_VERSIONS o|--o{ APPLICATIONS : cv_source
@@ -301,12 +305,15 @@ USERS ||--o{ AI_CONVERSATIONS : candidate
 CVS o|--o{ AI_CONVERSATIONS : context
 USERS ||--o{ MEDIA_FILES : owner
 USERS ||--o{ NOTIFICATIONS : receives
-MEDIA_FILES o|--o{ CVS : preview
-MEDIA_FILES o|--o{ CV_TEMPLATES : thumbnail
-MEDIA_FILES o|--o{ APPLICATIONS : uploaded_cv
-MEDIA_FILES o|--o{ USERS : avatar
-MEDIA_FILES o|--o{ COMPANIES : logo
+MEDIA_FILES o|--o| CVS : preview
+MEDIA_FILES ||--o| CV_TEMPLATES : thumbnail
+MEDIA_FILES o|--o| APPLICATIONS : uploaded_cv
+MEDIA_FILES o|--o{ CV_VERSIONS : preview
+MEDIA_FILES o|--o| USERS : avatar
+MEDIA_FILES o|--o| COMPANIES : logo
 @enduml
+
+
 
 
 
