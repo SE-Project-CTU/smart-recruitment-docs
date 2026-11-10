@@ -21,25 +21,25 @@ Sự gia tăng của các hành vi gian lận tuyển dụng, doanh nghiệp gi�
 \subsubsection{Các chức năng trông đợi của hệ thống}
 Để giải quyết triệt để các tồn tại trên, nền tảng SmartHire được thiết kế bao gồm 6 phân hệ nghiệp vụ cốt lõi, tương thích hoàn toàn với mô hình dữ liệu thực thể của hệ thống:
 
-\paragraph{1. Phân hệ Quản lý Tài khoản, Doanh nghiệp và Phân quyền:}
+\paragraph{Phân hệ Quản lý Tài khoản, Doanh nghiệp và Phân quyền:}
 Phân hệ đảm nhiệm xác thực người dùng thông qua cơ chế JWT (Access Token thời hạn ngắn và Refresh Token được lưu trữ, kiểm soát thu hồi trong CSDL). Hệ thống mã hóa mật khẩu an toàn bằng thuật toán BCrypt hoặc Argon2, đồng thời kiểm soát truy cập dựa trên vai trò (RBAC) chặt chẽ giữa Ứng viên, Nhà tuyển dụng và Quản trị viên. 
 Đặc biệt, phân hệ hỗ trợ quản trị cơ cấu doanh nghiệp theo mô hình đa thành viên: Nhà tuyển dụng khởi tạo hồ sơ doanh nghiệp gắn với mã số thuế duy nhất; chủ sở hữu doanh nghiệp (Owner) có thể gửi lời mời hoặc phê duyệt yêu cầu gia nhập của các chuyên viên tuyển dụng (Recruiter), phân công vai trò quản trị nội bộ và cho phép ứng viên theo dõi (Follow) hoạt động tuyển dụng của doanh nghiệp.
 
-\paragraph{2. Phân hệ Quản lý Tệp tin và Đa phương tiện:}
+\paragraph{Phân hệ Quản lý Tệp tin và Đa phương tiện:}
 Toàn bộ tệp tin hình ảnh đại diện của người dùng, logo công ty, ảnh thu nhỏ mẫu CV và tệp CV PDF tải lên từ thiết bị được quản lý tập trung thông qua thực thể tệp tin độc lập. Tệp tin được lưu trữ bảo mật trên dịch vụ đám mây với định danh công khai duy nhất, tự động trích xuất siêu dữ liệu (định dạng, kích thước, liên kết truy cập) và liên kết khóa ngoại với các thực thể liên quan, bảo đảm tính toàn vẹn dữ liệu và kiểm soát chặt chẽ quy tắc không thể xóa tệp đang được sử dụng.
 
-\paragraph{3. Phân hệ Công cụ Biên soạn CV theo Mẫu:}
+\paragraph{Phân hệ Công cụ Biên soạn CV theo Mẫu:}
 Phân hệ cung cấp kho mẫu CV chuẩn hóa (Harvard, Modern Two-Column, Executive, Creative) với kiến trúc phân tách độc lập hoàn toàn giữa ba thành phần: dữ liệu thông tin ứng viên (Content), bố cục sắp xếp các khối (Layout) và phong cách hiển thị trực quan (Presentation). Khi ứng viên chọn mẫu, hệ thống sao chép bố cục và kiểu dáng mặc định ban đầu sang bản ghi CV độc lập; ứng viên có thể tự do điều chỉnh thứ tự vùng hiển thị mà không ảnh hưởng tới mẫu gốc. Quá trình biên soạn hỗ trợ cơ chế xem trước thời gian thực (Live Preview) với độ trễ phản hồi dưới $100\text{ ms}$, quản lý các mốc phiên bản CV (CV Versioning) độc lập phục vụ lưu vết lịch sử, cấu hình trạng thái hiển thị công khai/riêng tư và kết xuất tệp PDF in ấn chuẩn định dạng A4.
 
-\paragraph{4. Phân hệ Tuyển dụng và Quản lý Ứng tuyển:}
+\paragraph{Phân hệ Tuyển dụng và Quản lý Ứng tuyển:}
 Nhà tuyển dụng trực thuộc doanh nghiệp đã xác minh được quyền khởi tạo và quản lý tin tuyển dụng với các trường thông tin chuẩn hóa: cơ cấu địa lý hành chính chi tiết (Tỉnh/Thành phố, Phường/Xã và địa chỉ cụ thể), kinh nghiệm, cấp bậc, hình thức làm việc, dải lương cùng danh mục ngành nghề và kỹ năng yêu cầu bắt buộc. 
 Ứng viên có thể tìm kiếm, lọc tin đa tiêu chí và nộp hồ sơ ứng tuyển linh hoạt bằng phiên bản CV trực tuyến trên SmartHire hoặc tệp PDF cá nhân đính kèm thư giới thiệu. Hệ thống tự động ngăn chặn nộp trùng lặp trên cùng một tin tuyển dụng và lưu vết toàn bộ lịch sử luân chuyển trạng thái hồ sơ (Đã nộp $\rightarrow$ Đã tiếp nhận $\rightarrow$ Mời phỏng vấn $\rightarrow$ Trúng tuyển $\rightarrow$ Từ chối) kèm người thực hiện và ghi chú phản hồi.
 
-\paragraph{5. Phân hệ Trợ lý AI và Đề xuất Thông minh:}
+\paragraph{Phân hệ Trợ lý AI và Đề xuất Thông minh:}
 Phân hệ tích hợp các mô hình ngôn ngữ lớn để hỗ trợ người dùng ở cả hai đầu quy trình. Đối với ứng viên, trợ lý AI đóng vai trò như chuyên gia tư vấn viết CV: gợi ý chỉnh sửa từ ngữ, tối ưu hóa câu văn mô tả kinh nghiệm và gợi ý từ khóa chuyên ngành theo thời gian thực. 
 Đồng thời, hệ thống sử dụng kỹ thuật trích xuất ngữ nghĩa và vector nhúng (Embedding) trên cả CV và JD để tự động tính toán điểm số tương thích (Match Score từ $0.00$ đến $100.00\%$), phân tích khoảng trống kỹ năng còn thiếu và chủ động tạo lập danh sách gợi ý việc làm phù hợp cho ứng viên trên trang tổng quan. Khi dịch vụ AI gặp sự cố hoặc quá tải, hệ thống tự động xử lý ngoại lệ an toàn và giữ nguyên dữ liệu đang biên soạn của người dùng.
 
-\paragraph{6. Phân hệ Quản trị Hệ thống Vận hành:}
+\paragraph{Phân hệ Quản trị Hệ thống Vận hành:}
 Cung cấp công cụ toàn diện cho Quản trị viên trong việc kiểm soát chất lượng nền tảng: thẩm định giấy phép kinh doanh và phê duyệt/từ chối hồ sơ doanh nghiệp; kiểm duyệt tin tuyển dụng mới trước khi công khai; khóa hoặc khôi phục tài khoản vi phạm. Phân hệ cũng quản lý tập trung các danh mục dùng chung (nhóm ngành, ngành nghề, kỹ năng, tỉnh/thành phố, phường/xã, mẫu CV) theo cơ chế kích hoạt/vô hiệu hóa an toàn và cung cấp biểu đồ thống kê vận hành thời gian thực.
 
 \paragraph{Tóm tắt Yêu cầu Phi chức năng của hệ thống:}
