@@ -4,455 +4,361 @@ config:
 ---
 
 erDiagram
-    %% EF Core key/constraint conventions:
-    %% - USER_ROLE, COMPANY_FOLLOW, JOB_INDUSTRY, JOB_SKILL use composite PKs from their FK columns.
-    %% - Entity tables with lifecycle/history/API identity use a single UUID PK and separate UNIQUE constraints where noted.
-    %% - Mermaid erDiagram cannot express alternate/composite FKs or FK delete behavior; see explicit notes below each affected entity.
-    USER {
+    %% Entity fields are synchronized from the current EF Core model snapshot.
+    %% Markers identify primary keys and foreign-key columns.
+    %% Composite and alternate-key constraints may be described in EF configuration.
+    AI_CONVERSATIONS {
         UUID id PK
-        VARCHAR email UK
-        VARCHAR phone UK
-        VARCHAR password_hash
-        VARCHAR full_name
-        UUID avatar_file_id FK
-        ENUM status
+        UUID candidate_id FK
         DATETIME created_at
+        UUID cv_id FK
+        BOOLEAN is_pinned
+        DATETIME last_message_at
+        VARCHAR title
         DATETIME updated_at
     }
 
-    ROLE {
+    AI_MATCH_RESULTS {
         UUID id PK
-        VARCHAR name UK
-    }
-
-    USER_ROLE {
-        UUID user_id PK, FK
-        UUID role_id PK, FK
-    }
-
-    REFRESH_TOKEN {
-        UUID id PK
-        UUID user_id FK
-        VARCHAR token_hash
-        DATETIME expires_at
-        DATETIME revoked_at
+        TEXT analysis
+        UUID application_id FK
         DATETIME created_at
+        UUID cv_version_id FK
+        DECIMAL score
     }
 
-    COMPANY {
+    AI_MESSAGES {
         UUID id PK
-        VARCHAR name
-        VARCHAR tax_code UK
-        VARCHAR email
-        VARCHAR phone
+        TEXT content
+        UUID conversation_id FK
+        DATETIME created_at
+        TEXT metadata_json
+        VARCHAR sender
+    }
+
+    APPLICATION_STATUS_HISTORIES {
+        UUID id PK
+        UUID application_id FK
+        UUID changed_by FK
+        DATETIME created_at
+        TEXT note
+        VARCHAR status
+    }
+
+    COMPANIES {
+        UUID id PK
         VARCHAR address
-        VARCHAR website
+        DATETIME created_at
         TEXT description
+        VARCHAR email
         UUID logo_file_id FK
-        ENUM verification_status
-        DATETIME verified_at
-        DATETIME created_at
+        VARCHAR name
+        VARCHAR phone
+        VECTOR search_vector
+        VARCHAR tax_code
         DATETIME updated_at
+        TEXT verification_status
+        DATETIME verified_at
+        VARCHAR website
     }
 
-    %% EF Core: UNIQUE(company_id, user_id); principal alternate key for JOB_POSTING composite FK.
-    COMPANY_MEMBERSHIP {
-        UUID id PK
-        UUID company_id FK
-        UUID user_id FK
-        ENUM role
-        ENUM status
-        DATETIME joined_at
-        DATETIME created_at
-    }
-
-    %% EF Core: composite FK (company_id, inviter_id) -> COMPANY_MEMBERSHIP(company_id, user_id).
-    %% invitee_id remains a direct FK to USER because invitees may not be company members yet.
-    COMPANY_INVITATION {
-        UUID id PK
-        UUID company_id FK
-        UUID inviter_id FK
-        UUID invitee_id FK
-        ENUM status
-        DATETIME expires_at
-        DATETIME created_at
-    }
-
-    %% EF Core: composite FK (company_id, reviewed_by) -> COMPANY_MEMBERSHIP(company_id, user_id).
-    %% reviewed_by is nullable until the request is reviewed; the composite FK is enforced when non-null.
-    COMPANY_JOIN_REQUEST {
-        UUID id PK
-        UUID company_id FK
-        UUID user_id FK
-        ENUM status
-        UUID reviewed_by FK
-        DATETIME reviewed_at
-        DATETIME created_at
-    }
-
-    COMPANY_FOLLOW {
+    COMPANY_FOLLOWS {
         UUID user_id PK, FK
         UUID company_id PK, FK
         DATETIME created_at
     }
 
-    %% EF Core constraints:
-    %% - company_id -> COMPANY.id (required owner relationship)
-    %% - (company_id, created_by) -> COMPANY_MEMBERSHIP(company_id, user_id)
-    %%   This enforces that the creator is a member of this same company.
-    %%   Configure UNIQUE(company_id, user_id) on COMPANY_MEMBERSHIP as the alternate principal key.
-    JOB_POSTING {
+    COMPANY_INVITATIONS {
         UUID id PK
         UUID company_id FK
-        UUID created_by FK
-        VARCHAR title
-        UUID province_id FK
-        UUID ward_id FK
-        VARCHAR detailed_location
-
-        %% Overall requirements
-        INTEGER experience_years
-        ENUM job_level 
-        %% Staff, Team Lead, Supervisor, Department Head, Branch Manager, Deputy Director, Director, Executive, Intern
-
-        ENUM education_level
-        %% No requirement, Below high school, High school, Vocational, College, Bachelor, Postgraduate
-       
-        INTEGER vacancies
-        ENUM work_mode 
-        %% Remote, On-site, Hybrid
-        ENUM job_type 
-        %% Full-time, Part-time, Contract, Internship, Freelance
-
-        %% Detailed information 
-        TEXT description
-        TEXT requirements
-        TEXT benefits
-
-        DECIMAL salary_min
-        DECIMAL salary_max
-
-        BOOLEAN salary_negotiable
-
-        DATETIME deadline
-        ENUM status
-
         DATETIME created_at
+        DATETIME expires_at
+        UUID invitee_id FK
+        UUID inviter_id FK
+        TEXT status
+    }
+
+    COMPANY_JOIN_REQUESTS {
+        UUID id PK
+        UUID company_id FK
+        DATETIME created_at
+        DATETIME reviewed_at
+        UUID reviewed_by FK
+        TEXT status
+        UUID user_id FK
+    }
+
+    COMPANY_MEMBERSHIPS {
+        UUID id PK
+        UUID company_id FK
+        DATETIME created_at
+        DATETIME joined_at
+        TEXT role
+        TEXT status
+        UUID user_id FK
+    }
+
+    CVS {
+        UUID id PK
+        UUID candidate_id FK
+        TEXT content
+        VARCHAR content_hash
+        DATETIME created_at
+        DATETIME deleted_at
+        BOOLEAN is_public
+        VARCHAR language
+        TEXT layout
+        VARCHAR layout_hash
+        UUID preview_file_id FK
+        UUID template_id FK
+        VARCHAR title
         DATETIME updated_at
     }
 
-    JOB_EMBEDDING {
+    CV_EMBEDDINGS {
         UUID id PK
-        UUID job_id FK
+        DATETIME created_at
+        UUID cv_version_id FK
         VECTOR embedding
         VARCHAR model
+    }
+
+    CV_TEMPLATES {
+        UUID id PK
+        VARCHAR code
+        DATETIME created_at
+        TEXT default_content
+        TEXT default_layout
+        TEXT description
+        BOOLEAN is_active
+        VARCHAR language
+        VARCHAR name
+        UUID thumbnail_file_id FK
+        DATETIME updated_at
+        VARCHAR version
+    }
+
+    CV_VERSIONS {
+        UUID id PK
+        TEXT content
+        DATETIME created_at
+        UUID cv_id FK
+        VARCHAR language
+        TEXT layout
+        UUID preview_file_id FK
+        UUID template_id FK
+        INTEGER version_number
+    }
+
+    INDUSTRIES {
+        UUID id PK
+        UUID group_id FK
+        BOOLEAN is_active
+        VARCHAR name
+    }
+
+    INDUSTRY_GROUPS {
+        UUID id PK
+        BOOLEAN is_active
+        VARCHAR name
+    }
+
+    APPLICATIONS {
+        UUID id PK
+        DATETIME applied_at
+        UUID candidate_id FK
+        TEXT cover_letter
+        UUID cv_version_id FK
+        UUID job_id FK
+        VARCHAR status
+        DATETIME updated_at
+        UUID uploaded_cv_file_id FK
+    }
+
+    JOB_BOOKMARKS {
+        UUID user_id PK, FK
+        UUID job_posting_id PK, FK
         DATETIME created_at
     }
 
-    INDUSTRY_GROUP {
+    JOB_EMBEDDINGS {
         UUID id PK
-        VARCHAR name
-        BOOLEAN is_active
+        DATETIME created_at
+        VECTOR embedding
+        UUID job_id FK
+        VARCHAR model
     }
 
-    INDUSTRY {
-        UUID id PK
-        UUID group_id FK
-        VARCHAR name UK
-        BOOLEAN is_active
-    }
-
-    JOB_INDUSTRY {
+    JOB_INDUSTRIES {
         UUID job_id PK, FK
         UUID industry_id PK, FK
     }
 
-    PROVINCE {
+    JOB_POSTINGS {
         UUID id PK
-        VARCHAR name UK
-        ENUM status
-        BOOLEAN is_centrally_governed
-    }
-
-    WARD {
-        UUID id PK
-        UUID province_id FK
-        VARCHAR name
-        BOOLEAN is_commune
-        ENUM status
-    }
-
-    SKILL {
-        UUID id PK
-        VARCHAR name UK
-        %% VARCHAR category
-        BOOLEAN is_active
+        TEXT benefits
+        UUID company_id FK
         DATETIME created_at
+        UUID created_by FK
+        DATETIME deadline
+        TEXT description
+        TEXT detailed_location
+        TEXT education_level
+        INTEGER experience_years
+        TEXT job_level
+        TEXT job_type
+        UUID province_id FK
+        TEXT requirements
+        DECIMAL salary_max
+        DECIMAL salary_min
+        BOOLEAN salary_negotiable
+        VECTOR search_vector
+        TEXT status
+        TEXT title
+        DATETIME updated_at
+        INTEGER vacancies
+        UUID ward_id FK
+        TEXT work_mode
     }
 
-    JOB_SKILL {
+    JOB_RECOMMENDATIONS {
+        UUID id PK
+        UUID candidate_id FK
+        DATETIME generated_at
+        UUID job_id FK
+        DECIMAL score
+    }
+
+    JOB_SKILLS {
         UUID job_id PK, FK
         UUID skill_id PK, FK
     }
 
-    %% default_content contains metadata.defaultStyle and Tiptap documents/marks/attrs.
-    %% Presentation defaults/styles are stored in content; no separate presentation JSON.
-    CV_TEMPLATE {
+    MEDIA_FILES {
         UUID id PK
-        VARCHAR code UK
-        VARCHAR name
-        TEXT description
-        UUID thumbnail_file_id FK
-        VARCHAR version
-        JSONB default_layout
-        JSONB default_content
-        ENUM language
-        BOOLEAN is_active
         DATETIME created_at
-        DATETIME updated_at
-    }
-
-    %% content embeds defaultStyle plus Tiptap rich-text documents.
-    %% layout remains separate because it controls section placement/order.
-    CV {
-        UUID id PK
-        UUID candidate_id FK
-        UUID template_id FK
-        VARCHAR title
-        JSONB content
-        VARCHAR content_hash
-        VARCHAR layout_hash
-        JSONB layout
-        ENUM language
-        UUID preview_file_id FK
-        BOOLEAN is_public
-        DATETIME created_at
-        DATETIME updated_at
-    }
-
-    CV_VERSION {
-        UUID id PK
-        UUID cv_id FK
-        UUID template_id FK
-        JSONB content
-        JSONB layout
-        ENUM language
-        INTEGER version_number
-        DATETIME created_at
-    }
-
-    CV_EMBEDDING {
-        UUID id PK
-        UUID cv_version_id FK
-        VECTOR embedding
-        VARCHAR model
-        DATETIME created_at
-    }
-
-    %% Exactly one CV source is required: cv_version_id or uploaded_cv_file_id.
-    
-    APPLICATION {
-        UUID id PK
-        UUID job_id FK
-        UUID candidate_id FK
-        UUID cv_version_id FK
-        UUID uploaded_cv_file_id FK
-        TEXT cover_letter
-        ENUM status
-        DATETIME applied_at
-        DATETIME updated_at
-    }
-
-    APPLICATION_STATUS_HISTORY {
-        UUID id PK
-        UUID application_id FK
-        ENUM status
-        UUID changed_by FK
-        TEXT note
-        DATETIME created_at
-    }
-
-    AI_MATCH_RESULT {
-        UUID id PK
-        UUID application_id FK
-        UUID cv_version_id FK
-        DECIMAL score
-        TEXT analysis
-        DATETIME created_at
-    }
-
-    %% EF Core: UNIQUE(candidate_id, job_id); keep id as PK because recommendations have their own lifecycle/identity.
-    JOB_RECOMMENDATION {
-        UUID id PK
-        UUID candidate_id FK
-        UUID job_id FK
-        DECIMAL score
-        DATETIME generated_at
-    }
-
-    MEDIA_FILE {
-        UUID id PK
-        UUID owner_id FK
-
-        %% varchar(512)
-        VARCHAR public_id UK
-
+        DATETIME deleted_at
         VARCHAR file_name
-        VARCHAR file_url
-        VARCHAR file_type
         BIGINT file_size
-        DATETIME created_at
+        VARCHAR file_type
+        VARCHAR file_url
+        UUID owner_id FK
+        VARCHAR public_id FK
     }
 
-    NOTIFICATION {
+    NOTIFICATIONS {
         UUID id PK
-        UUID recipient_id FK
-        ENUM type
-        %% "COMPANY_NEW_JOB_POSTING", "APPLICATION_STATUS_UPDATE", "COMPANY_INVITATION", "COMPANY_JOIN_REQUEST", "JOB_RECOMMENDATION", "SYSTEM_ALERT"
-
-        VARCHAR title
         TEXT body
-        JSONB payload
-
-        %% COMPANY_NEW_JOB_POSTING 
-        %% {
-        %%   "job_id": "<UUID>",
-        %%   "company_id": "<UUID>",
-        %%   "job_title": "<string>"
-        %% }
-
-        %% APPLICATION_STATUS_UPDATE 
-        %% {
-        %%     "job_id": "UUID",             
-        %%     "job_title": "VARCHAR", 
-        %%     "new_status": "ENUM",         
-        %%     "old_status": "ENUM",
-        %%     "note": "TEXT"               
-        %% }
-
-        %% COMPANY_INVITATION
-        %% {
-        %%     "company_id": "UUID",         
-        %%     "company_name": "VARCHAR",    
-        %%     "invitation_status": "ENUM"  
-        %% }
-
-        %% COMPANY_JOIN_REQUEST
-        %% {
-        %%     "company_id": "UUID",         
-        %%     "company_name": "VARCHAR",    
-        %%     "applicant_id": "UUID",       
-        %%     "applicant_name": "VARCHAR",  
-        %%     "request_status": "ENUM"      
-        %% }
-
-        %% JOB_RECOMMENDATION
-        %% {
-        %%     "recommendation_id": "UUID",  
-        %%     "company_id": "UUID",         
-        %%     "company_name": "VARCHAR",    
-        %%     "job_title": "VARCHAR",       
-        %% }
-
-        %% SYSTEM_ALERT
-        %% {
-        %%     "alert_code": "VARCHAR",      // Mã cảnh báo (ví dụ: "MAINTENANCE_UPDATE", "ACCOUNT_SUSPENDED")
-        %%     "severity": "ENUM",           // Mức độ nghiêm trọng (ví dụ: INFO, WARNING, CRITICAL)
-        %%     "details": "TEXT"             // Chi tiết hoặc ngữ cảnh của cảnh báo
-        %% }
-
-        VARCHAR resource_type
-        UUID resource_id
         DATETIME created_at
-        DATETIME read_at
         DATETIME expires_at
+        TEXT payload
+        DATETIME read_at
+        DATETIME realtime_dispatched_at
+        UUID recipient_id FK
+        UUID resource_id FK
+        VARCHAR resource_type
+        VARCHAR title
+        TEXT type
     }
 
+    PROVINCES {
+        UUID id PK
+        BOOLEAN is_centrally_governed
+        VARCHAR name
+        VARCHAR status
+    }
 
-    %% =========================
-    %% ACCOUNT
-    %% =========================
+    REFRESH_TOKENS {
+        UUID id PK
+        DATETIME created_at
+        DATETIME expires_at
+        DATETIME revoked_at
+        VARCHAR token_hash
+        UUID user_id FK
+    }
 
-    USER ||--o{ USER_ROLE : has
-    ROLE ||--o{ USER_ROLE : assigned_to
+    ROLES {
+        UUID id PK
+        TEXT name
+    }
 
-    USER ||--o{ REFRESH_TOKEN : owns
-    USER ||--o{ NOTIFICATION : receives
+    SKILLS {
+        UUID id PK
+        DATETIME created_at
+        BOOLEAN is_active
+        VARCHAR name
+    }
 
-    %% =========================
-    %% COMPANY
-    %% =========================
+    USERS {
+        UUID id PK
+        UUID avatar_file_id FK
+        DATETIME created_at
+        VARCHAR email
+        VARCHAR full_name
+        TEXT password_hash
+        TEXT phone
+        TEXT status
+        DATETIME updated_at
+    }
 
-    USER ||--o{ COMPANY_MEMBERSHIP : joins
-    COMPANY ||--o{ COMPANY_MEMBERSHIP : has
+    USER_ROLES {
+        UUID user_id PK, FK
+        UUID role_id PK, FK
+    }
 
-    COMPANY ||--o{ COMPANY_INVITATION : sends
-    COMPANY_MEMBERSHIP ||--o{ COMPANY_INVITATION : invited_by_member
-    USER ||--o{ COMPANY_INVITATION : invitee
+    WARDS {
+        UUID id PK
+        BOOLEAN is_commune
+        VARCHAR name
+        UUID province_id FK
+        VARCHAR status
+    }
 
-    COMPANY ||--o{ COMPANY_JOIN_REQUEST : receives
-    USER ||--o{ COMPANY_JOIN_REQUEST : submits
-    COMPANY_MEMBERSHIP ||--o{ COMPANY_JOIN_REQUEST : reviewed_by_member
+    USERS ||--o{ USER_ROLES : assigned
+    ROLES ||--o{ USER_ROLES : contains
+    USERS ||--o{ REFRESH_TOKENS : owns
+    COMPANIES ||--o{ COMPANY_MEMBERSHIPS : has
+    USERS ||--o{ COMPANY_MEMBERSHIPS : joins
+    COMPANIES ||--o{ COMPANY_INVITATIONS : sends
+    USERS ||--o{ COMPANY_INVITATIONS : receives
+    COMPANIES ||--o{ COMPANY_JOIN_REQUESTS : receives
+    USERS ||--o{ COMPANY_JOIN_REQUESTS : submits
+    COMPANIES ||--o{ COMPANY_FOLLOWS : followed
+    USERS ||--o{ COMPANY_FOLLOWS : follows
+    COMPANIES ||--o{ JOB_POSTINGS : owns
+    COMPANY_MEMBERSHIPS ||--o{ JOB_POSTINGS : creates
+    PROVINCES ||--o{ WARDS : contains
+    PROVINCES ||--o{ JOB_POSTINGS : location
+    WARDS o|--o{ JOB_POSTINGS : location
+    JOB_POSTINGS ||--o{ JOB_SKILLS : requires
+    SKILLS ||--o{ JOB_SKILLS : referenced
+    JOB_POSTINGS ||--o{ JOB_INDUSTRIES : categorized
+    INDUSTRIES ||--o{ JOB_INDUSTRIES : referenced
+    INDUSTRY_GROUPS ||--o{ INDUSTRIES : groups
+    USERS ||--o{ CVS : owns
+    CV_TEMPLATES ||--o{ CVS : template
+    CVS ||--o{ CV_VERSIONS : versions
+    CV_TEMPLATES ||--o{ CV_VERSIONS : template
+    CV_VERSIONS ||--o| CV_EMBEDDINGS : embedding
+    JOB_POSTINGS ||--o| JOB_EMBEDDINGS : embedding
+    JOB_POSTINGS ||--o{ APPLICATIONS : receives
+    USERS ||--o{ APPLICATIONS : submits
+    CV_VERSIONS o|--o{ APPLICATIONS : cv_source
+    APPLICATIONS ||--o{ APPLICATION_STATUS_HISTORIES : status_history
+    USERS ||--o{ APPLICATION_STATUS_HISTORIES : changed_by
+    APPLICATIONS ||--o| AI_MATCH_RESULTS : match_result
+    CV_VERSIONS ||--o{ AI_MATCH_RESULTS : assessed_version
+    USERS ||--o{ JOB_RECOMMENDATIONS : candidate
+    JOB_POSTINGS ||--o{ JOB_RECOMMENDATIONS : recommended_job
+    AI_CONVERSATIONS ||--o{ AI_MESSAGES : messages
+    USERS ||--o{ AI_CONVERSATIONS : candidate
+    CVS o|--o{ AI_CONVERSATIONS : context
+    USERS ||--o{ MEDIA_FILES : owner
+    USERS ||--o{ NOTIFICATIONS : receives
+    MEDIA_FILES o|--o{ CVS : preview
+    MEDIA_FILES o|--o{ CV_TEMPLATES : thumbnail
+    MEDIA_FILES o|--o{ APPLICATIONS : uploaded_cv
+    MEDIA_FILES o|--o{ USERS : avatar
+    MEDIA_FILES o|--o{ COMPANIES : logo
 
-    USER ||--o{ COMPANY_FOLLOW : follows
-    COMPANY ||--o{ COMPANY_FOLLOW : followed_by
 
-    %% =========================
-    %% RECRUITMENT
-    %% =========================
-
-    COMPANY ||--o{ JOB_POSTING : owns
-    %% JOB_POSTING.created_by is a USER id constrained through COMPANY_MEMBERSHIP(company_id, user_id).
-    COMPANY_MEMBERSHIP ||--o{ JOB_POSTING : created_by_member
-
-    JOB_POSTING ||--o{ JOB_INDUSTRY : has
-    JOB_POSTING ||--o{ JOB_SKILL : requires
-    JOB_POSTING ||--o| JOB_EMBEDDING : has
-    INDUSTRY_GROUP ||--o{ INDUSTRY : contains
-    INDUSTRY ||--o{ JOB_INDUSTRY : belongs_to
-    SKILL ||--o{ JOB_SKILL : belongs_to
-    PROVINCE ||--o{ WARD : contains
-    PROVINCE ||--o{ JOB_POSTING : located_at
-    WARD ||--o{ JOB_POSTING : located_at
-
-    %% =========================
-    %% CV
-    %% =========================
-
-    USER ||--o{ CV : owns
-    CV_TEMPLATE ||--o{ CV : uses
-    CV_TEMPLATE ||--o{ CV_VERSION : uses
-
-    %% =========================
-    %% APPLICATION
-    %% =========================
-
-    JOB_POSTING ||--o{ APPLICATION : receives
-    USER ||--o{ APPLICATION : submits
-    CV ||--o{ CV_VERSION : has
-    CV |o--o| MEDIA_FILE : preview_file
-
-    APPLICATION ||--o{ APPLICATION_STATUS_HISTORY : tracks
-    APPLICATION }o--o| CV_VERSION : submitted_with
-    APPLICATION o|--o| MEDIA_FILE : uploaded_pdf
-    USER ||--o{ APPLICATION_STATUS_HISTORY : changes
-
-    %% =========================
-    %% AI
-    %% =========================
-
-    APPLICATION ||--o| AI_MATCH_RESULT : analyzed_by
-    CV_VERSION ||--o{ AI_MATCH_RESULT : analyzed_by
-    CV_VERSION ||--o| CV_EMBEDDING : represented_by
-
-    JOB_POSTING ||--o{ JOB_RECOMMENDATION : recommended
-    USER ||--o{ JOB_RECOMMENDATION : receives
-
-    %% =========================
-    %% MEDIA
-    %% =========================
-
-    USER ||--o{ MEDIA_FILE : owns
-    USER o|--o| MEDIA_FILE : avatar
-    COMPANY o|--o| MEDIA_FILE : logo
-    CV_TEMPLATE o|--|| MEDIA_FILE : thumbnail
