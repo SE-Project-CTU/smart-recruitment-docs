@@ -508,12 +508,17 @@ GET /api/v1/job-postings
 | `jobType` | No | String | Employment type (`FullTime`, `PartTime`, `Contract`, `Internship`, `Freelance`). |
 | `workMode` | No | String | Work location (`Remote`, `Onsite`, `Hybrid`). |
 | `experienceYears` | No | Integer | Số năm kinh nghiệm. |
+| `industryIds` | No | Array<UUID> | Lặp lại tham số để chọn nhiều ngành đang hoạt động; job khớp nếu thuộc ít nhất một ngành. |
+| `experienceRanges` | No | Array<String> | Lặp lại tham số; nhận `0-1`, `2-3`, `4-5`, `6+`. Job không có số năm kinh nghiệm không khớp. Không dùng cùng `experienceYears`. |
+| `salaryNegotiableOnly` | No | Boolean | `true` để chỉ lấy job có lương thỏa thuận; không dùng cùng `salaryMin` hoặc `salaryMax`. |
 | `page` | No | Integer | Mặc định 1. |
 | `pageSize` | No | Integer | Mặc định 20; tối đa 100. |
 | `sort` | No | String | `createdAt` hoặc `salaryMax`; mặc định `createdAt`. |
 | `direction` | No | Enum | `asc` hoặc `desc`; mặc định `desc`. |
 
 Không có request body.
+
+Ví dụ: `?industryIds=<uuid-1>&industryIds=<uuid-2>&experienceRanges=0-1&experienceRanges=2-3&page=1&pageSize=30`. Các giá trị trong cùng một nhóm được nối bằng điều kiện **hoặc**; các nhóm lọc khác nhau dùng điều kiện **và**. Backend lọc và đếm tổng số job trước khi phân trang. Trang tìm việc dùng `pageSize=30`; API vẫn giữ mặc định 20 cho các client khác.
 
 ### Response Status Codes
 
