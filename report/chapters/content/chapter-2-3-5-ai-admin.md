@@ -1,89 +1,320 @@
-## 2.3.16. Chức năng Phân tích mức độ phù hợp giữa CV và tin tuyển dụng
+## Thiết kế chức năng dành cho Ứng viên: hỗ trợ trí tuệ nhân tạo
 
-**Mục đích:** Hỗ trợ ứng viên và nhà tuyển dụng nhận biết mức độ tương thích giữa nội dung CV với yêu cầu công việc.
+### 2.3.16. Chức năng phân tích mức độ phù hợp giữa CV và tin tuyển dụng
 
-**Giao diện:** Kết quả phân tích hiển thị điểm phù hợp, nhóm tiêu chí/điểm thành phần, kỹ năng phù hợp, kỹ năng còn thiếu, kinh nghiệm và nhận xét giải thích.
 
-**Dữ liệu được dùng:** `cv_versions`, `cv_embeddings`, `job_postings`, `job_embeddings`, `ai_match_results`, `applications`.
+**Mục đích:** Cung cấp thông tin hỗ trợ ứng viên đánh giá mức độ đáp ứng của CV so với yêu cầu vị trí.
 
-**Cách xử lý:** Hệ thống nhận phiên bản CV, CV hoặc văn bản CV cùng mã tin tuyển dụng hoặc nội dung mô tả công việc. Máy chủ truy vấn dữ liệu tương ứng, tạo khóa cache theo nội dung CV và tin, sau đó tìm kết quả đã lưu trong cache trước khi tính mới. Bộ máy so khớp nội bộ phân tích kỹ năng, kinh nghiệm, cấp bậc và tín hiệu tương thích; nếu có embedding của cả CV và tin, độ tương đồng ngữ nghĩa được sử dụng bổ sung. Dịch vụ Gemini tạo phần giải thích định tính; nếu dịch vụ này lỗi hoặc không khả dụng, hệ thống vẫn trả điểm, kỹ năng phù hợp/thiếu và nhận xét dự phòng do bộ máy nội bộ tạo. Kết quả được cache trong 24 giờ. Nếu thiếu nội dung CV hoặc thông tin công việc, hệ thống trả lỗi; kết quả chỉ có vai trò hỗ trợ tham khảo.
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-## 2.3.17. Chức năng Gợi ý việc làm phù hợp
+> **Hình 2.3.16. Giao diện phân tích mức độ phù hợp CV--việc làm** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-**Mục đích:** Đề xuất các tin tuyển dụng phù hợp với hồ sơ nghề nghiệp của ứng viên.
+*Bảng 2.3.16. Các thành phần trong giao diện Phân tích mức độ phù hợp*
 
-**Giao diện:** Trang việc làm phù hợp hiển thị các tin được xếp hạng kèm điểm hoặc dấu hiệu tương thích; ứng viên có thể xem chi tiết tin và chuyển sang luồng ứng tuyển.
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | CV selector | CV/phiên bản hiện tại | Chọn phiên bản CV hoặc cung cấp nội dung CV. |
+| 2 | Job selector/Textarea | Vị trí hiện tại | Chọn tin hoặc nhập nội dung công việc. |
+| 3 | Button | N/A | Yêu cầu phân tích. |
+| 4 | Score/Progress | Rỗng | Hiển thị điểm phù hợp và phân rã tiêu chí. |
+| 5 | List | Rỗng | Hiển thị kỹ năng phù hợp, còn thiếu và khuyến nghị. |
 
-**Dữ liệu được dùng:** `cv_embeddings`, `job_embeddings`, `job_postings`, `job_recommendations`, `applications`, `job_bookmarks`.
+**Dữ liệu được dùng:**
+*Bảng 2.3.16a. Từ điển dữ liệu chức năng Phân tích mức độ phù hợp*
 
-**Cách xử lý:** Tác vụ cập nhật gợi ý lấy embedding CV mới nhất của ứng viên và dùng tìm kiếm vector để lấy tối đa 40 tin tiềm năng. Hệ thống nạp chi tiết các tin, chỉ giữ tin đang phát hành, sau đó áp dụng bộ máy so khớp để tính điểm và lưu/cập nhật danh sách gợi ý. Khi truy vấn, hệ thống chỉ trả gợi ý của ứng viên hiện tại, áp dụng ngưỡng điểm tối thiểu (mặc định 50) và phân trang. Ứng viên có thể ghim/bỏ ghim các gợi ý để lưu vị trí cần theo dõi. Nếu ứng viên chưa có embedding CV hoặc không có tin tương tự, tác vụ kết thúc mà không tạo gợi ý mới. Ứng viên cũng có thể yêu cầu làm mới gợi ý; công việc tính toán được đưa qua cơ chế tác vụ nền.
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | cv_versions / cvs |  |  |  | X |
+| 2 | job_postings |  |  |  | X |
+| 3 | cv_embeddings / job_embeddings |  |  |  | X |
+| 4 | ai_match_results | X |  |  | X |
 
-## 2.3.18. Chức năng AI hỗ trợ cải thiện nội dung CV
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.16a. Sơ đồ hoạt động chức năng Phân tích mức độ phù hợp** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-**Mục đích:** Đưa ra đề xuất về cách diễn đạt, từ khóa và nội dung CV theo vị trí mục tiêu; ứng viên chủ động xem xét và áp dụng nội dung phù hợp.
+Yêu cầu phải có CV hợp lệ và mã tin hoặc văn bản công việc. Hệ thống chuẩn hóa nội dung, tạo khóa cache theo nội dung CV và tin, rồi dùng cache nếu còn kết quả. Bộ máy so khớp nội bộ đánh giá kỹ năng, kinh nghiệm và cấp bậc; độ tương đồng vector được bổ sung khi hai embedding đã có. Gemini tạo phần giải thích, nhưng nếu dịch vụ lỗi/quá hạn mức, hệ thống trả điểm và nội dung dự phòng của bộ máy nội bộ. Kết quả được cache 24 giờ. Khi yêu cầu gắn với hồ sơ ứng tuyển, kết quả phân tích được lưu cùng phiên bản CV và hồ sơ. Không có Domain Event riêng cho phân tích; lời gọi Gemini là xử lý đồng bộ và có fallback. Lỗi đầu vào 422, không tìm thấy dữ liệu 404, quota AI 429, dịch vụ AI không sẵn sàng 503.
 
-**Giao diện:** Trình biên soạn CV cung cấp trợ lý AI theo từng phần nội dung, cho phép nhập hoặc chọn nội dung cần hỗ trợ, chọn loại phần CV, ngôn ngữ và vị trí mục tiêu. Kết quả được hiển thị cạnh nội dung hiện tại để người dùng quyết định có áp dụng hay không.
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
 
-**Dữ liệu được dùng:** `cvs`, `cv_versions`, `ai_conversations`, `ai_messages`, `job_postings` (khi chọn vị trí mục tiêu).
+### 2.3.17. Chức năng gợi ý việc làm phù hợp
 
-**Cách xử lý:** Hệ thống kiểm tra nội dung và ngữ cảnh yêu cầu, chuẩn hóa loại nội dung, sau đó gửi văn bản cùng ngữ cảnh tùy chọn đến dịch vụ Gemini. Luồng cải thiện trực tiếp trả nội dung gợi ý cho giao diện; luồng gửi tin nhắn hội thoại kiểm tra hội thoại thuộc ứng viên hiện tại, lưu câu hỏi và phản hồi AI, đồng thời có thể sinh tiêu đề phù hợp cho hội thoại mới. Kết quả gồm nội dung cải thiện, từ khóa và thông tin đề xuất; hệ thống không tự ghi đè nội dung CV. Ứng viên chủ động xem xét và áp dụng phần gợi ý vào trình biên soạn. Nếu hội thoại không thuộc ứng viên hiện tại hoặc nội dung đầu vào rỗng, hệ thống từ chối xử lý.
 
-## 2.3.19. Chức năng Quản lý hội thoại AI
+**Mục đích:** Đề xuất các tin đang tuyển có nội dung gần với năng lực thể hiện trong CV ứng viên.
 
-**Mục đích:** Cho phép ứng viên lưu, xem lại, ghim và xóa các cuộc trao đổi với trợ lý AI.
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-**Giao diện:** Danh sách hội thoại hiển thị tiêu đề và thời điểm cập nhật; người dùng có thể mở nội dung, ghim/bỏ ghim, tạo cuộc trò chuyện mới hoặc xóa cuộc trò chuyện.
+> **Hình 2.3.17. Giao diện gợi ý việc làm phù hợp** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-**Dữ liệu được dùng:** `ai_conversations`, `ai_messages`, `cvs`.
+*Bảng 2.3.17. Các thành phần trong giao diện Gợi ý việc làm*
 
-**Cách xử lý:** Máy chủ tạo hội thoại gắn với ứng viên hiện tại, lưu tin nhắn theo thứ tự và cập nhật thời điểm hoạt động. Với hội thoại mới, tiêu đề có thể được sinh tự động từ ngữ cảnh và nội dung trao đổi. Khi ghim, bỏ ghim hoặc xóa, hệ thống xác nhận quyền sở hữu trước khi cập nhật; yêu cầu trên hội thoại của người khác bị từ chối. Danh sách và chi tiết hội thoại chỉ trả dữ liệu thuộc tài khoản hiện tại.
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Card/List | Trang đầu | Hiển thị tin, điểm và dấu hiệu tương thích. |
+| 2 | Button (icon) | Chưa ghim/đã ghim | Ghim hoặc bỏ ghim gợi ý. |
+| 3 | Button | N/A | Yêu cầu làm mới gợi ý. |
+| 4 | Pagination/Filter | Ngưỡng điểm 50 | Lọc theo điểm tối thiểu và chuyển trang. |
 
-## 2.3.20. Chức năng Quản lý tài khoản người dùng
+**Dữ liệu được dùng:**
+*Bảng 2.3.17a. Từ điển dữ liệu chức năng Gợi ý việc làm*
 
-**Mục đích:** Cho phép Admin tra cứu tài khoản và thay đổi trạng thái hoạt động nhằm quản lý quyền truy cập hệ thống.
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | cv_embeddings / job_embeddings |  |  |  | X |
+| 2 | job_postings |  |  |  | X |
+| 3 | job_recommendations | X | X |  | X |
 
-**Giao diện:** Bảng quản trị hiển thị danh sách người dùng, thông tin định danh, vai trò và trạng thái; Admin chọn trạng thái mới cho tài khoản.
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.17a. Sơ đồ hoạt động chức năng Gợi ý việc làm** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-**Dữ liệu được dùng:** `users`, `user_roles`, `roles`, `refresh_tokens`.
+Khi làm mới, API lên lịch Hangfire; worker lấy embedding CV mới nhất, tìm tối đa 40 việc tương tự bằng pgvector, chỉ giữ việc Published, chấm lại bằng bộ máy match và upsert gợi ý. Nếu chưa có embedding hoặc không có ứng viên việc làm, worker kết thúc có ghi log và không tạo kết quả mới. Truy vấn gợi ý chỉ trả dữ liệu của ứng viên hiện tại, mặc định lọc điểm từ 50 trở lên và giới hạn trang tối đa 100 mục. Ghim/bỏ ghim cập nhật trạng thái gợi ý theo quyền sở hữu. Không có Domain Event tổng quát; xử lý làm mới là tác vụ nền tách khỏi request đọc.
 
-**Cách xử lý:** Hệ thống truy vấn danh sách tài khoản theo từ khóa, vai trò hoặc trạng thái rồi phân trang. Khi đổi trạng thái, hệ thống xác thực giá trị mới, kiểm tra tài khoản tồn tại và không cho phép lặp lại trạng thái hiện tại. Tài khoản bị khóa sẽ bị thu hồi các Refresh Token chưa thu hồi trong cùng giao dịch để ngăn tiếp tục sử dụng phiên cũ. Hệ thống không cho khóa hoặc vô hiệu hóa Admin cuối cùng còn hoạt động. Nếu vi phạm các điều kiện này, thao tác bị từ chối và trạng thái tài khoản không thay đổi.
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
 
-## 2.3.21. Chức năng Quản lý danh mục dùng chung
+### 2.3.18. Chức năng AI hỗ trợ cải thiện nội dung CV
 
-**Mục đích:** Cho phép Admin duy trì các dữ liệu nền được dùng khi tạo hồ sơ CV, tin tuyển dụng và bộ lọc tìm kiếm.
 
-**Giao diện:** Khu vực danh mục cho phép xem, tìm kiếm, phân trang, tạo mới hoặc cập nhật nhóm ngành, ngành nghề, kỹ năng, tỉnh/thành phố và phường/xã. Các biểu mẫu cho phép bật/tắt trạng thái hoạt động khi phù hợp.
+**Mục đích:** Đưa ra đề xuất về cách diễn đạt, từ khóa hoặc nội dung của từng phần CV theo vị trí mục tiêu.
 
-**Dữ liệu được dùng:** `industry_groups`, `industries`, `skills`, `provinces`, `wards`, cùng các bảng nghiệp vụ tham chiếu danh mục.
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-**Cách xử lý:** Admin truy vấn danh mục theo từ khóa, nhóm cha, trạng thái và phân trang. Khi tạo hoặc cập nhật, hệ thống kiểm tra dữ liệu bắt buộc, tính duy nhất của tên/mã và quan hệ phân cấp; với tỉnh/thành phố và phường/xã, hệ thống kiểm tra quan hệ địa giới. Danh mục trạng thái không hoạt động được ẩn khỏi các truy vấn công khai dành cho việc tạo tin và lọc, trong khi thông tin lịch sử vẫn được giữ để bảo toàn liên kết dữ liệu.
+> **Hình 2.3.18. Giao diện AI hỗ trợ cải thiện nội dung CV** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-## 2.3.22. Chức năng Thống kê tổng quan quản trị
+*Bảng 2.3.18. Các thành phần trong giao diện AI hỗ trợ CV*
 
-**Mục đích:** Cung cấp cho Admin số liệu tổng quan về doanh nghiệp, tài khoản, tin tuyển dụng và hồ sơ ứng tuyển trong khoảng thời gian được chọn.
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Textarea/Editor | Nội dung phần CV | Nhập nội dung cần đề xuất cải thiện. |
+| 2 | Dropdown | EXPERIENCE | Chọn loại phần CV để tạo ngữ cảnh. |
+| 3 | Job selector | Không chọn | Chọn vị trí mục tiêu nếu cần. |
+| 4 | Dropdown | Tiếng Việt | Chọn ngôn ngữ đầu ra. |
+| 5 | Button | N/A | Gửi yêu cầu cải thiện. |
+| 6 | Diff/Preview panel | Rỗng | So sánh và tự quyết định áp dụng đề xuất. |
 
-**Giao diện:** Bảng điều khiển quản trị hiển thị tổng số tài khoản (kèm số mới, hoạt động và bị khóa), doanh nghiệp (chờ xác minh, đã xác minh, bị từ chối), tin tuyển dụng (chờ duyệt, đang mở, hết hạn, đã đóng) và hồ sơ (mới, phỏng vấn, bị từ chối) trong khoảng thời gian được chọn.
+**Dữ liệu được dùng:**
+*Bảng 2.3.18a. Từ điển dữ liệu chức năng AI hỗ trợ CV*
 
-**Dữ liệu được dùng:** `companies`, `users`, `job_postings`, `applications`.
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | cv_versions / job_postings |  |  |  | X |
+| 2 | ai_conversations | X | X |  | X |
+| 3 | ai_messages | X |  |  | X |
 
-**Cách xử lý:** Giao diện gửi tùy chọn thời điểm bắt đầu và kết thúc. Nếu không truyền, máy chủ mặc định thời điểm kết thúc là hiện tại và thời điểm bắt đầu lùi 30 ngày. Hệ thống từ chối khoảng thời gian có ngày bắt đầu sau ngày kết thúc, sau đó truy vấn và tổng hợp số liệu tài khoản, doanh nghiệp, tin tuyển dụng và hồ sơ ứng tuyển. Kết quả bao gồm cả thời gian áp dụng để giao diện hiển thị phạm vi thống kê.
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.18a. Sơ đồ hoạt động chức năng AI hỗ trợ cải thiện CV** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-## 2.3.23. Chức năng Thông báo
+Hệ thống chuẩn hóa loại phần CV, văn bản, ngôn ngữ và vị trí mục tiêu rồi gọi Gemini. Kết quả gồm nội dung cải thiện, từ khóa và giải thích; ứng dụng hiển thị để ứng viên chủ động áp dụng, hệ thống không tự ghi đè nội dung CV. Ở luồng chat, câu hỏi và trả lời được lưu thành hai bản ghi tin nhắn; tiêu đề hội thoại mới có thể được tạo từ ngữ cảnh phản hồi. Luồng streaming trả dữ liệu dần qua SSE. Dịch vụ có xử lý hạn mức và fallback theo loại yêu cầu; lỗi được chuyển thành 429 hoặc 503 khi phù hợp. Không phát Domain Event nghiệp vụ riêng.
 
-**Mục đích:** Thông báo cho người dùng về các sự kiện liên quan đến ứng tuyển, tin tuyển dụng, doanh nghiệp và hoạt động hệ thống; hỗ trợ theo dõi thông báo đã đọc/chưa đọc.
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
 
-**Giao diện:** Trung tâm thông báo hiển thị danh sách, số thông báo chưa đọc và thao tác đánh dấu một hoặc tất cả thông báo đã đọc, cũng như xóa thông báo.
+### 2.3.19. Chức năng quản lý hội thoại AI
 
-**Dữ liệu được dùng:** `notifications`, `users`, `companies`, `job_postings`, `applications`.
 
-**Cách xử lý:** Nghiệp vụ phát sinh tạo thông báo gắn với người nhận và tài nguyên liên quan; thông báo có thể được gửi theo người dùng, vai trò hoặc nhóm doanh nghiệp. SignalR chuyển sự kiện đến các kết nối thuộc nhóm được phép. Khi mở trung tâm, máy chủ truy vấn thông báo của tài khoản hiện tại và số lượng chưa đọc. Thao tác đánh dấu đã đọc hoặc xóa chỉ áp dụng lên thông báo mà người dùng có quyền truy cập. Khi mất kết nối thời gian thực, thông báo đã lưu vẫn có thể được truy vấn lại từ danh sách.
+**Mục đích:** Cho phép ứng viên lưu, tra cứu, ghim và xóa các hội thoại hỗ trợ CV.
 
-## 2.3.24. Chức năng Danh mục ngành nghề công khai
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-**Mục đích:** Cung cấp nhóm ngành và ngành nghề đang hoạt động để ứng viên và nhà tuyển dụng sử dụng trong tìm kiếm, hồ sơ và tin tuyển dụng.
+> **Hình 2.3.19. Giao diện quản lý hội thoại AI** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
 
-**Giao diện:** Các bộ chọn ngành nghề có thể hiển thị danh sách nhóm ngành kèm ngành trực thuộc, hoặc danh sách ngành theo từ khóa.
+*Bảng 2.3.19. Các thành phần trong giao diện Hội thoại AI*
 
-**Dữ liệu được dùng:** `industry_groups`, `industries`.
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Conversation list | Hội thoại gần nhất | Chọn hội thoại thuộc tài khoản hiện tại. |
+| 2 | Message panel | Tin nhắn mới nhất | Hiển thị lịch sử trao đổi. |
+| 3 | Textarea | Rỗng | Nhập câu hỏi/nội dung yêu cầu. |
+| 4 | Button | N/A | Gửi tin nhắn tới trợ lý. |
+| 5 | Button (icon) | Chưa ghim | Ghim/bỏ ghim hoặc xóa hội thoại. |
 
-**Cách xử lý:** Giao diện yêu cầu danh mục công khai; máy chủ chỉ trả các nhóm/ngành hoạt động, có thể lọc theo nhóm cha và từ khóa, sau đó phân trang khi truy vấn danh sách lớn. Các mã ngành không tồn tại hoặc không còn hoạt động không được chấp nhận trong nghiệp vụ tạo/cập nhật tin tuyển dụng.
+**Dữ liệu được dùng:**
+*Bảng 2.3.19a. Từ điển dữ liệu chức năng Quản lý hội thoại AI*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | ai_conversations | X | X | X | X |
+| 2 | ai_messages | X |  | X | X |
+| 3 | cvs |  |  |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.19a. Sơ đồ hoạt động chức năng Quản lý hội thoại AI** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+Hệ thống gắn hội thoại với ứng viên hiện tại và kiểm tra quyền sở hữu trong các thao tác đọc, gửi, ghim hoặc xóa. Nội dung tin nhắn không được để trống. Khi gửi, tin người dùng được lưu, Gemini được gọi đồng bộ, rồi phản hồi và metadata được lưu; hội thoại được cập nhật thời điểm hoạt động. Nếu dịch vụ AI lỗi, thao tác gửi có thể trả lỗi đã ánh xạ; dữ liệu được bảo vệ bởi quyền sở hữu và middleware lỗi chung. Không có Domain Event chuyên biệt.
+
+## Thiết kế chức năng dành cho Quản trị viên
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+
+### 2.3.20. Chức năng quản lý trạng thái tài khoản người dùng
+
+
+**Mục đích:** Cho phép Admin tra cứu người dùng và khóa, mở khóa hoặc vô hiệu hóa tài khoản theo trạng thái hỗ trợ.
+
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+
+> **Hình 2.3.20. Giao diện quản lý tài khoản người dùng** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+*Bảng 2.3.20. Các thành phần trong giao diện Quản lý tài khoản*
+
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Textbox | Rỗng | Tìm theo tiêu chí được API hỗ trợ. |
+| 2 | Dropdown | Tất cả | Lọc theo vai trò hoặc trạng thái. |
+| 3 | Table/Pagination | Trang đầu | Hiển thị danh sách tài khoản. |
+| 4 | Status dropdown | Trạng thái hiện tại | Chọn Active, Locked hoặc Inactive. |
+| 5 | Button | N/A | Lưu trạng thái tài khoản. |
+
+**Dữ liệu được dùng:**
+*Bảng 2.3.20a. Từ điển dữ liệu chức năng Quản lý tài khoản*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | users |  | X |  | X |
+| 2 | user_roles / roles |  |  |  | X |
+| 3 | refresh_tokens |  | X |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.20a. Sơ đồ hoạt động chức năng Quản lý tài khoản** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+API truy vấn hỗ trợ tìm kiếm, lọc vai trò/trạng thái và phân trang. Khi cập nhật trạng thái, hệ thống từ chối trạng thái không đổi và bảo vệ Admin hoạt động cuối cùng khỏi bị khóa/vô hiệu hóa. Khi khóa tài khoản, toàn bộ Refresh Token chưa thu hồi bị thu hồi trong giao dịch. Lỗi dữ liệu trả 422, tài khoản không tồn tại 404, trạng thái không hợp lệ hoặc xung đột trả 409. Thay đổi được lưu đồng bộ; không dùng Domain Event riêng.
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+
+### 2.3.21. Chức năng quản lý danh mục ngành nghề, kỹ năng và địa điểm
+
+
+**Mục đích:** Cho phép Admin duy trì dữ liệu nền được dùng trong CV, tin tuyển dụng và bộ lọc tìm kiếm.
+
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+
+> **Hình 2.3.21. Giao diện quản lý danh mục dùng chung** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+*Bảng 2.3.21. Các thành phần trong giao diện Quản lý danh mục*
+
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Tabs | Nhóm ngành | Chọn nhóm ngành, ngành, kỹ năng hoặc địa điểm. |
+| 2 | Textbox | Rỗng | Tìm hoặc nhập tên/mã danh mục. |
+| 3 | Dropdown | Nhóm/trạng thái hiện tại | Chọn nhóm cha hoặc trạng thái. |
+| 4 | Table/Pagination | Trang đầu | Hiển thị dữ liệu danh mục. |
+| 5 | Dialog/Form | Giá trị hiện tại | Tạo hoặc cập nhật bản ghi. |
+| 6 | Toggle | Đang hoạt động | Bật/tắt danh mục theo mô hình từng loại. |
+
+**Dữ liệu được dùng:**
+*Bảng 2.3.21a. Từ điển dữ liệu chức năng Quản lý danh mục*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | industry_groups | X | X |  | X |
+| 2 | industries | X | X |  | X |
+| 3 | skills | X | X |  | X |
+| 4 | provinces | X | X |  | X |
+| 5 | wards | X | X |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.21a. Sơ đồ hoạt động chức năng Quản lý danh mục** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+Admin truy vấn theo nhóm cha, từ khóa, trạng thái và phân trang. Khi tạo/cập nhật, validator kiểm tra tên/mã, tính duy nhất và quan hệ phân cấp; cập nhật phường phải gắn với tỉnh hợp lệ. Trạng thái inactive/hidden loại danh mục khỏi truy vấn công khai nhưng không xóa bản ghi đang được nghiệp vụ khác tham chiếu. Các loại danh mục không hỗ trợ xóa vật lý không được mô tả thao tác xóa. Lỗi validation là 422, bản ghi không tồn tại 404, trùng tên/mã 409.
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+
+### 2.3.22. Chức năng thống kê tổng quan quản trị
+
+
+**Mục đích:** Cung cấp cho Admin số liệu tổng hợp về người dùng, doanh nghiệp, tin tuyển dụng và hồ sơ ứng tuyển theo khoảng thời gian.
+
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+
+> **Hình 2.3.22. Giao diện thống kê tổng quan quản trị** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+*Bảng 2.3.22. Các thành phần trong giao diện Thống kê quản trị*
+
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Date picker | 30 ngày gần nhất | Chọn thời điểm bắt đầu/kết thúc. |
+| 2 | Summary cards | Khoảng ngày mặc định | Tổng người dùng, công ty, tin và hồ sơ theo nhóm trạng thái. |
+| 3 | Chart/Table | Theo dữ liệu trả về | Trình bày thống kê tổng hợp. |
+
+**Dữ liệu được dùng:**
+*Bảng 2.3.22a. Từ điển dữ liệu chức năng Thống kê quản trị*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | users |  |  |  | X |
+| 2 | companies |  |  |  | X |
+| 3 | job_postings |  |  |  | X |
+| 4 | applications |  |  |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.22a. Sơ đồ hoạt động chức năng Thống kê quản trị** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+Endpoint chỉ dành cho Admin. Nếu không truyền mốc thời gian, `to` mặc định hiện tại và `from` mặc định lùi 30 ngày. Máy chủ từ chối `from > to`, rồi repository tổng hợp số lượng theo các nhóm trạng thái. Kết quả bao gồm khoảng ngày đã áp dụng. Truy vấn đồng bộ và chỉ đọc; validation trả HTTP 422, quyền sai trả 403.
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+## Chức năng dành cho người dùng hệ thống
+
+### 2.3.23. Chức năng thông báo
+
+
+**Mục đích:** Giúp người dùng nhận và quản lý thông báo phát sinh từ các nghiệp vụ tuyển dụng, doanh nghiệp và tài khoản.
+
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+
+> **Hình 2.3.23. Giao diện trung tâm thông báo** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+*Bảng 2.3.23. Các thành phần trong giao diện Thông báo*
+
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Bell/Badge | Số chưa đọc | Hiển thị số thông báo chưa đọc. |
+| 2 | Notification list | Mới nhất trước | Hiển thị nội dung và liên kết tài nguyên. |
+| 3 | Button | Chưa đọc | Đánh dấu một thông báo đã đọc. |
+| 4 | Button | N/A | Đánh dấu tất cả thông báo đã đọc. |
+| 5 | Button (icon) | N/A | Xóa thông báo thuộc người dùng. |
+| 6 | SignalR connection | Kết nối tự động | Nhận sự kiện realtime khi đang trực tuyến. |
+
+**Dữ liệu được dùng:**
+*Bảng 2.3.23a. Từ điển dữ liệu chức năng Thông báo*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | notifications | X | X | X | X |
+| 2 | users / companies / job_postings / applications |  |  |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.23a. Sơ đồ hoạt động chức năng Thông báo** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+Nghiệp vụ tạo notification ghi người nhận, loại, nội dung và tài nguyên liên quan vào CSDL; Hangfire có thể phát lô notification qua SignalR, đồng thời một số luồng gửi realtime trực tiếp sau commit. SignalR Hub đưa kết nối vào nhóm theo vai trò và membership công ty đã xác thực. Trung tâm thông báo truy vấn danh sách và số chưa đọc của người dùng hiện tại. Đánh dấu một thông báo yêu cầu đúng người nhận; đánh dấu tất cả giới hạn theo user; xóa cũng kiểm tra quyền sở hữu. Khi realtime lỗi, bản ghi đã lưu vẫn có thể truy vấn lại. Middleware trả lỗi 401/403/404 theo trường hợp và kèm correlationId.
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+## Chức năng công khai dùng trong biểu mẫu và bộ lọc
+
+### 2.3.24. Chức năng cung cấp danh mục ngành nghề công khai
+
+
+**Mục đích:** Cung cấp nhóm ngành và ngành nghề đang hoạt động cho các biểu mẫu và bộ lọc tìm kiếm.
+
+**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+
+> **Hình 2.3.24. Giao diện chọn nhóm ngành và ngành nghề** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+*Bảng 2.3.24. Các thành phần trong giao diện Danh mục ngành nghề*
+
+| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
+| --- | --- | --- | --- |
+| 1 | Dropdown/Tree select | Chưa chọn | Chọn nhóm ngành hoặc ngành trực thuộc. |
+| 2 | Textbox | Rỗng | Tìm ngành theo từ khóa. |
+| 3 | Pagination | Trang 1 | Điều hướng danh sách khi có phân trang. |
+
+**Dữ liệu được dùng:**
+*Bảng 2.3.24a. Từ điển dữ liệu chức năng Danh mục ngành nghề*
+
+| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
+| --- | --- | --- | --- | --- | --- |
+| 1 | industry_groups |  |  |  | X |
+| 2 | industries |  |  |  | X |
+
+**Cách xử lý và sơ đồ hoạt động:**
+> **Hình 2.3.24a. Sơ đồ hoạt động chức năng Danh mục ngành nghề** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+
+API công khai truy vấn nhóm/ngành đang hoạt động, có thể lọc theo nhóm cha và từ khóa; kết quả được phân trang ở các truy vấn danh sách. Mã ngành không hoạt động hoặc không tồn tại không được chấp nhận trong thao tác tạo/cập nhật tin. Đây là chức năng chỉ đọc, đồng bộ; lỗi tham số được trả theo envelope API chung.
+
+Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
