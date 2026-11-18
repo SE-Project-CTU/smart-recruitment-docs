@@ -1,15 +1,15 @@
-## Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp
+**Phân hệ: Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
 
-### 2.3.12. Chức năng quản lý doanh nghiệp và thành viên
+### Chức năng quản lý doanh nghiệp và thành viên
 
 
 **Mục đích:** Cho phép nhà tuyển dụng tạo và quản lý hồ sơ doanh nghiệp, mời thành viên và kiểm soát tư cách thành viên phục vụ hoạt động tuyển dụng.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Hình 2.3.12. Giao diện quản lý doanh nghiệp và thành viên** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Giao diện: quản lý doanh nghiệp và thành viên** — [Vị trí chèn ảnh mockup/Figma].
 
-*Bảng 2.3.12. Các thành phần trong giao diện Quản lý doanh nghiệp*
+*Các thành phần trong giao diện Quản lý doanh nghiệp*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
@@ -22,7 +22,7 @@
 | 7 | Table/Button group | Yêu cầu chờ xử lý | Xét duyệt hoặc từ chối yêu cầu gia nhập. |
 
 **Dữ liệu được dùng:**
-*Bảng 2.3.12a. Từ điển dữ liệu chức năng Quản lý doanh nghiệp*
+*Từ điển dữ liệu chức năng Quản lý doanh nghiệp*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |
@@ -34,24 +34,24 @@
 | 6 | notifications | X |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
-> **Hình 2.3.12a. Sơ đồ hoạt động chức năng Quản lý doanh nghiệp và thành viên** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Sơ đồ hoạt động: Quản lý doanh nghiệp và thành viên** — [Vị trí chèn sơ đồ hoạt động].
 
 Khi tạo doanh nghiệp, hệ thống kiểm tra mã số thuế chưa tồn tại, giới hạn tối đa năm công ty do một Recruiter sở hữu và xác minh logo ảnh thuộc người dùng; trong giao dịch tạo công ty, người tạo được gán Owner đang hoạt động. Khi cập nhật, chỉ Owner đang hoạt động được phép sửa. Owner gửi lời mời tới email có tài khoản Recruiter, lời mời chờ khác không được trùng và thời hạn phải ở tương lai (mặc định bảy ngày). Người nhận chấp nhận hoặc từ chối lời mời; chấp nhận tạo membership và thông báo cho người mời. Người dùng cũng có thể gửi yêu cầu gia nhập; không cho tạo yêu cầu chờ trùng hoặc gửi khi đã là thành viên hoạt động. Owner duyệt yêu cầu đang Pending; nếu chấp nhận, hệ thống tạo/cập nhật membership Recruiter, nếu từ chối chỉ cập nhật trạng thái yêu cầu. Thông báo được lưu trong giao dịch và gửi thời gian thực sau commit; lỗi dispatch không đảo ngược kết quả nghiệp vụ.
 
-## Chức năng dành cho Khách truy cập/Ứng viên
+Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
-Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+**Phân hệ: Chức năng dành cho Khách truy cập/Ứng viên**
 
-### 2.3.13. Chức năng khám phá, theo dõi doanh nghiệp và danh sách tuyển dụng
+### Chức năng khám phá, theo dõi doanh nghiệp và danh sách tuyển dụng
 
 
 **Mục đích:** Giúp người dùng tìm hiểu thông tin công khai của doanh nghiệp, xem vị trí đang tuyển và theo dõi công ty quan tâm.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Hình 2.3.13. Giao diện khám phá và theo dõi doanh nghiệp** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Giao diện: khám phá và theo dõi doanh nghiệp** — [Vị trí chèn ảnh mockup/Figma].
 
-*Bảng 2.3.13. Các thành phần trong giao diện Khám phá doanh nghiệp*
+*Các thành phần trong giao diện Khám phá doanh nghiệp*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
@@ -63,7 +63,7 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 6 | Pagination | Trang 1 | Chuyển trang danh sách doanh nghiệp/tin. |
 
 **Dữ liệu được dùng:**
-*Bảng 2.3.13a. Từ điển dữ liệu chức năng Khám phá doanh nghiệp*
+*Từ điển dữ liệu chức năng Khám phá doanh nghiệp*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |
@@ -73,24 +73,24 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 4 | company_memberships / company_join_requests | X |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
-> **Hình 2.3.13a. Sơ đồ hoạt động chức năng Khám phá doanh nghiệp** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Sơ đồ hoạt động: Khám phá doanh nghiệp** — [Vị trí chèn sơ đồ hoạt động].
 
 Hệ thống truy vấn danh sách và chi tiết công khai, chỉ trả tin tuyển dụng đang được phát hành. Khi theo dõi/bỏ theo dõi, máy chủ yêu cầu tài khoản đã xác thực và chỉ tác động lên liên kết của người dùng hiện tại. Nếu chưa đăng nhập, giao diện yêu cầu đăng nhập trước thao tác ghi. Yêu cầu gia nhập chuyển sang luồng xét duyệt ở chức năng Quản lý doanh nghiệp. Lỗi không tìm thấy công ty trả 404; thao tác không có quyền trả 403.
 
-## Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp
+Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
-Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+**Phân hệ: Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
 
-### 2.3.14. Chức năng quản lý ứng viên theo tin tuyển dụng
+### Chức năng quản lý ứng viên theo tin tuyển dụng
 
 
 **Mục đích:** Cho phép Recruiter thuộc doanh nghiệp xem hồ sơ đã nhận, đọc CV/thư giới thiệu và cập nhật tiến trình tuyển dụng.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Hình 2.3.14. Giao diện quản lý ứng viên theo tin tuyển dụng** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Giao diện: quản lý ứng viên theo tin tuyển dụng** — [Vị trí chèn ảnh mockup/Figma].
 
-*Bảng 2.3.14. Các thành phần trong giao diện Quản lý ứng viên*
+*Các thành phần trong giao diện Quản lý ứng viên*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 6 | Pagination | Trang 1 | Chuyển trang hồ sơ. |
 
 **Dữ liệu được dùng:**
-*Bảng 2.3.14a. Từ điển dữ liệu chức năng Quản lý ứng viên*
+*Từ điển dữ liệu chức năng Quản lý ứng viên*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |
@@ -113,24 +113,24 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 5 | notifications | X |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
-> **Hình 2.3.14a. Sơ đồ hoạt động chức năng Quản lý ứng viên** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Sơ đồ hoạt động: Quản lý ứng viên** — [Vị trí chèn sơ đồ hoạt động].
 
 Máy chủ xác nhận tài khoản có vai trò Recruiter và membership đang hoạt động tại công ty sở hữu tin trước khi trả hồ sơ. Khi đổi trạng thái, validator chỉ nhận Reviewing, Shortlisted, Interviewing, Offered, Hired, Rejected hoặc Withdrawn; ghi chú tối đa 2.000 ký tự. Thực thể hồ sơ kiểm tra chuyển trạng thái theo state machine; cập nhật hồ sơ, lịch sử và tạo thông báo được thực hiện trong giao dịch. Sau commit, Hangfire xếp phát thông báo thời gian thực; lỗi xếp tác vụ được ghi log, không làm mất thay đổi trạng thái. Xung đột đồng thời trả 409; lỗi quyền 403, không tìm thấy hồ sơ 404, validation 422.
 
-## Chức năng dành cho Quản trị viên
+Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
-Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+**Phân hệ: Chức năng dành cho Quản trị viên**
 
-### 2.3.15. Chức năng xác minh doanh nghiệp và kiểm duyệt tin tuyển dụng
+### Chức năng xác minh doanh nghiệp và kiểm duyệt tin tuyển dụng
 
 
 **Mục đích:** Cho phép Admin xác minh yêu cầu của doanh nghiệp và duyệt các tin tuyển dụng đang chờ trước khi hiển thị công khai.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Hình 2.3.15. Giao diện xác minh doanh nghiệp và kiểm duyệt tin** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Giao diện: xác minh doanh nghiệp và kiểm duyệt tin** — [Vị trí chèn ảnh mockup/Figma].
 
-*Bảng 2.3.15. Các thành phần trong giao diện Kiểm duyệt*
+*Các thành phần trong giao diện Kiểm duyệt*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
@@ -141,7 +141,7 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 5 | Textarea | Rỗng | Nhập lý do từ chối xác minh doanh nghiệp, 5--1.000 ký tự. |
 
 **Dữ liệu được dùng:**
-*Bảng 2.3.15a. Từ điển dữ liệu chức năng Kiểm duyệt*
+*Từ điển dữ liệu chức năng Kiểm duyệt*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |
@@ -151,8 +151,8 @@ Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp,
 | 4 | notifications | X |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
-> **Hình 2.3.15a. Sơ đồ hoạt động chức năng Kiểm duyệt** — [Vị trí chèn ảnh mockup/Figma hoặc sơ đồ hoạt động].
+> **Sơ đồ hoạt động: Kiểm duyệt** — [Vị trí chèn sơ đồ hoạt động].
 
 Admin chỉ có thể duyệt tin đang PendingReview; thao tác làm đổi trạng thái sang Published hoặc Rejected và lặp lại trên tin đã duyệt bị trả 409. Với doanh nghiệp, kết quả chỉ có thể là Verified hoặc Rejected; từ chối bắt buộc có lý do 5--1.000 ký tự. Hệ thống cập nhật trạng thái và thời điểm xác minh, tạo thông báo cho Owner trong giao dịch, sau đó thử phát SignalR. Lỗi phát realtime không làm đảo ngược quyết định đã lưu. Yêu cầu không đủ quyền trả 403, đối tượng không tồn tại trả 404, dữ liệu sai trả 422.
 
-Lỗi API được trả dưới dạng JSON gồm `error` (mã, thông điệp, chi tiết và dữ liệu tùy chọn) cùng `correlationId`, kèm header `X-Correlation-ID`. Middleware ánh xạ lỗi theo HTTP 400, 401, 403, 404, 409, 410, 413, 415, 422, 429 hoặc 503 tùy loại; lỗi chưa phân loại trả 500. Cấu trúc hiện tại không phải RFC 7807 Problem Details. Chỉ các tác vụ nền hoặc thông báo thời gian thực được nêu rõ trong luồng mới chạy bất đồng bộ; mã nguồn không phát Domain Event chuyên biệt cho chức năng này.
+Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
