@@ -114,16 +114,16 @@ Khi tạo tin, validator kiểm tra trường bắt buộc, hạn đăng, mức 
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
-### Chức năng Ứng tuyển và theo dõi hồ sơ
+### Chức năng ứng tuyển và theo dõi hồ sơ
 
 
 **Mục đích:** Cho phép ứng viên nộp hồ sơ cho tin còn hiệu lực và theo dõi kết quả; cho phép nhà tuyển dụng tiếp nhận hồ sơ ứng tuyển.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Giao diện: Ứng tuyển và theo dõi hồ sơ** — [Vị trí chèn ảnh mockup/Figma].
+> **Giao diện: ứng tuyển và theo dõi hồ sơ** — [Vị trí chèn ảnh mockup/Figma].
 
-*Các thành phần trong giao diện Ứng tuyển*
+*Các thành phần trong giao diện Ứng tuyển và theo dõi hồ sơ*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 | 6 | Status dropdown | Trạng thái hiện tại | Recruiter thay đổi trạng thái hồ sơ trong luồng hợp lệ. |
 
 **Dữ liệu được dùng:**
-*Từ điển dữ liệu chức năng Ứng tuyển*
+*Từ điển dữ liệu chức năng Ứng tuyển và theo dõi hồ sơ*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |

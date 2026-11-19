@@ -93,16 +93,15 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 **Dữ liệu được dùng:**
 *Từ điển dữ liệu chức năng AI hỗ trợ CV*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | cv_versions / job_postings |  |  |  | X |
-| 2 | ai_conversations | X | X |  | X |
-| 3 | ai_messages | X |  |  | X |
+| STT | Tên bảng | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | cv_versions |  |  |  | X |
+| 2 | job_postings |  |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
 > **Sơ đồ hoạt động: AI hỗ trợ cải thiện CV** — [Vị trí chèn sơ đồ hoạt động].
 
-Hệ thống chuẩn hóa loại phần CV, văn bản, ngôn ngữ và vị trí mục tiêu rồi gọi Gemini. Kết quả gồm nội dung cải thiện, từ khóa và giải thích; ứng dụng hiển thị để ứng viên chủ động áp dụng, hệ thống không tự ghi đè nội dung CV. Ở luồng chat, câu hỏi và trả lời được lưu thành hai bản ghi tin nhắn; tiêu đề hội thoại mới có thể được tạo từ ngữ cảnh phản hồi. Luồng streaming trả dữ liệu dần qua SSE. Dịch vụ có xử lý hạn mức và fallback theo loại yêu cầu; lỗi được chuyển thành 429 hoặc 503 khi phù hợp. Không phát Domain Event nghiệp vụ riêng.
+Máy chủ chuẩn hóa loại phần CV, văn bản, ngôn ngữ và vị trí mục tiêu rồi gọi Gemini (hỗ trợ cả phản hồi hoàn chỉnh qua API thông thường lẫn luồng streaming ký tự qua Server-Sent Events). Kết quả gồm nội dung cải thiện, từ khóa và giải thích; ứng dụng hiển thị để ứng viên chủ động áp dụng, hệ thống không tự ghi đè nội dung CV. Ở chức năng quản lý hội thoại AI (mục riêng), câu hỏi và phản hồi mới được lưu thành các bản ghi tin nhắn tương ứng. Dịch vụ AI có cơ chế kiểm tra hạn mức và fallback theo loại yêu cầu; lỗi được chuyển thành 429 hoặc 503 khi phù hợp. Không phát Domain Event nghiệp vụ riêng.
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
