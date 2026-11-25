@@ -62,11 +62,12 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 | 1 | cv_embeddings / job_embeddings |  |  |  | X |
 | 2 | job_postings |  |  |  | X |
 | 3 | job_recommendations | X | X |  | X |
+| 4 | cvs / cv_versions |  |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
 > **Sơ đồ hoạt động: Gợi ý việc làm** — [Vị trí chèn sơ đồ hoạt động].
 
-Khi làm mới, API lên lịch Hangfire; worker lấy embedding CV mới nhất, tìm tối đa 40 việc tương tự bằng pgvector, chỉ giữ việc Published, chấm lại bằng bộ máy match và upsert gợi ý. Nếu chưa có embedding hoặc không có ứng viên việc làm, worker kết thúc có ghi log và không tạo kết quả mới. Truy vấn gợi ý chỉ trả dữ liệu của ứng viên hiện tại, mặc định lọc điểm từ 50 trở lên và giới hạn trang tối đa 100 mục. Ghim/bỏ ghim cập nhật trạng thái gợi ý theo quyền sở hữu. Không có Domain Event tổng quát; xử lý làm mới là tác vụ nền tách khỏi request đọc.
+Khi làm mới, API lên lịch Hangfire; worker lấy embedding CV mới nhất, tìm tối đa 40 việc tương tự bằng pgvector, chỉ giữ việc Published, chấm lại bằng bộ máy match và upsert gợi ý. Nếu chưa có embedding hoặc không có ứng viên việc làm, worker kết thúc có ghi log và không tạo kết quả mới. Truy vấn gợi ý chỉ trả dữ liệu của ứng viên hiện tại, mặc định lọc điểm từ 50 trở lên và giới hạn trang tối đa 100 mục. Ghim/bỏ ghim cập nhật trạng thái gợi ý theo quyền sở hữu. Ngoài luồng gợi ý nền, hệ thống còn hỗ trợ truy vấn xếp hạng việc làm tức thời (`rerank-realtime`) từ nội dung hoặc phiên bản CV: nạp tối đa 500 tin Published, chấm điểm đồng bộ bằng bộ máy match kết hợp điểm vector kinh nghiệm và trả về danh sách sắp xếp giảm dần theo mức độ phù hợp. Không có Domain Event tổng quát; xử lý làm mới là tác vụ nền tách khỏi request đọc.
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
@@ -101,7 +102,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 **Cách xử lý và sơ đồ hoạt động:**
 > **Sơ đồ hoạt động: AI hỗ trợ cải thiện CV** — [Vị trí chèn sơ đồ hoạt động].
 
-Máy chủ chuẩn hóa loại phần CV, văn bản, ngôn ngữ và vị trí mục tiêu rồi gọi Gemini (hỗ trợ cả phản hồi hoàn chỉnh qua API thông thường lẫn luồng streaming ký tự qua Server-Sent Events). Kết quả gồm nội dung cải thiện, từ khóa và giải thích; ứng dụng hiển thị để ứng viên chủ động áp dụng, hệ thống không tự ghi đè nội dung CV. Ở chức năng quản lý hội thoại AI (mục riêng), câu hỏi và phản hồi mới được lưu thành các bản ghi tin nhắn tương ứng. Dịch vụ AI có cơ chế kiểm tra hạn mức và fallback theo loại yêu cầu; lỗi được chuyển thành 429 hoặc 503 khi phù hợp. Không phát Domain Event nghiệp vụ riêng.
+Máy chủ chuẩn hóa loại phần CV, văn bản, ngôn ngữ và vị trí mục tiêu rồi gọi Gemini (hỗ trợ phản hồi hoàn chỉnh qua API thông thường, luồng streaming ký tự qua Server-Sent Events và tối ưu hàng loạt nhiều mục CV trong một yêu cầu duy nhất). Ở chế độ hàng loạt, hệ thống chắt lọc ngữ cảnh công việc một lần cho toàn bộ các mục và kiểm tra chỉ dẫn bổ sung không vượt quá 2.000 ký tự. Kết quả gồm nội dung cải thiện, từ khóa và giải thích được lưu cache (24 giờ cho yêu cầu đơn lẻ, 12 giờ cho yêu cầu hàng loạt khi không phải kết quả fallback); ứng dụng hiển thị để ứng viên chủ động áp dụng, hệ thống không tự ghi đè nội dung CV. Ở chức năng quản lý hội thoại AI (mục riêng), câu hỏi và phản hồi mới được lưu thành các bản ghi tin nhắn tương ứng. Dịch vụ AI có cơ chế kiểm tra hạn mức và fallback theo loại yêu cầu; lỗi được chuyển thành 429 hoặc 503 khi phù hợp. Không phát Domain Event nghiệp vụ riêng.
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
@@ -253,7 +254,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 ### Chức năng thông báo
 
 
-**Mục đích:** Giúp người dùng nhận và quản lý thông báo phát sinh từ các nghiệp vụ tuyển dụng, doanh nghiệp và tài khoản.
+**Mục đích:** Giúp người dùng nhận và quản lý thông báo phát sinh từ các nghiệp vụ tuyển dụng, doanh nghiệp và tài khoản; đồng thời cho phép Quản trị viên phát thông báo hoặc cảnh báo hệ thống đến người dùng.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
@@ -269,6 +270,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 | 4 | Button | N/A | Đánh dấu tất cả thông báo đã đọc. |
 | 5 | Button (icon) | N/A | Xóa thông báo thuộc người dùng. |
 | 6 | SignalR connection | Kết nối tự động | Nhận sự kiện realtime khi đang trực tuyến. |
+| 7 | Dialog/Form | Toàn hệ thống / Chung | Quản trị viên chọn đối tượng (`SystemAll`, `Candidate`, `Recruiter`), mức độ (`general`, `info`, `warning`, `error`), nhập tiêu đề và nội dung để phát cảnh báo hệ thống. |
 
 **Dữ liệu được dùng:**
 *Từ điển dữ liệu chức năng Thông báo*
@@ -281,39 +283,43 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 **Cách xử lý và sơ đồ hoạt động:**
 > **Sơ đồ hoạt động: Thông báo** — [Vị trí chèn sơ đồ hoạt động].
 
-Nghiệp vụ tạo notification ghi người nhận, loại, nội dung và tài nguyên liên quan vào CSDL; Hangfire có thể phát lô notification qua SignalR, đồng thời một số luồng gửi realtime trực tiếp sau commit. SignalR Hub đưa kết nối vào nhóm theo vai trò và membership công ty đã xác thực. Trung tâm thông báo truy vấn danh sách và số chưa đọc của người dùng hiện tại. Đánh dấu một thông báo yêu cầu đúng người nhận; đánh dấu tất cả giới hạn theo user; xóa cũng kiểm tra quyền sở hữu. Khi realtime lỗi, bản ghi đã lưu vẫn có thể truy vấn lại. Middleware trả lỗi 401/403/404 theo trường hợp và kèm correlationId.
+Nghiệp vụ tạo notification ghi người nhận, loại, nội dung và tài nguyên liên quan vào CSDL; Hangfire có thể phát lô notification qua SignalR, đồng thời một số luồng gửi realtime trực tiếp sau commit. SignalR Hub đưa kết nối vào nhóm theo vai trò và membership công ty đã xác thực. Trung tâm thông báo truy vấn danh sách và số chưa đọc của người dùng hiện tại. Đánh dấu một thông báo yêu cầu đúng người nhận; đánh dấu tất cả giới hạn theo user; xóa cũng kiểm tra quyền sở hữu. Đối với luồng phát cảnh báo hệ thống của Quản trị viên, máy chủ kiểm tra quyền Admin, xác thực đối tượng nhận (`SystemAll`, `Candidate`, `Recruiter`), tiêu đề (3--200 ký tự), nội dung (5--2.000 ký tự) và mức độ cảnh báo, sau đó truy vấn các tài khoản đang hoạt động phù hợp, lưu bản ghi `notifications` vào CSDL và phát realtime qua SignalR theo nhóm vai trò hoặc toàn hệ thống. Khi realtime lỗi, bản ghi đã lưu vẫn có thể truy vấn lại. Middleware trả lỗi 401/403/404/422 theo trường hợp và kèm correlationId.
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
 **Phân hệ: Chức năng công khai dùng trong biểu mẫu và bộ lọc**
 
-### Chức năng cung cấp danh mục ngành nghề công khai
+### Chức năng cung cấp danh mục ngành nghề, kỹ năng và địa điểm công khai
 
 
-**Mục đích:** Cung cấp nhóm ngành và ngành nghề đang hoạt động cho các biểu mẫu và bộ lọc tìm kiếm.
+**Mục đích:** Cung cấp nhóm ngành, ngành nghề, kỹ năng chuẩn hóa và địa điểm hành chính đang hoạt động cho các biểu mẫu và bộ lọc tìm kiếm.
 
 **Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
 
-> **Giao diện: chọn nhóm ngành và ngành nghề** — [Vị trí chèn ảnh mockup/Figma].
+> **Giao diện: chọn danh mục ngành nghề, kỹ năng và địa điểm** — [Vị trí chèn ảnh mockup/Figma].
 
-*Các thành phần trong giao diện Danh mục ngành nghề*
+*Các thành phần trong giao diện Danh mục công khai*
 
 | **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
 | --- | --- | --- | --- |
-| 1 | Dropdown/Tree select | Chưa chọn | Chọn nhóm ngành hoặc ngành trực thuộc. |
-| 2 | Textbox | Rỗng | Tìm ngành theo từ khóa. |
-| 3 | Pagination | Trang 1 | Điều hướng danh sách khi có phân trang. |
+| 1 | Dropdown/Tree select | Chưa chọn | Chọn nhóm ngành, ngành trực thuộc hoặc tỉnh/thành phố, phường/xã. |
+| 2 | Combobox/Multi-select | Chưa chọn | Tìm và chọn kỹ năng chuẩn hóa. |
+| 3 | Textbox | Rỗng | Tìm ngành nghề, kỹ năng hoặc địa điểm theo từ khóa. |
+| 4 | Pagination | Trang 1 | Điều hướng danh sách khi có phân trang. |
 
 **Dữ liệu được dùng:**
-*Từ điển dữ liệu chức năng Danh mục ngành nghề*
+*Từ điển dữ liệu chức năng Danh mục công khai*
 
 | **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
 | --- | --- | --- | --- | --- | --- |
 | 1 | industry_groups |  |  |  | X |
 | 2 | industries |  |  |  | X |
+| 3 | skills |  |  |  | X |
+| 4 | provinces |  |  |  | X |
+| 5 | wards |  |  |  | X |
 
 **Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Danh mục ngành nghề** — [Vị trí chèn sơ đồ hoạt động].
+> **Sơ đồ hoạt động: Danh mục công khai** — [Vị trí chèn sơ đồ hoạt động].
 
-API công khai truy vấn nhóm/ngành đang hoạt động, có thể lọc theo nhóm cha và từ khóa; kết quả được phân trang ở các truy vấn danh sách. Mã ngành không hoạt động hoặc không tồn tại không được chấp nhận trong thao tác tạo/cập nhật tin. Đây là chức năng chỉ đọc, đồng bộ; lỗi tham số được trả theo envelope API chung.
+Các API công khai (`AllowAnonymous`) truy vấn nhóm ngành, ngành nghề, kỹ năng, tỉnh/thành phố và phường/xã đang ở trạng thái hoạt động, hỗ trợ lọc theo từ khóa, nhóm ngành cha (`groupId`), tỉnh/thành phố (`provinceId`) và truy vấn lồng nhau (`with-industries`, `with-wards`) kèm phân trang. Mã danh mục không hoạt động hoặc không tồn tại không được chấp nhận trong thao tác tạo/cập nhật tin tuyển dụng. Đây là chức năng chỉ đọc, đồng bộ; lỗi tham số truy vấn được trả theo envelope API chung kèm `correlationId`.
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.

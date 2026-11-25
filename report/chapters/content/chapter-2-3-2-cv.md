@@ -55,6 +55,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 | 5 | Preview | Bản hiện tại | Xem trước bản CV được kết xuất. |
 | 6 | Version list | Phiên bản mới nhất | Mở các phiên bản đã lưu. |
 | 7 | Toggle | Trạng thái hiện tại | Điều khiển công khai/riêng tư nếu giao diện cung cấp. |
+| 8 | Button | N/A | Xuất hoặc tải CV dưới dạng PDF kèm trạng thái đang tải. |
 
 **Dữ liệu được dùng:**
 *Từ điển dữ liệu chức năng Biên soạn và quản lý CV*
@@ -70,7 +71,7 @@ Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm
 **Cách xử lý và sơ đồ hoạt động:**
 > **Sơ đồ hoạt động: Biên soạn và quản lý CV** — [Vị trí chèn sơ đồ hoạt động].
 
-Mọi thao tác ghi kiểm tra CV thuộc ứng viên hiện tại. Khi cập nhật, validator kiểm tra các trường được gửi, cấu trúc nội dung và bố cục; máy chủ so sánh mã băm tài liệu để xác định thay đổi cần lưu thành phiên bản mới. Nếu gắn ảnh xem trước, tệp phải tồn tại, thuộc ứng viên và không vi phạm ràng buộc sử dụng. Danh sách CV hỗ trợ truy vấn theo trạng thái công khai/ngôn ngữ và phân trang; endpoint chi tiết công khai chỉ trả dữ liệu công khai, trong khi xem phiên bản áp dụng phân quyền. Khi xóa, hệ thống kiểm tra các quan hệ đang tham chiếu và xử lý tệp mồ côi bằng Hangfire. Sai chủ sở hữu trả 403; dữ liệu sai trả 422; lỗi xung đột phiên bản được chuyển thành 409.
+Mọi thao tác ghi kiểm tra CV thuộc ứng viên hiện tại. Khi cập nhật, validator kiểm tra các trường được gửi, cấu trúc nội dung và bố cục; máy chủ so sánh mã băm tài liệu để xác định thay đổi cần lưu thành phiên bản mới. Nếu gắn ảnh xem trước, tệp phải tồn tại, thuộc ứng viên và không vi phạm ràng buộc sử dụng. Danh sách CV hỗ trợ truy vấn theo trạng thái công khai/ngôn ngữ và phân trang; endpoint chi tiết công khai chỉ trả dữ liệu công khai, trong khi xem phiên bản áp dụng phân quyền. Khi ứng viên chọn tải hoặc in PDF (tại màn hình quản lý hoặc trang xem trước CV), giao diện nạp dữ liệu chi tiết của CV, kết xuất bố cục qua vùng xem trước và kích hoạt hộp thoại in/lưu PDF của trình duyệt kèm trạng thái đang tải. Khi xóa, hệ thống kiểm tra các quan hệ đang tham chiếu và xử lý tệp mồ côi bằng Hangfire. Sai chủ sở hữu trả 403; dữ liệu sai trả 422; lỗi xung đột phiên bản được chuyển thành 409.
 
 Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
 
