@@ -1,0 +1,219 @@
+<mxfile host="65bd71144e">
+    <diagram id="act-2-3-04" name="2.3.4 Tải lên và quản lý tệp đa phương tiện">
+        <mxGraphModel dx="335" dy="214" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="880" pageHeight="960" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="pool" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=30;horizontalStack=1;html=1;fillColor=#F5F5F5;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;rounded=0;" value="Sơ đồ hoạt động: Tải lên và quản lý tệp đa phương tiện" vertex="1">
+                    <mxGeometry height="940" width="840" x="20" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-user" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Người dùng" vertex="1">
+                    <mxGeometry height="910" width="190" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-start" parent="lane-user" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="24" width="24" x="83" y="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-op" parent="lane-user" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="77" y="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-pick-file" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Chọn ảnh đại diện, logo hoặc tệp PDF cần tải" vertex="1">
+                    <mxGeometry height="50" width="160" x="15" y="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-crop-img" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Cắt chỉnh vùng ảnh (nếu là ảnh) và xác nhận" vertex="1">
+                    <mxGeometry height="50" width="160" x="15" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-click-del" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Chọn bỏ hoặc xóa tệp" vertex="1">
+                    <mxGeometry height="45" width="160" x="15" y="555" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-client" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Ứng dụng Client" vertex="1">
+                    <mxGeometry height="910" width="200" x="190" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-send-file" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Gửi tệp qua biểu mẫu multipart đến máy chủ" vertex="1">
+                    <mxGeometry height="50" width="160" x="20" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-show-preview" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Hiển thị ảnh xem trước hoặc tên tệp PDF" vertex="1">
+                    <mxGeometry height="50" width="160" x="20" y="455" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-send-del" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Gửi yêu cầu xóa tệp theo định danh" vertex="1">
+                    <mxGeometry height="45" width="160" x="20" y="555" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-show-msg" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Thông báo kết quả xử lý cho người dùng" vertex="1">
+                    <mxGeometry height="50" width="160" x="20" y="750" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-end" parent="lane-client" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="28" width="28" x="86" y="825" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-server" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Máy chủ &amp; CSDL" vertex="1">
+                    <mxGeometry height="910" width="240" x="390" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-val-file" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Kiểm tra tên, loại và kích thước tệp" vertex="1">
+                    <mxGeometry height="50" width="170" x="35" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-file-ok" parent="lane-server" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="102" y="315" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-save-media" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Lưu thông tin tệp và chủ sở hữu vào media_files" vertex="1">
+                    <mxGeometry height="50" width="170" x="35" y="385" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-db-ok" parent="lane-server" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="102" y="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-check-ref" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Kiểm tra quyền sở hữu và tham chiếu ở users, companies, cv_templates, applications" vertex="1">
+                    <mxGeometry height="65" width="180" x="30" y="545" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-ref-ok" parent="lane-server" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="102" y="635" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-mark-del" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Đánh dấu bản ghi đã xóa trong media_files" vertex="1">
+                    <mxGeometry height="45" width="170" x="35" y="695" as="geometry"/>
+                </mxCell>
+                <mxCell id="fork-del" parent="lane-server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;shadow=0;" value="" vertex="1">
+                    <mxGeometry height="6" width="140" x="50" y="765" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-cloud" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Cloudinary &amp; Hangfire" vertex="1">
+                    <mxGeometry height="910" width="210" x="630" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-cloud-up" parent="lane-cloud" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Lưu tệp lên Cloudinary và trả URL, public ID" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="308" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-cloud-rollback" parent="lane-cloud" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Xóa tệp vừa tải để tránh dữ liệu mồ côi" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="453" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-bg-del" parent="lane-cloud" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Hangfire xóa tệp vật lý trên Cloudinary" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="745" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-bg-end" parent="lane-cloud" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="28" width="28" x="91" y="825" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" edge="1" parent="pool" source="n-start" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-op">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" edge="1" parent="pool" source="d-op" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-pick-file" value="[Tải lên]">
+                    <mxGeometry relative="1" x="-0.1765" y="25" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e3" edge="1" parent="pool" source="d-op" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n-click-del" value="[Xóa tệp]">
+                    <mxGeometry relative="1" x="-0.8633" y="-8" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="10" y="138"/>
+                            <mxPoint x="10" y="607"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" edge="1" parent="pool" source="n-pick-file" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-crop-img">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" edge="1" parent="pool" source="n-crop-img" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-send-file">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" edge="1" parent="pool" source="n-send-file" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-val-file">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" edge="1" parent="pool" source="n-val-file" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-file-ok">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" edge="1" parent="pool" source="d-file-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="n-show-msg" value="[Không hợp lệ]">
+                    <mxGeometry relative="1" x="-0.8578" y="-13" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="405" y="363"/>
+                            <mxPoint x="405" y="560"/>
+                            <mxPoint x="200" y="560"/>
+                            <mxPoint x="200" y="792.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e9" edge="1" parent="pool" source="d-file-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-cloud-up" value="[Hợp lệ]">
+                    <mxGeometry relative="1" x="-0.0236" y="13" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e10" edge="1" parent="pool" source="n-cloud-up" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-save-media">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="735" y="440"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e11" edge="1" parent="pool" source="n-save-media" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-db-ok">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" edge="1" parent="pool" source="d-db-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-show-preview" value="[Lưu thành công]">
+                    <mxGeometry relative="1" x="-0.3115" y="-8" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="500"/>
+                            <mxPoint x="500" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e13" edge="1" parent="pool" source="d-db-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-cloud-rollback" value="[Lỗi CSDL]">
+                    <mxGeometry relative="1" x="-0.0236" y="8" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e14" edge="1" parent="pool" source="n-cloud-rollback" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="n-show-msg">
+                    <mxGeometry relative="1" x="0.0008" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="735" y="545"/>
+                            <mxPoint x="620" y="545"/>
+                            <mxPoint x="620" y="817.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e15" edge="1" parent="pool" source="n-show-preview" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n-end">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="195" y="510"/>
+                            <mxPoint x="195" y="869"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e16" edge="1" parent="pool" source="n-click-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-send-del">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e17" edge="1" parent="pool" source="n-send-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-check-ref">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e18" edge="1" parent="pool" source="n-check-ref" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-ref-ok">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e19" edge="1" parent="pool" source="d-ref-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n-show-msg" value="[Còn tham chiếu / Không quyền]">
+                    <mxGeometry relative="1" x="0.2174" y="-13" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e20" edge="1" parent="pool" source="d-ref-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-mark-del" value="[Đủ điều kiện]">
+                    <mxGeometry relative="1" x="-0.25" y="40" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e21" edge="1" parent="pool" source="n-mark-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="fork-del">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e22" edge="1" parent="pool" source="fork-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="n-show-msg">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="475" y="810"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e23" edge="1" parent="pool" source="fork-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" target="n-bg-del">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="545" y="810"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e24" edge="1" parent="pool" source="n-bg-del" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-bg-end">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e25" edge="1" parent="pool" source="n-show-msg" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-end">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
