@@ -1,113 +1,131 @@
-**Phân hệ: Chức năng dành cho Ứng viên**
+**Chức năng dành cho Ứng viên**
 
 ### Chức năng duyệt mẫu CV và tạo CV
 
+**Mục đích**
 
-**Mục đích:** Cho phép ứng viên xem các mẫu CV đang hoạt động, xem trước và khởi tạo CV từ mẫu phù hợp.
+Cho phép ứng viên xem các mẫu CV đang hoạt động, xem trước và khởi tạo CV từ mẫu phù hợp.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: duyệt mẫu CV** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Duyệt mẫu CV** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Duyệt mẫu CV*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Textbox | Rỗng | Tìm mẫu CV theo từ khóa. |
-| 2 | Card/Grid | Trang đầu | Hiển thị các mẫu đang hoạt động. |
-| 3 | Button | N/A | Mở cửa sổ xem trước mẫu. |
-| 4 | Button | N/A | Tạo CV từ mẫu đã chọn. |
-| 5 | Pagination | Trang 1 | Điều hướng danh sách mẫu. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Ô tìm kiếm | Rỗng | Tìm mẫu CV theo từ khóa. |
+| 2 | Lưới thẻ mẫu |   | Hiển thị các mẫu đang hoạt động. |
+| 3 | Nút xem trước |   | Mở bản xem trước của mẫu. |
+| 4 | Ô tiêu đề CV | `CV <tên mẫu>` | Đặt tên cho CV trong hộp thoại tạo từ mẫu. |
+| 5 | Nút tạo CV |   | Tạo CV từ mẫu đã chọn. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Duyệt mẫu CV*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | cv_templates |  |  |  | X |
-| 2 | cvs | X |  |  |  |
-| 3 | cv_versions | X |  |  |  |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `cv_templates` |   |   |   | X |
+| 2 | `cvs` | X |   |   |   |
+| 3 | `cv_versions` | X |   |   |   |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Duyệt mẫu CV và tạo CV** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Hệ thống truy vấn các mẫu đang hoạt động theo từ khóa và phân trang. Khi ứng viên tạo CV, máy chủ xác nhận vai trò Candidate, kiểm tra mẫu tồn tại và còn hoạt động, sau đó sao chép nội dung/bố cục mặc định để tạo CV và phiên bản ban đầu trong một giao dịch. Hệ thống tính mã băm nội dung và bố cục để phát hiện thay đổi về sau. Nếu mẫu không còn hoạt động hoặc dữ liệu sai, hệ thống trả lỗi validation hoặc not found; giao dịch bảo đảm không tạo CV thiếu phiên bản ban đầu.
+> **Sơ đồ hoạt động. Duyệt mẫu CV và tạo CV** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+API trả các mẫu đang hoạt động theo từ khóa và tham số phân trang. Khi ứng viên chọn mẫu, giao diện mở hộp thoại đặt tiêu đề. Máy chủ kiểm tra vai trò và trạng thái của mẫu, sao chép nội dung và bố cục mặc định, sau đó tạo CV và phiên bản ban đầu trong cùng một giao dịch. Sau khi tạo thành công, ứng dụng chuyển sang trình biên soạn của CV mới.
 
 ### Chức năng biên soạn và quản lý CV
 
+**Mục đích**
 
-**Mục đích:** Cho phép ứng viên xem danh sách CV, biên soạn nội dung, quản lý phiên bản và xóa CV của mình.
+Cho phép ứng viên xem danh sách CV, chỉnh sửa nội dung và thiết kế, xem trước, tải PDF, thay đổi trạng thái hiển thị và xóa CV.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: biên soạn và quản lý CV** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Biên soạn và quản lý CV** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Biên soạn CV*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Textbox/Editor | Nội dung CV hiện tại | Chỉnh sửa các mục nghề nghiệp trong CV. |
-| 2 | Panel/Tab | Phần thông tin đầu tiên | Chuyển giữa các phần nội dung CV. |
-| 3 | Design controls | Thiết kế hiện tại | Điều chỉnh bố cục và trình bày. |
-| 4 | Button | N/A | Lưu thay đổi CV. |
-| 5 | Preview | Bản hiện tại | Xem trước bản CV được kết xuất. |
-| 6 | Version list | Phiên bản mới nhất | Mở các phiên bản đã lưu. |
-| 7 | Toggle | Trạng thái hiện tại | Điều khiển công khai/riêng tư nếu giao diện cung cấp. |
-| 8 | Button | N/A | Xuất hoặc tải CV dưới dạng PDF kèm trạng thái đang tải. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Trình soạn thảo | Nội dung CV hiện tại | Chỉnh sửa thông tin và các mục trong CV. |
+| 2 | Tab và bộ điều khiển thiết kế | Thiết kế hiện tại | Chuyển giữa các mục và điều chỉnh bố cục, cách trình bày. |
+| 3 | Nút hoàn tác và làm lại |   | Điều hướng lịch sử thao tác của phiên biên soạn. |
+| 4 | Nút lưu |   | Lưu thay đổi CV. |
+| 5 | Nút xem trước |   | Xem bản CV được kết xuất. |
+| 6 | Công tắc công khai | Trạng thái hiện tại | Chuyển giữa công khai và riêng tư trong danh sách CV. |
+| 7 | Nút tải PDF |   | Mở hộp thoại in hoặc lưu PDF của trình duyệt. |
+| 8 | Nút và hộp thoại xác nhận xóa |   | Xác nhận xóa CV khỏi danh sách. |
 
-**Dữ liệu được dùng:**
-*Từ điển dữ liệu chức năng Biên soạn và quản lý CV*
+**Dữ liệu được dùng**
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | cvs | X | X | X | X |
-| 2 | cv_versions | X |  | X | X |
-| 3 | cv_templates |  |  |  | X |
-| 4 | media_files |  | X | X | X |
-| 5 | cv_embeddings | X | X |  | X |
+Thao tác xóa CV chỉ cập nhật thời điểm xóa. Bảng thứ hai mô tả các thao tác của tác vụ dọn dữ liệu chạy riêng.
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Biên soạn và quản lý CV** — [Vị trí chèn sơ đồ hoạt động].
+*Dữ liệu dùng khi biên soạn và quản lý CV*
 
-Mọi thao tác ghi kiểm tra CV thuộc ứng viên hiện tại. Khi cập nhật, validator kiểm tra các trường được gửi, cấu trúc nội dung và bố cục; máy chủ so sánh mã băm tài liệu để xác định thay đổi cần lưu thành phiên bản mới. Nếu gắn ảnh xem trước, tệp phải tồn tại, thuộc ứng viên và không vi phạm ràng buộc sử dụng. Danh sách CV hỗ trợ truy vấn theo trạng thái công khai/ngôn ngữ và phân trang; endpoint chi tiết công khai chỉ trả dữ liệu công khai, trong khi xem phiên bản áp dụng phân quyền. Khi ứng viên chọn tải hoặc in PDF (tại màn hình quản lý hoặc trang xem trước CV), giao diện nạp dữ liệu chi tiết của CV, kết xuất bố cục qua vùng xem trước và kích hoạt hộp thoại in/lưu PDF của trình duyệt kèm trạng thái đang tải. Khi xóa, hệ thống kiểm tra các quan hệ đang tham chiếu và xử lý tệp mồ côi bằng Hangfire. Sai chủ sở hữu trả 403; dữ liệu sai trả 422; lỗi xung đột phiên bản được chuyển thành 409.
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `cvs` |   | X |   | X |
+| 2 | `cv_versions` | X |   |   | X |
+| 3 | `cv_templates` |   |   |   | X |
+| 4 | `media_files` | X |   |   | X |
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+*Dữ liệu dùng khi dọn phiên bản của CV đã xóa*
 
-**Phân hệ: Chức năng dành cho Quản trị viên**
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `cvs` |   |   |   | X |
+| 2 | `applications` |   |   |   | X |
+| 3 | `cv_versions` |   |   | X | X |
+| 4 | `cv_embeddings` |   |   | X |   |
+| 5 | `media_files` |   | X |   | X |
+
+**Cách xử lý và sơ đồ hoạt động**
+
+> **Sơ đồ hoạt động. Biên soạn và quản lý CV** [Vị trí chèn sơ đồ hoạt động].
+
+Máy chủ kiểm tra quyền sở hữu với các thao tác ghi. Trình biên soạn kết xuất và tải ảnh xem trước trước khi gửi yêu cầu lưu. Máy chủ kiểm tra dữ liệu và so sánh mã băm nội dung, bố cục để xác định khi nào cần tạo phiên bản mới. Nếu tạo phiên bản mới, ảnh xem trước phải tồn tại, thuộc ứng viên và đáp ứng ràng buộc sử dụng. Khi tải PDF, ứng dụng kết xuất bố cục và mở hộp thoại in hoặc lưu của trình duyệt.
+
+API danh sách CV hỗ trợ lọc theo trạng thái hiển thị, ngôn ngữ và phân trang. Người dùng có thể xem chi tiết CV công khai. Với CV riêng tư, yêu cầu xem chi tiết phải đến từ chủ sở hữu. API truy vấn danh sách và chi tiết phiên bản cũng kiểm tra quyền truy cập. Lịch sử hoàn tác trên trình biên soạn lưu các thao tác của phiên chỉnh sửa. Khi ứng viên xác nhận xóa, máy chủ ghi thời điểm xóa vào CV để ẩn khỏi danh sách. Việc dọn phiên bản của CV đã xóa và không còn tham chiếu do tác vụ nền thực hiện.
+
+**Chức năng dành cho Quản trị viên**
 
 ### Chức năng quản lý thư viện mẫu CV
 
+**Mục đích**
 
-**Mục đích:** Cho phép Admin duy trì mẫu CV dùng làm dữ liệu khởi tạo cho ứng viên.
+Cho phép Admin duy trì mẫu CV dùng làm dữ liệu khởi tạo cho ứng viên.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: quản lý thư viện mẫu CV** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Quản lý thư viện mẫu CV** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Quản lý mẫu CV*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Table | Trang đầu | Danh sách mẫu và trạng thái hoạt động. |
-| 2 | Textbox | Rỗng | Nhập mã, tên và mô tả mẫu. |
-| 3 | File picker | Ảnh hiện tại | Chọn ảnh thu nhỏ đã tải lên. |
-| 4 | JSON/Form editor | Cấu hình hiện tại | Nhập nội dung mặc định và cấu hình bố cục. |
-| 5 | Toggle | Hoạt động | Bật hoặc tắt mẫu khỏi thư viện công khai. |
-| 6 | Button | N/A | Tạo mới hoặc lưu cập nhật. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Lưới thẻ và phân trang | Trang 1 | Hiển thị kho mẫu và trạng thái hoạt động. |
+| 2 | Ô tìm kiếm | Rỗng | Tìm theo tên hoặc mã mẫu. |
+| 3 | Bộ lọc trạng thái | Tất cả | Lọc mẫu đang hoạt động hoặc đã tắt. |
+| 4 | Nút xem trước |   | Xem mẫu CV. |
+| 5 | Hộp thoại chỉnh sửa | Tên và mô tả hiện tại | Cập nhật tên và mô tả mẫu. |
+| 6 | Công tắc hoạt động | Trạng thái hiện tại | Bật hoặc tắt mẫu trong thư viện công khai. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Quản lý mẫu CV*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | cv_templates | X | X |  | X |
-| 2 | media_files |  |  |  | X |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `cv_templates` | X | X |   | X |
+| 2 | `media_files` |   |   |   | X |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Quản lý mẫu CV** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Chỉ Admin được phép tạo hoặc cập nhật thư viện. Hệ thống kiểm tra trường bắt buộc, mã mẫu duy nhất, ảnh thu nhỏ và cấu trúc nội dung/bố cục trước khi lưu. Mẫu tắt hoạt động vẫn được giữ trong CSDL để bảo toàn tham chiếu từ các CV đã tạo nhưng không xuất hiện trong danh sách mẫu ứng viên. Lỗi quyền trả 403, dữ liệu không hợp lệ trả 422 và mã trùng trả 409 theo cấu trúc lỗi API thống nhất.
+> **Sơ đồ hoạt động. Quản lý mẫu CV** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+Quản trị viên tìm kiếm, xem trước và chỉnh sửa thông tin mẫu trong tab Kho mẫu CV. Khi tắt mẫu, máy chủ cập nhật trạng thái để mẫu biến mất khỏi danh sách công khai. Bản ghi vẫn được giữ để bảo toàn tham chiếu của CV đã tạo.
+
+API quản trị còn hỗ trợ tạo mẫu và cập nhật mã, ảnh thu nhỏ, nội dung cùng bố cục mặc định. Với các thao tác này, máy chủ kiểm tra mã duy nhất, dữ liệu cấu hình và ảnh thu nhỏ trước khi lưu.

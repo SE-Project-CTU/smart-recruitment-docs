@@ -1,158 +1,182 @@
-**Phân hệ: Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
+**Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
 
 ### Chức năng quản lý doanh nghiệp và thành viên
 
+**Mục đích**
 
-**Mục đích:** Cho phép nhà tuyển dụng tạo và quản lý hồ sơ doanh nghiệp, mời thành viên và kiểm soát tư cách thành viên phục vụ hoạt động tuyển dụng.
+Cho phép nhà tuyển dụng tạo và quản lý hồ sơ doanh nghiệp, mời thành viên và kiểm soát tư cách thành viên phục vụ hoạt động tuyển dụng.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: quản lý doanh nghiệp và thành viên** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Quản lý doanh nghiệp và thành viên** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Quản lý doanh nghiệp*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Textbox | Rỗng/thông tin hiện có | Tên, mã số thuế và thông tin liên hệ doanh nghiệp. |
-| 2 | Textarea | Rỗng/thông tin hiện có | Mô tả doanh nghiệp. |
-| 3 | Image picker | Logo hiện tại | Chọn logo ảnh thuộc sở hữu người thao tác. |
-| 4 | Table | Thành viên hiện tại | Hiển thị vai trò và trạng thái membership. |
-| 5 | Dialog/Form | Rỗng | Gửi lời mời theo email đến Recruiter. |
-| 6 | Button | N/A | Chuyển vai trò, loại thành viên hoặc chuyển quyền sở hữu theo quyền Owner. |
-| 7 | Table/Button group | Yêu cầu chờ xử lý | Xét duyệt hoặc từ chối yêu cầu gia nhập. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Ô nhập và bộ chọn ảnh | Rỗng hoặc thông tin hiện tại | Nhập tên, mã số thuế, liên hệ, mô tả và chọn logo. |
+| 2 | Danh sách thành viên | Thành viên hiện tại | Xem vai trò và trạng thái của từng thành viên. |
+| 3 | Hộp thoại mời | Hạn bảy ngày | Nhập email nhà tuyển dụng và chọn thời hạn mời. |
+| 4 | Danh sách lời mời |   | Chấp nhận hoặc từ chối lời mời nhận được. |
+| 5 | Nút chuyển quyền hoặc loại thành viên |   | Chủ sở hữu thao tác với thành viên đủ điều kiện. |
+| 6 | Nút rời công ty |   | Thành viên xác nhận rời doanh nghiệp. |
+| 7 | Danh sách yêu cầu gia nhập | Đang chờ | Chủ sở hữu duyệt hoặc từ chối yêu cầu. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Quản lý doanh nghiệp*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | companies | X | X |  | X |
-| 2 | company_memberships | X | X | X | X |
-| 3 | company_invitations | X | X |  | X |
-| 4 | company_join_requests | X | X |  | X |
-| 5 | media_files |  |  |  | X |
-| 6 | notifications | X |  |  | X |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `companies` | X | X |   | X |
+| 2 | `company_memberships` | X | X |   | X |
+| 3 | `company_invitations` | X | X |   | X |
+| 4 | `company_join_requests` |   | X |   | X |
+| 5 | `media_files` | X | X |   | X |
+| 6 | `users` / `user_roles` / `roles` |   |   |   | X |
+| 7 | `notifications` | X |   |   | X |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Quản lý doanh nghiệp và thành viên** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Khi tạo doanh nghiệp, hệ thống kiểm tra mã số thuế chưa tồn tại, giới hạn tối đa năm công ty do một Recruiter sở hữu và xác minh logo ảnh thuộc người dùng; trong giao dịch tạo công ty, người tạo được gán Owner đang hoạt động. Khi cập nhật, chỉ Owner đang hoạt động được phép sửa. Owner gửi lời mời tới email có tài khoản Recruiter, lời mời chờ khác không được trùng và thời hạn phải ở tương lai (mặc định bảy ngày). Người nhận chấp nhận hoặc từ chối lời mời; chấp nhận tạo membership và thông báo cho người mời. Người dùng cũng có thể gửi yêu cầu gia nhập; không cho tạo yêu cầu chờ trùng hoặc gửi khi đã là thành viên hoạt động. Owner duyệt yêu cầu đang Pending; nếu chấp nhận, hệ thống tạo/cập nhật membership Recruiter, nếu từ chối chỉ cập nhật trạng thái yêu cầu. Thông báo được lưu trong giao dịch và gửi thời gian thực sau commit; lỗi dispatch không đảo ngược kết quả nghiệp vụ.
+> **Sơ đồ hoạt động. Quản lý doanh nghiệp và thành viên** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+Khi tạo doanh nghiệp, máy chủ kiểm tra mã số thuế duy nhất, giới hạn sở hữu tối đa năm doanh nghiệp và quyền sở hữu logo nếu có. Hệ thống tạo doanh nghiệp và gán người tạo làm chủ sở hữu trong cùng một giao dịch. Chủ sở hữu đang hoạt động có thể cập nhật hồ sơ doanh nghiệp.
 
-**Phân hệ: Chức năng dành cho Khách truy cập/Ứng viên**
+Chủ sở hữu gửi lời mời tới tài khoản nhà tuyển dụng. Lời mời đang chờ không được trùng và thời hạn phải còn hiệu lực khi phản hồi. Người nhận có thể chấp nhận để gia nhập hoặc từ chối. Chủ sở hữu cũng có thể duyệt yêu cầu gia nhập được gửi từ trang chi tiết công ty. Khi chấp thuận, hệ thống tạo hoặc kích hoạt lại tư cách thành viên.
+
+Chủ sở hữu có thể chuyển quyền cho thành viên đủ điều kiện hoặc loại thành viên. Thành viên có thể chủ động rời doanh nghiệp. Hệ thống cập nhật tư cách thành viên sang `Left` khi một người bị loại hoặc rời công ty. Những nghiệp vụ phát sinh thông báo lưu thông báo trước khi gửi qua SignalR.
+
+**Chức năng dành cho khách truy cập, ứng viên và nhà tuyển dụng**
 
 ### Chức năng khám phá, theo dõi doanh nghiệp và danh sách tuyển dụng
 
+**Mục đích**
 
-**Mục đích:** Giúp người dùng tìm hiểu thông tin công khai của doanh nghiệp, xem vị trí đang tuyển và theo dõi công ty quan tâm.
+Giúp người dùng tìm hiểu thông tin công khai của doanh nghiệp, xem vị trí đang tuyển và theo dõi công ty quan tâm.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: khám phá và theo dõi doanh nghiệp** — [Vị trí chèn ảnh mockup/Figma].
+Giao diện gồm trang chi tiết doanh nghiệp và danh sách doanh nghiệp đã theo dõi của ứng viên.
+
+> **Hình. Chi tiết doanh nghiệp và việc đang tuyển** [Vị trí chèn ảnh giao diện].
+
+> **Hình. Danh sách doanh nghiệp đã theo dõi** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Khám phá doanh nghiệp*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Textbox | Rỗng | Tìm doanh nghiệp. |
-| 2 | Card/List | Trang đầu | Hiển thị doanh nghiệp và thông tin tóm tắt. |
-| 3 | Tab | Tổng quan | Chuyển giữa giới thiệu và danh sách việc làm. |
-| 4 | Button (icon) | Theo dõi hiện tại | Theo dõi hoặc bỏ theo dõi công ty. |
-| 5 | Button | N/A | Gửi yêu cầu gia nhập nếu người dùng đủ điều kiện. |
-| 6 | Pagination | Trang 1 | Chuyển trang danh sách doanh nghiệp/tin. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Tab | Tổng quan | Chuyển giữa giới thiệu doanh nghiệp và danh sách việc đang tuyển. |
+| 2 | Nút theo dõi | Trạng thái hiện tại | Ứng viên theo dõi hoặc bỏ theo dõi doanh nghiệp. |
+| 3 | Nút và hộp thoại gia nhập |   | Nhà tuyển dụng đủ điều kiện gửi yêu cầu gia nhập. |
+| 4 | Danh sách và ô tìm kiếm | Rỗng | Ứng viên xem hoặc tìm trong các doanh nghiệp đã theo dõi. |
+| 5 | Phân trang | Trang 1 | Chuyển trang danh sách việc đang tuyển. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Khám phá doanh nghiệp*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | companies |  |  |  | X |
-| 2 | company_follows | X |  | X | X |
-| 3 | job_postings |  |  |  | X |
-| 4 | company_memberships / company_join_requests | X |  |  | X |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `companies` |   |   |   | X |
+| 2 | `company_follows` | X |   | X | X |
+| 3 | `job_postings` |   |   |   | X |
+| 4 | `company_memberships` |   |   |   | X |
+| 5 | `company_join_requests` | X |   |   | X |
+| 6 | `users` |   |   |   | X |
+| 7 | `notifications` | X |   |   |   |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Khám phá doanh nghiệp** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Hệ thống truy vấn danh sách và chi tiết công khai, chỉ trả tin tuyển dụng đang được phát hành. Khi theo dõi/bỏ theo dõi, máy chủ yêu cầu tài khoản đã xác thực và chỉ tác động lên liên kết của người dùng hiện tại. Nếu chưa đăng nhập, giao diện yêu cầu đăng nhập trước thao tác ghi. Yêu cầu gia nhập chuyển sang luồng xét duyệt ở chức năng Quản lý doanh nghiệp. Lỗi không tìm thấy công ty trả 404; thao tác không có quyền trả 403.
+> **Sơ đồ hoạt động. Khám phá doanh nghiệp** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+Khách truy cập có thể xem trang chi tiết doanh nghiệp và danh sách việc đang tuyển. API cũng cung cấp truy vấn danh sách doanh nghiệp công khai. Khi ứng viên theo dõi hoặc bỏ theo dõi, máy chủ chỉ thêm hoặc xóa liên kết của tài khoản hiện tại. Người chưa đăng nhập được nhắc đăng nhập trước khi tiếp tục.
 
-**Phân hệ: Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
+Nhà tuyển dụng đủ điều kiện có thể gửi yêu cầu gia nhập từ trang doanh nghiệp. Máy chủ kiểm tra tư cách thành viên và yêu cầu đang chờ trước khi ghi yêu cầu mới. Nếu có chủ sở hữu đang hoạt động, hệ thống tạo thông báo về yêu cầu gia nhập. Việc thêm hoặc kích hoạt tư cách thành viên thuộc luồng xét duyệt ở mục 2.3.12.
+
+**Chức năng dành cho Nhà tuyển dụng/Doanh nghiệp**
 
 ### Chức năng quản lý ứng viên theo tin tuyển dụng
 
+**Mục đích**
 
-**Mục đích:** Cho phép Recruiter thuộc doanh nghiệp xem hồ sơ đã nhận, đọc CV/thư giới thiệu và cập nhật tiến trình tuyển dụng.
+Cho phép Recruiter thuộc doanh nghiệp xem hồ sơ đã nhận, đọc CV/thư giới thiệu và cập nhật tiến trình tuyển dụng.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: quản lý ứng viên theo tin tuyển dụng** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Quản lý ứng viên theo tin tuyển dụng** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Quản lý ứng viên*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Table | Trang đầu | Danh sách ứng viên đã nộp vào tin. |
-| 2 | Filter/Dropdown | Tất cả | Lọc hồ sơ theo trạng thái và điều kiện truy vấn. |
-| 3 | Button | N/A | Mở CV, thư giới thiệu hoặc chi tiết ứng viên. |
-| 4 | Status dropdown | Trạng thái hiện tại | Chuyển trạng thái theo luồng hợp lệ. |
-| 5 | Textarea | Rỗng | Ghi chú thay đổi trạng thái, tối đa 2.000 ký tự. |
-| 6 | Pagination | Trang 1 | Chuyển trang hồ sơ. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Bảng hồ sơ và phân trang | Trang 1 | Xem hồ sơ của doanh nghiệp hoặc theo từng tin. |
+| 2 | Ô tìm kiếm và bộ lọc | Tất cả | Tìm và lọc hồ sơ theo trạng thái. |
+| 3 | Nút xem tài liệu |   | Mở CV hoặc thư giới thiệu. |
+| 4 | Bộ chọn trạng thái | Trạng thái hiện tại | Hiển thị các bước chuyển được phép. |
+| 5 | Hộp thoại xác nhận và ô ghi chú | Rỗng | Xác nhận cập nhật và nhập ghi chú tối đa 2.000 ký tự. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Quản lý ứng viên*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | applications |  | X |  | X |
-| 2 | application_status_histories | X |  |  | X |
-| 3 | job_postings / companies / company_memberships |  |  |  | X |
-| 4 | cv_versions / media_files |  |  |  | X |
-| 5 | notifications | X |  |  | X |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `applications` |   | X |   | X |
+| 2 | `application_status_histories` | X |   |   |   |
+| 3 | `job_postings` |   | X |   | X |
+| 4 | `company_memberships` / `companies` |   |   |   | X |
+| 5 | `users` |   |   |   | X |
+| 6 | `cv_versions` / `media_files` |   |   |   | X |
+| 7 | `notifications` | X | X |   | X |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Quản lý ứng viên** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Máy chủ xác nhận tài khoản có vai trò Recruiter và membership đang hoạt động tại công ty sở hữu tin trước khi trả hồ sơ. Khi đổi trạng thái, validator chỉ nhận Reviewing, Shortlisted, Interviewing, Offered, Hired, Rejected hoặc Withdrawn; ghi chú tối đa 2.000 ký tự. Thực thể hồ sơ kiểm tra chuyển trạng thái theo state machine; cập nhật hồ sơ, lịch sử và tạo thông báo được thực hiện trong giao dịch. Sau commit, Hangfire xếp phát thông báo thời gian thực; lỗi xếp tác vụ được ghi log, không làm mất thay đổi trạng thái. Xung đột đồng thời trả 409; lỗi quyền 403, không tìm thấy hồ sơ 404, validation 422.
+> **Sơ đồ hoạt động. Quản lý ứng viên** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+Máy chủ kiểm tra vai trò nhà tuyển dụng và tư cách thành viên đang hoạt động trước khi trả danh sách hồ sơ theo doanh nghiệp hoặc theo tin. Khi nhận yêu cầu cập nhật, hệ thống kiểm tra bước chuyển được phép và độ dài ghi chú. Trạng thái hồ sơ, lịch sử và thông báo cho ứng viên được ghi trong cùng một giao dịch.
 
-**Phân hệ: Chức năng dành cho Quản trị viên**
+Khi hồ sơ chuyển sang `Offered` hoặc `Hired`, hệ thống tính số vị trí đã được giữ và có thể đóng tin nếu đã đủ chỉ tiêu. Nếu hồ sơ rời trạng thái giữ chỗ và chỉ tiêu còn trống, hệ thống có thể mở lại tin đã đóng. Sau khi lưu thay đổi, tác vụ nền gửi thông báo cho ứng viên.
+
+**Chức năng dành cho Quản trị viên**
 
 ### Chức năng xác minh doanh nghiệp và kiểm duyệt tin tuyển dụng
 
+**Mục đích**
 
-**Mục đích:** Cho phép Admin xác minh yêu cầu của doanh nghiệp và duyệt các tin tuyển dụng đang chờ trước khi hiển thị công khai.
+Cho phép quản trị viên xác minh doanh nghiệp, xét duyệt tin đang chờ và đóng tin đã phát hành.
 
-**Giao diện:** Chèn ảnh mockup/Figma theo caption hình bên dưới. Bảng thành phần giao diện của chức năng được trình bày ngay sau caption.
+**Giao diện**
 
-> **Giao diện: xác minh doanh nghiệp và kiểm duyệt tin** — [Vị trí chèn ảnh mockup/Figma].
+> **Hình. Danh sách và chi tiết xác minh doanh nghiệp** [Vị trí chèn ảnh giao diện].
+
+> **Hình. Danh sách kiểm duyệt và hộp thoại đóng tin tuyển dụng** [Vị trí chèn ảnh giao diện].
 
 *Các thành phần trong giao diện Kiểm duyệt*
 
-| **STT** | **Loại điều khiển** | **Giá trị mặc định** | **Lưu ý** |
-| --- | --- | --- | --- |
-| 1 | Tabs/Table | Chờ xử lý | Chuyển giữa doanh nghiệp và tin tuyển dụng chờ duyệt. |
-| 2 | Search/Filter | Rỗng/Tất cả | Tìm và lọc bản ghi cần xem xét. |
-| 3 | Detail panel | Bản ghi được chọn | Xem thông tin công ty hoặc tin tuyển dụng. |
-| 4 | Button | N/A | Chấp thuận hoặc từ chối. |
-| 5 | Textarea | Rỗng | Nhập lý do từ chối xác minh doanh nghiệp, 5--1.000 ký tự. |
+| STT | Loại điều khiển | Giá trị mặc định | Lưu ý |
+|---:|---|---|---|
+| 1 | Trang danh sách và bộ lọc | Chờ xử lý | Tìm và lọc các hồ sơ doanh nghiệp hoặc tin tuyển dụng theo trạng thái. |
+| 2 | Vùng xem chi tiết | Bản ghi được chọn | Xem thông tin doanh nghiệp hoặc nội dung tuyển dụng trước khi quyết định. |
+| 3 | Nút duyệt và từ chối |   | Xác nhận kết quả kiểm duyệt. |
+| 4 | Nút đóng tin |   | Mở hộp thoại đóng tin đang phát hành. |
+| 5 | Ô nhập lý do | Rỗng | Nhập lý do từ chối hoặc lý do đóng tin theo biểu mẫu tương ứng. |
 
-**Dữ liệu được dùng:**
+**Dữ liệu được dùng**
+
 *Từ điển dữ liệu chức năng Kiểm duyệt*
 
-| **STT** | **Tên bảng** | **Thêm** | **Sửa** | **Xóa** | **Truy vấn** |
-| --- | --- | --- | --- | --- | --- |
-| 1 | companies |  | X |  | X |
-| 2 | job_postings |  | X |  | X |
-| 3 | company_memberships |  |  |  | X |
-| 4 | notifications | X |  |  | X |
+| STT | Tên bảng hoặc cấu trúc dữ liệu | Thêm | Sửa | Xóa | Truy vấn |
+|---:|---|:---:|:---:|:---:|:---:|
+| 1 | `companies` |   | X |   | X |
+| 2 | `job_postings` |   | X |   | X |
+| 3 | `company_memberships` |   |   |   | X |
+| 4 | `notifications` | X |   |   | X |
 
-**Cách xử lý và sơ đồ hoạt động:**
-> **Sơ đồ hoạt động: Kiểm duyệt** — [Vị trí chèn sơ đồ hoạt động].
+**Cách xử lý và sơ đồ hoạt động**
 
-Admin chỉ có thể duyệt tin đang PendingReview; thao tác làm đổi trạng thái sang Published hoặc Rejected và lặp lại trên tin đã duyệt bị trả 409. Với doanh nghiệp, kết quả chỉ có thể là Verified hoặc Rejected; từ chối bắt buộc có lý do 5--1.000 ký tự. Hệ thống cập nhật trạng thái và thời điểm xác minh, tạo thông báo cho Owner trong giao dịch, sau đó thử phát SignalR. Lỗi phát realtime không làm đảo ngược quyết định đã lưu. Yêu cầu không đủ quyền trả 403, đối tượng không tồn tại trả 404, dữ liệu sai trả 422.
+> **Sơ đồ hoạt động. Kiểm duyệt** [Vị trí chèn sơ đồ hoạt động].
 
-Lỗi được trả trong envelope JSON gồm `error` và `correlationId`, kèm header `X-Correlation-ID`; HTTP status được ánh xạ theo loại lỗi. Cấu trúc này không phải RFC 7807 Problem Details.
+Khi xác minh doanh nghiệp, quản trị viên chọn chấp thuận hoặc từ chối. Từ chối yêu cầu lý do từ 5 đến 1.000 ký tự. Máy chủ cập nhật trạng thái, thời điểm xác minh và tạo thông báo cho chủ sở hữu nếu có người nhận phù hợp.
+
+Khi kiểm duyệt tin đang `PendingReview`, quản trị viên có thể phát hành hoặc từ chối. Trước khi phát hành, máy chủ kiểm tra doanh nghiệp đã được xác minh. Quản trị viên cũng có thể đóng tin đang `Published`. Thao tác không phù hợp với trạng thái hiện tại bị từ chối. Khi có thông báo, hệ thống lưu quyết định và thông báo trước khi chuyển thông báo qua SignalR.
