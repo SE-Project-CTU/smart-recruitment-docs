@@ -116,6 +116,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.1. Đăng ký tài khoản ứng viên hoặc nhà tuyển dụng
 
+Kịch bản `TS_TK_01` kiểm tra luồng đăng ký tài khoản theo hai vai trò Ứng viên và Nhà tuyển dụng bằng email/mật khẩu hoặc Google, đồng thời xác minh việc kiểm tra trùng email, số điện thoại và điều kiện đồng ý điều khoản trước khi tạo tài khoản.
+
 *Mã kịch bản `TS_TK_01`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -127,6 +129,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TK_01_05` | Đăng ký lần đầu bằng Google | Chọn vai trò, chọn đăng ký Google và hoàn tất xác thực. | Tạo tài khoản với vai trò đã chọn, thiết lập phiên và chuyển về trang chủ. | **Đối chiếu mã nguồn.** `SignUp` gửi Firebase ID token và vai trò đang chọn. BE có nhánh tạo người dùng cho email mới, sau đó FE chuyển về trang chủ khi nhận phiên. | Email Google đã xác minh, chưa có trong SmartHire. | PASS |
 
 ### 3.5.2. Đăng nhập, làm mới phiên và đăng xuất
+
+Kịch bản `TS_TK_02` kiểm tra xác thực bằng mật khẩu, đăng nhập Google cho tài khoản đã có hoặc email mới, cơ chế tự động làm mới phiên qua refresh token và thu hồi phiên khi đăng xuất.
 
 *Mã kịch bản `TS_TK_02`*
 
@@ -141,6 +145,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.3. Cập nhật thông tin tài khoản và đổi mật khẩu
 
+Kịch bản `TS_TK_03` kiểm tra thao tác chỉnh sửa họ tên, số điện thoại, thay hoặc gỡ ảnh đại diện, cũng như quy trình đổi mật khẩu kèm kiểm tra xác nhận mật khẩu và thu hồi các phiên đang hoạt động.
+
 *Mã kịch bản `TS_TK_03`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -152,6 +158,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TK_03_05` | Đổi mật khẩu và thu hồi phiên | Mở hai phiên độc lập. Đổi mật khẩu ở phiên thứ nhất với tùy chọn thu hồi đang bật. Thử làm mới ở phiên thứ hai. | Mật khẩu mới dùng được và phiên thứ hai không thể làm mới bằng refresh token cũ. | **Đối chiếu mã nguồn.** BE lưu mật khẩu mới đã băm và thu hồi toàn bộ refresh token chưa thu hồi khi tùy chọn được bật. Token cũ không đủ điều kiện làm mới. | Hai phiên còn hiệu lực, mật khẩu hiện tại đúng, mật khẩu mới hợp lệ. | PASS |
 
 ### 3.5.4. Quản lý doanh nghiệp và thành viên
+
+Kịch bản `TS_TK_04` kiểm tra nghiệp vụ khởi tạo và cập nhật doanh nghiệp theo mã số thuế và quyền chủ sở hữu, cùng các thao tác quản trị thành viên như mời gia nhập, duyệt yêu cầu, chuyển quyền sở hữu, rời hoặc loại thành viên.
 
 *Mã kịch bản `TS_TK_04`*
 
@@ -167,6 +175,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.5. Xem, theo dõi doanh nghiệp và xem việc đang tuyển
 
+Kịch bản `TS_TK_05` kiểm tra khả năng truy cập trang thông tin công khai của doanh nghiệp, thao tác theo dõi hoặc bỏ theo dõi theo trạng thái đăng nhập và gửi yêu cầu gia nhập không trùng lặp cho nhà tuyển dụng.
+
 *Mã kịch bản `TS_TK_05`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -178,6 +188,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TK_05_05` | Ngăn yêu cầu gia nhập trùng | Gửi lại yêu cầu gia nhập qua API khi yêu cầu trước đang chờ. | Yêu cầu lặp bị từ chối và danh sách chỉ chứa yêu cầu ban đầu. | **Đối chiếu mã nguồn.** BE truy vấn yêu cầu chờ của cùng người dùng và doanh nghiệp rồi từ chối nếu đã có. | Cùng tài khoản, cùng doanh nghiệp và một yêu cầu chưa được xử lý. | PASS |
 
 ### 3.5.6. Tải lên và quản lý tệp đa phương tiện
+
+Kịch bản `TS_TEP_01` kiểm tra luồng tải lên tệp ảnh và PDF, xác thực định dạng và giới hạn dung lượng, kiểm soát quyền xóa tệp theo chủ sở hữu và ngăn xóa các tệp đang được đối tượng nghiệp vụ tham chiếu.
 
 *Mã kịch bản `TS_TEP_01`*
 
@@ -192,6 +204,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.7. Duyệt mẫu CV và tạo CV
 
+Kịch bản `TS_CV_01` kiểm tra việc tìm kiếm, xem trước các mẫu CV đang hoạt động, khởi tạo CV kèm phiên bản ban đầu từ mẫu đã chọn và từ chối tạo mới khi mẫu đã bị vô hiệu hóa.
+
 *Mã kịch bản `TS_CV_01`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -201,6 +215,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_CV_01_03` | Từ chối tạo CV từ mẫu đã tắt | Gọi API tạo CV với mã mẫu đã tắt. | Yêu cầu bị từ chối và không xuất hiện CV hoặc phiên bản mới. | **Đối chiếu mã nguồn.** Handler trả lỗi `TemplateInactive` trước khi tạo CV nếu mẫu đã bị tắt. | Mã mẫu tồn tại, trạng thái đã tắt. | PASS |
 
 ### 3.5.8. Biên soạn và quản lý CV
+
+Kịch bản `TS_CV_02` kiểm tra các chức năng chính trong trình biên soạn và quản lý CV gồm lưu phiên bản mới, hoàn tác/làm lại, xem trước và xuất PDF, chuyển đổi chế độ công khai/riêng tư, kiểm soát quyền sở hữu và xóa mềm CV.
 
 *Mã kịch bản `TS_CV_02`*
 
@@ -215,6 +231,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.9. Quản lý thư viện mẫu CV
 
+Kịch bản `TS_CV_03` kiểm tra các thao tác quản trị thư viện mẫu CV trên giao diện gồm tìm kiếm, cập nhật tên hoặc mô tả mẫu và bật/tắt trạng thái hiển thị của mẫu đối với ứng viên.
+
 *Mã kịch bản `TS_CV_03`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -223,6 +241,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_CV_03_02` | Bật và tắt mẫu | Tắt mẫu rồi kiểm tra kho mẫu ứng viên. Bật lại và kiểm tra lần nữa. | Mẫu biến mất khi tắt và xuất hiện lại khi bật. CV đã tạo từ mẫu được giữ. | **Đối chiếu mã nguồn.** Nút bật hoặc tắt gửi `isActive`. API công khai lọc theo trạng thái hoạt động và thao tác này giữ nguyên bản ghi mẫu. | Mẫu đang hoạt động và đã có CV tham chiếu. | PASS |
 
 ### 3.5.10. Tìm kiếm và xem chi tiết việc làm
+
+Kịch bản `TS_TD_01` kiểm tra luồng tìm kiếm việc làm công khai theo từ khóa, lọc theo địa điểm và cấp bậc, từ chối tổ hợp bộ lọc lương mâu thuẫn, sắp xếp kết quả kèm phân trang trên URL và hiển thị chi tiết tin tuyển dụng.
 
 *Mã kịch bản `TS_TD_01`*
 
@@ -236,6 +256,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.11. Lưu và bỏ lưu tin tuyển dụng
 
+Kịch bản `TS_TD_02` kiểm tra chức năng đánh dấu lưu tin tuyển dụng đang phát hành của ứng viên, ngăn lưu trùng hoặc lưu tin đã đóng và đảm bảo thao tác bỏ lưu chỉ ảnh hưởng đến tài khoản hiện tại.
+
 *Mã kịch bản `TS_TD_02`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -246,6 +268,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TD_02_04` | Bỏ lưu theo tài khoản | Bỏ lưu tin bằng ứng viên thứ nhất rồi kiểm tra danh sách của cả hai tài khoản. | Tin bị bỏ khỏi danh sách của ứng viên thứ nhất và vẫn còn trong danh sách của ứng viên thứ hai. | **Đối chiếu mã nguồn.** API bỏ lưu dùng mã tài khoản của phiên hiện tại cùng mã tin. Liên kết của ứng viên khác nằm ngoài phạm vi xóa. | Hai ứng viên đã lưu cùng tin. | PASS |
 
 ### 3.5.12. Đăng và quản lý tin tuyển dụng
+
+Kịch bản `TS_TD_03` kiểm tra quy trình tạo tin tuyển dụng ở trạng thái chờ duyệt, từ chối doanh nghiệp chưa xác minh, kiểm tra tổng trọng số so khớp bằng 100%, cập nhật danh mục kỹ năng/ngành nghề, đóng tin và tự động hết hạn tin qua tác vụ nền.
 
 *Mã kịch bản `TS_TD_03`*
 
@@ -260,6 +284,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.13. Nộp, theo dõi và rút hồ sơ ứng tuyển
 
+Kịch bản `TS_TD_04` kiểm tra hai phương thức nộp hồ sơ bằng CV trực tuyến hoặc tệp PDF, giới hạn dung lượng 5 MB khi ứng tuyển, ngăn nộp trùng cùng một tin và quy tắc rút hồ sơ kèm lý do theo từng trạng thái.
+
 *Mã kịch bản `TS_TD_04`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -272,6 +298,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TD_04_06` | Từ chối rút sau khi vào vòng phỏng vấn | Gọi API rút hồ sơ khi hồ sơ đang ở vòng phỏng vấn. | Yêu cầu bị từ chối và trạng thái hồ sơ giữ nguyên. | **Đối chiếu mã nguồn.** Handler rút hồ sơ có điều kiện từ chối trạng thái `Interviewing` trước khi lưu. Quy tắc này áp dụng cho yêu cầu của ứng viên. | Hồ sơ thuộc ứng viên và đang ở trạng thái phỏng vấn. | PASS |
 
 ### 3.5.14. Quản lý ứng viên theo tin tuyển dụng
+
+Kịch bản `TS_TD_05` kiểm tra chức năng của nhà tuyển dụng khi lọc hồ sơ theo tin và trạng thái, xem CV/thư giới thiệu, chuyển trạng thái hồ sơ hợp lệ kèm thông báo, từ chối chuyển trạng thái hoặc truy cập sai quyền và tự động đóng tin khi đủ chỉ tiêu.
 
 *Mã kịch bản `TS_TD_05`*
 
@@ -286,6 +314,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.15. Xem tổng quan ứng viên
 
+Kịch bản `TS_TD_06` kiểm tra trang tổng quan của ứng viên về khả năng nạp dữ liệu CV và hồ sơ theo tài khoản, lọc việc làm theo cấp bậc, điều hướng tới trang theo dõi hồ sơ và hiển thị trạng thái trống cho tài khoản mới.
+
 *Mã kịch bản `TS_TD_06`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -296,6 +326,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_TD_06_04` | Hiển thị tài khoản chưa có CV và hồ sơ | Mở tổng quan với một tài khoản mới. | Trang hiển thị trạng thái không có CV hoặc hồ sơ và vẫn cho truy cập chức năng liên quan. | **Đối chiếu mã nguồn.** FE dùng danh sách rỗng khi tài khoản không có dữ liệu. Khu vực CV có trạng thái trống và đường dẫn sang luồng tạo CV. | Ứng viên mới, chưa tạo CV và chưa ứng tuyển. | PASS |
 
 ### 3.5.16. Xem tổng quan nhà tuyển dụng
+
+Kịch bản `TS_TD_07` kiểm tra trang tổng quan của nhà tuyển dụng trong việc tổng hợp số liệu theo doanh nghiệp đang chọn, tự động chọn doanh nghiệp đầu tiên khi chưa có lựa chọn, vẽ biểu đồ xu hướng theo ngày nộp và hiển thị hướng dẫn khi chưa thuộc doanh nghiệp nào.
 
 *Mã kịch bản `TS_TD_07`*
 
@@ -308,6 +340,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.17. Phân tích mức độ phù hợp giữa CV và tin tuyển dụng
 
+Kịch bản `TS_AI_01` kiểm tra chức năng chấm điểm và phân tích mức độ phù hợp từ văn bản CV đang chỉnh hoặc phiên bản CV đã lưu, từ chối yêu cầu thiếu thông tin công việc và cơ chế trả kết quả dự phòng khi dịch vụ AI gặp lỗi.
+
 *Mã kịch bản `TS_AI_01`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -318,6 +352,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_AI_01_04` | Trả kết quả dự phòng khi dịch vụ AI lỗi | Trong môi trường kiểm thử, mô phỏng lỗi Gemini rồi gửi yêu cầu phân tích mới. | Bộ máy so khớp vẫn trả điểm và nhận xét dự phòng. | **Đối chiếu mã nguồn.** Handler tính điểm trước khi gọi Gemini. Khi bước diễn giải phát sinh lỗi, nhánh dự phòng giữ điểm và dựng nhận xét từ kết quả so khớp. | CV và tin hợp lệ chưa có kết quả lưu tạm, lỗi được mô phỏng ở bước diễn giải. | PASS |
 
 ### 3.5.18. Xếp hạng và gợi ý việc làm phù hợp
+
+Kịch bản `TS_AI_02` kiểm tra luồng xếp hạng việc làm tức thời theo nội dung CV hiện tại, làm mới sau khi chỉnh sửa, xử lý trường hợp CV trống, cũng như tạo và đọc gợi ý qua tác vụ nền kèm kiểm soát thời gian chờ giữa hai lần làm mới.
 
 *Mã kịch bản `TS_AI_02`*
 
@@ -331,6 +367,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.19. Cải thiện nội dung CV theo vị trí mục tiêu
 
+Kịch bản `TS_AI_03` kiểm tra chức năng tạo đề xuất cải thiện cho nhiều mục CV theo vị trí mục tiêu, giới hạn độ dài chỉ dẫn bổ sung tối đa 2.000 ký tự và cơ chế truyền phản hồi từng phần qua SSE.
+
 *Mã kịch bản `TS_AI_03`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -340,6 +378,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_AI_03_03` | Nhận phản hồi từng phần qua SSE | Gửi yêu cầu cải thiện một mục tới API truyền sự kiện và đọc luồng phản hồi. | Phản hồi được truyền qua các sự kiện dữ liệu và kết thúc bằng sự kiện đánh dấu hoàn tất. | **Đối chiếu mã nguồn.** API SSE ghi từng sự kiện có tiền tố `data:` và kết thúc bằng `data: [DONE]` nếu luồng hoàn tất bình thường. | Tài khoản ứng viên, văn bản mục CV hợp lệ và dịch vụ AI khả dụng. | PASS |
 
 ### 3.5.20. Quản lý hội thoại AI qua API
+
+Kịch bản `TS_AI_04` kiểm tra các API quản lý hội thoại AI của ứng viên, bao gồm tạo và truy vấn danh sách/chi tiết, gửi tin nhắn lưu kèm phản hồi AI, ghim hoặc bỏ ghim, kiểm soát quyền sở hữu và xóa lẻ hoặc xóa toàn bộ hội thoại.
 
 *Mã kịch bản `TS_AI_04`*
 
@@ -352,6 +392,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_AI_04_05` | Xóa một hội thoại và xóa toàn bộ | Xóa một hội thoại, kiểm tra danh sách rồi gọi API xóa toàn bộ và truy vấn lần nữa. | Lần đầu chỉ mất hội thoại được chọn. Lần sau danh sách của ứng viên trống và dữ liệu của tài khoản khác giữ nguyên. | **Đối chiếu mã nguồn.** API xóa lẻ kiểm tra chủ sở hữu. API xóa toàn bộ lọc bằng mã ứng viên hiện tại và tin nhắn đi kèm được xóa theo quan hệ. | Ứng viên có nhiều hội thoại, ít nhất một hội thoại có tin nhắn. | PASS |
 
 ### 3.5.21. Xác minh doanh nghiệp và kiểm duyệt tin tuyển dụng
+
+Kịch bản `TS_QT_01` kiểm tra nghiệp vụ xác minh doanh nghiệp (chấp thuận hoặc từ chối kèm lý do hợp lệ) và kiểm duyệt tin tuyển dụng của quản trị viên gồm phát hành, từ chối, đóng tin đang tuyển và từ chối thao tác sai trạng thái.
 
 *Mã kịch bản `TS_QT_01`*
 
@@ -366,6 +408,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.22. Quản lý trạng thái tài khoản người dùng
 
+Kịch bản `TS_QT_02` kiểm tra chức năng tìm kiếm, lọc tài khoản theo vai trò và trạng thái, khóa tài khoản kèm kiểm tra lý do và thu hồi phiên, khôi phục tài khoản và quy tắc bảo vệ tài khoản quản trị đang hoạt động cuối cùng.
+
 *Mã kịch bản `TS_QT_02`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -377,6 +421,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_QT_02_05` | Bảo vệ quản trị viên đang hoạt động cuối cùng | Gọi API vô hiệu hóa tài khoản quản trị đang hoạt động cuối cùng. | Yêu cầu bị từ chối và tài khoản vẫn hoạt động. | **Đối chiếu mã nguồn.** BE kiểm tra số quản trị viên đang hoạt động trước khi khóa hoặc vô hiệu hóa. Nhánh quản trị viên cuối cùng bị từ chối. | Môi trường kiểm thử có đúng một tài khoản quản trị hoạt động. | PASS |
 
 ### 3.5.23. Quản lý danh mục ngành nghề, kỹ năng và địa điểm
+
+Kịch bản `TS_QT_03` kiểm tra các thao tác quản trị danh mục dùng chung gồm tạo và cập nhật nhóm ngành, ngành nghề, kỹ năng và địa giới hành chính theo quan hệ cha–con, kiểm tra mã cha không hợp lệ và vô hiệu hóa an toàn danh mục đang được sử dụng.
 
 *Mã kịch bản `TS_QT_03`*
 
@@ -390,6 +436,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 
 ### 3.5.24. Xem thống kê tổng quan quản trị
 
+Kịch bản `TS_QT_04` kiểm tra trang thống kê tổng quan của quản trị viên gồm tải số liệu mặc định, lọc chỉ tiêu phát sinh theo khoảng ngày hợp lệ, từ chối khoảng ngày đảo ngược và đối chiếu dữ liệu biểu đồ phân bố cùng biểu đồ xu hướng trên giao diện.
+
 *Mã kịch bản `TS_QT_04`*
 
 | Mã Test Case | Mô tả | Hành động | Kết quả mong đợi | Kết quả thực tế | Dữ liệu đầu vào | Kết quả |
@@ -400,6 +448,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_QT_04_04` | Đối chiếu biểu đồ trên giao diện | Chuyển nhóm biểu đồ doanh nghiệp và tin. Sau đó đối chiếu các điểm biểu đồ xu hướng với công thức phân bổ của trang. | Biểu đồ phân bố dùng số theo trạng thái. Biểu đồ xu hướng dùng giá trị ước lượng từ tổng lượt ứng tuyển. | **Đối chiếu mã nguồn.** Biểu đồ phân bố đọc số đếm từ API. Biểu đồ xu hướng sáu tháng phân bổ theo trọng số từ tổng lượt ứng tuyển, nên các điểm là ước lượng. | Phản hồi tổng quan có số lượng khác 0 và nhiều nhóm trạng thái. | PASS |
 
 ### 3.5.25. Nhận, quản lý và phát thông báo
+
+Kịch bản `TS_QT_05` kiểm tra thao tác đánh dấu đã đọc từng thông báo hoặc toàn bộ, xóa thông báo thuộc tài khoản, ngăn thao tác trên thông báo của người khác và phát cảnh báo từ quản trị viên theo vai trò hoặc toàn hệ thống qua SignalR.
 
 *Mã kịch bản `TS_QT_05`*
 
@@ -413,6 +463,8 @@ Các bảng chi tiết mô tả thao tác, dữ liệu đầu vào và kết qu�
 | `TC_QT_05_06` | Phát cảnh báo toàn hệ thống | Quản trị viên chọn Toàn hệ thống rồi gửi. Đối chiếu danh sách thông báo của các tài khoản mẫu. | Cảnh báo được lưu cho ứng viên và nhà tuyển dụng đang hoạt động. | **Đối chiếu mã nguồn.** Nhánh Toàn hệ thống truy vấn tài khoản đang hoạt động và loại tài khoản quản trị. Tài khoản đã khóa nằm ngoài tập nhận. | Ứng viên và nhà tuyển dụng đang hoạt động, một tài khoản đã khóa và một quản trị viên để đối chiếu. | PASS |
 
 ### 3.5.26. Truy vấn danh mục công khai
+
+Kịch bản `TS_QT_06` kiểm tra các API danh mục công khai trong việc lọc ngành theo nhóm cha, tra cứu phường/xã theo tỉnh/thành phố, tìm kiếm kỹ năng theo từ khóa, phân trang dữ liệu và từ chối sử dụng mã danh mục đã tắt khi đăng tin tuyển dụng.
 
 *Mã kịch bản `TS_QT_06`*
 
