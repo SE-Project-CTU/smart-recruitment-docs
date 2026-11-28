@@ -1,0 +1,239 @@
+<mxfile host="65bd71144e">
+    <diagram id="act-2-3-02" name="2.3.2 Đăng nhập, làm mới phiên và đăng xuất">
+        <mxGraphModel dx="373" dy="238" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="880" pageHeight="1060" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="pool" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=30;horizontalStack=1;html=1;fillColor=#F5F5F5;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;rounded=0;" value="Sơ đồ hoạt động: Đăng nhập, làm mới phiên và đăng xuất" vertex="1">
+                    <mxGeometry height="1010" width="840" x="20" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-user" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Người dùng" vertex="1">
+                    <mxGeometry height="980" width="200" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-start" parent="lane-user" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="24" width="24" x="88" y="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-auth-mode" parent="lane-user" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="82" y="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-input-creds" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Nhập email, mật khẩu và nhấn Đăng nhập" vertex="1">
+                    <mxGeometry height="50" width="160" x="20" y="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-click-google" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Chọn đăng nhập bằng Google" vertex="1">
+                    <mxGeometry height="45" width="160" x="20" y="275" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-choose-role" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Chọn vai trò cho tài khoản mới" vertex="1">
+                    <mxGeometry height="45" width="160" x="20" y="455" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-logout-click" parent="lane-user" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Chọn Đăng xuất từ menu tài khoản" vertex="1">
+                    <mxGeometry height="45" width="160" x="20" y="835" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-client" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Ứng dụng Client" vertex="1">
+                    <mxGeometry height="980" width="210" x="200" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-send-login" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Gửi yêu cầu đăng nhập đến máy chủ" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-open-fb" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Mở popup xác thực Firebase" vertex="1">
+                    <mxGeometry height="45" width="160" x="25" y="275" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-role-dialog" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Mở hộp thoại chọn vai trò và gửi lại yêu cầu" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="455" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-store-session" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Lưu access token và vào phiên làm việc" vertex="1">
+                    <mxGeometry height="50" width="160" x="25" y="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-session-act" parent="lane-client" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="87" y="695" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-req-refresh" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Tự động gọi API làm mới phiên" vertex="1">
+                    <mxGeometry height="45" width="160" x="25" y="760" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-clear-session" parent="lane-client" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Xóa trạng thái phiên và kết thúc" vertex="1">
+                    <mxGeometry height="45" width="160" x="25" y="885" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-end" parent="lane-client" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+                    <mxGeometry height="28" width="28" x="91" y="950" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-server" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Máy chủ &amp; CSDL" vertex="1">
+                    <mxGeometry height="980" width="240" x="410" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-verify-pwd" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Tìm tài khoản theo email, kiểm tra trạng thái và mật khẩu băm" vertex="1">
+                    <mxGeometry height="55" width="180" x="30" y="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-pwd-ok" parent="lane-server" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="102" y="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-verify-fb" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Xác minh Firebase token và kiểm tra tài khoản theo email" vertex="1">
+                    <mxGeometry height="55" width="180" x="30" y="345" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-need-role" parent="lane-server" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;" value="" vertex="1">
+                    <mxGeometry height="36" width="36" x="102" y="425" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-create-fb-user" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Tạo users và gán user_roles theo vai trò đã chọn" vertex="1">
+                    <mxGeometry height="50" width="180" x="30" y="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-issue-tokens" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Sinh access token, lưu hash refresh_tokens và đặt cookie HttpOnly" vertex="1">
+                    <mxGeometry height="60" width="180" x="30" y="605" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-srv-refresh" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Kiểm tra refresh token, thu hồi token cũ và cấp token mới" vertex="1">
+                    <mxGeometry height="55" width="180" x="30" y="755" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-srv-logout" parent="lane-server" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Thu hồi refresh_tokens và xóa cookie HttpOnly" vertex="1">
+                    <mxGeometry height="50" width="180" x="30" y="835" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane-fb" parent="pool" style="swimlane;html=1;startSize=28;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;rounded=0;" value="Firebase Auth" vertex="1">
+                    <mxGeometry height="980" width="190" x="650" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="n-fb-token" parent="lane-fb" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#181818;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;" value="Xác thực Google và trả Firebase ID token" vertex="1">
+                    <mxGeometry height="50" width="160" x="15" y="275" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" edge="1" parent="pool" source="n-start" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-auth-mode">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" edge="1" parent="pool" source="d-auth-mode" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-input-creds" value="[Email &amp; mật khẩu]">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" edge="1" parent="pool" source="d-auth-mode" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n-click-google" value="[Google]">
+                    <mxGeometry relative="1" x="0.5028" y="20" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="10" y="138"/>
+                            <mxPoint x="10" y="328"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" edge="1" parent="pool" source="n-input-creds" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-send-login">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" edge="1" parent="pool" source="n-send-login" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-verify-pwd">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="400" y="212.5"/>
+                            <mxPoint x="400" y="212.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e6" edge="1" parent="pool" source="n-verify-pwd" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-pwd-ok">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" edge="1" parent="pool" source="d-pwd-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="n-input-creds" value="[Sai thông tin]">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="100" y="278"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e8" edge="1" parent="pool" source="d-pwd-ok" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="n-issue-tokens" value="[Hợp lệ]">
+                    <mxGeometry relative="1" x="0.0184" y="-25" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="635" y="278"/>
+                            <mxPoint x="635" y="665"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e9" edge="1" parent="pool" source="n-click-google" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-open-fb">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e10" edge="1" parent="pool" source="n-open-fb" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-fb-token">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="660" y="330"/>
+                            <mxPoint x="660" y="330"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e11" edge="1" parent="pool" source="n-fb-token" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-verify-fb">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="745" y="402"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e12" edge="1" parent="pool" source="n-verify-fb" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-need-role">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" edge="1" parent="pool" source="d-need-role" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-role-dialog" value="[Chưa có tài khoản]">
+                    <mxGeometry relative="1" x="-0.4878" y="-13" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e14" edge="1" parent="pool" source="n-role-dialog" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-choose-role">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="190" y="510"/>
+                            <mxPoint x="190" y="510"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e15" edge="1" parent="pool" source="n-choose-role" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-create-fb-user">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="100" y="575"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e16" edge="1" parent="pool" source="n-create-fb-user" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-issue-tokens">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e17" edge="1" parent="pool" source="d-need-role" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="n-issue-tokens" value="[Đã có tài khoản]">
+                    <mxGeometry relative="1" x="-0.7529" y="-17" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="625" y="473"/>
+                            <mxPoint x="625" y="650"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e18" edge="1" parent="pool" source="n-issue-tokens" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-store-session">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e19" edge="1" parent="pool" source="n-store-session" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="d-session-act">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e20" edge="1" parent="pool" source="d-session-act" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;" target="n-req-refresh" value="[Token hết hạn]">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e21" edge="1" parent="pool" source="n-req-refresh" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-srv-refresh">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e22" edge="1" parent="pool" source="n-srv-refresh" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="n-store-session">
+                    <mxGeometry relative="1" x="-0.0012" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="635" y="812.5"/>
+                            <mxPoint x="635" y="720"/>
+                            <mxPoint x="420" y="720"/>
+                            <mxPoint x="420" y="665"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e23" edge="1" parent="pool" source="d-session-act" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n-logout-click" value="[Đăng xuất]">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="100" y="743"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e24" edge="1" parent="pool" source="n-logout-click" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-srv-logout">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="180" y="887.5"/>
+                            <mxPoint x="180" y="887.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e25" edge="1" parent="pool" source="n-srv-logout" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-clear-session">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="520" y="940"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e26" edge="1" parent="pool" source="n-clear-session" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;strokeColor=#181818;" target="n-end">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
