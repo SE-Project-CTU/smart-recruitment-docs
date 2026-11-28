@@ -3,3 +3,101 @@
 \newpage
 
 \section{KIỂM THỬ VÀ ĐÁNH GIÁ}
+
+Chương này trình bày kế hoạch kiểm thử hệ thống SmartHire, các kịch bản dùng để đối chiếu hành vi của hệ thống với yêu cầu nghiệp vụ và cách tổng hợp kết quả. Phạm vi kiểm thử được xác định từ sáu phân hệ ở Chương 1 và các chức năng được mô tả tại mục 2.3.
+
+\subsection{Giới thiệu}
+
+\subsubsection{Mục tiêu kiểm thử}
+
+Kiểm thử nhằm xác định các chức năng của SmartHire có thực hiện đúng nghiệp vụ và quyền hạn của từng vai trò hay không. Các ca kiểm thử kiểm tra cả luồng hợp lệ và những tình huống cần từ chối, chẳng hạn dữ liệu thiếu hoặc trùng, thao tác trên hồ sơ không thuộc quyền quản lý và chuyển trạng thái sai quy định. Kết quả kiểm thử giúp xác định lỗi cần khắc phục và kiểm tra lại các chức năng bị ảnh hưởng sau khi sửa.
+
+\subsubsection{Phạm vi kiểm thử}
+
+Phạm vi bao gồm các luồng đã triển khai dành cho khách truy cập, ứng viên, nhà tuyển dụng và quản trị viên. Kiểm thử qua trình duyệt tập trung vào các chức năng có giao diện. Kiểm thử trực tiếp qua API được dùng cho nghiệp vụ chưa tích hợp giao diện, như quản lý hội thoại AI, và cho các quy tắc cần kiểm tra ở máy chủ, như quyền sở hữu dữ liệu và điều kiện cập nhật trạng thái.
+
+Đánh giá trong chương tập trung vào hành vi chức năng, tính nhất quán của dữ liệu và cách phản hồi khi gặp lỗi. Những kết luận về hiệu năng, khả năng chịu tải hoặc chất lượng gợi ý dài hạn cần có phép đo và tập dữ liệu đánh giá riêng.
+
+\subsection{Kế hoạch kiểm thử}
+
+\subsubsection{Các chức năng kiểm thử}
+
+\paragraph{Quản lý Tài khoản, Doanh nghiệp và Phân quyền:}
+Kiểm tra đăng ký, đăng nhập bằng mật khẩu hoặc Google, làm mới phiên, đăng xuất, cập nhật thông tin cá nhân và đổi mật khẩu. Với doanh nghiệp, kiểm tra quyền của chủ sở hữu và thành viên khi tạo, sửa, mời người dùng, xét yêu cầu gia nhập, chuyển quyền hoặc rời doanh nghiệp. Kiểm tra thêm khả năng xem và theo dõi doanh nghiệp theo từng vai trò.
+
+\paragraph{Quản lý Tệp tin và Đa phương tiện:}
+Kiểm tra tải ảnh và PDF, các giới hạn về loại và dung lượng tệp, quyền truy cập tệp và việc từ chối xóa tệp còn được tham chiếu theo quy tắc của chức năng. Khi thao tác xóa được chấp nhận, kiểm tra trạng thái bản ghi và kết quả xử lý tệp trên dịch vụ lưu trữ.
+
+\paragraph{Công cụ Biên soạn CV theo Mẫu:}
+Kiểm tra tìm và xem trước mẫu, tạo CV, chỉnh sửa nội dung và bố cục, lưu phiên bản, xem trước CV, xuất PDF, thay đổi trạng thái công khai và xóa CV. Luồng quản trị mẫu kiểm tra chỉnh sửa thông tin và bật hoặc tắt mẫu.
+
+\paragraph{Tuyển dụng và Quản lý Ứng tuyển:}
+Kiểm tra tìm kiếm, lọc, xem chi tiết, lưu và bỏ lưu tin tuyển dụng. Với nhà tuyển dụng, kiểm tra tạo, sửa và đóng tin theo quyền của doanh nghiệp. Với ứng viên, kiểm tra nộp hồ sơ bằng CV trực tuyến hoặc PDF, ngăn nộp trùng, xem lịch sử và rút hồ sơ. Kiểm tra việc cập nhật tiến trình xét tuyển và các thông tin hiển thị trên hai trang tổng quan theo vai trò.
+
+\paragraph{Trợ lý AI và Đề xuất Thông minh:}
+Kiểm tra phân tích mức độ phù hợp giữa CV và vị trí, cải thiện nội dung CV, xếp hạng việc làm tức thời và tạo gợi ý qua tác vụ nền. Kiểm tra API hội thoại theo quyền sở hữu, bao gồm gửi tin nhắn, ghim và xóa hội thoại. Với phản hồi sinh bởi AI, đối chiếu các tiêu chí như kết quả có đủ trường cần hiển thị, bám vào vị trí đã chọn và được xử lý phù hợp khi dịch vụ gặp lỗi.
+
+\paragraph{Quản trị Hệ thống Vận hành:}
+Kiểm tra xác minh doanh nghiệp, duyệt hoặc đóng tin, khóa và khôi phục tài khoản, quản lý danh mục và đối chiếu dữ liệu danh mục công khai. Kiểm tra truy vấn thống kê, thao tác đọc và xóa thông báo, phát cảnh báo đúng đối tượng và cập nhật thông báo qua SignalR.
+
+\subsubsection{Cách tiếp cận}
+
+Kiểm thử dựa trên thao tác và kết quả có thể quan sát từ giao diện hoặc API. Mỗi ca xác định điều kiện ban đầu, vai trò, dữ liệu đầu vào, bước thực hiện và kết quả mong đợi. Các luồng liên quan nhiều vai trò được thực hiện theo trình tự nghiệp vụ. Chẳng hạn, một tin tuyển dụng được tạo bởi nhà tuyển dụng và được duyệt bởi quản trị viên trước khi ứng viên dùng tin đó để nộp hồ sơ.
+
+Với các thao tác làm thay đổi dữ liệu, kết quả được đối chiếu bằng cách truy vấn lại dữ liệu hoặc tải lại màn hình. Với tác vụ chạy nền, kết quả nhận yêu cầu và kết quả sau khi tác vụ hoàn tất được kiểm tra ở hai thời điểm. Các luồng AI được kiểm tra theo cấu trúc và nội dung cần có của phản hồi, vì cách diễn đạt có thể thay đổi giữa các lần chạy.
+
+\subsubsection{Tiêu chí đánh giá kiểm thử thành công hay thất bại}
+
+Một ca \textbf{đạt} khi kết quả thực tế đáp ứng các điều kiện mong đợi của ca đó, gồm phản hồi, quyền truy cập và trạng thái dữ liệu nếu có thay đổi. Với ca đầu vào không hợp lệ, việc hệ thống từ chối đúng lý do và giữ nguyên dữ liệu liên quan cũng được tính là đạt.
+
+Một ca \textbf{không đạt} khi quan sát được sai khác giữa kết quả thực tế và kết quả mong đợi, chẳng hạn cho phép thao tác sai quyền, trả trạng thái sai hoặc lưu dữ liệu chưa đầy đủ. Ca không thể thực hiện do thiếu điều kiện hoặc sự cố môi trường được ghi là \textbf{bị chặn} kèm nguyên nhân. Ca chưa được thực hiện được ghi là \textbf{chưa chạy}.
+
+\subsubsection{Tiêu chí đình chỉ và yêu cầu bắt đầu lại}
+
+Tạm dừng ca kiểm thử hoặc nhóm ca phụ thuộc khi môi trường không khả dụng, dữ liệu ban đầu không còn đúng hoặc lỗi ở một bước tiên quyết khiến các bước sau không thể thực hiện. Khi đã khôi phục môi trường, chuẩn bị lại dữ liệu hoặc áp dụng bản sửa, thực hiện lại ca bị ảnh hưởng và kiểm tra các luồng liên quan để xác nhận bản sửa.
+
+\subsubsection{Sản phẩm bàn giao của kiểm thử}
+
+Tài liệu kiểm thử gồm kế hoạch, danh sách kịch bản, các ca kiểm thử chi tiết và bảng tổng hợp kết quả. Mỗi ca chi tiết ghi mã ca, điều kiện ban đầu, bước thực hiện, kết quả mong đợi, kết quả thực tế và trạng thái. Khi phát hiện sai lệch, hồ sơ kiểm thử ghi bước tái hiện và bằng chứng cần thiết để kiểm tra lại.
+
+\subsection{Quản lý kiểm thử}
+
+\subsubsection{Quá trình kiểm thử}
+
+Trước khi thực hiện, xác định bản dựng sử dụng, chọn các kịch bản và chuẩn bị tài khoản, dữ liệu mẫu theo từng vai trò. Trong quá trình chạy, ghi kết quả ngay sau mỗi ca và lưu bằng chứng cho các sai lệch. Sau khi sửa lỗi, chạy lại các ca liên quan và tổng hợp kết quả theo từng phân hệ.
+
+\subsubsection{Môi trường kiểm thử}
+
+Môi trường cần có ứng dụng web React, API ASP.NET Core trên .NET 10 và cơ sở dữ liệu PostgreSQL có pgvector. Các ca chạy nền và thông báo cần cấu hình Hangfire và SignalR tương ứng. Các ca đăng nhập Google, lưu trữ tệp hoặc trợ lý AI cần môi trường kết nối Firebase Authentication, Cloudinary hoặc Google Gemini theo luồng được kiểm tra.
+
+Dữ liệu chuẩn bị gồm tài khoản ứng viên, nhà tuyển dụng và quản trị viên, doanh nghiệp ở các trạng thái phù hợp, mẫu CV, CV trực tuyến, tệp ảnh và PDF, tin tuyển dụng và hồ sơ ứng tuyển. Dữ liệu từng ca cần được xác định trước để có thể lặp lại và so sánh kết quả.
+
+Thông tin lần chạy cần ghi nhận bao gồm thiết bị, hệ điều hành, trình duyệt, công cụ gọi API, bản dựng FE và BE, cấu hình cơ sở dữ liệu và các dịch vụ được sử dụng.
+
+\subsection{Trách nhiệm và quyền hạn}
+
+Bảng phân công xác định người lập và theo dõi kế hoạch, người thiết kế ca kiểm thử, người chuẩn bị môi trường và dữ liệu, người thực hiện và người kiểm tra kết quả. Mỗi thành viên được đánh dấu X ở các nhiệm vụ được phân công. Cột Chứng kiến dùng khi có người quan sát hoặc xác nhận một lượt kiểm thử.
+
+\begin{table}[H]
+    \centering
+    \caption{Bảng phân công trách nhiệm kiểm thử}
+    \label{tab:testing-responsibility}
+    \fontsize{10}{12}\selectfont
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{4.0cm}|>{\centering\arraybackslash}p{1.6cm}|>{\centering\arraybackslash}p{1.6cm}|>{\centering\arraybackslash}p{1.6cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.6cm}|}
+        \hline
+        \textbf{Họ và tên} & \textbf{Quản lý} & \textbf{Thiết kế} & \textbf{Chuẩn bị} & \textbf{Thực hiện} & \textbf{Chứng kiến} & \textbf{Kiểm tra} \\
+        \hline
+        Phan Quốc Bình & X & & X & X & & X \\
+        \hline
+        Trần Trọng Phúc & X & X & & & X & X \\
+        \hline
+        Nguyễn Phước Lộc & X & X & & X & & X \\
+        \hline
+    \end{tabular}%
+    }
+\end{table}
+
+\input{chapters/03_5_test-cases.tex}
